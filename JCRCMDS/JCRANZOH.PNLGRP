@@ -1,0 +1,19 @@
+:PNLGRP.:HELP NAME='JCRANZO'.O SPEC Layout Print (JCRANZO) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Reads RPGLE source O specs to provide report layout with
+field names printed under the data layout.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRANZO/PGM'.PGM source member name - Help :XH3.PGM source member name (PGM)
+:P.Source member whose field list is to be printed.:EHELP.
+ 
+:HELP NAME='JCRANZO/SRCFILE'.Source file - Help :XH3.Source file (SRCFILE)
+:P.Source file containing source PGM member.:EHELP.
+ 
+:HELP NAME='JCRANZO/SHOWNAMES'.Show except and field names - Help
+:XH3.Show except and field names (SHOWNAMES)
+:P.Show print line names and field names on layout report.:EHELP.
+ 
+:HELP NAME='JCRANZO/OUTPUT'.Output - Help :XH3.Output (OUTPUT)
+:P.*PRINT or * Display the layout.:EHELP.:EPNLGRP.

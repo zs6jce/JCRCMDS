@@ -1,0 +1,27 @@
+:PNLGRP.:HELP NAME='XMLPREVIEW'.Preview XML Upload Members (XMLPREVIEW) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Presents a subfile of source member, listing members, and commands
+to be executed from an uploaded XML source member.  Please review before install.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='XMLPREVIEW/UPLOADMBR'.Uploaded member name - Help
+:XH3.Uploaded member name (UPLOADMBR)
+:P.Member name of a uploaded member containing source and object information
+about to be installed.:EHELP.
+ 
+:HELP NAME='XMLPREVIEW/UPLOADSRCF'.Uploaded into source file - Help
+:XH3.Uploaded into source file (UPLOADSRCF)
+:P.Source file where upload member was placed.:EHELP.
+ 
+:HELP NAME='XMLPREVIEW/OUTPUTSRCF'.Output to this source file - Help
+:XH3.Output to this source file (OUTPUTSRCF)
+:P.Optionally specifies source file where ALL members will be extracted. This
+option is available to persons who want install all source members into a single selected source
+file. This option can only be used if uploaded file has different names for all members.
+:PARML.:PT.:PK def.*DEFAULTS:EPK.
+:PD.The default source files, defined in uploaded member, is used.
+:PT.source-file-name :PD.Enter source file name to contain extracted source members.
+Source file does not have to exists as it will be created.
+To use this option, verfiy the uploaded text has no duplicate member names.
+:EPARML.:EHELP.:EPNLGRP.

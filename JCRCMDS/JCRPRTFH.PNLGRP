@@ -1,0 +1,39 @@
+:PNLGRP.:HELP NAME='JCRPRTF'.Generate External Print File (JCRPRTF) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Generates DDS external print file source member from RPGLE
+or SQLRPGLE program's O specs.
+:P.Please be aware of following special circumstances:
+:UL COMPACT.:LI.Multiple internal spooled files are consolidated into single member
+:LI.Array elements are converted but must be modified as these are not allowed in PRTF.
+:LI.If entire array name (not indexed) is used, it is
+converted, but will require conversion to non-array name.
+:LI.Control indicators L0-L9 are converted but will must be
+manually changed as they are not allowed in external print file.
+:LI.Duplicate fields within same record format must be manually changed after generation.:EUL.
+:P.The command gets name of RPG source member whose O specs are to used, the name and
+location to put the generated DDS print file member, and whether or not REFFLDs
+are used in external print file.
+:NT.Does not alter original RPG code in any way.:ENT.
+:NT.The command will create new DDS source member if one does not exist.
+If DDS member already exists, it is overlaid with generated code.:ENT.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRPRTF/RPGMBR'.RPG source member - Help :XH3.RPG source member(RPGMBR)
+:P.Program whose internal O specs are used to generate external
+print file DDS source.:EHELP.
+ 
+:HELP NAME='JCRPRTF/RPGSRCFIL'.Source file - Help :XH3.Source file (RPGSRCFIL)
+:P.Source file containing source program member.:EHELP.
+ 
+:HELP NAME='JCRPRTF/PRTFMBR'.DDS member to generate - Help :XH3.DDS member to generate(PRTFMBR)
+:P.DDS member name of external print file that is be generated.:EHELP.
+ 
+:HELP NAME='JCRPRTF/PRTFSRCFIL'.Source file - Help :XH3.Source file (PRTFSRCFIL)
+:P.Source file that contains external print file member.:EHELP.
+ 
+:HELP NAME='JCRPRTF/USEREFFLD'.Use REFFLD field references - Help
+:XH3.Use REFFLD field references (USEREFFLD)
+:P.External print file to be generated using REFFLD or internal field descriptions.
+:PARML.:PT.:PK def.*NO:EPK.:PD.REFFLDs are not to used in external print file.
+:PT.*YES :PD.REFFLD definitions to be used where available.:EPARML.:EHELP.:EPNLGRP.

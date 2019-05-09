@@ -1,0 +1,10 @@
+:PNLGRP.:HELP NAME='JCRMRBIG'.Print Big Characters (JCRMRBIG) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Print twelve line high by thirteen column wide characters from the
+selected input.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRMRBIG/CHARACTERS'.String of Characters - Help :XH3.String of Characters (CHARACTERS)
+:P.Character string to be big printed.
+:PARML.:PT.characters :PD.Any keyboard character.:EPARML.:EHELP.:EPNLGRP.

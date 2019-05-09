@@ -1,0 +1,11 @@
+:PNLGRP.:HELP NAME='JCRMIKE'.Show Procedure Locations (JCRMIKE) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Shows internal and external procedure source locations in selected pgm.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRMIKE/PGMNAM'.PGMNAM Object Name - Help :XH3.PGMNAM Object Name (PGMNAM)
+:P.Display file and library to be analyzed.:EHELP.
+ 
+:HELP NAME='JCRMIKE/OUTPUT'.Output - Help :XH3.Output (OUTPUT)
+:P.*PRINT or * Display the list.:EHELP.:EPNLGRP.

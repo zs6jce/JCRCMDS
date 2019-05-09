@@ -1,0 +1,64 @@
+      *----------------------------------------------------------------
+      * JCRRFLDD - Fields in RPG source - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(27 132 *DS4)
+     A                                      INDARA
+     A                                      CA03
+     A                                      CA06
+     A                                      CA12
+     A          R SBFDTA1                   SFL
+     A            JFLDNAM       27A  O  5  5
+     A            JDTATYP       16A  O  5 33
+     A            JFLDTXT       24A  O  5 50
+     A            JFLDSRC       10A  O  5 75
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1)
+     A                                      SFLSIZ(0170)
+     A                                      SFLPAG(0020)
+     A                                      OVERLAY
+     A                                      BLINK
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A            SFLRCDNBR      4S 0H      SFLRCDNBR(CURSOR *TOP)
+     A                                  1  2'JCRRFLD'
+     A                                      COLOR(BLU)
+     A                                  1 23'Fields in RPG Source'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1 64COLOR(BLU)
+     A                                  1 77DATE
+     A                                      EDTCDE(Y)
+     A                                      COLOR(BLU)
+     A                                  2  2'Mbr:'
+     A            SCOBJHEAD     64A  O  2  7
+     A                                  2 77SYSNAME
+     A                                      COLOR(BLU)
+     A            SCPOSITION    14A  I  3  5DSPATR(PC)
+     A                                  3 20'Position to'
+     A                                      COLOR(BLU)
+     A                                  4  5'Field Name'
+     A                                      DSPATR(HI)
+     A                                  4 33'Data Type       '
+     A                                      DSPATR(HI)
+     A                                  4 50'Text/Qualified/Dim'
+     A                                      DSPATR(HI)
+     A                                  4 75'File'
+     A                                      DSPATR(HI)
+      *----------------------------------------------------------------
+     A          R SFOOTER1                  OVERLAY
+     A                                 26  2'F3=Exit' COLOR(BLU)
+     A                                 26 17'Enter=Position To'
+     A                                      COLOR(BLU)
+     A                                 26 50'F6=Print' COLOR(BLU)
+     A                                 26 75'F12=Cancel' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(24)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

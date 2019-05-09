@@ -1,0 +1,69 @@
+      *----------------------------------------------------------------
+      * JCRSSQLD - Scan strsql sessions for sql statements - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      INDARA PRINT CA03 CA12
+     A          R DATA1                     SFL
+     A            AOPTIONS       1A  P
+     A            SQLHID      2500   H
+     A            SBFOPTION      1A  B  5  3
+     A                                      DSPATR(&AOPTIONS)
+     A            VDATA         68A  O  5  5
+      *----------------------------------------------
+     A          R CONTRL1                   SFLCTL(DATA1) OVERLAY
+     A                                      SFLPAG(17) SFLSIZ(1717)
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A                                      CSRLOC(CSRROW     CSRCOL)
+     A            SFLRCDNBR      4S 0H      SFLRCDNBR(CURSOR *TOP)
+     A            CSRROW         3S 0H
+     A            CSRCOL         3S 0H
+     A            ASCVAL1        1A  P
+     A            ASCRELAT       1A  P
+     A                                  1  3'JCRSSQL' COLOR(BLU)
+     A                                  1 15'Scan STRSQL sessions for SQL state-
+     A                                      ments'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  2  5'Scan for:'
+     A                                      DSPATR(HI)
+     A            SCVAL1        15A  B  2 15
+     A                                      DSPATR(&ASCVAL1)
+     A            SCRELATION     3A  B  2 32
+     A                                      DSPATR(&ASCRELAT)
+     A            SCVAL2        15A  B  2 37
+     A                                  2 72SYSNAME COLOR(BLU)
+     A                                  3  5'Statements                AND/OR  -
+     A                                                                        '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  4  3'T=Position to Top'
+     A                                      COLOR(BLU)
+     A                                  4 22'X=eXecute SQL'
+     A                                      COLOR(BLU)
+      *----------------------------------------------
+     A          R KEYS
+     A                                      BLINK
+     A                                      OVERLAY
+     A                                 23  2'F3=Exit'
+     A                                      COLOR(BLU)
+     A                                 23 69'F12=Cancel'
+     A                                      COLOR(BLU)
+      *----------------------------------------------
+     A          R MSGSFL                    SFL
+     A                                      SFLMSGRCD(24)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+      *----------------------------------------------
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A                                      SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

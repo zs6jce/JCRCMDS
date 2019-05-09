@@ -1,0 +1,38 @@
+      *----------------------------------------------------------------
+      * JCRDQDD - Data queue description display - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      CA03 CA05 CA07 CA12 PRINT
+     A          R SCREEN
+     A            ASHOWKEY       1A  P
+     A                                  1  3'JCRDQD' COLOR(BLU)
+     A                                  1 23'Data Queue Description'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  2 72SYSNAME COLOR(BLU)
+     A                                  3  3'Data Queue:' DSPATR(HI)
+     A            SCOBJHEAD     65   O  3 15
+     A                                  5  3'Created Size:'
+     A            SCCRTSIZE      8A  O  5 17
+     A                                  5 27'Entry Length:'
+     A            SCQLEN         5Y 0O  5 41EDTCDE(4)
+     A                                  5 48'Type:'
+     A            SCDDM          5A  O  5 54
+     A                                  7  3'Sequence:'
+     A            SCQSEQUEN      6A  O  7 13
+     A                                  7 21'Key Length:' DSPATR(&ASHOWKEY)
+     A            SCQKEYLEN      4Y 0O  7 33EDTCDE(4) DSPATR(&ASHOWKEY)
+     A                                  9  3'Entry Counts'
+     A                                 10  3'Current: . .'
+     A            SCENTRIES      9Y 0O 10 16EDTCDE(1) DSPATR(HI UL)
+     A                                 12  3'Max Ever:. .'
+     A            SCCURALC       9Y 0O 12 16EDTCDE(1) DSPATR(UL)
+     A                                 14  3'Max Allowed:'
+     A            SCMAXALLOW     9Y 0O 14 16EDTCDE(1) DSPATR(UL)
+     A                                 23  2'F3=Exit' COLOR(BLU)
+     A                                 23 20'F5=Refresh' COLOR(BLU)
+     A                                 23 39'F7=View Dataq Entries'
+     A                                      COLOR(BLU)
+     A                                 23 69'F12=Cancel' COLOR(BLU)

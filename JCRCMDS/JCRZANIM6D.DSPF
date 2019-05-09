@@ -1,0 +1,57 @@
+      *----------------------------------------------------------------
+      * JCRZANIM6D - Animation- racquetball cutthroat serve rotate - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      CA03 CA12
+     A          R SCREEN
+     A            ATR12          1A  P
+     A            ATR31          1A  P
+     A            ATR33          1A  P
+     A                                  1  3'JCRZANIM6' COLOR(BLU)
+     A                                  1 15'Racquetball Cutthroat Serve Rotati-
+     A                                      on'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  3  8'-----------------------------------
+     A                                      ---'
+     A                                      COLOR(BLU)
+     A            GRID12ROW1     9A  O  4 23DSPATR(&ATR12)
+     A                                  4 53'Serve Count'
+     A            ROTATECNT      1S 0O  4 66
+     A            GRID12ROW2     9A  O  5 23DSPATR(&ATR12)
+     A            GRID12ROW3     9A  O  6 23DSPATR(&ATR12)
+     A                                  6 53'Server Sequence'
+     A            GRID12ROW4     9A  O  7 23DSPATR(&ATR12)
+     A                                  7 53'A starts'
+     A                                      COLOR(WHT)
+     A            GRID12ROW5     9A  O  8 23DSPATR(&ATR12)
+     A                                  8 53'B serves after A'
+     A                                      COLOR(YLW)
+     A                                  9 53'C serves after B'
+     A                                      COLOR(PNK)
+     A            GRID31ROW1     9A  O 11 14DSPATR(&ATR31)
+     A            GRID33ROW1     9A  O 11 31DSPATR(&ATR33)
+     A            GRID31ROW2     9A  O 12 14DSPATR(&ATR31)
+     A            GRID33ROW2     9A  O 12 31DSPATR(&ATR33)
+     A                                 12 53'The server swaps'
+     A            GRID31ROW3     9A  O 13 14DSPATR(&ATR31)
+     A            GRID33ROW3     9A  O 13 31DSPATR(&ATR33)
+     A                                 13 53'places with whoever is'
+     A            GRID31ROW4     9A  O 14 14DSPATR(&ATR31)
+     A            GRID33ROW4     9A  O 14 31DSPATR(&ATR33)
+     A                                 14 53'serving next.'
+     A            GRID31ROW5     9A  O 15 14DSPATR(&ATR31)
+     A            GRID33ROW5     9A  O 15 31DSPATR(&ATR33)
+     A            MSGL1         26A  O 17 14
+     A            MSGL2         26A  O 18 14
+     A            MSGR1         26A  O 19 31
+     A            MSGR2         26A  O 20 31
+     A                                 24  2'F3=Exit'
+     A                                      COLOR(BLU)
+     A                                 24 15'Press Enter to swap serves.'
+     A                                      DSPATR(HI)
+     A                                 16 53'It helps to watch the'
+     A                                 17 53'A player and how he relates'
+     A                                 18 53'to the other two.'

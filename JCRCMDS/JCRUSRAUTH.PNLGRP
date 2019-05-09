@@ -1,0 +1,18 @@
+:PNLGRP.:HELP NAME='JCRUSRAUT'.List User Class/Authorities (JCRUSRAUT) Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Generates report showing users with selected user class and special
+authorities.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRUSRAUT/USERCLASS'.User Class - Help :XH3.User Class (USERCLASS)
+:P.User class of profiles to be selected.:EHELP.
+ 
+:HELP NAME='JCRUSRAUT/SPECIALAUT'.Special Authorities - Help :XH3.Special Authorities (SPECIALAUT)
+:P.Up to eight authorities to select.:EHELP.
+ 
+:HELP NAME='JCRUSRAUT/STATUS'.Status - Help :XH3.Status (STATUS)
+:P.Select status of user profile to be selected.:EHELP.
+ 
+:HELP NAME='JCRUSRAUT/OUTPUT'.Output - Help :XH3.Output (OUTPUT)
+:P.*PRINT or * Display the list.:EHELP.:EPNLGRP.

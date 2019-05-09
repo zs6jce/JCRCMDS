@@ -1,0 +1,21 @@
+:PNLGRP.:HELP NAME='JCRRFLD'.Fields in RPG source (JCRRFLD) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Displays list of length, attributes, and where-from for all fields in RPGLE
+program.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRRFLD/PGM'.RPG program name - Help :XH3.RPG program name (PGM)
+:P.Program whose field lengths to be displayed.:EHELP.
+ 
+:HELP NAME='JCRRFLD/SRCFILE'.Source file - Help :XH3.Source file (SRCFILE)
+:P.Source file containing source program.:EHELP.
+ 
+:HELP NAME='JCRRFLD/OUTPUT'.Output - Help :XH3.OutPut (OUTPUT)
+:P.Print results, load into outfile or * display.:EHELP.
+ 
+:HELP NAME='JCRRFLD/OUTFILE'.OutFile - Help :XH3.File (OUTFILE)
+:P.File and library to receive command output.:EHELP.
+ 
+:HELP NAME='JCRRFLD/OUTMBR'.OutMbr - Help :XH3.OutMbr (OUTMBR)
+:P.File member to receive command output.:EHELP.:EPNLGRP.

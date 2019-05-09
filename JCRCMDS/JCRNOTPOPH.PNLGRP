@@ -1,0 +1,12 @@
+:PNLGRP.:HELP NAME='JCRNOTPOP'.List Fields Not Populated (JCRNOTPOP) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Lists field names from data file that are not populated in any record.
+:P.For data files with large number of records, it is recommended to submit this job.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRNOTPOP/FILE'.File - Help :XH3.File (FILE)
+:P.Name and library of file to be selected.:EHELP.
+ 
+:HELP NAME='JCRNOTPOP/OUTPUT'.Output - Help :XH3.Output (OUTPUT)
+:P.*PRINT or * Display the list.:EHELP.:EPNLGRP.

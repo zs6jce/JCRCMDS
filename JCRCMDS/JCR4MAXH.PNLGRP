@@ -1,0 +1,30 @@
+:PNLGRP.:HELP NAME='JCR4MAX'.Maximize Conversion to RPG4 (JCR4MAX) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Designed to run immediately after CVTRPGSRC command.
+Attribute testing is done to make sure only valid conversions take place.
+:P.:HP2.Conversions::EHP2.
+:UL COMPACT.
+:LI.All MOVE, Z-ADD, Z-SUB, SUBST, CAT, ADD, and MULTs are converted to EVAL opcode.
+:LI.All IF, WHEN, DO, AND, & OR logic structures are converted to Extended Factor2 definitions.
+:LI.All program defined fields generate Definition specs.
+:LI.Select case conversion of the source code (STYLE).:EUL.
+:P.To complement new ability to have lower case characters, the following options are
+offered by STYLE keyword.
+:LINES.
+*NONE  - Leave code as is.
+*LOWER - Convert source to lower case.:ELINES.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCR4MAX/PGM'.RPG program name - Help :XH3.RPG program name (PGM)
+:P.Source member to modify.:EHELP.
+ 
+:HELP NAME='JCR4MAX/SRCFILE'.Source file - Help :XH3.Source file (SRCFILE)
+:P.Source file containing source program.:EHELP.
+ 
+:HELP NAME='JCR4MAX/STYLE'.Character Case - Help :XH3.Character Case (STYLE)
+:P.Case specific action to be taken.
+:PARML.:PT.:PK def.*LOWER:EPK.
+:PD.Convert all characters to lower case.
+:PT.:PK.*NONE:EPK.:PD.Do not change case of any source code.
+:EPARML.:EHELP.:EPNLGRP.

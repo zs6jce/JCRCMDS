@@ -1,0 +1,731 @@
+      *----------------------------------------------------------------
+      * JCRGMBLJD - Black Jack - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      INDARA CA03 CA12
+     A  06                                  CA02
+     A          R SCREEN
+     A                                      FRCDTA
+     A            D111A          1A  P
+     A            D112A          1A  P
+     A            D113A          1A  P
+     A            D114A          1A  P
+     A            D121A          1A  P
+     A            D122A          1A  P
+     A            D123A          1A  P
+     A            D124A          1A  P
+     A            D131A          1A  P
+     A            D132A          1A  P
+     A            D133A          1A  P
+     A            D134A          1A  P
+     A            D141A          1A  P
+     A            D142A          1A  P
+     A            D143A          1A  P
+     A            D144A          1A  P
+     A            D151A          1A  P
+     A            D152A          1A  P
+     A            D153A          1A  P
+     A            D154A          1A  P
+     A            D161A          1A  P
+     A            D162A          1A  P
+     A            D163A          1A  P
+     A            D164A          1A  P
+     A            D171A          1A  P
+     A            D172A          1A  P
+     A            D173A          1A  P
+     A            D174A          1A  P
+     A            D211A          1A  P
+     A            D212A          1A  P
+     A            D213A          1A  P
+     A            D214A          1A  P
+     A            D221A          1A  P
+     A            D222A          1A  P
+     A            D223A          1A  P
+     A            D224A          1A  P
+     A            D231A          1A  P
+     A            D232A          1A  P
+     A            D233A          1A  P
+     A            D234A          1A  P
+     A            D241A          1A  P
+     A            D242A          1A  P
+     A            D243A          1A  P
+     A            D244A          1A  P
+     A            D251A          1A  P
+     A            D252A          1A  P
+     A            D253A          1A  P
+     A            D254A          1A  P
+     A            D261A          1A  P
+     A            D262A          1A  P
+     A            D263A          1A  P
+     A            D264A          1A  P
+     A            D271A          1A  P
+     A            D272A          1A  P
+     A            D273A          1A  P
+     A            D274A          1A  P
+     A            U111A          1A  P
+     A            U112A          1A  P
+     A            U113A          1A  P
+     A            U114A          1A  P
+     A            U121A          1A  P
+     A            U122A          1A  P
+     A            U123A          1A  P
+     A            U124A          1A  P
+     A            U131A          1A  P
+     A            U132A          1A  P
+     A            U133A          1A  P
+     A            U134A          1A  P
+     A            U141A          1A  P
+     A            U142A          1A  P
+     A            U143A          1A  P
+     A            U144A          1A  P
+     A            U151A          1A  P
+     A            U152A          1A  P
+     A            U153A          1A  P
+     A            U154A          1A  P
+     A            U161A          1A  P
+     A            U162A          1A  P
+     A            U163A          1A  P
+     A            U164A          1A  P
+     A            U171A          1A  P
+     A            U172A          1A  P
+     A            U173A          1A  P
+     A            U174A          1A  P
+     A            U211A          1A  P
+     A            U212A          1A  P
+     A            U213A          1A  P
+     A            U214A          1A  P
+     A            U221A          1A  P
+     A            U222A          1A  P
+     A            U223A          1A  P
+     A            U224A          1A  P
+     A            U231A          1A  P
+     A            U232A          1A  P
+     A            U233A          1A  P
+     A            U234A          1A  P
+     A            U241A          1A  P
+     A            U242A          1A  P
+     A            U243A          1A  P
+     A            U244A          1A  P
+     A            U251A          1A  P
+     A            U252A          1A  P
+     A            U253A          1A  P
+     A            U254A          1A  P
+     A            U261A          1A  P
+     A            U262A          1A  P
+     A            U263A          1A  P
+     A            U264A          1A  P
+     A            U271A          1A  P
+     A            U272A          1A  P
+     A            U273A          1A  P
+     A            U274A          1A  P
+     A            BORDER1A       1A  P
+     A            BORDER2A       1A  P
+     A            BORDER3A       1A  P
+     A            BORDER4A       1A  P
+     A            BORDER5A       1A  P
+     A            BORDER6A       1A  P
+     A            S0111A         1A  P
+     A            S0112A         1A  P
+     A            S0113A         1A  P
+     A            S0121A         1A  P
+     A            S0122A         1A  P
+     A            S0123A         1A  P
+     A            S0131A         1A  P
+     A            S0132A         1A  P
+     A            S0133A         1A  P
+     A            S0211A         1A  P
+     A            S0212A         1A  P
+     A            S0213A         1A  P
+     A            S0221A         1A  P
+     A            S0222A         1A  P
+     A            S0223A         1A  P
+     A            S0231A         1A  P
+     A            S0232A         1A  P
+     A            S0233A         1A  P
+     A            S0311A         1A  P
+     A            S0312A         1A  P
+     A            S0313A         1A  P
+     A            S0321A         1A  P
+     A            S0322A         1A  P
+     A            S0323A         1A  P
+     A            S0331A         1A  P
+     A            S0332A         1A  P
+     A            S0333A         1A  P
+     A            S0411A         1A  P
+     A            S0412A         1A  P
+     A            S0413A         1A  P
+     A            S0421A         1A  P
+     A            S0422A         1A  P
+     A            S0423A         1A  P
+     A            S0431A         1A  P
+     A            S0432A         1A  P
+     A            S0433A         1A  P
+     A            S0511A         1A  P
+     A            S0512A         1A  P
+     A            S0513A         1A  P
+     A            S0521A         1A  P
+     A            S0522A         1A  P
+     A            S0523A         1A  P
+     A            S0531A         1A  P
+     A            S0532A         1A  P
+     A            S0533A         1A  P
+     A            S0611A         1A  P
+     A            S0612A         1A  P
+     A            S0613A         1A  P
+     A            S0621A         1A  P
+     A            S0622A         1A  P
+     A            S0623A         1A  P
+     A            S0631A         1A  P
+     A            S0632A         1A  P
+     A            S0633A         1A  P
+     A            BORDER7A       1A  P
+     A            BORDER8A       1A  P
+     A            BORDER9A       1A  P
+     A            BORDER10A      1A  P
+     A            BORDER11A      1A  P
+     A            BORDER12A      1A  P
+     A            S0711A         1A  P
+     A            S0712A         1A  P
+     A            S0713A         1A  P
+     A            S0721A         1A  P
+     A            S0722A         1A  P
+     A            S0723A         1A  P
+     A            S0731A         1A  P
+     A            S0732A         1A  P
+     A            S0733A         1A  P
+     A            S0811A         1A  P
+     A            S0812A         1A  P
+     A            S0813A         1A  P
+     A            S0821A         1A  P
+     A            S0822A         1A  P
+     A            S0823A         1A  P
+     A            S0831A         1A  P
+     A            S0832A         1A  P
+     A            S0833A         1A  P
+     A            S0911A         1A  P
+     A            S0912A         1A  P
+     A            S0913A         1A  P
+     A            S0921A         1A  P
+     A            S0922A         1A  P
+     A            S0923A         1A  P
+     A            S0931A         1A  P
+     A            S0932A         1A  P
+     A            S0933A         1A  P
+     A            S1011A         1A  P
+     A            S1012A         1A  P
+     A            S1013A         1A  P
+     A            S1021A         1A  P
+     A            S1022A         1A  P
+     A            S1023A         1A  P
+     A            S1031A         1A  P
+     A            S1032A         1A  P
+     A            S1033A         1A  P
+     A            S1111A         1A  P
+     A            S1112A         1A  P
+     A            S1113A         1A  P
+     A            S1121A         1A  P
+     A            S1122A         1A  P
+     A            S1123A         1A  P
+     A            S1131A         1A  P
+     A            S1132A         1A  P
+     A            S1133A         1A  P
+     A            S1211A         1A  P
+     A            S1212A         1A  P
+     A            S1213A         1A  P
+     A            S1221A         1A  P
+     A            S1222A         1A  P
+     A            S1223A         1A  P
+     A            S1231A         1A  P
+     A            S1232A         1A  P
+     A            S1233A         1A  P
+     A            DEALERMSGA     1A  P
+     A            PLAYERMSGA     1A  P
+     A                                  1  3'JCRGMBLJ' COLOR(BLU)
+     A                                  1 14'BLACK JACK 21'
+     A                                      COLOR(BLU)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  3  3'DEALER'
+     A                                      DSPATR(HI)
+     A            DEALERMSG     25A  O  3 20DSPATR(&DEALERMSGA)
+     A                                  4  3' _______ '
+     A                                      DSPATR(&BORDER1A)
+     A                                  4 13' _______ '
+     A                                      DSPATR(&BORDER2A)
+      *
+     A            D111           1A  O  4 24DSPATR(&D111A)
+     A            D112           1A  O  4 26DSPATR(&D112A)
+     A            D113           1A  O  4 28DSPATR(&D113A)
+     A            D114           1A  O  4 30DSPATR(&D114A)
+     A            D211           1A  O  4 33DSPATR(&D211A)
+     A            D212           1A  O  4 35DSPATR(&D212A)
+     A            D213           1A  O  4 37DSPATR(&D213A)
+     A            D214           1A  O  4 39DSPATR(&D214A)
+     A                                  4 41' _______ '
+     A                                      DSPATR(&BORDER3A)
+     A                                  4 51' _______ '
+     A                                      DSPATR(&BORDER4A)
+     A                                  4 61' _______ '
+     A                                      DSPATR(&BORDER5A)
+     A                                  4 71' _______ '
+     A                                      DSPATR(&BORDER6A)
+     A                                  5  3'|'
+     A                                      DSPATR(&BORDER1A)
+     A                                  5 11'|'
+     A                                      DSPATR(&BORDER1A)
+     A                                  5 13'|'
+     A                                      DSPATR(&BORDER2A)
+     A                                  5 21'|'
+     A                                      DSPATR(&BORDER2A)
+     A            D121           1A  O  5 24DSPATR(&D121A)
+     A            D122           1A  O  5 26DSPATR(&D122A)
+     A            D123           1A  O  5 28DSPATR(&D123A)
+     A            D124           1A  O  5 30DSPATR(&D124A)
+     A            D221           1A  O  5 33DSPATR(&D221A)
+     A            D222           1A  O  5 35DSPATR(&D222A)
+     A            D223           1A  O  5 37DSPATR(&D223A)
+     A            D224           1A  O  5 39DSPATR(&D224A)
+     A                                  5 41'|'
+     A                                      DSPATR(&BORDER3A)
+     A                                  5 49'|'
+     A                                      DSPATR(&BORDER3A)
+     A                                  5 51'|'
+     A                                      DSPATR(&BORDER4A)
+     A                                  5 59'|'
+     A                                      DSPATR(&BORDER4A)
+     A                                  5 61'|'
+     A                                      DSPATR(&BORDER5A)
+     A                                  5 69'|'
+     A                                      DSPATR(&BORDER5A)
+     A                                  5 71'|'
+     A                                      DSPATR(&BORDER6A)
+     A                                  5 79'|'
+     A                                      DSPATR(&BORDER6A)
+     A                                  6  3'|'
+     A                                      DSPATR(&BORDER1A)
+     A            S0111          1A  O  6  5DSPATR(&S0111A)
+     A            S0112          1A  O  6  7DSPATR(&S0112A)
+     A            S0113          1A  O  6  9DSPATR(&S0113A)
+     A                                  6 11'|'
+     A                                      DSPATR(&BORDER1A)
+     A                                  6 13'|'
+     A                                      DSPATR(&BORDER2A)
+     A            S0211          1A  O  6 15DSPATR(&S0211A)
+     A            S0212          1A  O  6 17DSPATR(&S0212A)
+     A            S0213          1A  O  6 19DSPATR(&S0213A)
+     A                                  6 21'|'
+     A                                      DSPATR(&BORDER2A)
+     A            D131           1A  O  6 24DSPATR(&D131A)
+     A            D132           1A  O  6 26DSPATR(&D132A)
+     A            D133           1A  O  6 28DSPATR(&D133A)
+     A            D134           1A  O  6 30DSPATR(&D134A)
+     A            D231           1A  O  6 33DSPATR(&D231A)
+     A            D232           1A  O  6 35DSPATR(&D232A)
+     A            D233           1A  O  6 37DSPATR(&D233A)
+     A            D234           1A  O  6 39DSPATR(&D234A)
+     A                                  6 41'|'
+     A                                      DSPATR(&BORDER3A)
+     A            S0311          1A  O  6 43DSPATR(&S0311A)
+     A            S0312          1A  O  6 45DSPATR(&S0312A)
+     A            S0313          1A  O  6 47DSPATR(&S0313A)
+     A                                  6 49'|'
+     A                                      DSPATR(&BORDER3A)
+     A                                  6 51'|'
+     A                                      DSPATR(&BORDER4A)
+     A            S0411          1A  O  6 53DSPATR(&S0411A)
+     A            S0412          1A  O  6 55DSPATR(&S0412A)
+     A            S0413          1A  O  6 57DSPATR(&S0413A)
+     A                                  6 59'|'
+     A                                      DSPATR(&BORDER4A)
+     A                                  6 61'|'
+     A                                      DSPATR(&BORDER5A)
+     A            S0511          1A  O  6 63DSPATR(&S0511A)
+     A            S0512          1A  O  6 65DSPATR(&S0512A)
+     A            S0513          1A  O  6 67DSPATR(&S0513A)
+     A                                  6 69'|'
+     A                                      DSPATR(&BORDER5A)
+     A                                  6 71'|'
+     A                                      DSPATR(&BORDER6A)
+     A            S0611          1A  O  6 73DSPATR(&S0611A)
+     A            S0612          1A  O  6 75DSPATR(&S0612A)
+     A            S0613          1A  O  6 77DSPATR(&S0613A)
+     A                                  6 79'|'
+     A                                      DSPATR(&BORDER6A)
+     A                                  7  3'|'
+     A                                      DSPATR(&BORDER1A)
+     A            S0121          1A  O  7  5DSPATR(&S0121A)
+     A            S0122          1A  O  7  7DSPATR(&S0122A)
+     A            S0123          1A  O  7  9DSPATR(&S0123A)
+     A                                  7 11'|'
+     A                                      DSPATR(&BORDER1A)
+     A                                  7 13'|'
+     A                                      DSPATR(&BORDER2A)
+     A            S0221          1A  O  7 15DSPATR(&S0221A)
+     A            S0222          1A  O  7 17DSPATR(&S0222A)
+     A            S0223          1A  O  7 19DSPATR(&S0223A)
+     A                                  7 21'|'
+     A                                      DSPATR(&BORDER2A)
+     A            D141           1A  O  7 24DSPATR(&D141A)
+     A            D142           1A  O  7 26DSPATR(&D142A)
+     A            D143           1A  O  7 28DSPATR(&D143A)
+     A            D144           1A  O  7 30DSPATR(&D144A)
+     A            D241           1A  O  7 33DSPATR(&D241A)
+     A            D242           1A  O  7 35DSPATR(&D242A)
+     A            D243           1A  O  7 37DSPATR(&D243A)
+     A            D244           1A  O  7 39DSPATR(&D244A)
+     A                                  7 41'|'
+     A                                      DSPATR(&BORDER3A)
+     A            S0321          1A  O  7 43DSPATR(&S0321A)
+     A            S0322          1A  O  7 45DSPATR(&S0322A)
+     A            S0323          1A  O  7 47DSPATR(&S0323A)
+     A                                  7 49'|'
+     A                                      DSPATR(&BORDER3A)
+     A                                  7 51'|'
+     A                                      DSPATR(&BORDER4A)
+     A            S0421          1A  O  7 53DSPATR(&S0421A)
+     A            S0422          1A  O  7 55DSPATR(&S0422A)
+     A            S0423          1A  O  7 57DSPATR(&S0423A)
+     A                                  7 59'|'
+     A                                      DSPATR(&BORDER4A)
+     A                                  7 61'|'
+     A                                      DSPATR(&BORDER5A)
+     A            S0521          1A  O  7 63DSPATR(&S0521A)
+     A            S0522          1A  O  7 65DSPATR(&S0522A)
+     A            S0523          1A  O  7 67DSPATR(&S0523A)
+     A                                  7 69'|'
+     A                                      DSPATR(&BORDER5A)
+     A                                  7 71'|'
+     A                                      DSPATR(&BORDER6A)
+     A            S0621          1A  O  7 73DSPATR(&S0621A)
+     A            S0622          1A  O  7 75DSPATR(&S0622A)
+     A            S0623          1A  O  7 77DSPATR(&S0623A)
+     A                                  7 79'|'
+     A                                      DSPATR(&BORDER6A)
+     A                                  8  3'|'
+     A                                      DSPATR(&BORDER1A)
+     A            S0131          1A  O  8  5DSPATR(&S0131A)
+     A            S0132          1A  O  8  7DSPATR(&S0132A)
+     A            S0133          1A  O  8  9DSPATR(&S0133A)
+     A                                  8 11'|'
+     A                                      DSPATR(&BORDER1A)
+     A                                  8 13'|'
+     A                                      DSPATR(&BORDER2A)
+     A            S0231          1A  O  8 15DSPATR(&S0231A)
+     A            S0232          1A  O  8 17DSPATR(&S0232A)
+     A            S0233          1A  O  8 19DSPATR(&S0233A)
+     A                                  8 21'|'
+     A                                      DSPATR(&BORDER2A)
+     A            D151           1A  O  8 24DSPATR(&D151A)
+     A            D152           1A  O  8 26DSPATR(&D152A)
+     A            D153           1A  O  8 28DSPATR(&D153A)
+     A            D154           1A  O  8 30DSPATR(&D154A)
+     A            D251           1A  O  8 33DSPATR(&D251A)
+     A            D252           1A  O  8 35DSPATR(&D252A)
+     A            D253           1A  O  8 37DSPATR(&D253A)
+     A            D254           1A  O  8 39DSPATR(&D254A)
+     A                                  8 41'|'
+     A                                      DSPATR(&BORDER3A)
+     A            S0331          1A  O  8 43DSPATR(&S0331A)
+     A            S0332          1A  O  8 45DSPATR(&S0332A)
+     A            S0333          1A  O  8 47DSPATR(&S0333A)
+     A                                  8 49'|'
+     A                                      DSPATR(&BORDER3A)
+     A                                  8 51'|'
+     A                                      DSPATR(&BORDER4A)
+     A            S0431          1A  O  8 53DSPATR(&S0431A)
+     A            S0432          1A  O  8 55DSPATR(&S0432A)
+     A            S0433          1A  O  8 57DSPATR(&S0433A)
+     A                                  8 59'|'
+     A                                      DSPATR(&BORDER4A)
+     A                                  8 61'|'
+     A                                      DSPATR(&BORDER5A)
+     A            S0531          1A  O  8 63DSPATR(&S0531A)
+     A            S0532          1A  O  8 65DSPATR(&S0532A)
+     A            S0533          1A  O  8 67DSPATR(&S0533A)
+     A                                  8 69'|'
+     A                                      DSPATR(&BORDER5A)
+     A                                  8 71'|'
+     A                                      DSPATR(&BORDER6A)
+     A            S0631          1A  O  8 73DSPATR(&S0631A)
+     A            S0632          1A  O  8 75DSPATR(&S0632A)
+     A            S0633          1A  O  8 77DSPATR(&S0633A)
+     A                                  8 79'|'
+     A                                      DSPATR(&BORDER6A)
+     A                                  9  3'|_______|'
+     A                                      DSPATR(&BORDER1A)
+     A                                  9 13'|_______|'
+     A                                      DSPATR(&BORDER2A)
+     A            D161           1A  O  9 24DSPATR(&D161A)
+     A            D162           1A  O  9 26DSPATR(&D162A)
+     A            D163           1A  O  9 28DSPATR(&D163A)
+     A            D164           1A  O  9 30DSPATR(&D164A)
+     A            D261           1A  O  9 33DSPATR(&D261A)
+     A            D262           1A  O  9 35DSPATR(&D262A)
+     A            D263           1A  O  9 37DSPATR(&D263A)
+     A            D264           1A  O  9 39DSPATR(&D264A)
+     A                                  9 41'|_______|'
+     A                                      DSPATR(&BORDER3A)
+     A                                  9 51'|_______|'
+     A                                      DSPATR(&BORDER4A)
+     A                                  9 61'|_______|'
+     A                                      DSPATR(&BORDER5A)
+     A                                  9 71'|_______|'
+     A                                      DSPATR(&BORDER6A)
+     A            D171           1A  O 10 24DSPATR(&D171A)
+     A            D172           1A  O 10 26DSPATR(&D172A)
+     A            D173           1A  O 10 28DSPATR(&D173A)
+     A            D174           1A  O 10 30DSPATR(&D174A)
+     A            D271           1A  O 10 33DSPATR(&D271A)
+     A            D272           1A  O 10 35DSPATR(&D272A)
+     A            D273           1A  O 10 37DSPATR(&D273A)
+     A            D274           1A  O 10 39DSPATR(&D274A)
+     A                                 12  3'--------------'
+     A                                 13  3' _______ '
+     A                                      DSPATR(&BORDER7A)
+     A                                 13 13' _______ '
+     A                                      DSPATR(&BORDER8A)
+      *
+     A            U111           1A  O 13 24DSPATR(&U111A)
+     A            U112           1A  O 13 26DSPATR(&U112A)
+     A            U113           1A  O 13 28DSPATR(&U113A)
+     A            U114           1A  O 13 30DSPATR(&U114A)
+     A            U211           1A  O 13 33DSPATR(&U211A)
+     A            U212           1A  O 13 35DSPATR(&U212A)
+     A            U213           1A  O 13 37DSPATR(&U213A)
+     A            U214           1A  O 13 39DSPATR(&U214A)
+     A                                 13 41' _______ '
+     A                                      DSPATR(&BORDER9A)
+     A                                 13 51' _______ '
+     A                                      DSPATR(&BORDER10A)
+     A                                 13 61' _______ '
+     A                                      DSPATR(&BORDER11A)
+     A                                 13 71' _______ '
+     A                                      DSPATR(&BORDER12A)
+     A                                 14  3'|'
+     A                                      DSPATR(&BORDER7A)
+     A                                 14 11'|'
+     A                                      DSPATR(&BORDER7A)
+     A                                 14 13'|'
+     A                                      DSPATR(&BORDER8A)
+     A                                 14 21'|'
+     A                                      DSPATR(&BORDER8A)
+     A            U121           1A  O 14 24DSPATR(&U121A)
+     A            U122           1A  O 14 26DSPATR(&U122A)
+     A            U123           1A  O 14 28DSPATR(&U123A)
+     A            U124           1A  O 14 30DSPATR(&U124A)
+     A            U221           1A  O 14 33DSPATR(&U221A)
+     A            U222           1A  O 14 35DSPATR(&U222A)
+     A            U223           1A  O 14 37DSPATR(&U223A)
+     A            U224           1A  O 14 39DSPATR(&U224A)
+     A                                 14 41'|'
+     A                                      DSPATR(&BORDER9A)
+     A                                 14 49'|'
+     A                                      DSPATR(&BORDER9A)
+     A                                 14 51'|'
+     A                                      DSPATR(&BORDER10A)
+     A                                 14 59'|'
+     A                                      DSPATR(&BORDER10A)
+     A                                 14 61'|'
+     A                                      DSPATR(&BORDER11A)
+     A                                 14 69'|'
+     A                                      DSPATR(&BORDER11A)
+     A                                 14 71'|'
+     A                                      DSPATR(&BORDER12A)
+     A                                 14 79'|'
+     A                                      DSPATR(&BORDER12A)
+     A                                 15  3'|'
+     A                                      DSPATR(&BORDER7A)
+     A            S0711          1A  O 15  5DSPATR(&S0711A)
+     A            S0712          1A  O 15  7DSPATR(&S0712A)
+     A            S0713          1A  O 15  9DSPATR(&S0713A)
+     A                                 15 11'|'
+     A                                      DSPATR(&BORDER7A)
+     A                                 15 13'|'
+     A                                      DSPATR(&BORDER8A)
+     A            S0811          1A  O 15 15DSPATR(&S0811A)
+     A            S0812          1A  O 15 17DSPATR(&S0812A)
+     A            S0813          1A  O 15 19DSPATR(&S0813A)
+     A                                 15 21'|'
+     A                                      DSPATR(&BORDER8A)
+     A            U131           1A  O 15 24DSPATR(&U131A)
+     A            U132           1A  O 15 26DSPATR(&U132A)
+     A            U133           1A  O 15 28DSPATR(&U133A)
+     A            U134           1A  O 15 30DSPATR(&U134A)
+     A            U231           1A  O 15 33DSPATR(&U231A)
+     A            U232           1A  O 15 35DSPATR(&U232A)
+     A            U233           1A  O 15 37DSPATR(&U233A)
+     A            U234           1A  O 15 39DSPATR(&U234A)
+     A                                 15 41'|'
+     A                                      DSPATR(&BORDER9A)
+     A            S0911          1A  O 15 43DSPATR(&S0911A)
+     A            S0912          1A  O 15 45DSPATR(&S0912A)
+     A            S0913          1A  O 15 47DSPATR(&S0913A)
+     A                                 15 49'|'
+     A                                      DSPATR(&BORDER9A)
+     A                                 15 51'|'
+     A                                      DSPATR(&BORDER10A)
+     A            S1011          1A  O 15 53DSPATR(&S1011A)
+     A            S1012          1A  O 15 55DSPATR(&S1012A)
+     A            S1013          1A  O 15 57DSPATR(&S1013A)
+     A                                 15 59'|'
+     A                                      DSPATR(&BORDER10A)
+     A                                 15 61'|'
+     A                                      DSPATR(&BORDER11A)
+     A            S1111          1A  O 15 63DSPATR(&S1111A)
+     A            S1112          1A  O 15 65DSPATR(&S1112A)
+     A            S1113          1A  O 15 67DSPATR(&S1113A)
+     A                                 15 69'|'
+     A                                      DSPATR(&BORDER11A)
+     A                                 15 71'|'
+     A                                      DSPATR(&BORDER12A)
+     A            S1211          1A  O 15 73DSPATR(&S1211A)
+     A            S1212          1A  O 15 75DSPATR(&S1212A)
+     A            S1213          1A  O 15 77DSPATR(&S1213A)
+     A                                 15 79'|'
+     A                                      DSPATR(&BORDER12A)
+     A                                 16  3'|'
+     A                                      DSPATR(&BORDER7A)
+     A            S0721          1A  O 16  5DSPATR(&S0721A)
+     A            S0722          1A  O 16  7DSPATR(&S0722A)
+     A            S0723          1A  O 16  9DSPATR(&S0723A)
+     A                                 16 11'|'
+     A                                      DSPATR(&BORDER7A)
+     A                                 16 13'|'
+     A                                      DSPATR(&BORDER8A)
+     A            S0821          1A  O 16 15DSPATR(&S0821A)
+     A            S0822          1A  O 16 17DSPATR(&S0822A)
+     A            S0823          1A  O 16 19DSPATR(&S0823A)
+     A                                 16 21'|'
+     A                                      DSPATR(&BORDER8A)
+     A            U141           1A  O 16 24DSPATR(&U141A)
+     A            U142           1A  O 16 26DSPATR(&U142A)
+     A            U143           1A  O 16 28DSPATR(&U143A)
+     A            U144           1A  O 16 30DSPATR(&U144A)
+     A            U241           1A  O 16 33DSPATR(&U241A)
+     A            U242           1A  O 16 35DSPATR(&U242A)
+     A            U243           1A  O 16 37DSPATR(&U243A)
+     A            U244           1A  O 16 39DSPATR(&U244A)
+     A                                 16 41'|'
+     A                                      DSPATR(&BORDER9A)
+     A            S0921          1A  O 16 43DSPATR(&S0921A)
+     A            S0922          1A  O 16 45DSPATR(&S0922A)
+     A            S0923          1A  O 16 47DSPATR(&S0923A)
+     A                                 16 49'|'
+     A                                      DSPATR(&BORDER9A)
+     A                                 16 51'|'
+     A                                      DSPATR(&BORDER10A)
+     A            S1021          1A  O 16 53DSPATR(&S1021A)
+     A            S1022          1A  O 16 55DSPATR(&S1022A)
+     A            S1023          1A  O 16 57DSPATR(&S1023A)
+     A                                 16 59'|'
+     A                                      DSPATR(&BORDER10A)
+     A                                 16 61'|'
+     A                                      DSPATR(&BORDER11A)
+     A            S1121          1A  O 16 63DSPATR(&S1121A)
+     A            S1122          1A  O 16 65DSPATR(&S1122A)
+     A            S1123          1A  O 16 67DSPATR(&S1123A)
+     A                                 16 69'|'
+     A                                      DSPATR(&BORDER11A)
+     A                                 16 71'|'
+     A                                      DSPATR(&BORDER12A)
+     A            S1221          1A  O 16 73DSPATR(&S1221A)
+     A            S1222          1A  O 16 75DSPATR(&S1222A)
+     A            S1223          1A  O 16 77DSPATR(&S1223A)
+     A                                 16 79'|'
+     A                                      DSPATR(&BORDER12A)
+     A                                 17  3'|'
+     A                                      DSPATR(&BORDER7A)
+     A            S0731          1A  O 17  5DSPATR(&S0731A)
+     A            S0732          1A  O 17  7DSPATR(&S0732A)
+     A            S0733          1A  O 17  9DSPATR(&S0733A)
+     A                                 17 11'|'
+     A                                      DSPATR(&BORDER7A)
+     A                                 17 13'|'
+     A                                      DSPATR(&BORDER8A)
+     A            S0831          1A  O 17 15DSPATR(&S0831A)
+     A            S0832          1A  O 17 17DSPATR(&S0832A)
+     A            S0833          1A  O 17 19DSPATR(&S0833A)
+     A                                 17 21'|'
+     A                                      DSPATR(&BORDER8A)
+     A            U151           1A  O 17 24DSPATR(&U151A)
+     A            U152           1A  O 17 26DSPATR(&U152A)
+     A            U153           1A  O 17 28DSPATR(&U153A)
+     A            U154           1A  O 17 30DSPATR(&U154A)
+     A            U251           1A  O 17 33DSPATR(&U251A)
+     A            U252           1A  O 17 35DSPATR(&U252A)
+     A            U253           1A  O 17 37DSPATR(&U253A)
+     A            U254           1A  O 17 39DSPATR(&U254A)
+     A                                 17 41'|'
+     A                                      DSPATR(&BORDER9A)
+     A            S0931          1A  O 17 43DSPATR(&S0931A)
+     A            S0932          1A  O 17 45DSPATR(&S0932A)
+     A            S0933          1A  O 17 47DSPATR(&S0933A)
+     A                                 17 49'|'
+     A                                      DSPATR(&BORDER9A)
+     A                                 17 51'|'
+     A                                      DSPATR(&BORDER10A)
+     A            S1031          1A  O 17 53DSPATR(&S1031A)
+     A            S1032          1A  O 17 55DSPATR(&S1032A)
+     A            S1033          1A  O 17 57DSPATR(&S1033A)
+     A                                 17 59'|'
+     A                                      DSPATR(&BORDER10A)
+     A                                 17 61'|'
+     A                                      DSPATR(&BORDER11A)
+     A            S1131          1A  O 17 63DSPATR(&S1131A)
+     A            S1132          1A  O 17 65DSPATR(&S1132A)
+     A            S1133          1A  O 17 67DSPATR(&S1133A)
+     A                                 17 69'|'
+     A                                      DSPATR(&BORDER11A)
+     A                                 17 71'|'
+     A                                      DSPATR(&BORDER12A)
+     A            S1231          1A  O 17 73DSPATR(&S1231A)
+     A            S1232          1A  O 17 75DSPATR(&S1232A)
+     A            S1233          1A  O 17 77DSPATR(&S1233A)
+     A                                 17 79'|'
+     A                                      DSPATR(&BORDER12A)
+     A                                 18  3'|_______|'
+     A                                      DSPATR(&BORDER7A)
+     A                                 18 13'|_______|'
+     A                                      DSPATR(&BORDER8A)
+     A            U161           1A  O 18 24DSPATR(&U161A)
+     A            U162           1A  O 18 26DSPATR(&U162A)
+     A            U163           1A  O 18 28DSPATR(&U163A)
+     A            U164           1A  O 18 30DSPATR(&U164A)
+     A            U261           1A  O 18 33DSPATR(&U261A)
+     A            U262           1A  O 18 35DSPATR(&U262A)
+     A            U263           1A  O 18 37DSPATR(&U263A)
+     A            U264           1A  O 18 39DSPATR(&U264A)
+     A                                 18 41'|_______|'
+     A                                      DSPATR(&BORDER9A)
+     A                                 18 51'|_______|'
+     A                                      DSPATR(&BORDER10A)
+     A                                 18 61'|_______|'
+     A                                      DSPATR(&BORDER11A)
+     A                                 18 71'|_______|'
+     A                                      DSPATR(&BORDER12A)
+     A            U171           1A  O 19 24DSPATR(&U171A)
+     A            U172           1A  O 19 26DSPATR(&U172A)
+     A            U173           1A  O 19 28DSPATR(&U173A)
+     A            U174           1A  O 19 30DSPATR(&U174A)
+     A            U271           1A  O 19 33DSPATR(&U271A)
+     A            U272           1A  O 19 35DSPATR(&U272A)
+     A            U273           1A  O 19 37DSPATR(&U273A)
+     A            U274           1A  O 19 39DSPATR(&U274A)
+     A                                 21  3'PLAYER'
+     A                                      DSPATR(HI)
+     A            PLAYERMSG     25A  O 21 20DSPATR(&PLAYERMSGA)
+     A                                 23 53'Bet'
+     A                                      COLOR(BLU)
+     A                                 23 62'Credits'
+     A                                      COLOR(BLU)
+     A                                 24  2'F3=Exit'
+     A                                      COLOR(BLU)
+     A                                 24 15'Enter=Hit Me!'
+     A                                      COLOR(BLU)
+     A  06                             24 33'F2=Stand'
+     A                                      COLOR(BLU)
+     A            YOUBET         3Y 0O 24 53EDTCDE(4)
+     A                                      DSPATR(HI)
+     A            CREDITS        5Y 0O 24 63EDTCDE(L)
+     A                                      DSPATR(HI)

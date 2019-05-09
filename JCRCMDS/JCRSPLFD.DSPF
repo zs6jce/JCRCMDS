@@ -1,0 +1,106 @@
+      *----------------------------------------------------------------
+      * JCRSPLFD - List spool files with Options - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(27 132 *DS4)
+     A                                      CA03
+     A                                      CA05
+     A                                      CA11
+     A                                      CA12
+     A                                      CF13
+     A                                      INDARA
+     A                                      PRINT
+      *----------------------------------------------------------------
+     A          R SBFDTA1                   SFL
+     A  11                                  SFLNXTCHG
+     A            AOPTIONS1      1A  P
+     A            SCSPLNO        6S 0H
+     A            SBFOPTION      1A  B  6  3DSPATR(&AOPTIONS1)
+     A            SCSPLFNAME    10A  O  6  7
+     A            SCUSERID      10A  O  6 19
+     A            SCOUTQ        10A  O  6 31
+     A            SCUSRDTA      10A  O  6 42
+     A            SCNUMPAGES     5Y 0O  6 53EDTCDE(4)
+     A            SCCOPIES       3Y 0O  6 59EDTCDE(4)
+     A            SCSPLFDATE     8A  O  6 64
+     A            SCSPLFTIME     8A  O  6 74
+     A            SCJOBNAME     10A  O  6 84
+     A            SCJOBNO        6A  O  6 96
+     A            SCFORMTYPE    10A  O  6104
+     A            SCSTATUS      10A  O  6115
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1)
+     A                                      SFLSIZ(0495)
+     A                                      SFLPAG(0019)
+     A                                      OVERLAY
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A            SFLRCDNBR      4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'JCRSPLF'
+     A                                      COLOR(BLU)
+     A                                  1 23'List Spool Files with Options'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1110COLOR(BLU)
+     A                                  1120DATE
+     A                                      EDTCDE(Y)
+     A                                      COLOR(BLU)
+     A                                  2110SYSNAME
+     A                                      COLOR(BLU)
+     A                                  3  4'1=SndNet'
+     A                                      COLOR(BLU)
+     A            SCOPTIONS     63A  O  3 15COLOR(BLU)
+     A                                  4  4'6=Release'
+     A                                      COLOR(BLU)
+     A                                  4 15'7=Duplicate'
+     A                                      COLOR(BLU)
+     A                                  4 28'8=Attributes'
+     A                                      COLOR(BLU)
+     A                                  4 49'9=Copy to PF or PDF (*TOSTMF)'
+     A                                      COLOR(BLU)
+     A                                  5  2'Opt'
+     A                                      DSPATR(HI)
+     A                                  5  7'File'
+     A                                      DSPATR(HI)
+     A                                  5 19'User'
+     A                                      DSPATR(HI)
+     A                                  5 31'Queue'
+     A                                      DSPATR(HI)
+     A                                  5 42'User Data'
+     A                                      DSPATR(HI)
+     A                                  5 53'Pages'
+     A                                      DSPATR(HI)
+     A                                  5 59'Cpy'
+     A                                      DSPATR(HI)
+     A                                  5 64'Creation Date/Time'
+     A                                      DSPATR(HI)
+     A                                  5 84'Job Name'
+     A                                      DSPATR(HI)
+     A                                  5 96'Number'
+     A                                      DSPATR(HI)
+     A                                  5104'FormType'
+     A                                      DSPATR(HI)
+     A                                  5115'Status'
+     A                                      DSPATR(HI)
+      *----------------------------------------------------------------
+     A          R SFOOTER1
+     A                                      OVERLAY
+     A                                      BLINK
+     A                                 26  2'F3=Exit'
+     A                                      COLOR(BLU)
+     A                                 26 20'F5=Refresh'
+     A                                      COLOR(BLU)
+     A                                 26 49'F13=Repeat'
+     A                                      COLOR(BLU)
+     A                                 26 69'F12=Cancel'
+     A                                      COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(24)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

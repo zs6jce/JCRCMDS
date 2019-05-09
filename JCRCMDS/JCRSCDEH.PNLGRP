@@ -1,0 +1,18 @@
+:PNLGRP.:HELP NAME='JCRSCDE'.Search/Copy Job Schedule Entries - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Much needed CPYJOBSCDE utility.  Will search through executed
+commands for selected string.:EHELP.
+ 
+.*--------------------------------------------------------------------
+:HELP NAME='JCRSCDE/JOB'.
+Job - Help
+:XH3.Job (JOB)
+:P.Specifies Job name filter to pull list of job schedule entries.
+:PARML.
+:PT.:PK def.*ALL:EPK.
+:PD.Retrieves all job schedule entries.
+:EPARML.
+:EHELP.
+:EPNLGRP.

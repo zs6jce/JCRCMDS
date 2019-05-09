@@ -1,0 +1,23 @@
+      *----------------------------------------------------------------
+      * JCRZANIM4D - Animation- classic I'm with Stupid pointing finger - DSPF
+      * *****   MUST COMPILE RSTDSP *YES AND DEFER WRITE = *NO *****
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      CA03 CA12
+     A          R SCREEN
+     A            ATR01          1A  P
+     A            LIN001        48A  O  3  3DSPATR(&ATR01)
+     A            LIN002        48A  O  4  3DSPATR(&ATR01)
+     A            IM             3A  O  4 57DSPATR(HI)
+     A            LIN003        48A  O  5  3DSPATR(&ATR01)
+     A                                  5 57'WITH' DSPATR(HI)
+     A            LIN004        48A  O  6  3DSPATR(&ATR01)
+     A                                  6 57'STUPID' DSPATR(HI)
+     A            LIN005        48A  O  7  3DSPATR(&ATR01)
+     A            LIN006        48A  O  8  3DSPATR(&ATR01)
+     A            LIN007        48A  O  9  3DSPATR(&ATR01)
+     A            LIN008        48A  O 10  3DSPATR(&ATR01)
+     A            LIN009        48A  O 11  3DSPATR(&ATR01)
+     A            LIN010        48A  O 12  3DSPATR(&ATR01)
+     A            LIN011        48A  O 13  3DSPATR(&ATR01)

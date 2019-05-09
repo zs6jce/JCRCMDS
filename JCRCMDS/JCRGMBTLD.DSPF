@@ -1,0 +1,756 @@
+      *----------------------------------------------------------------
+      * JCRGMBTLD - Battleship - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      CA03 CA05 CA12
+     A          R SCREEN1
+     A            BTR0101        1A  P
+     A            BTR0102        1A  P
+     A            BTR0103        1A  P
+     A            BTR0104        1A  P
+     A            BTR0105        1A  P
+     A            BTR0106        1A  P
+     A            BTR0107        1A  P
+     A            BTR0108        1A  P
+     A            BTR0109        1A  P
+     A            BTR0110        1A  P
+     A            BTR0201        1A  P
+     A            BTR0202        1A  P
+     A            BTR0203        1A  P
+     A            BTR0204        1A  P
+     A            BTR0205        1A  P
+     A            BTR0206        1A  P
+     A            BTR0207        1A  P
+     A            BTR0208        1A  P
+     A            BTR0209        1A  P
+     A            BTR0210        1A  P
+     A            BTR0301        1A  P
+     A            BTR0302        1A  P
+     A            BTR0303        1A  P
+     A            BTR0304        1A  P
+     A            BTR0305        1A  P
+     A            BTR0306        1A  P
+     A            BTR0307        1A  P
+     A            BTR0308        1A  P
+     A            BTR0309        1A  P
+     A            BTR0310        1A  P
+     A            BTR0401        1A  P
+     A            BTR0402        1A  P
+     A            BTR0403        1A  P
+     A            BTR0404        1A  P
+     A            BTR0405        1A  P
+     A            BTR0406        1A  P
+     A            BTR0407        1A  P
+     A            BTR0408        1A  P
+     A            BTR0409        1A  P
+     A            BTR0410        1A  P
+     A            BTR0501        1A  P
+     A            BTR0502        1A  P
+     A            BTR0503        1A  P
+     A            BTR0504        1A  P
+     A            BTR0505        1A  P
+     A            BTR0506        1A  P
+     A            BTR0507        1A  P
+     A            BTR0508        1A  P
+     A            BTR0509        1A  P
+     A            BTR0510        1A  P
+     A            BTR0601        1A  P
+     A            BTR0602        1A  P
+     A            BTR0603        1A  P
+     A            BTR0604        1A  P
+     A            BTR0605        1A  P
+     A            BTR0606        1A  P
+     A            BTR0607        1A  P
+     A            BTR0608        1A  P
+     A            BTR0609        1A  P
+     A            BTR0610        1A  P
+     A            BTR0701        1A  P
+     A            BTR0702        1A  P
+     A            BTR0703        1A  P
+     A            BTR0704        1A  P
+     A            BTR0705        1A  P
+     A            BTR0706        1A  P
+     A            BTR0707        1A  P
+     A            BTR0708        1A  P
+     A            BTR0709        1A  P
+     A            BTR0710        1A  P
+     A            BTR0801        1A  P
+     A            BTR0802        1A  P
+     A            BTR0803        1A  P
+     A            BTR0804        1A  P
+     A            BTR0805        1A  P
+     A            BTR0806        1A  P
+     A            BTR0807        1A  P
+     A            BTR0808        1A  P
+     A            BTR0809        1A  P
+     A            BTR0810        1A  P
+     A            BTR0901        1A  P
+     A            BTR0902        1A  P
+     A            BTR0903        1A  P
+     A            BTR0904        1A  P
+     A            BTR0905        1A  P
+     A            BTR0906        1A  P
+     A            BTR0907        1A  P
+     A            BTR0908        1A  P
+     A            BTR0909        1A  P
+     A            BTR0910        1A  P
+     A            BTR1001        1A  P
+     A            BTR1002        1A  P
+     A            BTR1003        1A  P
+     A            BTR1004        1A  P
+     A            BTR1005        1A  P
+     A            BTR1006        1A  P
+     A            BTR1007        1A  P
+     A            BTR1008        1A  P
+     A            BTR1009        1A  P
+     A            BTR1010        1A  P
+     A            BLUERI         1A  P
+     A            REDRI          1A  P
+     A            ADEPLOYMSG     1A  P
+     A                                  1  3'JCRGMBTL' COLOR(BLU)
+     A                                  1 14'BATTLE SHIP!' COLOR(BLU)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  3  3'Deploy the Battle Group:'
+     A                                      DSPATR(HI)
+     A                                  3 42'1' DSPATR(&REDRI)
+     A                                  3 44'2' DSPATR(&REDRI)
+     A                                  3 46'3' DSPATR(&REDRI)
+     A                                  3 48'4' DSPATR(&REDRI)
+     A                                  3 50'5' DSPATR(&REDRI)
+     A                                  3 52'6' DSPATR(&REDRI)
+     A                                  3 54'7' DSPATR(&REDRI)
+     A                                  3 56'8' DSPATR(&REDRI)
+     A                                  3 58'9' DSPATR(&REDRI)
+     A                                  3 60'0' DSPATR(&REDRI)
+     A                                  5  3'Press F5 to have the iSeries'
+     A                                      DSPATR(HI)
+     A                                  5 38'1' DSPATR(&BLUERI)
+     A            B01C01         1A  O  5 42DSPATR(&BTR0101)
+     A            B01C02         1A  O  5 44DSPATR(&BTR0102)
+     A            B01C03         1A  O  5 46DSPATR(&BTR0103)
+     A            B01C04         1A  O  5 48DSPATR(&BTR0104)
+     A            B01C05         1A  O  5 50DSPATR(&BTR0105)
+     A            B01C06         1A  O  5 52DSPATR(&BTR0106)
+     A            B01C07         1A  O  5 54DSPATR(&BTR0107)
+     A            B01C08         1A  O  5 56DSPATR(&BTR0108)
+     A            B01C09         1A  O  5 58DSPATR(&BTR0109)
+     A            B01C10         1A  O  5 60DSPATR(&BTR0110)
+     A                                  5 64'1' DSPATR(&BLUERI)
+     A                                  6  3'battle computer place your ships.'
+     A                                      DSPATR(HI)
+     A                                  6 38'2' DSPATR(&BLUERI)
+     A            B02C01         1A  O  6 42DSPATR(&BTR0201)
+     A            B02C02         1A  O  6 44DSPATR(&BTR0202)
+     A            B02C03         1A  O  6 46DSPATR(&BTR0203)
+     A            B02C04         1A  O  6 48DSPATR(&BTR0204)
+     A            B02C05         1A  O  6 50DSPATR(&BTR0205)
+     A            B02C06         1A  O  6 52DSPATR(&BTR0206)
+     A            B02C07         1A  O  6 54DSPATR(&BTR0207)
+     A            B02C08         1A  O  6 56DSPATR(&BTR0208)
+     A            B02C09         1A  O  6 58DSPATR(&BTR0209)
+     A            B02C10         1A  O  6 60DSPATR(&BTR0210)
+     A                                  6 64'2' DSPATR(&BLUERI)
+     A                                  7 38'3' DSPATR(&BLUERI)
+     A            B03C01         1A  O  7 42DSPATR(&BTR0301)
+     A            B03C02         1A  O  7 44DSPATR(&BTR0302)
+     A            B03C03         1A  O  7 46DSPATR(&BTR0303)
+     A            B03C04         1A  O  7 48DSPATR(&BTR0304)
+     A            B03C05         1A  O  7 50DSPATR(&BTR0305)
+     A            B03C06         1A  O  7 52DSPATR(&BTR0306)
+     A            B03C07         1A  O  7 54DSPATR(&BTR0307)
+     A            B03C08         1A  O  7 56DSPATR(&BTR0308)
+     A            B03C09         1A  O  7 58DSPATR(&BTR0309)
+     A            B03C10         1A  O  7 60DSPATR(&BTR0310)
+     A                                  7 64'3' DSPATR(&BLUERI)
+     A                                  8 38'4' DSPATR(&BLUERI)
+     A            B04C01         1A  O  8 42DSPATR(&BTR0401)
+     A            B04C02         1A  O  8 44DSPATR(&BTR0402)
+     A            B04C03         1A  O  8 46DSPATR(&BTR0403)
+     A            B04C04         1A  O  8 48DSPATR(&BTR0404)
+     A            B04C05         1A  O  8 50DSPATR(&BTR0405)
+     A            B04C06         1A  O  8 52DSPATR(&BTR0406)
+     A            B04C07         1A  O  8 54DSPATR(&BTR0407)
+     A            B04C08         1A  O  8 56DSPATR(&BTR0408)
+     A            B04C09         1A  O  8 58DSPATR(&BTR0409)
+     A            B04C10         1A  O  8 60DSPATR(&BTR0410)
+     A                                  8 64'4' DSPATR(&BLUERI)
+     A                                  9  3'You can press F5 as many times'
+     A                                      DSPATR(HI)
+     A                                  9 38'5' DSPATR(&BLUERI)
+     A            B05C01         1A  O  9 42DSPATR(&BTR0501)
+     A            B05C02         1A  O  9 44DSPATR(&BTR0502)
+     A            B05C03         1A  O  9 46DSPATR(&BTR0503)
+     A            B05C04         1A  O  9 48DSPATR(&BTR0504)
+     A            B05C05         1A  O  9 50DSPATR(&BTR0505)
+     A            B05C06         1A  O  9 52DSPATR(&BTR0506)
+     A            B05C07         1A  O  9 54DSPATR(&BTR0507)
+     A            B05C08         1A  O  9 56DSPATR(&BTR0508)
+     A            B05C09         1A  O  9 58DSPATR(&BTR0509)
+     A            B05C10         1A  O  9 60DSPATR(&BTR0510)
+     A                                  9 64'5' DSPATR(&BLUERI)
+     A                                 10  3'as you wish to re-position ships.'
+     A                                      DSPATR(HI)
+     A                                 10 38'6' DSPATR(&BLUERI)
+     A            B06C01         1A  O 10 42DSPATR(&BTR0601)
+     A            B06C02         1A  O 10 44DSPATR(&BTR0602)
+     A            B06C03         1A  O 10 46DSPATR(&BTR0603)
+     A            B06C04         1A  O 10 48DSPATR(&BTR0604)
+     A            B06C05         1A  O 10 50DSPATR(&BTR0605)
+     A            B06C06         1A  O 10 52DSPATR(&BTR0606)
+     A            B06C07         1A  O 10 54DSPATR(&BTR0607)
+     A            B06C08         1A  O 10 56DSPATR(&BTR0608)
+     A            B06C09         1A  O 10 58DSPATR(&BTR0609)
+     A            B06C10         1A  O 10 60DSPATR(&BTR0610)
+     A                                 10 64'6' DSPATR(&BLUERI)
+     A                                 11 38'7' DSPATR(&BLUERI)
+     A            B07C01         1A  O 11 42DSPATR(&BTR0701)
+     A            B07C02         1A  O 11 44DSPATR(&BTR0702)
+     A            B07C03         1A  O 11 46DSPATR(&BTR0703)
+     A            B07C04         1A  O 11 48DSPATR(&BTR0704)
+     A            B07C05         1A  O 11 50DSPATR(&BTR0705)
+     A            B07C06         1A  O 11 52DSPATR(&BTR0706)
+     A            B07C07         1A  O 11 54DSPATR(&BTR0707)
+     A            B07C08         1A  O 11 56DSPATR(&BTR0708)
+     A            B07C09         1A  O 11 58DSPATR(&BTR0709)
+     A            B07C10         1A  O 11 60DSPATR(&BTR0710)
+     A                                 11 64'7' DSPATR(&BLUERI)
+     A                                 12 38'8' DSPATR(&BLUERI)
+     A            B08C01         1A  O 12 42DSPATR(&BTR0801)
+     A            B08C02         1A  O 12 44DSPATR(&BTR0802)
+     A            B08C03         1A  O 12 46DSPATR(&BTR0803)
+     A            B08C04         1A  O 12 48DSPATR(&BTR0804)
+     A            B08C05         1A  O 12 50DSPATR(&BTR0805)
+     A            B08C06         1A  O 12 52DSPATR(&BTR0806)
+     A            B08C07         1A  O 12 54DSPATR(&BTR0807)
+     A            B08C08         1A  O 12 56DSPATR(&BTR0808)
+     A            B08C09         1A  O 12 58DSPATR(&BTR0809)
+     A            B08C10         1A  O 12 60DSPATR(&BTR0810)
+     A                                 12 64'8' DSPATR(&BLUERI)
+     A                                 13  3'Press Enter when completed with'
+     A                                      DSPATR(HI)
+     A                                 13 38'9' DSPATR(&BLUERI)
+     A            B09C01         1A  O 13 42DSPATR(&BTR0901)
+     A            B09C02         1A  O 13 44DSPATR(&BTR0902)
+     A            B09C03         1A  O 13 46DSPATR(&BTR0903)
+     A            B09C04         1A  O 13 48DSPATR(&BTR0904)
+     A            B09C05         1A  O 13 50DSPATR(&BTR0905)
+     A            B09C06         1A  O 13 52DSPATR(&BTR0906)
+     A            B09C07         1A  O 13 54DSPATR(&BTR0907)
+     A            B09C08         1A  O 13 56DSPATR(&BTR0908)
+     A            B09C09         1A  O 13 58DSPATR(&BTR0909)
+     A            B09C10         1A  O 13 60DSPATR(&BTR0910)
+     A                                 13 64'9' DSPATR(&BLUERI)
+     A                                 14  3'deployment.' DSPATR(HI)
+     A                                 14 38'0' DSPATR(&BLUERI)
+     A            B10C01         1A  O 14 42DSPATR(&BTR1001)
+     A            B10C02         1A  O 14 44DSPATR(&BTR1002)
+     A            B10C03         1A  O 14 46DSPATR(&BTR1003)
+     A            B10C04         1A  O 14 48DSPATR(&BTR1004)
+     A            B10C05         1A  O 14 50DSPATR(&BTR1005)
+     A            B10C06         1A  O 14 52DSPATR(&BTR1006)
+     A            B10C07         1A  O 14 54DSPATR(&BTR1007)
+     A            B10C08         1A  O 14 56DSPATR(&BTR1008)
+     A            B10C09         1A  O 14 58DSPATR(&BTR1009)
+     A            B10C10         1A  O 14 60DSPATR(&BTR1010)
+     A                                 14 64'0' DSPATR(&BLUERI)
+     A                                 16 42'1' DSPATR(&REDRI)
+     A                                 16 44'2' DSPATR(&REDRI)
+     A                                 16 46'3' DSPATR(&REDRI)
+     A                                 16 48'4' DSPATR(&REDRI)
+     A                                 16 50'5' DSPATR(&REDRI)
+     A                                 16 52'6' DSPATR(&REDRI)
+     A                                 16 54'7' DSPATR(&REDRI)
+     A                                 16 56'8' DSPATR(&REDRI)
+     A                                 16 58'9' DSPATR(&REDRI)
+     A                                 16 60'0' DSPATR(&REDRI)
+     A                                 18 42'Cruiser 2' COLOR(TRQ)
+     A                                 19 42'Destroyer 3' COLOR(YLW)
+     A                                 20 42'BattleShip 4' COLOR(PNK)
+     A                                 21 42'AirCraft Carrier 5' COLOR(RED)
+     A                                 23  2'F3=Exit' COLOR(BLU)
+     A                                 23 20'F5=Computer generated deployment'
+     A                                      COLOR(BLU)
+     A                                 23 58'Enter = Begin Battle!' COLOR(BLU)
+     A                                 24 10'Admiral! You must deploy your ship-
+     A                                      s before going into battle!'
+     A                                      DSPATR(&ADEPLOYMSG)
+      *----------------------------------------------------------------
+     A          R SCREEN2                   CSRLOC(CSRROW CSRCOL)
+     A            CSRROW         3S 0H
+     A            CSRCOL         3S 0H
+     A            ATR0101        1A  P
+     A            ATR0102        1A  P
+     A            ATR0103        1A  P
+     A            ATR0104        1A  P
+     A            ATR0105        1A  P
+     A            ATR0106        1A  P
+     A            ATR0107        1A  P
+     A            ATR0108        1A  P
+     A            ATR0109        1A  P
+     A            ATR0110        1A  P
+     A            ATR0201        1A  P
+     A            ATR0202        1A  P
+     A            ATR0203        1A  P
+     A            ATR0204        1A  P
+     A            ATR0205        1A  P
+     A            ATR0206        1A  P
+     A            ATR0207        1A  P
+     A            ATR0208        1A  P
+     A            ATR0209        1A  P
+     A            ATR0210        1A  P
+     A            ATR0301        1A  P
+     A            ATR0302        1A  P
+     A            ATR0303        1A  P
+     A            ATR0304        1A  P
+     A            ATR0305        1A  P
+     A            ATR0306        1A  P
+     A            ATR0307        1A  P
+     A            ATR0308        1A  P
+     A            ATR0309        1A  P
+     A            ATR0310        1A  P
+     A            ATR0401        1A  P
+     A            ATR0402        1A  P
+     A            ATR0403        1A  P
+     A            ATR0404        1A  P
+     A            ATR0405        1A  P
+     A            ATR0406        1A  P
+     A            ATR0407        1A  P
+     A            ATR0408        1A  P
+     A            ATR0409        1A  P
+     A            ATR0410        1A  P
+     A            ATR0501        1A  P
+     A            ATR0502        1A  P
+     A            ATR0503        1A  P
+     A            ATR0504        1A  P
+     A            ATR0505        1A  P
+     A            ATR0506        1A  P
+     A            ATR0507        1A  P
+     A            ATR0508        1A  P
+     A            ATR0509        1A  P
+     A            ATR0510        1A  P
+     A            ATR0601        1A  P
+     A            ATR0602        1A  P
+     A            ATR0603        1A  P
+     A            ATR0604        1A  P
+     A            ATR0605        1A  P
+     A            ATR0606        1A  P
+     A            ATR0607        1A  P
+     A            ATR0608        1A  P
+     A            ATR0609        1A  P
+     A            ATR0610        1A  P
+     A            ATR0701        1A  P
+     A            ATR0702        1A  P
+     A            ATR0703        1A  P
+     A            ATR0704        1A  P
+     A            ATR0705        1A  P
+     A            ATR0706        1A  P
+     A            ATR0707        1A  P
+     A            ATR0708        1A  P
+     A            ATR0709        1A  P
+     A            ATR0710        1A  P
+     A            ATR0801        1A  P
+     A            ATR0802        1A  P
+     A            ATR0803        1A  P
+     A            ATR0804        1A  P
+     A            ATR0805        1A  P
+     A            ATR0806        1A  P
+     A            ATR0807        1A  P
+     A            ATR0808        1A  P
+     A            ATR0809        1A  P
+     A            ATR0810        1A  P
+     A            ATR0901        1A  P
+     A            ATR0902        1A  P
+     A            ATR0903        1A  P
+     A            ATR0904        1A  P
+     A            ATR0905        1A  P
+     A            ATR0906        1A  P
+     A            ATR0907        1A  P
+     A            ATR0908        1A  P
+     A            ATR0909        1A  P
+     A            ATR0910        1A  P
+     A            ATR1001        1A  P
+     A            ATR1002        1A  P
+     A            ATR1003        1A  P
+     A            ATR1004        1A  P
+     A            ATR1005        1A  P
+     A            ATR1006        1A  P
+     A            ATR1007        1A  P
+     A            ATR1008        1A  P
+     A            ATR1009        1A  P
+     A            ATR1010        1A  P
+     A            BTR0101        1A  P
+     A            BTR0102        1A  P
+     A            BTR0103        1A  P
+     A            BTR0104        1A  P
+     A            BTR0105        1A  P
+     A            BTR0106        1A  P
+     A            BTR0107        1A  P
+     A            BTR0108        1A  P
+     A            BTR0109        1A  P
+     A            BTR0110        1A  P
+     A            BTR0201        1A  P
+     A            BTR0202        1A  P
+     A            BTR0203        1A  P
+     A            BTR0204        1A  P
+     A            BTR0205        1A  P
+     A            BTR0206        1A  P
+     A            BTR0207        1A  P
+     A            BTR0208        1A  P
+     A            BTR0209        1A  P
+     A            BTR0210        1A  P
+     A            BTR0301        1A  P
+     A            BTR0302        1A  P
+     A            BTR0303        1A  P
+     A            BTR0304        1A  P
+     A            BTR0305        1A  P
+     A            BTR0306        1A  P
+     A            BTR0307        1A  P
+     A            BTR0308        1A  P
+     A            BTR0309        1A  P
+     A            BTR0310        1A  P
+     A            BTR0401        1A  P
+     A            BTR0402        1A  P
+     A            BTR0403        1A  P
+     A            BTR0404        1A  P
+     A            BTR0405        1A  P
+     A            BTR0406        1A  P
+     A            BTR0407        1A  P
+     A            BTR0408        1A  P
+     A            BTR0409        1A  P
+     A            BTR0410        1A  P
+     A            BTR0501        1A  P
+     A            BTR0502        1A  P
+     A            BTR0503        1A  P
+     A            BTR0504        1A  P
+     A            BTR0505        1A  P
+     A            BTR0506        1A  P
+     A            BTR0507        1A  P
+     A            BTR0508        1A  P
+     A            BTR0509        1A  P
+     A            BTR0510        1A  P
+     A            BTR0601        1A  P
+     A            BTR0602        1A  P
+     A            BTR0603        1A  P
+     A            BTR0604        1A  P
+     A            BTR0605        1A  P
+     A            BTR0606        1A  P
+     A            BTR0607        1A  P
+     A            BTR0608        1A  P
+     A            BTR0609        1A  P
+     A            BTR0610        1A  P
+     A            BTR0701        1A  P
+     A            BTR0702        1A  P
+     A            BTR0703        1A  P
+     A            BTR0704        1A  P
+     A            BTR0705        1A  P
+     A            BTR0706        1A  P
+     A            BTR0707        1A  P
+     A            BTR0708        1A  P
+     A            BTR0709        1A  P
+     A            BTR0710        1A  P
+     A            BTR0801        1A  P
+     A            BTR0802        1A  P
+     A            BTR0803        1A  P
+     A            BTR0804        1A  P
+     A            BTR0805        1A  P
+     A            BTR0806        1A  P
+     A            BTR0807        1A  P
+     A            BTR0808        1A  P
+     A            BTR0809        1A  P
+     A            BTR0810        1A  P
+     A            BTR0901        1A  P
+     A            BTR0902        1A  P
+     A            BTR0903        1A  P
+     A            BTR0904        1A  P
+     A            BTR0905        1A  P
+     A            BTR0906        1A  P
+     A            BTR0907        1A  P
+     A            BTR0908        1A  P
+     A            BTR0909        1A  P
+     A            BTR0910        1A  P
+     A            BTR1001        1A  P
+     A            BTR1002        1A  P
+     A            BTR1003        1A  P
+     A            BTR1004        1A  P
+     A            BTR1005        1A  P
+     A            BTR1006        1A  P
+     A            BTR1007        1A  P
+     A            BTR1008        1A  P
+     A            BTR1009        1A  P
+     A            BTR1010        1A  P
+     A            EDSPATR2       1A  P
+     A            EDSPATR3       1A  P
+     A            EDSPATR4       1A  P
+     A            EDSPATR5       1A  P
+     A            UDSPATR2       1A  P
+     A            UDSPATR3       1A  P
+     A            UDSPATR4       1A  P
+     A            UDSPATR5       1A  P
+     A            AGAMEOVER      1A  P
+     A                                  1  3'JCRGMBTL' COLOR(BLU)
+     A                                  1 14'BATTLE SHIP!' COLOR(BLU)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  2  8'ATTACK              '
+     A                                      DSPATR(HI UL)
+     A                                  2 42'DEFEND              '
+     A                                      DSPATR(HI UL)
+     A                                  3  8'1'
+     A                                  3 10'2'
+     A                                  3 12'3'
+     A                                  3 14'4'
+     A                                  3 16'5'
+     A                                  3 18'6'
+     A                                  3 20'7'
+     A                                  3 22'8'
+     A                                  3 24'9'
+     A                                  3 26'0'
+     A                                  3 42'1'
+     A                                  3 44'2'
+     A                                  3 46'3'
+     A                                  3 48'4'
+     A                                  3 50'5'
+     A                                  3 52'6'
+     A                                  3 54'7'
+     A                                  3 56'8'
+     A                                  3 58'9'
+     A                                  3 60'0'
+     A            R01C01         1A  B  5  8DSPATR(&ATR0101)
+     A            R01C02         1A  B  5 10DSPATR(&ATR0102)
+     A            R01C03         1A  B  5 12DSPATR(&ATR0103)
+     A            R01C04         1A  B  5 14DSPATR(&ATR0104)
+     A            R01C05         1A  B  5 16DSPATR(&ATR0105)
+     A            R01C06         1A  B  5 18DSPATR(&ATR0106)
+     A            R01C07         1A  B  5 20DSPATR(&ATR0107)
+     A            R01C08         1A  B  5 22DSPATR(&ATR0108)
+     A            R01C09         1A  B  5 24DSPATR(&ATR0109)
+     A            R01C10         1A  B  5 26DSPATR(&ATR0110)
+     A                                  5 30'1'
+     A            B01C01         1A  O  5 42DSPATR(&BTR0101)
+     A            B01C02         1A  O  5 44DSPATR(&BTR0102)
+     A            B01C03         1A  O  5 46DSPATR(&BTR0103)
+     A            B01C04         1A  O  5 48DSPATR(&BTR0104)
+     A            B01C05         1A  O  5 50DSPATR(&BTR0105)
+     A            B01C06         1A  O  5 52DSPATR(&BTR0106)
+     A            B01C07         1A  O  5 54DSPATR(&BTR0107)
+     A            B01C08         1A  O  5 56DSPATR(&BTR0108)
+     A            B01C09         1A  O  5 58DSPATR(&BTR0109)
+     A            B01C10         1A  O  5 60DSPATR(&BTR0110)
+     A                                  5 64'1'
+     A            R02C01         1A  B  6  8DSPATR(&ATR0201)
+     A            R02C02         1A  B  6 10DSPATR(&ATR0202)
+     A            R02C03         1A  B  6 12DSPATR(&ATR0203)
+     A            R02C04         1A  B  6 14DSPATR(&ATR0204)
+     A            R02C05         1A  B  6 16DSPATR(&ATR0205)
+     A            R02C06         1A  B  6 18DSPATR(&ATR0206)
+     A            R02C07         1A  B  6 20DSPATR(&ATR0207)
+     A            R02C08         1A  B  6 22DSPATR(&ATR0208)
+     A            R02C09         1A  B  6 24DSPATR(&ATR0209)
+     A            R02C10         1A  B  6 26DSPATR(&ATR0210)
+     A                                  6 30'2'
+     A            B02C01         1A  O  6 42DSPATR(&BTR0201)
+     A            B02C02         1A  O  6 44DSPATR(&BTR0202)
+     A            B02C03         1A  O  6 46DSPATR(&BTR0203)
+     A            B02C04         1A  O  6 48DSPATR(&BTR0204)
+     A            B02C05         1A  O  6 50DSPATR(&BTR0205)
+     A            B02C06         1A  O  6 52DSPATR(&BTR0206)
+     A            B02C07         1A  O  6 54DSPATR(&BTR0207)
+     A            B02C08         1A  O  6 56DSPATR(&BTR0208)
+     A            B02C09         1A  O  6 58DSPATR(&BTR0209)
+     A            B02C10         1A  O  6 60DSPATR(&BTR0210)
+     A                                  6 64'2'
+     A            R03C01         1A  B  7  8DSPATR(&ATR0301)
+     A            R03C02         1A  B  7 10DSPATR(&ATR0302)
+     A            R03C03         1A  B  7 12DSPATR(&ATR0303)
+     A            R03C04         1A  B  7 14DSPATR(&ATR0304)
+     A            R03C05         1A  B  7 16DSPATR(&ATR0305)
+     A            R03C06         1A  B  7 18DSPATR(&ATR0306)
+     A            R03C07         1A  B  7 20DSPATR(&ATR0307)
+     A            R03C08         1A  B  7 22DSPATR(&ATR0308)
+     A            R03C09         1A  B  7 24DSPATR(&ATR0309)
+     A            R03C10         1A  B  7 26DSPATR(&ATR0310)
+     A                                  7 30'3'
+     A            B03C01         1A  O  7 42DSPATR(&BTR0301)
+     A            B03C02         1A  O  7 44DSPATR(&BTR0302)
+     A            B03C03         1A  O  7 46DSPATR(&BTR0303)
+     A            B03C04         1A  O  7 48DSPATR(&BTR0304)
+     A            B03C05         1A  O  7 50DSPATR(&BTR0305)
+     A            B03C06         1A  O  7 52DSPATR(&BTR0306)
+     A            B03C07         1A  O  7 54DSPATR(&BTR0307)
+     A            B03C08         1A  O  7 56DSPATR(&BTR0308)
+     A            B03C09         1A  O  7 58DSPATR(&BTR0309)
+     A            B03C10         1A  O  7 60DSPATR(&BTR0310)
+     A                                  7 64'3'
+     A            R04C01         1A  B  8  8DSPATR(&ATR0401)
+     A            R04C02         1A  B  8 10DSPATR(&ATR0402)
+     A            R04C03         1A  B  8 12DSPATR(&ATR0403)
+     A            R04C04         1A  B  8 14DSPATR(&ATR0404)
+     A            R04C05         1A  B  8 16DSPATR(&ATR0405)
+     A            R04C06         1A  B  8 18DSPATR(&ATR0406)
+     A            R04C07         1A  B  8 20DSPATR(&ATR0407)
+     A            R04C08         1A  B  8 22DSPATR(&ATR0408)
+     A            R04C09         1A  B  8 24DSPATR(&ATR0409)
+     A            R04C10         1A  B  8 26DSPATR(&ATR0410)
+     A                                  8 30'4'
+     A            B04C01         1A  O  8 42DSPATR(&BTR0401)
+     A            B04C02         1A  O  8 44DSPATR(&BTR0402)
+     A            B04C03         1A  O  8 46DSPATR(&BTR0403)
+     A            B04C04         1A  O  8 48DSPATR(&BTR0404)
+     A            B04C05         1A  O  8 50DSPATR(&BTR0405)
+     A            B04C06         1A  O  8 52DSPATR(&BTR0406)
+     A            B04C07         1A  O  8 54DSPATR(&BTR0407)
+     A            B04C08         1A  O  8 56DSPATR(&BTR0408)
+     A            B04C09         1A  O  8 58DSPATR(&BTR0409)
+     A            B04C10         1A  O  8 60DSPATR(&BTR0410)
+     A                                  8 64'4'
+     A            R05C01         1A  B  9  8DSPATR(&ATR0501)
+     A            R05C02         1A  B  9 10DSPATR(&ATR0502)
+     A            R05C03         1A  B  9 12DSPATR(&ATR0503)
+     A            R05C04         1A  B  9 14DSPATR(&ATR0504)
+     A            R05C05         1A  B  9 16DSPATR(&ATR0505)
+     A            R05C06         1A  B  9 18DSPATR(&ATR0506)
+     A            R05C07         1A  B  9 20DSPATR(&ATR0507)
+     A            R05C08         1A  B  9 22DSPATR(&ATR0508)
+     A            R05C09         1A  B  9 24DSPATR(&ATR0509)
+     A            R05C10         1A  B  9 26DSPATR(&ATR0510)
+     A                                  9 30'5'
+     A            B05C01         1A  O  9 42DSPATR(&BTR0501)
+     A            B05C02         1A  O  9 44DSPATR(&BTR0502)
+     A            B05C03         1A  O  9 46DSPATR(&BTR0503)
+     A            B05C04         1A  O  9 48DSPATR(&BTR0504)
+     A            B05C05         1A  O  9 50DSPATR(&BTR0505)
+     A            B05C06         1A  O  9 52DSPATR(&BTR0506)
+     A            B05C07         1A  O  9 54DSPATR(&BTR0507)
+     A            B05C08         1A  O  9 56DSPATR(&BTR0508)
+     A            B05C09         1A  O  9 58DSPATR(&BTR0509)
+     A            B05C10         1A  O  9 60DSPATR(&BTR0510)
+     A                                  9 64'5'
+     A            R06C01         1A  B 10  8DSPATR(&ATR0601)
+     A            R06C02         1A  B 10 10DSPATR(&ATR0602)
+     A            R06C03         1A  B 10 12DSPATR(&ATR0603)
+     A            R06C04         1A  B 10 14DSPATR(&ATR0604)
+     A            R06C05         1A  B 10 16DSPATR(&ATR0605)
+     A            R06C06         1A  B 10 18DSPATR(&ATR0606)
+     A            R06C07         1A  B 10 20DSPATR(&ATR0607)
+     A            R06C08         1A  B 10 22DSPATR(&ATR0608)
+     A            R06C09         1A  B 10 24DSPATR(&ATR0609)
+     A            R06C10         1A  B 10 26DSPATR(&ATR0610)
+     A                                 10 30'6'
+     A            B06C01         1A  O 10 42DSPATR(&BTR0601)
+     A            B06C02         1A  O 10 44DSPATR(&BTR0602)
+     A            B06C03         1A  O 10 46DSPATR(&BTR0603)
+     A            B06C04         1A  O 10 48DSPATR(&BTR0604)
+     A            B06C05         1A  O 10 50DSPATR(&BTR0605)
+     A            B06C06         1A  O 10 52DSPATR(&BTR0606)
+     A            B06C07         1A  O 10 54DSPATR(&BTR0607)
+     A            B06C08         1A  O 10 56DSPATR(&BTR0608)
+     A            B06C09         1A  O 10 58DSPATR(&BTR0609)
+     A            B06C10         1A  O 10 60DSPATR(&BTR0610)
+     A                                 10 64'6'
+     A            R07C01         1A  B 11  8DSPATR(&ATR0701)
+     A            R07C02         1A  B 11 10DSPATR(&ATR0702)
+     A            R07C03         1A  B 11 12DSPATR(&ATR0703)
+     A            R07C04         1A  B 11 14DSPATR(&ATR0704)
+     A            R07C05         1A  B 11 16DSPATR(&ATR0705)
+     A            R07C06         1A  B 11 18DSPATR(&ATR0706)
+     A            R07C07         1A  B 11 20DSPATR(&ATR0707)
+     A            R07C08         1A  B 11 22DSPATR(&ATR0708)
+     A            R07C09         1A  B 11 24DSPATR(&ATR0709)
+     A            R07C10         1A  B 11 26DSPATR(&ATR0710)
+     A                                 11 30'7'
+     A            B07C01         1A  O 11 42DSPATR(&BTR0701)
+     A            B07C02         1A  O 11 44DSPATR(&BTR0702)
+     A            B07C03         1A  O 11 46DSPATR(&BTR0703)
+     A            B07C04         1A  O 11 48DSPATR(&BTR0704)
+     A            B07C05         1A  O 11 50DSPATR(&BTR0705)
+     A            B07C06         1A  O 11 52DSPATR(&BTR0706)
+     A            B07C07         1A  O 11 54DSPATR(&BTR0707)
+     A            B07C08         1A  O 11 56DSPATR(&BTR0708)
+     A            B07C09         1A  O 11 58DSPATR(&BTR0709)
+     A            B07C10         1A  O 11 60DSPATR(&BTR0710)
+     A                                 11 64'7'
+     A            R08C01         1A  B 12  8DSPATR(&ATR0801)
+     A            R08C02         1A  B 12 10DSPATR(&ATR0802)
+     A            R08C03         1A  B 12 12DSPATR(&ATR0803)
+     A            R08C04         1A  B 12 14DSPATR(&ATR0804)
+     A            R08C05         1A  B 12 16DSPATR(&ATR0805)
+     A            R08C06         1A  B 12 18DSPATR(&ATR0806)
+     A            R08C07         1A  B 12 20DSPATR(&ATR0807)
+     A            R08C08         1A  B 12 22DSPATR(&ATR0808)
+     A            R08C09         1A  B 12 24DSPATR(&ATR0809)
+     A            R08C10         1A  B 12 26DSPATR(&ATR0810)
+     A                                 12 30'8'
+     A            B08C01         1A  O 12 42DSPATR(&BTR0801)
+     A            B08C02         1A  O 12 44DSPATR(&BTR0802)
+     A            B08C03         1A  O 12 46DSPATR(&BTR0803)
+     A            B08C04         1A  O 12 48DSPATR(&BTR0804)
+     A            B08C05         1A  O 12 50DSPATR(&BTR0805)
+     A            B08C06         1A  O 12 52DSPATR(&BTR0806)
+     A            B08C07         1A  O 12 54DSPATR(&BTR0807)
+     A            B08C08         1A  O 12 56DSPATR(&BTR0808)
+     A            B08C09         1A  O 12 58DSPATR(&BTR0809)
+     A            B08C10         1A  O 12 60DSPATR(&BTR0810)
+     A                                 12 64'8'
+     A            R09C01         1A  B 13  8DSPATR(&ATR0901)
+     A            R09C02         1A  B 13 10DSPATR(&ATR0902)
+     A            R09C03         1A  B 13 12DSPATR(&ATR0903)
+     A            R09C04         1A  B 13 14DSPATR(&ATR0904)
+     A            R09C05         1A  B 13 16DSPATR(&ATR0905)
+     A            R09C06         1A  B 13 18DSPATR(&ATR0906)
+     A            R09C07         1A  B 13 20DSPATR(&ATR0907)
+     A            R09C08         1A  B 13 22DSPATR(&ATR0908)
+     A            R09C09         1A  B 13 24DSPATR(&ATR0909)
+     A            R09C10         1A  B 13 26DSPATR(&ATR0910)
+     A                                 13 30'9'
+     A            B09C01         1A  O 13 42DSPATR(&BTR0901)
+     A            B09C02         1A  O 13 44DSPATR(&BTR0902)
+     A            B09C03         1A  O 13 46DSPATR(&BTR0903)
+     A            B09C04         1A  O 13 48DSPATR(&BTR0904)
+     A            B09C05         1A  O 13 50DSPATR(&BTR0905)
+     A            B09C06         1A  O 13 52DSPATR(&BTR0906)
+     A            B09C07         1A  O 13 54DSPATR(&BTR0907)
+     A            B09C08         1A  O 13 56DSPATR(&BTR0908)
+     A            B09C09         1A  O 13 58DSPATR(&BTR0909)
+     A            B09C10         1A  O 13 60DSPATR(&BTR0910)
+     A                                 13 64'9'
+     A            R10C01         1A  B 14  8DSPATR(&ATR1001)
+     A            R10C02         1A  B 14 10DSPATR(&ATR1002)
+     A            R10C03         1A  B 14 12DSPATR(&ATR1003)
+     A            R10C04         1A  B 14 14DSPATR(&ATR1004)
+     A            R10C05         1A  B 14 16DSPATR(&ATR1005)
+     A            R10C06         1A  B 14 18DSPATR(&ATR1006)
+     A            R10C07         1A  B 14 20DSPATR(&ATR1007)
+     A            R10C08         1A  B 14 22DSPATR(&ATR1008)
+     A            R10C09         1A  B 14 24DSPATR(&ATR1009)
+     A            R10C10         1A  B 14 26DSPATR(&ATR1010)
+     A                                 14 30'0'
+     A            B10C01         1A  O 14 42DSPATR(&BTR1001)
+     A            B10C02         1A  O 14 44DSPATR(&BTR1002)
+     A            B10C03         1A  O 14 46DSPATR(&BTR1003)
+     A            B10C04         1A  O 14 48DSPATR(&BTR1004)
+     A            B10C05         1A  O 14 50DSPATR(&BTR1005)
+     A            B10C06         1A  O 14 52DSPATR(&BTR1006)
+     A            B10C07         1A  O 14 54DSPATR(&BTR1007)
+     A            B10C08         1A  O 14 56DSPATR(&BTR1008)
+     A            B10C09         1A  O 14 58DSPATR(&BTR1009)
+     A            B10C10         1A  O 14 60DSPATR(&BTR1010)
+     A                                 14 64'0'
+     A                                 16  8'Enemy Ship Status' DSPATR(UL HI)
+     A                                 16 42'Your Ship Status' DSPATR(UL HI)
+     A                                 17  8'Cruiser 2' DSPATR(&EDSPATR2)
+     A                                 17 42'Cruiser 2' DSPATR(&UDSPATR2)
+     A                                 18  8'Destroyer 3' DSPATR(&EDSPATR3)
+     A                                 18 42'Destroyer 3' DSPATR(&UDSPATR3)
+     A                                 19  8'BattleShip 4' DSPATR(&EDSPATR4)
+     A                                 19 42'BattleShip 4' DSPATR(&UDSPATR4)
+     A                                 20  8'Aircraft Carrier 5'
+     A                                      DSPATR(&EDSPATR5)
+     A                                 20 42'Aircraft Carrier 5'
+     A                                      DSPATR(&UDSPATR5)
+     A            GAMEOVER      27A    21 20DSPATR(&AGAMEOVER)
+     A                                 23  7'Key X, press Enter to Fire!'
+     A                                      COLOR(BLU)
+     A                                 24  7'F3=Exit' COLOR(BLU)
+     A                                 24 41'F5=Restart' COLOR(BLU)

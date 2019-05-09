@@ -1,0 +1,24 @@
+:PNLGRP.:HELP NAME='JCRBND'.Procedure Names List (JCRBND) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Lists exported procedures/symbols of *BNDDIR, *SRVPGM, or *MODULEs.
+ 
+:P.The *PGM option will find the service programs in the
+program object and show where the procedures are coming from.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRBND/BINDING'.Binding Object - Help :XH3.Binding Object (BINDING)
+:P.Name/generic*/*ALL and library of binding object (binding directory, service
+program, or module) whose procedures are to be listed.:EHELP.
+ 
+:HELP NAME='JCRBND/OBJTYPE'.Object Type - Help :XH3.Object Type (OBJTYPE)
+:P.Type of binding object.:EHELP.
+ 
+:HELP NAME='JCRBND/OUTPUT'.Output - Help :XH3.OutPut (OUTPUT)
+:P.Print, outfile, or * display the results.:EHELP.
+ 
+:HELP NAME='JCRBND/OUTFILE'.OutFile - Help :XH3.File (OUTFILE)
+:P.File and library to receive command output.:EHELP.
+ 
+:HELP NAME='JCRBND/OUTMBR'.OutMbr - Help :XH3.OutMbr (OUTMBR)
+:P.File member to receive command output.:EHELP.:EPNLGRP.

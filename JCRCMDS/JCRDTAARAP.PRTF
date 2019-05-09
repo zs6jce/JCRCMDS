@@ -1,0 +1,49 @@
+      *----------------------------------------------------------------
+      * JCRDTAARAP - Dtaara values and rollover distance list - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 198) CPI(15)
+     A          R PRTHEAD                   SKIPB(1) SPACEA(1)
+     A                                     2'JCRDTAARA'
+     A                                    27'List Data Area Values and Distance-
+     A                                       from Rollover'
+     A            SCDOW          9A  O   110
+     A                                   120DATE EDTCDE(Y)
+     A                                   130TIME
+     A                                   140'Page'
+     A                                    +1PAGNBR EDTCDE(4) SPACEA(1)
+      *---
+     A                                     2'Library:'
+     A            HEADLIB       10A       11
+     A                                    25'Dtaara Select:'
+     A            HEADDTA       10A       41SPACEA(1)
+      *---
+     A                                    67'Approximate Integer'
+     A                                    92'Object'
+     A                                   113'Days' SPACEA(1)
+      *---
+     A                                     2'Dtaara'
+     A                                    14'Attribute'
+     A                                    27'Len'
+     A                                    32'Dec'
+     A                                    49'Current Value'
+     A                                    67'Distance to RollOver'
+     A                                    92'Created'
+     A                                   101'LastUsed'
+     A                                   113'Used'
+     A                                   120'Text'
+      *----------------------------------------------------------------
+     A          R PRTDETAIL                 SPACEA(1)
+     A            OBJNAM        10A        2
+     A            PRTVALTYPE    10A       14
+     A            PRTLENGTH      5  0     25EDTCDE(3)
+     A            PRTNUMDEC      3  0     31EDTCDE(3)
+     A            CURVALA       24A       37
+     A            TOROLLA       24A       62
+     A            CREATEDATE    10A       89
+     A            LASTUSED      10A      101
+     A            DAYSUSED       4  0    113EDTCDE(4)
+     A            OBJTEXT       50A      120
+      *----------------------------------------------------------------
+     A          R PRTMESSAGE                SPACEB(2)
+     A            VMESSAGE     100A        3

@@ -1,0 +1,27 @@
+:PNLGRP.:HELP NAME='JCRPATTR'.Create from PRTF Attributes (JCRPATTR) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Compiles a print file using compile attributes from the existing print file object.
+For example, this print file was created with a different line count than default and
+needed to be recompiled.
+:P.The command replicates common attributes from existing print file
+and applies them to the compile command of new print file.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRPATTR/PRTFMBR'.PRTF source member name - Help :XH3.PRTF source member name (PRTFMBR)
+:P.PRTF source member.:EHELP.
+ 
+:HELP NAME='JCRPATTR/SRCFILE'.Source file - Help :XH3.Source file (SRCFILE)
+:P.Source file containing source member to be compiled.:EHELP.
+ 
+:HELP NAME='JCRPATTR/CRTLIB'.Create PRTF in library - Help :XH3.Create PRTF in library (CRTLIB)
+:P.Library where PRTF will be created.:EHELP.
+ 
+:HELP NAME='JCRPATTR/USEPRTF'.Use Attributes from this Prtf - Help
+:XH3.Use Attributes from this Prtf (USEPRTF)
+:P.Existing prtf object whose attributes are retrieved.
+:PARML.:PT.:PK def.*SRCMBR:EPK.:PD.Use same name as PRTF being created.
+ Useful if working on print file and several recompiles are required.
+:PT.prtf-name :PD.Enter existing PRTF name.
+:PT.:PK def.*SRCLIB:EPK. :PD.Compile new PRTF into same library as source file.
+:PT.library-name :PD.Enter name of library to place PRTF object.:EPARML.:EHELP.:EPNLGRP.

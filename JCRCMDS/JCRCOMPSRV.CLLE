@@ -1,0 +1,33 @@
+/*--------------------------------------------------------------------------*/
+/* JCRCOMPSRV - recompile the JCRCMDS service program                       */
+/* CALL JCRCOMSRV PARM(mylib)                                               */
+/*  you must log off and back on to run new service program                 */
+/*   Craig Rutledge  < www.jcrcmds.com >                                    */
+/*--------------------------------------------------------------------------*/
+             PGM        PARM(&L)
+             DCL        VAR(&L) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&F) TYPE(*CHAR) LEN(10) VALUE('JCRCMDS  ')
+ 
+             RMVLIBLE   LIB(&L)
+             MONMSG     MSGID(CPF0000)
+             ADDLIBLE   LIB(&L) POSITION(*FIRST)
+             CHGCURLIB  CURLIB(*CRTDFT)
+ 
+/*-------------------------------------------------------------------*/
+/* delete / recreate all ILE components of library                   */
+/*-------------------------------------------------------------------*/
+             DLTMOD     MODULE(&L/JCRCMDSSRV)
+             MONMSG     MSGID(CPF0000)
+             DLTSRVPGM  SRVPGM(&L/JCRCMDSSRV)
+             MONMSG     MSGID(CPF0000)
+ 
+             CRTRPGMOD  MODULE(&L/JCRCMDSSRV) SRCFILE(&L/&F) +
+                          DBGVIEW(*ALL) STGMDL(*TERASPACE)
+ 
+             CRTSRVPGM  SRVPGM(&L/JCRCMDSSRV) SRCFILE(&L/&F) +
+                          SRCMBR(JCRCMDSBND) TEXT('JCRCMDS service +
+                          program') OPTION(*DUPPROC) +
+                          STGMDL(*TERASPACE) ARGOPT(*NO) IPA(*NO)
+ 
+             DLTMOD     MODULE(&L/JCRCMDSSRV)
+             ENDPGM

@@ -1,0 +1,330 @@
+       //---------------------------------------------------------
+       // Parse / Install from XML text into source members and objects.
+       //---------------------------------------------------------
+       ctl-opt option(*nodebugio: *nounref) dftactgrp(*no) actgrp(*caller);
+ 
+       dcl-f XMLINPUT disk(112) extfile(extIfile) extmbr(p_UploadMbr) usropn;
+       dcl-ds InputDS;
+        xmltag1 char(9) pos(13);
+        xmltag2 char(10) pos(18);
+        SlashCopy char(5) pos(19);
+        xmlcode char(100) pos(13);
+       end-ds;
+ 
+       dcl-f MBRSRC disk(112) usage(*output) extfile(extOfile) extmbr(mbrname)
+       usropn;
+       dcl-ds mbrsrcDS len(112);
+        seqNum zoned(6:2) pos(1) inz(0);
+        seqDate zoned(6:0) pos(7) inz(0);
+        SrcOut char(100) pos(13);
+       end-ds;
+ 
+       //---------------------------------------------------------
+       dcl-s extIfile char(21);
+       dcl-s extOFile char(21);
+       dcl-s ReceiverVar char(145);
+       dcl-s Msgid char(7);
+       dcl-s Msgtxt char(65);
+       dcl-s Msgq char(10);
+       dcl-s Msgtyp char(10);
+       dcl-s mbrname char(10);
+       dcl-s mbrtype char(10);
+       dcl-s mbrtext char(50);
+       dcl-s srcfile char(10);
+       dcl-s srclen char(5);
+       dcl-s srcccsid char(5);
+       dcl-s bldexc char(500);
+       dcl-s UpSlash char(5);
+       dcl-s IsWrite ind;
+       dcl-s aa uns(5);
+       dcl-s bb uns(5);
+       dcl-s Start uns(3);
+       dcl-c qs const(''''); // single quote
+       dcl-c up const('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+       dcl-c lo const('abcdefghijklmnopqrstuvwxyz');
+ 
+       //---------------------------------------------------------
+       // error return code parm for APIs
+       dcl-ds ApiErrDS qualified;
+        BytesProvided int(10) pos(1) inz(%size(ApiErrDS));
+        BytesReturned int(10) pos(5) inz(0);
+        ErrMsgId char(7) pos(9);
+        MsgReplaceVal char(112) pos(17);
+       end-ds;
+ 
+       //---------------------------------------------------------
+       dcl-pr Qusrmbrd extpgm('QUSRMBRD'); // retrieve mbr desc api
+        *n char(256) options(*varsize); // receiver
+        *n int(10) const;  // receiver length
+        *n char(8) const;  // api format
+        *n char(20) const; // file and lib
+        *n char(10) const; // mbr
+        *n char(1) const;  // overrides
+        *n like(ApiErrDS);
+       end-pr;
+ 
+       dcl-pr Qmhsndpm extpgm('QMHSNDPM'); // send program message
+        *n char(7) const;  // message id
+        *n char(20) const; // file and lib
+        *n like(Msgtxt);   // text
+        *n int(10) const;  // length
+        *n char(10) const; // type
+        *n char(10) const; // queue
+        *n int(10) const;  // stack entry
+        *n char(4) const;  // key
+        *n like(ApiErrDS);
+       end-pr;
+ 
+       dcl-pr qcmdexc extpgm('QCMDEXC'); // CL Command Processor
+        *n char(500) options(*varsize);
+        *n packed(15: 5) const;
+       end-pr;
+ 
+       //--*ENTRY-------------------------------------------------
+       dcl-pi *n;
+        p_UploadMbr char(10);
+        p_UploadSrcFil char(10);
+        p_UploadSrcLib char(10);
+        p_OvrSrcFile char(10) options(*nopass);
+       end-pi;
+ 
+       //---------------------------------------------------------
+       // validate file, lib, and member exist
+       callp Qusrmbrd(ReceiverVar: 145:'MBRD0100':
+             p_UploadSrcFil + p_UploadSrcLib: p_UploadMbr:
+             '0': ApiErrDS);
+ 
+       // Throw exception message if error occurred
+ 1b    if ApiErrDS.BytesReturned > 0;  //error occurred
+ 2b       if ApiErrDS.ErrMsgId = 'CPF9810';
+             Msgtxt = '0000 Library ' +
+             %trimr(p_UploadSrcLib) + ' was not found.';
+ 
+ 2x       elseif ApiErrDS.ErrMsgId = 'CPF9812';
+             Msgtxt = '0000 Source file ' +
+             %trimr(p_UploadSrcFil) + ' was not found in ' +
+             %trimr(p_UploadSrcLib) + '.';
+ 
+ 2x       elseif ApiErrDS.ErrMsgId = 'CPF9815';
+             Msgtxt = '0000 Member ' +
+             %trimr(p_UploadMbr) + ' was not found in ' +
+             %trimr(p_UploadSrcLib) + '/' + %trimr(p_UploadSrcFil);
+ 2x       else;
+             Msgtxt = '0000 Unexpected message ' +
+             ApiErrDS.ErrMsgId + ' received.';
+ 2e       endif;
+ 
+          Msgid = 'CPD0006';
+          Msgtyp = '*DIAG';
+          Msgq = '*CTLBDY';
+          exsr srSndMessage;
+ 
+          Msgtxt = *blanks;
+          Msgid = 'CPF0002';
+          Msgtyp = '*ESCAPE';
+          exsr srSndMessage;
+          *inlr = *on;
+          return;
+ 1e    endif;
+ 
+       //---------------------------------------------------------
+       // Set user selected library *first for remainder of program
+       bldexc = 'RMVLIBLE LIB(' + %trimr(p_UploadSrcLib) + ')';
+       callp(e) QCMDEXC(bldexc: %len(%trimr(bldexc)));
+ 
+       bldexc = 'ADDLIBLE LIB(' +
+       %trimr(p_UploadSrcLib) + ') POSITION(*FIRST)';
+       callp(e)  QCMDEXC(bldexc: %len(%trimr(bldexc)));
+ 
+       // Override Input file to uploaded text file
+       extIfile = %trimr(p_UploadSrcLib) + '/' + p_UploadSrcFil;
+       open xmlinput;
+       read xmlinput inputDS;
+ 1b    dow not %eof;
+ 
+ 2b       if IsWrite;
+ 3b          if not(xmltag2 = '</copysrc>');
+ 
+                //----------------------------------------------------
+                // if /copy AND user has selected custom install file,
+                // change statements to find copybooks in new file.
+                //----------------------------------------------------
+ 4b             if %parms = %parmnum(p_OvrSrcFile);
+                   UpSlash = %xlate(lo: up: SlashCopy);
+ 
+ 5b                if UpSlash = '/COPY'
+                      or UpSlash = '/INCL';
+                      Start = 12;
+ 
+ 6b                   if UpSlash = '/INCL';
+                         Start = 15;
+ 6e                   endif;
+ 
+                      aa = %scan(',': xmlcode: Start);  //find start of member
+ 6b                   if aa = 0;
+                         aa = %check(' ': xmlcode: Start) - 1;
+ 6e                   endif;
+ 
+                      xmlcode = %subst(xmlcode: 1: Start) +
+                      %trimr(p_UploadSrcLib) + '/' +
+                      %trimr(p_OvrSrcFile) + ',' + %subst(xmlcode: (aa + 1));
+ 5e                endif;
+ 4e             endif;
+                SrcOut = xmlcode;
+                SeqNum += .01;
+                write MBRSRC mbrsrcDS;
+ 
+ 3x          else;
+                IsWrite = *off;
+                close MBRSRC;
+ 3e          endif;
+ 
+             // Extract values based on XML tags
+ 2x       elseif xmltag1 = 'mbrname =';
+             mbrname = %subst(xmlcode: 13: 10);
+ 
+ 2x       elseif xmltag1 = 'mbrtype =';
+             mbrtype = %subst(xmlcode: 13: 10);
+ 
+ 2x       elseif xmltag1 = 'mbrtext =';
+             mbrtext = %subst(xmlcode: 13: 50);
+ 
+ 2x       elseif xmltag1 = 'srcfile =';
+ 3b          if %parms = 4;  //xmlpreview override
+                srcfile = p_OvrSrcFile;
+ 
+ 3x          else;
+                srcfile = %subst(xmlcode: 13: 10);
+ 3e          endif;
+ 2x       elseif xmltag1 = 'srclen  =';
+ 3b          if %parms = 4;  //xmlpreview override
+                srclen = '00112';
+ 3x          else;
+                srclen = %subst(xmlcode: 13: 5);
+ 3e          endif;
+ 2x       elseif xmltag1 = 'srcccsid=';
+             srcccsid = %subst(xmlcode: 13: 5);
+ 
+             // Start of data to copy.  Create source files/mbrs as required
+ 2x       elseif xmltag1 = '<copysrc>';
+             bldexc = 'CRTSRCPF FILE(' +
+             %trimr(p_UploadSrcLib) + '/' +
+             %trimr(srcfile) + ') RCDLEN(' +
+             srclen + ') CCSID(' + srcccsid + ')';
+             callp(e)  QCMDEXC(bldexc: %len(%trimr(bldexc)));
+ 
+             bldexc = 'ADDPFM FILE(' +
+             %trimr(p_UploadSrcLib) + '/' +
+             %trimr(srcfile) + ') MBR(' +
+             %trimr(mbrname) + ') SRCTYPE(' +
+             %trimr(mbrtype) + ') TEXT(' +
+             qs + %trimr(mbrtext) + qs + ')';
+ 
+             callp(e)  QCMDEXC(bldexc: %len(%trimr(bldexc)));
+ 3b          if %error;
+                bldexc = 'CHGPFM FILE(' +
+                %trimr(p_UploadSrcLib) + '/' +
+                %trimr(srcfile) + ') MBR(' +
+                %trimr(mbrname) + ') TEXT(' +
+                qs + %trimr(mbrtext) + qs + ')';
+                callp QCMDEXC(bldexc: %len(%trimr(bldexc)));
+ 
+                bldexc = 'CLRPFM FILE(' +
+                %trimr(p_UploadSrcLib) + '/' +
+                %trimr(srcfile) + ') MBR(' + %trimr(mbrname) + ')';
+                callp QCMDEXC(bldexc: %len(%trimr(bldexc)));
+ 3e          endif;
+ 
+             // override to outfile mbr
+             extOfile = %trimr(p_UploadSrcLib) + '/' + srcfile;
+             SeqNum = 0;
+             open MBRSRC;
+             IsWrite = *on;
+ 
+             //---------------------------------------------------------
+             // Compile statement.  Read next record and execute it.
+             // Subroutine srTolibToken will replace &tolib with
+             // library user has selected at run time.
+             //---------------------------------------------------------
+ 2x       elseif xmltag1 = '<compile>';
+             read xmlinput inputDS;
+             bldexc = %trimr(xmlcode);
+             exsr srTolibToken;
+             callp QCMDEXC(bldexc: %len(%trimr(bldexc)));
+ 
+             //---------------------------------------------------------
+             // qcmdexc statement. Build statement from between start
+             // and stop tags.  When stop tag is found, execute statement.
+             // if dltxxx command, allow errors to be ignored.
+             //---------------------------------------------------------
+ 2x       elseif xmltag1 = '<qcmdexc>';
+             clear bldexc;
+             aa = 1;
+             read xmlinput inputDS;
+ 3b          dow not(xmltag2 = '</qcmdexc>');
+                %subst(bldexc: aa: 100) = xmlcode;
+                aa += 100;
+                read xmlinput inputDS;
+ 3e          enddo;
+ 
+             exsr srTolibToken;
+ 3b          if %subst(bldexc: 1: 3) = 'DLT';
+                callp(e) QCMDEXC(bldexc: %len(%trimr(bldexc)));
+ 3x          else;
+                callp QCMDEXC(bldexc: %len(%trimr(bldexc)));
+ 3e          endif;
+ 
+             //---------------------------------------------------------
+             // Send messages to user as program executes
+             // Extract message ID, Message Type, from <sendmsg>
+             // read record and get single line of message text
+ 2x       elseif xmltag1 = '<sendmsg ';
+             Msgid = %subst(xmlcode: 22:7);
+             Msgtyp = %subst(xmlcode: 46: 10);
+             read xmlinput inputDS;
+             Msgq = '*EXT';
+ 3b          if Msgtyp = '*COMP';
+                Msgq = '*PGMBDY';
+ 3e          endif;
+             Msgtxt = xmlcode;
+             exsr srSndMessage;
+ 2e       endif;
+          read xmlinput inputDS;
+ 1e    enddo;
+       *inlr = *on;
+       return;
+ 
+       //---------------------------------------------------------
+       // Replace &tolib (no matter how many times it is in string)
+       // with whatever library user has selected at run time.
+       begsr srTolibToken;
+       bldexc = %scanrpl('&tolib': %trimr(p_UploadSrcLib): bldexc);
+ 
+       // user has selected to override source, reset SRCFILE parm in bldexcs.
+ 1b    if %parms = 4;  //xmlpreview override
+          aa = %scan('SRCFILE(': bldexc);
+ 2b       if aa > 0;
+             aa = %scan('/': bldexc: aa);
+ 3b          if aa > 0;
+                bb = %scan(')': bldexc: aa);
+                bldexc = %replace(%trimr(p_OvrSrcFile):
+                bldexc: aa + 1: bb-(aa + 1));
+ 3e          endif;
+ 2e       endif;
+ 1e    endif;
+       endsr;
+ 
+       //---------------------------------------------------------
+       begsr srSndMessage;
+       callp QMHSNDPM(
+             Msgid:
+             'QCPFMSG   *LIBL':
+             Msgtxt:
+             %size(Msgtxt):
+             Msgtyp:
+             Msgq:
+             1:
+             ' ':
+             ApiErrDS);
+       endsr;
+ 

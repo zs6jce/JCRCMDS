@@ -1,0 +1,19 @@
+:PNLGRP.:HELP NAME='JCRIFSSAV'.Copy savf to to IFS (JCRIFSSAV) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Copies savf to selected directory on IFS drive. It uses
+the QzipZip API to create .zip file from copied save file.
+:P.After execution, a .savf file and .zip file is in selected directory.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRIFSSAV/SAVF'.Save File Name - Help :XH3.File Name (FILE)
+:P.Savf name.:EHELP.
+ 
+:HELP NAME='JCRIFSSAV/LIBRARY'.Library Name - Help :XH3.Library Name (LIBRARY)
+:P.Library name.:EHELP.
+ 
+:HELP NAME='JCRIFSSAV/DIRECTORY'.IFS Directory Path - Help :XH3.Directory (DIRECTORY)
+:P.Copy to IFS directory name.:EHELP.
+ 
+:HELP NAME='JCRIFSSAV/ZIPFILE'.Create Zip File - Help :XH3.Zip File (ZIPFILE)
+:P.Create .zip file of downloaded savf.:EHELP.:EPNLGRP.

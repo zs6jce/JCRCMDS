@@ -1,0 +1,37 @@
+--  ----------------------------------------------------------------
+--   JCRFFDF - File field descriptions - DDL
+--     Craig Rutledge  < www.jcrcmds.com >
+--  ----------------------------------------------------------------
+-- DROP TABLE JCRFFDF;
+ 
+CREATE TABLE JCRFFDF (
+  FLDTEXT50 CHAR(50) NOT NULL DEFAULT '' ,
+  SBKEY CHAR(3) NOT NULL DEFAULT '' ,
+  SBFIELD CHAR(10) NOT NULL DEFAULT '' ,
+  SBDATATYPE CHAR(16) NOT NULL DEFAULT '' ,
+  SBFROMPOS NUMERIC(5, 0) NOT NULL DEFAULT 0 ,
+  SBTOPOS NUMERIC(5, 0) NOT NULL DEFAULT 0 ,
+  FLDALIAS CHAR(10) NOT NULL DEFAULT '' ,
+  FROMFILE CHAR(10) NOT NULL DEFAULT '' ,
+  FILELIB CHAR(10) NOT NULL DEFAULT '' ,
+  SBLENGTH NUMERIC(5, 0) NOT NULL DEFAULT 0,
+  SBCCSID CHAR(5) NOT NULL DEFAULT '')
+  RCDFMT JCRFFDFR   ;
+ 
+LABEL ON TABLE JCRFFDF
+  IS 'File field descriptions - outfile             jcr' ;
+ 
+LABEL ON COLUMN JCRFFDF
+( FLDTEXT50 TEXT IS 'Text' ,
+  SBKEY TEXT IS 'Sequence Key' ,
+  SBFIELD TEXT IS 'Name' ,
+  SBDATATYPE TEXT IS 'Attribute' ,
+  SBFROMPOS TEXT IS 'From' ,
+  SBTOPOS TEXT IS 'To' ,
+  SBCCSID TEXT IS 'CCSID' ,
+  FLDALIAS TEXT IS 'Alias' ,
+  FROMFILE TEXT IS 'File' ,
+  FILELIB TEXT IS 'Library' ) ;
+ 
+ GRANT ALTER , DELETE , INDEX , INSERT , REFERENCES , SELECT , UPDATE
+ ON JCRFFDF TO PUBLIC WITH GRANT OPTION ;

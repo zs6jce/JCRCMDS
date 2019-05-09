@@ -1,0 +1,77 @@
+      *----------------------------------------------------------------
+      * JCRSUNDRYD - Sundry programs selection menu - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3                  -
+     A                                             27 132 *DS4)
+     A                                      PRINT
+     A                                      CA03(03)
+     A                                      CA06(06)
+     A                                      CA10(10)
+     A                                      CA12(12)
+     A          R SCREEN
+     A                                      OVERLAY
+     A                                  1  2'JCRSUNDRY'
+     A                                      COLOR(BLU)
+     A                                  1 23'Various and Sundry'
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                      COLOR(BLU)
+     A            V01           45A  O  2  3
+     A            C01           10A  O  2 49COLOR(BLU)
+     A                                  2 72SYSNAME
+     A                                      COLOR(BLU)
+     A            V02           45A  O  3  3
+     A            C02           10A  O  3 49COLOR(BLU)
+     A            V03           45A  O  4  3
+     A            C03           10A  O  4 49COLOR(BLU)
+     A            V04           45A  O  5  3
+     A            C04           10A  O  5 49COLOR(BLU)
+     A            V05           45A  O  6  3
+     A            C05           10A  O  6 49COLOR(BLU)
+     A            V06           45A  O  7  3
+     A            C06           10A  O  7 49COLOR(BLU)
+     A            V07           45A  O  8  3
+     A            C07           10A  O  8 49COLOR(BLU)
+     A            V08           45A  O  9  3
+     A            C08           10A  O  9 49COLOR(BLU)
+     A            V09           45A  O 10  3
+     A            C09           10A  O 10 49COLOR(BLU)
+     A            V10           45A  O 11  3
+     A            C10           10A  O 11 49COLOR(BLU)
+     A            V11           45A  O 12  3
+     A            C11           10A  O 12 49COLOR(BLU)
+     A            V12           45A  O 13  3
+     A            C12           10A  O 13 49COLOR(BLU)
+     A            V13           45A  O 14  3
+     A            C13           10A  O 14 49COLOR(BLU)
+     A            V14           45A  O 15  3
+     A            C14           10A  O 15 49COLOR(BLU)
+     A            V15           45A  O 16  3
+     A            C15           10A  O 16 49COLOR(BLU)
+     A            V16           45A  O 17  3
+     A            C16           10A  O 17 49COLOR(BLU)
+     A            V17           45A  O 18  3
+     A            C17           10A  O 18 49COLOR(BLU)
+     A            V18           45A  O 19  3
+     A            C18           10A  O 19 49COLOR(BLU)
+     A            V19           45A  O 20  3
+     A            C19           10A  O 20 49COLOR(BLU)
+     A            SCOPTION       2A  B 22  2
+     A                                 22  5'Option'
+     A                                 22 14'F3=Exit'
+     A                                      COLOR(BLU)
+     A                                 22 27'F6=Wrksplf'
+     A                                      COLOR(BLU)
+     A                                 22 42'F10=Command Entry'
+     A                                      COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(23)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

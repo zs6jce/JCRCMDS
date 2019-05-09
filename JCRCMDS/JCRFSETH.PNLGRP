@@ -1,0 +1,47 @@
+:PNLGRP.:HELP NAME='JCRFSET'.Scan File Set Where Used (JCRFSET) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Scans selected *RPGLE source files for selected data file.
+Retrieves the PF and related LF
+names then scans for those names in selected source members.
+:P.End result is print or outfile of all source members that use selected file or
+related logical.
+ 
+:NT.To define many scanned source files with a single keyword, add records to
+JCRSMLTCHF.  These records drive the choice text if you F4 prompt the File Name.
+ Great way to pre-select groups of source files scanned often.:ENT.
+ 
+:NT.The library of the file is added to library list.:ENT.:EHELP.
+ 
+.*--------------------------------------------------------------------
+:HELP NAME='JCRFSET/FILE'.File Name - Help :XH3.File Name (FILENAME)
+:P.File name whose data base relations is retrieved and scanned in
+the selected source.:EHELP.
+ 
+:HELP NAME='JCRFSET/SRCFILE'.Source File(s) - Help :XH3.Source File(s) (SRCFILE)
+:P.Name and library of source physical file or list of files (up to nine) that
+the command will search.
+:NT.Associate unlimited numbers of files with single keyword in file JCRSMLTCHF.
+Choice Keyword must begin with character * :ENT.:EHELP.
+ 
+:HELP NAME='JCRFSET/LFSAMELIB'.Only LFs in samelib as PF - Help
+:XH3.Only LFs in samelib as PF (LFSAMELIB)
+:P.The value is useful on a test system where a LF could exist in multiple libraries.
+:PARML.:PT.:PK def.*YES:EPK.:PD.Only scan for LFs in the same library as the PF.
+:PT.*NO :PD.Scan for all LFs (note might get multiple hits for same named logical)
+:EPARML.:EHELP.
+ 
+:HELP NAME='JCRFSET/OUTPUT'.Output - Help :XH3.Output (OUTPUT)
+:P.Output to print file or data file.
+:PARML.:PT.:PK def.*PRINT:EPK.:PD.Generate report listing.
+:PT.*OUTFILE :PD.Output is redirected to selected data file. (see OUTFILE help).
+:PT.* :PD.Report listing is shown interactively.  Could tie up interactive
+session for extended time if scanning large number of members.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRFSET/OUTFILE'.OutFile - Help :XH3.File (OUTFILE)
+:P.File and library to receive command output.
+:P.JCRFSETF cannot be specified as outfile to receive output.:EHELP.
+ 
+:HELP NAME='JCRFSET/OUTMBR'.OutMbr - Help :XH3.OutMbr (OUTMBR)
+:P.File member to receive command output.:EHELP.:EPNLGRP.

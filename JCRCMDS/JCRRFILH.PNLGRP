@@ -1,0 +1,13 @@
+:PNLGRP.:HELP NAME='JCRRFIL'.File Record Format Xref (JCRRFIL) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Displays subfile listing of included Record format names, Renames,
+Libraries where file is located, and Based-on physicals of all Files
+used in RPG program.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRRFIL/PGM'.RPG program name - Help :XH3.RPG program name (PGM)
+:P.Program whose record formats to be displayed.:EHELP.
+ 
+:HELP NAME='JCRRFIL/SRCFILE'.Source file - Help :XH3.Source file (SRCFILE)
+:P.Source file containing source program.:EHELP.:EPNLGRP.

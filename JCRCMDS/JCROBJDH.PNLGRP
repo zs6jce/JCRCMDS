@@ -1,0 +1,27 @@
+:PNLGRP.:HELP NAME='JCROBJD'.Expanded Object Descriptions (JCROBJ) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Works with list of objects similar to WRKOBJ command. Sort any
+column either ascend or descend by placing cursor on column
+and pressing a command key. Objects displayed in reverse image have not been used since
+creation date.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCROBJD/OBJ'.Object name - Help :XH3.Object name (OBJ)
+:P.Name/*All/Generic* and library of objects to be selected.:EHELP.
+ 
+:HELP NAME='JCROBJD/OBJTYPE'.Object Type - Help :XH3.Object Type (OBJTYPE)
+:P.Type of object to select.:EHELP.
+ 
+:HELP NAME='JCROBJD/EXTOBJATR'.Object ATR (PF LF etc.) - Help
+:XH3.Object ATR (PF LF etc.)(EXTOBJATR)
+:P.Further refine *FILE objects with PF, LF, PRTF, or DSPF.:EHELP.
+ 
+:HELP NAME='JCROBJD/CREATEDBY'.Created by User Profile Name - Help
+:XH3.Created by User Profile Name (CREATEDBY)
+:P.Select only objects created by this profile.:EHELP.
+ 
+:HELP NAME='JCROBJD/ALLOWOPT'.Allow Options Selection - Help
+:XH3.Allow Options Selection (ALLOWOPT)
+:P.Show option selections on main screen. For a developer,
+probably want this *YES, for a business user, *NO.:EHELP.:EPNLGRP.

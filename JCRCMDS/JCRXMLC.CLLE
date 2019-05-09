@@ -1,0 +1,62 @@
+/*--------------------------------------------------------------------------*/
+/* JCRXMLC - XML programs selection menu - CMDPGM                           */
+/*  list of XML and XML install programs                                    */
+/*   Craig Rutledge  < www.jcrcmds.com >                                    */
+/*--------------------------------------------------------------------------*/
+             PGM
+             DCLF       FILE(JCRXMLD)
+             MONMSG     MSGID(CPF6801)
+ 
+             DOUNTIL    COND(1 *EQ 2)
+             SNDRCVF    RCDFMT(SCREEN) WAIT(*YES)
+ 
+             SELECT
+             WHEN       COND((&IN03) *OR (&IN12)) THEN(DO)
+             LEAVE
+             ENDDO
+ 
+             WHEN       COND(&IN06) THEN(WRKSPLF)
+ 
+/*------------------------------------------------------------------------*/
+/* the compiler does strange here.  I have my ifs directory as a          */
+/* default in the command, but if that IFS directory name is not on the   */
+/* install system (which it probably will not be) this program would not  */
+/* compile.  Wrap it in a qcmdexc so it will compile on install system    */
+/*------------------------------------------------------------------------*/
+             WHEN       COND(&SCOPTION = '1') THEN(DO)
+             CALL       PGM(QCMDEXC) PARM('?JCRIFSCPY ' 11)
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '2') THEN(DO)
+             ?XMLSRCFIL
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '3') THEN(DO)
+             ?XMLGEN
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '4') THEN(DO)
+             ?XMLGENCMD
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '5') THEN(DO)
+             ?XMLGENINC
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '6') THEN(DO)
+             ?XMLGENMBR
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '7') THEN(DO)
+             ?XMLSCRIPT
+             ENDDO
+ 
+             /*-------------------------------------------------*/
+             WHEN       COND(&SCOPTION = '8') THEN(DO)
+             ?XMLPREVIEW
+             ENDDO
+ 
+             ENDSELECT
+             CHGVAR     VAR(&SCOPTION) VALUE('  ')
+             ENDDO
+             ENDPGM

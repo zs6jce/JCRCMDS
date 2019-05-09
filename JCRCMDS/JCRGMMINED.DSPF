@@ -1,0 +1,74 @@
+      *----------------------------------------------------------------
+      * MINESWEEPER - AKNAKERESY - DSPF     JCRGMMINED
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      CA03 CA12
+     A          R SCREEN1
+     A                                      CA05 CA09
+     A                                      CSRLOC(CSRROW CSRCOL)
+     A            CSRROW         3S 0H
+     A            CSRCOL         3S 0H
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A            WSMEZO1       40A  B  6  4
+     A  80                                  DSPATR(PR)
+     A            WSMEZO2       40A  B  7  4
+     A  80                                  DSPATR(PR)
+     A            WSMEZO3       40A  B  8  4
+     A  80                                  DSPATR(PR)
+     A            WSMEZO4       40A  B  9  4
+     A  80                                  DSPATR(PR)
+     A            WSMEZO5       40A  B 10  4
+     A  80                                  DSPATR(PR)
+     A            WSMEZO6       40A  B 11  4
+     A  80                                  DSPATR(PR)
+     A            WSMEZO7       40A  B 12  4
+     A  80                                  DSPATR(PR)
+     A            WSMEZO8       40A  B 13  4
+     A  80                                  DSPATR(PR)
+     A                                  6  1'1'
+     A                                  7  1'2'
+     A                                  8  1'3'
+     A                                  9  1'4'
+     A                                 10  1'5'
+     A                                 11  1'6'
+     A                                 12  1'7'
+     A                                 13  1'8'
+     A                                  3 13'1'
+     A                                  4  4'1'
+     A                                  4 13'0'
+     A                                  3 23'2'
+     A                                  4 23'0'
+     A                                  3 33'3'
+     A                                  3 43'4'
+     A                                  4 33'0'
+     A                                  4 43'0'
+     A            WSAKNA         5Y 0O  4 75COLOR(WHT)
+     A                                      EDTCDE(3)
+     A            AGAMEOVER      1A  P
+     A            GAMEOVER      30A  O 18 50DSPATR(&AGAMEOVER)
+     A            WSBUMM1       30A  O 12 50
+     A  85                                  COLOR(RED)
+     A N85                                  COLOR(GRN)
+     A            WSBUMM2       30A  O 13 50
+     A  85                                  COLOR(RED)
+     A N85                                  COLOR(GRN)
+     A            WSBUMM3       30A  O 14 50
+     A  85                                  COLOR(RED)
+     A N85                                  COLOR(GRN)
+     A            WSBUMM4       30A  O 15 50
+     A  85                                  COLOR(RED)
+     A N85                                  COLOR(GRN)
+     A            WSBUMM5       30A  O 16 50
+     A  85                                  COLOR(RED)
+     A N85                                  COLOR(GRN)
+     A            WSF3          12A  O 23  4COLOR(BLU)
+     A            WSF5          12A  O 23 19COLOR(BLU)
+     A            WSF9          12A  O 23 34COLOR(BLU)
+     A            WSHDR1        12A  O  1 17COLOR(BLU)
+     A            WSDES         20A  O  6 50COLOR(BLU)
+     A            WSDES2        30A  O  7 50
+     A            WSMINES       16A  O  4 58
+     A            WSDESC1       30A  O  9 50
+     A            WSDESC2       30A  O 10 50
+     A            WSF12         12A  O 23 49COLOR(BLU)

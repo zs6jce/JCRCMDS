@@ -1,0 +1,16 @@
+:PNLGRP.:HELP NAME='JCRFD'.File Descriptions (JCRFD) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Quick view most often needed data file information.
+:P.You may select to view Data Base Relations, Member List Record Formats, or Trigger
+information by pressing a command key.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRFD/FILE'.File - Help :XH3.File (FILE)
+:P.File whose description is to be retrieved.:EHELP.
+ 
+:HELP NAME='JCRFD/VIEW'.View - Help :XH3.View (VIEW)
+:P.Initial information presented by command.
+:PARML.:PT.*:PD.Initial presentation is basic file information.
+:PT.:PK def.*MBR:EPK.:PD.Display subfile of all members in the file.
+:PT.:PK def.*DBR:EPK.:PD.Display subfile of data base relations.:EPARML.:EHELP.:EPNLGRP.

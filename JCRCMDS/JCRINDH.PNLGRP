@@ -1,0 +1,10 @@
+:PNLGRP.:HELP NAME='JCRIND'.Indicator List (JCRIND) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Displays outline view of indicators used in
+RPGLE, CLP, CLLE, PRTF, and/or DSPF source members.
+Multiple members can be selected to see cumulative indicator usage.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRIND/SRCMBR'.Source member - Help :XH3.Source member (SRCMBR)
+:P.Member names whose indicator usage is to be displayed.:EHELP.:EPNLGRP.

@@ -1,0 +1,10 @@
+:PNLGRP.:HELP NAME='JCRSPLF'.List Spool Files with Options (JCRSPLF) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Displays list of spooled file names that meet selection criteria.
+Select useful options to perform. Uses SPLF0030 format that
+is faster than WRKSPLF for large sets of spooled files.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRSPLF/SELECT'.Select files for - Help :XH3.Select files for (SELECT)
+:P.Specifies which group of files is selected to be displayed.:EHELP.:EPNLGRP.

@@ -1,0 +1,36 @@
+      *----------------------------------------------------------------
+      * XMLSCRIPTD - XML Script Member Viewer - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      INDARA PRINT CA03 CA12
+     A          R SBFDTA1                   SFL
+     A            XDATA         77A  O  5  2
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1) OVERLAY
+     A                                      SFLPAG(17) SFLSIZ(51)
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A                                  1  2'XMLSCRIPT' COLOR(BLU)
+     A                                  1 23'XML Script Member Viewer'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  2  2'Mbr:'
+     A            SCOBJHEAD     60A  O  2  7
+     A                                  2 72SYSNAME COLOR(BLU)
+     A                                  4  2'Seq' DSPATR(UL) COLOR(BLU)
+     A                                  4  6'Cmd' DSPATR(UL) COLOR(BLU)
+     A                                  4 10'MbrName' DSPATR(UL) COLOR(BLU)
+     A                                  4 21'MbrAttr' DSPATR(UL) COLOR(BLU)
+     A                                  4 32'FrmSrcFil' DSPATR(UL) COLOR(BLU)
+     A                                  4 43'FrmSrcLib' DSPATR(UL) COLOR(BLU)
+     A                                  4 54'TargetSrc' DSPATR(UL) COLOR(BLU)
+     A                                  4 65'Objtyp' DSPATR(UL) COLOR(BLU)
+     A                                  4 73'GenYN' DSPATR(UL) COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R SFOOTER1                  BLINK
+     A                                 23  2'F3=Exit' COLOR(BLU)
+     A                                 23 69'F12=Cancel' COLOR(BLU)

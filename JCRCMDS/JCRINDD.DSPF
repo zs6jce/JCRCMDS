@@ -1,0 +1,494 @@
+      *----------------------------------------------------------------
+      * JCRINDD - Indicator List - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      INDARA PRINT CA03 CA12
+     A          R SCREEN                    BLINK
+     A            ATR0C01        1A  P
+     A            ATR0C02        1A  P
+     A            ATR0C03        1A  P
+     A            ATR0C04        1A  P
+     A            ATR0C05        1A  P
+     A            ATR0C06        1A  P
+     A            ATR0C07        1A  P
+     A            ATR0C08        1A  P
+     A            ATR0C09        1A  P
+     A            ATR0C10        1A  P
+     A            ATR0C11        1A  P
+     A            ATR0C12        1A  P
+     A            ATR0C13        1A  P
+     A            ATR0C14        1A  P
+     A            ATR0C15        1A  P
+     A            ATR0C16        1A  P
+     A            ATR0C17        1A  P
+     A            ATR0C18        1A  P
+     A            ATR1C01        1A  P
+     A            ATR1C02        1A  P
+     A            ATR1C03        1A  P
+     A            ATR1C04        1A  P
+     A            ATR1C05        1A  P
+     A            ATR1C06        1A  P
+     A            ATR1C07        1A  P
+     A            ATR1C08        1A  P
+     A            ATR1C09        1A  P
+     A            ATR1C10        1A  P
+     A            ATR1C11        1A  P
+     A            ATR1C12        1A  P
+     A            ATR1C13        1A  P
+     A            ATR1C14        1A  P
+     A            ATR1C15        1A  P
+     A            ATR1C16        1A  P
+     A            ATR1C17        1A  P
+     A            ATR1C18        1A  P
+     A            ATR2C01        1A  P
+     A            ATR2C02        1A  P
+     A            ATR2C03        1A  P
+     A            ATR2C04        1A  P
+     A            ATR2C05        1A  P
+     A            ATR2C06        1A  P
+     A            ATR2C07        1A  P
+     A            ATR2C08        1A  P
+     A            ATR2C09        1A  P
+     A            ATR2C10        1A  P
+     A            ATR2C11        1A  P
+     A            ATR2C12        1A  P
+     A            ATR2C13        1A  P
+     A            ATR2C14        1A  P
+     A            ATR2C15        1A  P
+     A            ATR2C16        1A  P
+     A            ATR2C17        1A  P
+     A            ATR2C18        1A  P
+     A            ATR3C01        1A  P
+     A            ATR3C02        1A  P
+     A            ATR3C03        1A  P
+     A            ATR3C04        1A  P
+     A            ATR3C05        1A  P
+     A            ATR3C06        1A  P
+     A            ATR3C07        1A  P
+     A            ATR3C08        1A  P
+     A            ATR3C09        1A  P
+     A            ATR3C10        1A  P
+     A            ATR3C11        1A  P
+     A            ATR3C12        1A  P
+     A            ATR3C13        1A  P
+     A            ATR3C14        1A  P
+     A            ATR3C15        1A  P
+     A            ATR3C16        1A  P
+     A            ATR3C17        1A  P
+     A            ATR3C18        1A  P
+     A            ATR4C01        1A  P
+     A            ATR4C02        1A  P
+     A            ATR4C03        1A  P
+     A            ATR4C04        1A  P
+     A            ATR4C05        1A  P
+     A            ATR4C06        1A  P
+     A            ATR4C07        1A  P
+     A            ATR4C08        1A  P
+     A            ATR4C09        1A  P
+     A            ATR4C10        1A  P
+     A            ATR4C11        1A  P
+     A            ATR4C12        1A  P
+     A            ATR4C13        1A  P
+     A            ATR4C14        1A  P
+     A            ATR4C15        1A  P
+     A            ATR4C16        1A  P
+     A            ATR4C17        1A  P
+     A            ATR4C18        1A  P
+     A            ATR5C01        1A  P
+     A            ATR5C02        1A  P
+     A            ATR5C03        1A  P
+     A            ATR5C04        1A  P
+     A            ATR5C05        1A  P
+     A            ATR5C06        1A  P
+     A            ATR5C07        1A  P
+     A            ATR5C08        1A  P
+     A            ATR5C09        1A  P
+     A            ATR5C10        1A  P
+     A            ATR5C11        1A  P
+     A            ATR5C12        1A  P
+     A            ATR5C13        1A  P
+     A            ATR5C14        1A  P
+     A            ATR5C15        1A  P
+     A            ATR5C16        1A  P
+     A            ATR5C17        1A  P
+     A            ATR5C18        1A  P
+     A            ATR6C01        1A  P
+     A            ATR6C02        1A  P
+     A            ATR6C03        1A  P
+     A            ATR6C04        1A  P
+     A            ATR6C05        1A  P
+     A            ATR6C06        1A  P
+     A            ATR6C07        1A  P
+     A            ATR6C08        1A  P
+     A            ATR6C09        1A  P
+     A            ATR6C10        1A  P
+     A            ATR6C11        1A  P
+     A            ATR6C12        1A  P
+     A            ATR6C13        1A  P
+     A            ATR6C14        1A  P
+     A            ATR6C15        1A  P
+     A            ATR6C16        1A  P
+     A            ATR6C17        1A  P
+     A            ATR6C18        1A  P
+     A            ATR7C01        1A  P
+     A            ATR7C02        1A  P
+     A            ATR7C03        1A  P
+     A            ATR7C04        1A  P
+     A            ATR7C05        1A  P
+     A            ATR7C06        1A  P
+     A            ATR7C07        1A  P
+     A            ATR7C08        1A  P
+     A            ATR7C09        1A  P
+     A            ATR7C10        1A  P
+     A            ATR7C11        1A  P
+     A            ATR7C12        1A  P
+     A            ATR7C13        1A  P
+     A            ATR7C14        1A  P
+     A            ATR7C15        1A  P
+     A            ATR7C16        1A  P
+     A            ATR7C17        1A  P
+     A            ATR7C18        1A  P
+     A            ATR8C01        1A  P
+     A            ATR8C02        1A  P
+     A            ATR8C03        1A  P
+     A            ATR8C04        1A  P
+     A            ATR8C05        1A  P
+     A            ATR8C06        1A  P
+     A            ATR8C07        1A  P
+     A            ATR8C08        1A  P
+     A            ATR8C09        1A  P
+     A            ATR8C10        1A  P
+     A            ATR8C11        1A  P
+     A            ATR8C12        1A  P
+     A            ATR8C13        1A  P
+     A            ATR8C14        1A  P
+     A            ATR8C15        1A  P
+     A            ATR8C16        1A  P
+     A            ATR8C17        1A  P
+     A            ATR8C18        1A  P
+     A            ATR9C01        1A  P
+     A            ATR9C02        1A  P
+     A            ATR9C03        1A  P
+     A            ATR9C04        1A  P
+     A            ATR9C05        1A  P
+     A            ATR9C06        1A  P
+     A            ATR9C07        1A  P
+     A            ATR9C08        1A  P
+     A            ATR9C09        1A  P
+     A            ATR9C10        1A  P
+     A            ATR9C11        1A  P
+     A            ATR9C12        1A  P
+     A            ATR9C13        1A  P
+     A            ATR9C14        1A  P
+     A            ATR9C15        1A  P
+     A            ATR9C16        1A  P
+     A            ATR9C17        1A  P
+     A            ATR9C18        1A  P
+     A            ATR10C01       1A  P
+     A            ATR10C02       1A  P
+     A            ATR10C03       1A  P
+     A            ATR10C04       1A  P
+     A            ATR10C05       1A  P
+     A            ATR10C06       1A  P
+     A            ATR10C07       1A  P
+     A            ATR10C08       1A  P
+     A            ATR10C09       1A  P
+     A            ATR10C10       1A  P
+     A            ATR10C11       1A  P
+     A            ATR10C12       1A  P
+     A            ATR10C13       1A  P
+     A            ATR10C14       1A  P
+     A            ATR10C15       1A  P
+     A            ATR10C16       1A  P
+     A            ATR10C17       1A  P
+     A            ATR10C18       1A  P
+     A            ATR11C01       1A  P
+     A            ATR11C02       1A  P
+     A            ATR11C03       1A  P
+     A            ATR11C04       1A  P
+     A            ATR11C05       1A  P
+     A            ATR11C06       1A  P
+     A            ATR11C07       1A  P
+     A            ATR11C08       1A  P
+     A            ATR11C09       1A  P
+     A            ATR11C10       1A  P
+     A            ATR11C11       1A  P
+     A            ATR11C12       1A  P
+     A            ATR11C13       1A  P
+     A            ATR11C14       1A  P
+     A            ATR11C15       1A  P
+     A            ATR11C16       1A  P
+     A            ATR11C17       1A  P
+     A            ATR11C18       1A  P
+      *----------------------------------------------------------------
+     A                                  1  2'JCRIND' COLOR(BLU)
+     A                                  1 22'Indicator List'  DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+ 
+     A            SCOBJHEAD1    68A  O  2  2
+     A                                  2 72SYSNAME COLOR(BLU)
+     A            SCOBJHEAD2    68A  O  3  6
+     A            SCOBJHEAD3    68A  O  4  6
+ 
+     A                                  4 74'LR 1P' COLOR(BLU)
+     A                                  5  5'  01  10  20  30  40  50  60  70  -
+     A                                      80  90  L0  KA  KM  OA  M1  U1  H1 -
+     A                                       RT ' COLOR(BLU) DSPATR(UL)
+     A                                  6  2'0' COLOR(PNK)
+     A                                  6  4'|' COLOR(BLU)
+     A            R0C01          2A  O  6  7DSPATR(&ATR0C01)
+     A            R0C02          2A  O  6 11DSPATR(&ATR0C02)
+     A            R0C03          2A  O  6 15DSPATR(&ATR0C03)
+     A            R0C04          2A  O  6 19DSPATR(&ATR0C04)
+     A            R0C05          2A  O  6 23DSPATR(&ATR0C05)
+     A            R0C06          2A  O  6 27DSPATR(&ATR0C06)
+     A            R0C07          2A  O  6 31DSPATR(&ATR0C07)
+     A            R0C08          2A  O  6 35DSPATR(&ATR0C08)
+     A            R0C09          2A  O  6 39DSPATR(&ATR0C09)
+     A            R0C10          2A  O  6 43DSPATR(&ATR0C10)
+     A            R0C11          2A  O  6 47DSPATR(&ATR0C11)
+     A            R0C12          2A  O  6 51DSPATR(&ATR0C12)
+     A            R0C13          2A  O  6 55DSPATR(&ATR0C13)
+     A            R0C14          2A  O  6 59DSPATR(&ATR0C14)
+     A            R0C15          2A  O  6 63DSPATR(&ATR0C15)
+     A            R0C16          2A  O  6 67DSPATR(&ATR0C16)
+     A            R0C17          2A  O  6 71DSPATR(&ATR0C17)
+     A            R0C18          2A  O  6 75DSPATR(&ATR0C18)
+     A                                  6 78'|' COLOR(BLU)
+     A                                  7  2'1' COLOR(PNK)
+     A                                  7  4'|' COLOR(BLU)
+     A            R1C01          2A  O  7  7DSPATR(&ATR1C01)
+     A            R1C02          2A  O  7 11DSPATR(&ATR1C02)
+     A            R1C03          2A  O  7 15DSPATR(&ATR1C03)
+     A            R1C04          2A  O  7 19DSPATR(&ATR1C04)
+     A            R1C05          2A  O  7 23DSPATR(&ATR1C05)
+     A            R1C06          2A  O  7 27DSPATR(&ATR1C06)
+     A            R1C07          2A  O  7 31DSPATR(&ATR1C07)
+     A            R1C08          2A  O  7 35DSPATR(&ATR1C08)
+     A            R1C09          2A  O  7 39DSPATR(&ATR1C09)
+     A            R1C10          2A  O  7 43DSPATR(&ATR1C10)
+     A            R1C11          2A  O  7 47DSPATR(&ATR1C11)
+     A            R1C12          2A  O  7 51DSPATR(&ATR1C12)
+     A            R1C13          2A  O  7 55DSPATR(&ATR1C13)
+     A            R1C14          2A  O  7 59DSPATR(&ATR1C14)
+     A            R1C15          2A  O  7 63DSPATR(&ATR1C15)
+     A            R1C16          2A  O  7 67DSPATR(&ATR1C16)
+     A            R1C17          2A  O  7 71DSPATR(&ATR1C17)
+     A            R1C18          2A  O  7 75DSPATR(&ATR1C18)
+     A                                  7 78'|' COLOR(BLU)
+     A                                  8  2'2' COLOR(PNK)
+     A                                  8  4'|' COLOR(BLU)
+     A            R2C01          2A  O  8  7DSPATR(&ATR2C01)
+     A            R2C02          2A  O  8 11DSPATR(&ATR2C02)
+     A            R2C03          2A  O  8 15DSPATR(&ATR2C03)
+     A            R2C04          2A  O  8 19DSPATR(&ATR2C04)
+     A            R2C05          2A  O  8 23DSPATR(&ATR2C05)
+     A            R2C06          2A  O  8 27DSPATR(&ATR2C06)
+     A            R2C07          2A  O  8 31DSPATR(&ATR2C07)
+     A            R2C08          2A  O  8 35DSPATR(&ATR2C08)
+     A            R2C09          2A  O  8 39DSPATR(&ATR2C09)
+     A            R2C10          2A  O  8 43DSPATR(&ATR2C10)
+     A            R2C11          2A  O  8 47DSPATR(&ATR2C11)
+     A            R2C12          2A  O  8 51DSPATR(&ATR2C12)
+     A            R2C13          2A  O  8 55DSPATR(&ATR2C13)
+     A            R2C14          2A  O  8 59DSPATR(&ATR2C14)
+     A            R2C15          2A  O  8 63DSPATR(&ATR2C15)
+     A            R2C16          2A  O  8 67DSPATR(&ATR2C16)
+     A            R2C17          2A  O  8 71DSPATR(&ATR2C17)
+     A            R2C18          2A  O  8 75DSPATR(&ATR2C18)
+     A                                  8 78'|' COLOR(BLU)
+     A                                  9  2'3' COLOR(PNK)
+     A                                  9  4'|' COLOR(BLU)
+     A            R3C01          2A  O  9  7DSPATR(&ATR3C01)
+     A            R3C02          2A  O  9 11DSPATR(&ATR3C02)
+     A            R3C03          2A  O  9 15DSPATR(&ATR3C03)
+     A            R3C04          2A  O  9 19DSPATR(&ATR3C04)
+     A            R3C05          2A  O  9 23DSPATR(&ATR3C05)
+     A            R3C06          2A  O  9 27DSPATR(&ATR3C06)
+     A            R3C07          2A  O  9 31DSPATR(&ATR3C07)
+     A            R3C08          2A  O  9 35DSPATR(&ATR3C08)
+     A            R3C09          2A  O  9 39DSPATR(&ATR3C09)
+     A            R3C10          2A  O  9 43DSPATR(&ATR3C10)
+     A            R3C11          2A  O  9 47DSPATR(&ATR3C11)
+     A            R3C12          2A  O  9 51DSPATR(&ATR3C12)
+     A            R3C13          2A  O  9 55DSPATR(&ATR3C13)
+     A            R3C14          2A  O  9 59DSPATR(&ATR3C14)
+     A            R3C15          2A  O  9 63DSPATR(&ATR3C15)
+     A            R3C16          2A  O  9 67DSPATR(&ATR3C16)
+     A            R3C17          2A  O  9 71DSPATR(&ATR3C17)
+     A            R3C18          2A  O  9 75DSPATR(&ATR3C18)
+     A                                  9 78'|' COLOR(BLU)
+     A                                 10  2'4' COLOR(PNK)
+     A                                 10  4'|' COLOR(BLU)
+     A            R4C01          2A  O 10  7DSPATR(&ATR4C01)
+     A            R4C02          2A  O 10 11DSPATR(&ATR4C02)
+     A            R4C03          2A  O 10 15DSPATR(&ATR4C03)
+     A            R4C04          2A  O 10 19DSPATR(&ATR4C04)
+     A            R4C05          2A  O 10 23DSPATR(&ATR4C05)
+     A            R4C06          2A  O 10 27DSPATR(&ATR4C06)
+     A            R4C07          2A  O 10 31DSPATR(&ATR4C07)
+     A            R4C08          2A  O 10 35DSPATR(&ATR4C08)
+     A            R4C09          2A  O 10 39DSPATR(&ATR4C09)
+     A            R4C10          2A  O 10 43DSPATR(&ATR4C10)
+     A            R4C11          2A  O 10 47DSPATR(&ATR4C11)
+     A            R4C12          2A  O 10 51DSPATR(&ATR4C12)
+     A            R4C13          2A  O 10 55DSPATR(&ATR4C13)
+     A            R4C14          2A  O 10 59DSPATR(&ATR4C14)
+     A            R4C15          2A  O 10 63DSPATR(&ATR4C15)
+     A            R4C16          2A  O 10 67DSPATR(&ATR4C16)
+     A            R4C17          2A  O 10 71DSPATR(&ATR4C17)
+     A            R4C18          2A  O 10 75DSPATR(&ATR4C18)
+     A                                 10 78'|' COLOR(BLU)
+     A                                 11  2'5' COLOR(PNK)
+     A                                 11  4'|' COLOR(BLU)
+     A            R5C01          2A  O 11  7DSPATR(&ATR5C01)
+     A            R5C02          2A  O 11 11DSPATR(&ATR5C02)
+     A            R5C03          2A  O 11 15DSPATR(&ATR5C03)
+     A            R5C04          2A  O 11 19DSPATR(&ATR5C04)
+     A            R5C05          2A  O 11 23DSPATR(&ATR5C05)
+     A            R5C06          2A  O 11 27DSPATR(&ATR5C06)
+     A            R5C07          2A  O 11 31DSPATR(&ATR5C07)
+     A            R5C08          2A  O 11 35DSPATR(&ATR5C08)
+     A            R5C09          2A  O 11 39DSPATR(&ATR5C09)
+     A            R5C10          2A  O 11 43DSPATR(&ATR5C10)
+     A            R5C11          2A  O 11 47DSPATR(&ATR5C11)
+     A            R5C12          2A  O 11 51DSPATR(&ATR5C12)
+     A            R5C13          2A  O 11 55DSPATR(&ATR5C13)
+     A            R5C14          2A  O 11 59DSPATR(&ATR5C14)
+     A            R5C15          2A  O 11 63DSPATR(&ATR5C15)
+     A            R5C16          2A  O 11 67DSPATR(&ATR5C16)
+     A            R5C17          2A  O 11 71DSPATR(&ATR5C17)
+     A            R5C18          2A  O 11 75DSPATR(&ATR5C18)
+     A                                 11 78'|' COLOR(BLU)
+     A                                 12  2'6' COLOR(PNK)
+     A                                 12  4'|' COLOR(BLU)
+     A            R6C01          2A  O 12  7DSPATR(&ATR6C01)
+     A            R6C02          2A  O 12 11DSPATR(&ATR6C02)
+     A            R6C03          2A  O 12 15DSPATR(&ATR6C03)
+     A            R6C04          2A  O 12 19DSPATR(&ATR6C04)
+     A            R6C05          2A  O 12 23DSPATR(&ATR6C05)
+     A            R6C06          2A  O 12 27DSPATR(&ATR6C06)
+     A            R6C07          2A  O 12 31DSPATR(&ATR6C07)
+     A            R6C08          2A  O 12 35DSPATR(&ATR6C08)
+     A            R6C09          2A  O 12 39DSPATR(&ATR6C09)
+     A            R6C10          2A  O 12 43DSPATR(&ATR6C10)
+     A            R6C11          2A  O 12 47DSPATR(&ATR6C11)
+     A            R6C12          2A  O 12 51DSPATR(&ATR6C12)
+     A            R6C13          2A  O 12 55DSPATR(&ATR6C13)
+     A            R6C14          2A  O 12 59DSPATR(&ATR6C14)
+     A            R6C15          2A  O 12 63DSPATR(&ATR6C15)
+     A            R6C16          2A  O 12 67DSPATR(&ATR6C16)
+     A            R6C17          2A  O 12 71DSPATR(&ATR6C17)
+     A            R6C18          2A  O 12 75DSPATR(&ATR6C18)
+     A                                 12 78'|' COLOR(BLU)
+     A                                 13  2'7' COLOR(PNK)
+     A                                 13  4'|' COLOR(BLU)
+     A            R7C01          2A  O 13  7DSPATR(&ATR7C01)
+     A            R7C02          2A  O 13 11DSPATR(&ATR7C02)
+     A            R7C03          2A  O 13 15DSPATR(&ATR7C03)
+     A            R7C04          2A  O 13 19DSPATR(&ATR7C04)
+     A            R7C05          2A  O 13 23DSPATR(&ATR7C05)
+     A            R7C06          2A  O 13 27DSPATR(&ATR7C06)
+     A            R7C07          2A  O 13 31DSPATR(&ATR7C07)
+     A            R7C08          2A  O 13 35DSPATR(&ATR7C08)
+     A            R7C09          2A  O 13 39DSPATR(&ATR7C09)
+     A            R7C10          2A  O 13 43DSPATR(&ATR7C10)
+     A            R7C11          2A  O 13 47DSPATR(&ATR7C11)
+     A            R7C12          2A  O 13 51DSPATR(&ATR7C12)
+     A            R7C13          2A  O 13 55DSPATR(&ATR7C13)
+     A            R7C14          2A  O 13 59DSPATR(&ATR7C14)
+     A            R7C15          2A  O 13 63DSPATR(&ATR7C15)
+     A            R7C16          2A  O 13 67DSPATR(&ATR7C16)
+     A            R7C17          2A  O 13 71DSPATR(&ATR7C17)
+     A            R7C18          2A  O 13 75DSPATR(&ATR7C18)
+     A                                 13 78'|' COLOR(BLU)
+     A                                 14  2'8' COLOR(PNK)
+     A                                 14  4'|' COLOR(BLU)
+     A            R8C01          2A  O 14  7DSPATR(&ATR8C01)
+     A            R8C02          2A  O 14 11DSPATR(&ATR8C02)
+     A            R8C03          2A  O 14 15DSPATR(&ATR8C03)
+     A            R8C04          2A  O 14 19DSPATR(&ATR8C04)
+     A            R8C05          2A  O 14 23DSPATR(&ATR8C05)
+     A            R8C06          2A  O 14 27DSPATR(&ATR8C06)
+     A            R8C07          2A  O 14 31DSPATR(&ATR8C07)
+     A            R8C08          2A  O 14 35DSPATR(&ATR8C08)
+     A            R8C09          2A  O 14 39DSPATR(&ATR8C09)
+     A            R8C10          2A  O 14 43DSPATR(&ATR8C10)
+     A            R8C11          2A  O 14 47DSPATR(&ATR8C11)
+     A            R8C12          2A  O 14 51DSPATR(&ATR8C12)
+     A            R8C13          2A  O 14 55DSPATR(&ATR8C13)
+     A            R8C14          2A  O 14 59DSPATR(&ATR8C14)
+     A            R8C15          2A  O 14 63DSPATR(&ATR8C15)
+     A            R8C16          2A  O 14 67DSPATR(&ATR8C16)
+     A            R8C17          2A  O 14 71DSPATR(&ATR8C17)
+     A            R8C18          2A  O 14 75DSPATR(&ATR8C18)
+     A                                 14 78'|' COLOR(BLU)
+     A                                 15  2'9' COLOR(PNK)
+     A                                 15  4'|' COLOR(BLU)
+     A            R9C01          2A  O 15  7DSPATR(&ATR9C01)
+     A            R9C02          2A  O 15 11DSPATR(&ATR9C02)
+     A            R9C03          2A  O 15 15DSPATR(&ATR9C03)
+     A            R9C04          2A  O 15 19DSPATR(&ATR9C04)
+     A            R9C05          2A  O 15 23DSPATR(&ATR9C05)
+     A            R9C06          2A  O 15 27DSPATR(&ATR9C06)
+     A            R9C07          2A  O 15 31DSPATR(&ATR9C07)
+     A            R9C08          2A  O 15 35DSPATR(&ATR9C08)
+     A            R9C09          2A  O 15 39DSPATR(&ATR9C09)
+     A            R9C10          2A  O 15 43DSPATR(&ATR9C10)
+     A            R9C11          2A  O 15 47DSPATR(&ATR9C11)
+     A            R9C12          2A  O 15 51DSPATR(&ATR9C12)
+     A            R9C13          2A  O 15 55DSPATR(&ATR9C13)
+     A            R9C14          2A  O 15 59DSPATR(&ATR9C14)
+     A            R9C15          2A  O 15 63DSPATR(&ATR9C15)
+     A            R9C16          2A  O 15 67DSPATR(&ATR9C16)
+     A            R9C17          2A  O 15 71DSPATR(&ATR9C17)
+     A            R9C18          2A  O 15 75DSPATR(&ATR9C18)
+     A                                 15 78'|' COLOR(BLU)
+     A                                 16  4'|' COLOR(BLU)
+     A            R10C01         2A  O 16  7DSPATR(&ATR10C01)
+     A            R10C02         2A  O 16 11DSPATR(&ATR10C02)
+     A            R10C03         2A  O 16 15DSPATR(&ATR10C03)
+     A            R10C04         2A  O 16 19DSPATR(&ATR10C04)
+     A            R10C05         2A  O 16 23DSPATR(&ATR10C05)
+     A            R10C06         2A  O 16 27DSPATR(&ATR10C06)
+     A            R10C07         2A  O 16 31DSPATR(&ATR10C07)
+     A            R10C08         2A  O 16 35DSPATR(&ATR10C08)
+     A            R10C09         2A  O 16 39DSPATR(&ATR10C09)
+     A            R10C10         2A  O 16 43DSPATR(&ATR10C10)
+     A            R10C11         2A  O 16 47DSPATR(&ATR10C11)
+     A            R10C12         2A  O 16 51DSPATR(&ATR10C12)
+     A            R10C13         2A  O 16 55DSPATR(&ATR10C13)
+     A            R10C14         2A  O 16 59DSPATR(&ATR10C14)
+     A            R10C15         2A  O 16 63DSPATR(&ATR10C15)
+     A            R10C16         2A  O 16 67DSPATR(&ATR10C16)
+     A            R10C17         2A  O 16 71DSPATR(&ATR10C17)
+     A            R10C18         2A  O 16 75DSPATR(&ATR10C18)
+     A                                 16 78'|' COLOR(BLU)
+     A                                 17  4'|' COLOR(BLU)
+     A            R11C01         2A  O 17  7DSPATR(&ATR11C01)
+     A            R11C02         2A  O 17 11DSPATR(&ATR11C02)
+     A            R11C03         2A  O 17 15DSPATR(&ATR11C03)
+     A            R11C04         2A  O 17 19DSPATR(&ATR11C04)
+     A            R11C05         2A  O 17 23DSPATR(&ATR11C05)
+     A            R11C06         2A  O 17 27DSPATR(&ATR11C06)
+     A            R11C07         2A  O 17 31DSPATR(&ATR11C07)
+     A            R11C08         2A  O 17 35DSPATR(&ATR11C08)
+     A            R11C09         2A  O 17 39DSPATR(&ATR11C09)
+     A            R11C10         2A  O 17 43DSPATR(&ATR11C10)
+     A            R11C11         2A  O 17 47DSPATR(&ATR11C11)
+     A            R11C12         2A  O 17 51DSPATR(&ATR11C12)
+     A            R11C13         2A  O 17 55DSPATR(&ATR11C13)
+     A            R11C14         2A  O 17 59DSPATR(&ATR11C14)
+     A            R11C15         2A  O 17 63DSPATR(&ATR11C15)
+     A            R11C16         2A  O 17 67DSPATR(&ATR11C16)
+     A            R11C17         2A  O 17 71DSPATR(&ATR11C17)
+     A            R11C18         2A  O 17 75DSPATR(&ATR11C18)
+     A                                 17 78'|' COLOR(BLU)
+     A                                 18  4'|' COLOR(BLU)
+     A                                 18 78'|' COLOR(BLU)
+     A                                 19  4'|                                 -
+     A                                                                         -
+     A                                           |'  COLOR(BLU) DSPATR(UL)
+     A                                 23  2'F3=Exit' COLOR(BLU)

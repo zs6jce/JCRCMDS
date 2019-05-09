@@ -1,0 +1,106 @@
+      *----------------------------------------------------------------
+      * JCRJOBSD - Work with selected jobs - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3                  -
+     A                                             27 132 *DS4)
+     A                                      INDARA
+     A                                      CA03
+     A                                      CA05
+     A                                      CA08
+     A                                      CA09
+     A                                      CA10
+     A                                      CA12
+     A          R SBFDTA1                   SFL
+     A            SCURRUSER     10A  H
+     A            SBFOPTION      2Y 0B  6  2EDTCDE(4)
+     A  10                                  DSPATR(PC)
+     A            SJOBNAME      10A  O  6  5
+     A            SUSERNAME     10A  O  6 16
+     A            SJOBNUM        6A  O  6 27
+     A            SJOBSTATUS     7A  O  6 34
+     A            STHREADSTA     4A  O  6 42
+     A            SJOBTYPE      10A  O  6 47
+     A            SFUNCNAME     10A  O  6 58
+     A            SRUNPTY       10A  O  6 69
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1)
+     A  *DS3                                SFLSIZ(0065)
+     A  *DS4                                SFLSIZ(0065)
+     A  *DS3                                SFLPAG(0016)
+     A  *DS4                                SFLPAG(0016)
+     A                                      OVERLAY
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A            SFLRCDNBR      4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'JCRJOBS'
+     A                                      COLOR(BLU)
+     A                                  1 23'Work With Selected Jobs'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                      COLOR(BLU)
+     A                                  2  3'2=Chgjob'
+     A                                      COLOR(BLU)
+     A                                  2 13'3=Strsrvjob'
+     A                                      COLOR(BLU)
+     A                                  2 26'4=Endjob'
+     A                                      COLOR(BLU)
+     A                                  2 35'5=Dspjob'
+     A                                      COLOR(BLU)
+     A                                  2 45'8=Wrksplf'
+     A                                      COLOR(BLU)
+     A                                  2 55'9=Job File I/O'
+     A                                      COLOR(BLU)
+     A                                  2 72SYSNAME
+     A                                      COLOR(BLU)
+     A                                  3  2'10=Strdbg'
+     A                                      COLOR(BLU)
+     A                                  3 12'15=Endsrvjob'
+     A                                      COLOR(BLU)
+     A                                  3 25'20=Enddbg'
+     A                                      COLOR(BLU)
+     A            PCURRUSER     10A  O  4 16
+     A                                  4 27'(current user)'
+     A                                      COLOR(BLU)
+     A                                  4 47'Jobq'
+     A                                      DSPATR(HI)
+     A                                  4 58'JobqLib'
+     A                                      DSPATR(HI)
+     A                                  4 69'Subsystem'
+     A                                      DSPATR(HI)
+     A                                  5  2'Opt'
+     A                                      DSPATR(HI)
+     A                                  5  7'Job Name'
+     A                                      DSPATR(HI)
+     A            TOGGLE1        7A  O  5 16DSPATR(HI)
+     A                                  5 27'Number'
+     A                                      DSPATR(HI)
+     A                                  5 34'Status'
+     A                                      DSPATR(HI)
+     A                                  5 47'Or Type'
+     A                                      DSPATR(HI)
+     A                                  5 58'or Func'
+     A                                      DSPATR(HI)
+     A                                  5 69'Or RunPty'
+     A                                      DSPATR(HI)
+      *----------------------------------------------------------------
+     A          R SFOOTER1                  OVERLAY BLINK
+     A                                 23  2'F3=Exit' COLOR(BLU)
+     A                                 23 10'F5=Refresh' COLOR(BLU)
+     A                                 23 22'F8=Toggle CurrUser' COLOR(BLU)
+     A                                 23 42'F9=Sort Job' COLOR(BLU)
+     A                                 23 55'F10=Sort User' COLOR(BLU)
+     A                                 23 70'F12=Cancel' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(24)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

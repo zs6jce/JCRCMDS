@@ -1,0 +1,35 @@
+      *----------------------------------------------------------------
+      * JCRUSRJOBP - List user profiles with selected jobd - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 132)
+     A          R PRTHEAD                   SKIPB(1) SPACEA(1)
+     A                                     2'JCRUSRJOBD'
+     A                                    20'Search User Profiles'
+     A            SCDOW          9A  O    72
+     A                                    82DATE EDTCDE(Y)
+     A                                    92TIME
+     A                                   104'Page'
+     A                                    +1PAGNBR EDTCDE(4) SPACEA(1)
+      *---
+     A                                     2'JOBD:'
+     A            SCOBJHEAD    105A        8SPACEA(2)
+      *---
+     A                                     5'User Id'
+     A                                    16'Text'
+     A                                    56'Status'
+     A                                    67'Init Pgm'
+     A                                    78'Jodb'
+     A                                   100'Outq'
+     A                                   123'Last Used'
+      *----------------------------------------------------------------
+     A          R PRTDETAIL                 SPACEA(1)
+     A            SFUSRPRF      10A        5
+     A            SFTEXT        39A       16
+     A            SFSTATUS      10A       56
+     A            SFINITPGM     10A       67
+     A            SFJOBD        10A       78
+     A            SFJOBDLIB     10A       89
+     A            SFOUTQ        10A      100
+     A            SFOUTQLIB     10A      111
+     A            SFLASTUSED    10A      122

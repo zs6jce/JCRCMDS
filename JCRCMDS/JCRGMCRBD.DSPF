@@ -1,0 +1,274 @@
+      *----------------------------------------------------------------
+      * JCRGMCRBD - Cribbage - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      INDARA CA03 CA12
+     A          R SCREEN                    FRCDTA
+     A            USERMSGA       1A  P
+     A            CCRIB11A       1A  P
+     A            CCRIB12A       1A  P
+     A            CCRIB13A       1A  P
+     A            CCRIB14A       1A  P
+     A            CCRIB21A       1A  P
+     A            CCRIB22A       1A  P
+     A            CCRIB23A       1A  P
+     A            CCRIB24A       1A  P
+     A            CCRIB31A       1A  P
+     A            CCRIB32A       1A  P
+     A            CCRIB33A       1A  P
+     A            CCRIB34A       1A  P
+     A            CHAND11A       1A  P
+     A            CHAND12A       1A  P
+     A            CHAND13A       1A  P
+     A            CHAND14A       1A  P
+     A            CHAND21A       1A  P
+     A            CHAND22A       1A  P
+     A            CHAND23A       1A  P
+     A            CHAND24A       1A  P
+     A            CHAND31A       1A  P
+     A            CHAND32A       1A  P
+     A            CHAND33A       1A  P
+     A            CHAND34A       1A  P
+     A            DECK1A         1A  P
+     A            PLAY11A        1A  P
+     A            PLAY12A        1A  P
+     A            PLAY13A        1A  P
+     A            PLAY14A        1A  P
+     A            PLAY15A        1A  P
+     A            PLAY16A        1A  P
+     A            PLAY17A        1A  P
+     A            PLAY18A        1A  P
+     A            DECK2A         1A  P
+     A            PLAY21A        1A  P
+     A            PLAY22A        1A  P
+     A            PLAY23A        1A  P
+     A            PLAY24A        1A  P
+     A            PLAY25A        1A  P
+     A            PLAY26A        1A  P
+     A            PLAY27A        1A  P
+     A            PLAY28A        1A  P
+     A            DECK3A         1A  P
+     A            PLAY31A        1A  P
+     A            PLAY32A        1A  P
+     A            PLAY33A        1A  P
+     A            PLAY34A        1A  P
+     A            PLAY35A        1A  P
+     A            PLAY36A        1A  P
+     A            PLAY37A        1A  P
+     A            PLAY38A        1A  P
+     A            UCRIB11A       1A  P
+     A            UCRIB12A       1A  P
+     A            UCRIB13A       1A  P
+     A            UCRIB14A       1A  P
+     A            UCRIB21A       1A  P
+     A            UCRIB22A       1A  P
+     A            UCRIB23A       1A  P
+     A            UCRIB24A       1A  P
+     A            UCRIB31A       1A  P
+     A            UCRIB32A       1A  P
+     A            UCRIB33A       1A  P
+     A            UCRIB34A       1A  P
+     A            UHAND11A       1A  P
+     A            UHAND12A       1A  P
+     A            UHAND13A       1A  P
+     A            UHAND14A       1A  P
+     A            UHAND21A       1A  P
+     A            UHAND22A       1A  P
+     A            UHAND23A       1A  P
+     A            UHAND24A       1A  P
+     A            UHAND31A       1A  P
+     A            UHAND32A       1A  P
+     A            UHAND33A       1A  P
+     A            UHAND34A       1A  P
+     A            UHAND15A       1A  P
+     A            UHAND16A       1A  P
+     A            UHAND25A       1A  P
+     A            UHAND26A       1A  P
+     A            UHAND35A       1A  P
+     A            UHAND36A       1A  P
+     A                                  1  3'JCRGMCRB' COLOR(BLU)
+     A                                  1 14'CRIBBAGE' COLOR(BLU)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A  70                              2 32' CRIB ' COLOR(RED) DSPATR(RI)
+     A            CCRIB11        2A  O  3 30DSPATR(&CCRIB11A)
+     A            CCRIB12        2A  O  3 33DSPATR(&CCRIB12A)
+     A            CCRIB13        2A  O  3 36DSPATR(&CCRIB13A)
+     A            CCRIB14        2A  O  3 39DSPATR(&CCRIB14A)
+     A                                  4  4' ' COLOR(RED) DSPATR(RI)
+     A            CHAND11        2A  O  4 11DSPATR(&CHAND11A)
+     A            CHAND12        2A  O  4 14DSPATR(&CHAND12A)
+     A            CHAND13        2A  O  4 17DSPATR(&CHAND13A)
+     A            CHAND14        2A  O  4 20DSPATR(&CHAND14A)
+     A            CCRIB21        2A  O  4 30DSPATR(&CCRIB21A)
+     A            CCRIB22        2A  O  4 33DSPATR(&CCRIB22A)
+     A            CCRIB23        2A  O  4 36DSPATR(&CCRIB23A)
+     A            CCRIB24        2A  O  4 39DSPATR(&CCRIB24A)
+     A                                  5  4' ' COLOR(RED) DSPATR(RI)
+     A            CHAND21        2A  O  5 11DSPATR(&CHAND21A)
+     A            CHAND22        2A  O  5 14DSPATR(&CHAND22A)
+     A            CHAND23        2A  O  5 17DSPATR(&CHAND23A)
+     A            CHAND24        2A  O  5 20DSPATR(&CHAND24A)
+     A            CCRIB31        2A  O  5 30DSPATR(&CCRIB31A)
+     A            CCRIB32        2A  O  5 33DSPATR(&CCRIB32A)
+     A            CCRIB33        2A  O  5 36DSPATR(&CCRIB33A)
+     A            CCRIB34        2A  O  5 39DSPATR(&CCRIB34A)
+     A                                  6  4' ' COLOR(RED) DSPATR(RI)
+     A            CHAND31        2A  O  6 11DSPATR(&CHAND31A)
+     A            CHAND32        2A  O  6 14DSPATR(&CHAND32A)
+     A            CHAND33        2A  O  6 17DSPATR(&CHAND33A)
+     A            CHAND34        2A  O  6 20DSPATR(&CHAND34A)
+     A            BARCCNT        3Y 0O  6 74EDTCDE(4) COLOR(WHT)
+     A  72                                  DSPATR(RI)
+     A  74                              7 11'GO         ' DSPATR(RI)
+     A                                  7 35' ' COLOR(RED) DSPATR(RI)
+     A            TRACKC1       40A  O  7 37COLOR(RED)
+     A  72                                  DSPATR(RI)
+     A                                  8 10'- - - - - - -'
+     A                                  8 35' ' COLOR(BLU) DSPATR(RI)
+     A            TRACKU1       40A  O  8 37COLOR(BLU)
+     A  73                                  DSPATR(RI)
+     A                                  9  3'--' DSPATR(HI)
+     A                                  9  7'|'
+     A            PLAY11         2A  O  9 11DSPATR(&PLAY11A)
+     A            PLAY12         2A  O  9 14DSPATR(&PLAY12A)
+     A            PLAY13         2A  O  9 17DSPATR(&PLAY13A)
+     A            PLAY14         2A  O  9 20DSPATR(&PLAY14A)
+     A                                 10  7'|'
+     A            PLAY21         2A  O 10 11DSPATR(&PLAY21A)
+     A            PLAY22         2A  O 10 14DSPATR(&PLAY22A)
+     A            PLAY23         2A  O 10 17DSPATR(&PLAY23A)
+     A            PLAY24         2A  O 10 20DSPATR(&PLAY24A)
+     A            TRACKC2       40A  O 10 37COLOR(RED)
+     A  72                                  DSPATR(RI)
+     A            DECK1          2A  O 11  3DSPATR(&DECK1A)
+     A                                 11  7'|'
+     A            PLAY31         2A  O 11 11DSPATR(&PLAY31A)
+     A            PLAY32         2A  O 11 14DSPATR(&PLAY32A)
+     A            PLAY33         2A  O 11 17DSPATR(&PLAY33A)
+     A            PLAY34         2A  O 11 20DSPATR(&PLAY34A)
+     A            TRACKU2       40A  O 11 37COLOR(BLU)
+     A  73                                  DSPATR(RI)
+     A            DECK2          2A  O 12  3DSPATR(&DECK2A)
+     A                                 12  7'|'
+     A  45        PLAYMSG       50A  O 12  9DSPATR(RI)
+     A  72
+     AO 73                                  COLOR(WHT)
+     A            DECK3          2A  O 13  3DSPATR(&DECK3A)
+     A                                 13  7'|'
+     A            PLAY15         2A  O 13 11DSPATR(&PLAY15A)
+     A            PLAY16         2A  O 13 14DSPATR(&PLAY16A)
+     A            PLAY17         2A  O 13 17DSPATR(&PLAY17A)
+     A            PLAY18         2A  O 13 20DSPATR(&PLAY18A)
+     A            TRACKC3       40A  O 13 37COLOR(RED)
+     A  72                                  DSPATR(RI)
+     A            C121           1A  O 13 78
+     A  72                                  DSPATR(RI) COLOR(RED)
+     A                                 14  7'|'
+     A            PLAY25         2A  O 14 11DSPATR(&PLAY25A)
+     A            PLAY26         2A  O 14 14DSPATR(&PLAY26A)
+     A            PLAY27         2A  O 14 17DSPATR(&PLAY27A)
+     A            PLAY28         2A  O 14 20DSPATR(&PLAY28A)
+     A            TRACKU3       40A  O 14 37COLOR(BLU)
+     A  73                                  DSPATR(RI)
+     A            U121           1A  O 14 78
+     A  73                                  DSPATR(RI) COLOR(BLU)
+     A                                 15  3'--'  DSPATR(HI)
+     A                                 15  7'|'
+     A            PLAY35         2A  O 15 11DSPATR(&PLAY35A)
+     A            PLAY36         2A  O 15 14DSPATR(&PLAY36A)
+     A            PLAY37         2A  O 15 17DSPATR(&PLAY37A)
+     A            PLAY38         2A  O 15 20DSPATR(&PLAY38A)
+     A            RUNNINGTOT     3Y 0O 15 27EDTCDE(4) DSPATR(UL)
+     A            BARUCNT        3Y 0O 15 74EDTCDE(4) COLOR(WHT)
+     A  73                                  DSPATR(RI)
+     A                                 16 10'- - - - - - -'
+     A                                 17  3' ' COLOR(BLU) DSPATR(RI)
+     A            UHAND11        2A  O 17 11DSPATR(&UHAND11A)
+     A            UHAND12        2A  O 17 14DSPATR(&UHAND12A)
+     A            UHAND13        2A  O 17 17DSPATR(&UHAND13A)
+     A            UHAND14        2A  O 17 20DSPATR(&UHAND14A)
+     A            UHAND15        2A  O 17 23DSPATR(&UHAND15A)
+     A            UHAND16        2A  O 17 26DSPATR(&UHAND16A)
+     A  71                             17 32' CRIB ' COLOR(BLU) DSPATR(RI)
+     A                                 18  3' ' COLOR(BLU) DSPATR(RI)
+     A            UHAND21        2A  O 18 11DSPATR(&UHAND21A)
+     A            UHAND22        2A  O 18 14DSPATR(&UHAND22A)
+     A            UHAND23        2A  O 18 17DSPATR(&UHAND23A)
+     A            UHAND24        2A  O 18 20DSPATR(&UHAND24A)
+     A            UHAND25        2A  O 18 23DSPATR(&UHAND25A)
+     A            UHAND26        2A  O 18 26DSPATR(&UHAND26A)
+     A            UCRIB11        2A  O 18 30DSPATR(&UCRIB11A)
+     A            UCRIB12        2A  O 18 33DSPATR(&UCRIB12A)
+     A            UCRIB13        2A  O 18 36DSPATR(&UCRIB13A)
+     A            UCRIB14        2A  O 18 39DSPATR(&UCRIB14A)
+     A                                 19  3' ' COLOR(BLU) DSPATR(RI)
+     A            UHAND31        2A  O 19 11DSPATR(&UHAND31A)
+     A            UHAND32        2A  O 19 14DSPATR(&UHAND32A)
+     A            UHAND33        2A  O 19 17DSPATR(&UHAND33A)
+     A            UHAND34        2A  O 19 20DSPATR(&UHAND34A)
+     A            UHAND35        2A  O 19 23DSPATR(&UHAND35A)
+     A            UHAND36        2A  O 19 26DSPATR(&UHAND36A)
+     A            UCRIB21        2A  O 19 30DSPATR(&UCRIB21A)
+     A            UCRIB22        2A  O 19 33DSPATR(&UCRIB22A)
+     A            UCRIB23        2A  O 19 36DSPATR(&UCRIB23A)
+     A            UCRIB24        2A  O 19 39DSPATR(&UCRIB24A)
+     A  10N75     DISCARD1       1A  B 20 11COLOR(WHT)
+     A  20N75     DISCARD2       1A  B 20 14COLOR(WHT)
+     A  30N75     DISCARD3       1A  B 20 17COLOR(WHT)
+     A  40N75     DISCARD4       1A  B 20 20COLOR(WHT)
+     A  50N75     DISCARD5       1A  B 20 23COLOR(WHT)
+     A  60N75     DISCARD6       1A  B 20 26COLOR(WHT)
+     A            UCRIB31        2A  O 20 30DSPATR(&UCRIB31A)
+     A            UCRIB32        2A  O 20 33DSPATR(&UCRIB32A)
+     A            UCRIB33        2A  O 20 36DSPATR(&UCRIB33A)
+     A            UCRIB34        2A  O 20 39DSPATR(&UCRIB34A)
+     A  75                             21 11'You say GO '
+     A                                      DSPATR(RI)
+     A N75        USERMSG       36A  O 22 11DSPATR(&USERMSGA)
+     A                                 23 57' ' COLOR(YLW) DSPATR(RI)
+     A                                 23 59'=Clubs'
+     A                                 23 68' ' COLOR(WHT) DSPATR(RI)
+     A                                 23 70'=Diamonds'
+     A                                 24  2'F3=Exit' COLOR(BLU)
+     A                                 24 57' ' COLOR(RED) DSPATR(RI)
+     A                                 24 59'=Hearts'
+     A                                 24 68' ' COLOR(BLU) DSPATR(RI)
+     A                                 24 70'=Spades'
+      *----------------------------------------------------------------
+     A          R ASSUME                    ASSUME
+     A                                  1  2' ' DSPATR(ND)
+      *----------------------------------------------------------------
+     A          R SBFDTA1                   SFL
+     A            SBFSC1A        1A  P
+     A            SBFSC2A        1A  P
+     A            SBFSC3A        1A  P
+     A            SBFSC4A        1A  P
+     A            SBFSC5A        1A  P
+     A            SBFSC1         2A  O  3  1DSPATR(&SBFSC1A)
+     A            SBFSC2         2A  O  3  4DSPATR(&SBFSC2A)
+     A            SBFSC3         2A  O  3  7DSPATR(&SBFSC3A)
+     A            SBFSC4         2A  O  3 10DSPATR(&SBFSC4A)
+     A            SBFSC5         2A  O  3 13DSPATR(&SBFSC5A)
+     A            SBFSCMSG      21A  O  3 16
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1) OVERLAY
+     A                                      SFLPAG(9) SFLSIZ(18)
+     A                                      WINDOW(&LIN &POS 14 36)
+     A  01                                  SFLDSP
+     A  02                                  SFLDSPCTL
+     A N01                                  SFLCLR
+     A N04                                  SFLEND
+     A  77                                  WDWBORDER((*COLOR BLU) +
+                                            (*DSPATR RI) (*CHAR '/-\..\-/'))
+     A  76                                  WDWBORDER((*COLOR RED) +
+                                            (*DSPATR RI) (*CHAR '/-\..\-/'))
+     A            LIN            2S 0P
+     A            POS            2S 0P
+     A            SCOREMSG      20A  O  1  1DSPATR(HI UL)
+      *----------------------------------------------------------------
+     A          R SFOOTER1                  WINDOW(SBFCTL1) OVERLAY
+     A                                 13  1'Enter' COLOR(BLU) DSPATR(RI)
+     A                                 13 16'Total:' COLOR(BLU)
+     A            SBFTOTAL       3Y 0O 13 23EDTCDE(4) DSPATR(RI)

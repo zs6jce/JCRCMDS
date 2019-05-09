@@ -1,0 +1,464 @@
+/*--------------------------------------------------------------------------*/
+/* JCRCOMPOST - recompile JCRCMDS utilities                                 */
+/* CALL JCRCOMPOST PARM(library where source is located)                    */
+/* Run this program after all members are extracted to                      */
+/* source file mylib/JCRCMDS to compile all objects.                        */
+/*--------------------------------------------------------------------------*/
+/* For cl program JCRSSQLC to compile, you must be authorized to            */
+/* use the DMPSYSOBJ command. If you are not authorized to that command,    */
+/* answer the run-time message with 'I'.                                    */
+/*   Craig Rutledge  < www.jcrcmds.com >                                    */
+/*--------------------------------------------------------------------------*/
+             PGM        PARM(&L)
+             DCL        VAR(&L) TYPE(*CHAR) LEN(10) /* install library  */
+             DCL        VAR(&F) TYPE(*CHAR) LEN(10) VALUE('JCRCMDS')
+             DCL        VAR(&N) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&MBRTYPE) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&MBRTEXT) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&FLAG) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&STRING) TYPE(*CHAR) LEN(200)
+ 
+               /*---------------------------------------------------*/
+               /*---------------------------------------------------*/
+               /* one time so zip utilities will compile            */
+               /*  this omission will hopefully be fixed in a PTF   */
+             ADDBNDDIRE BNDDIR(QUSAPIBD) OBJ((QZIPUTIL))
+               /*---------------------------------------------------*/
+               /*---------------------------------------------------*/
+ 
+             RMVLIBLE   LIB(&L)
+             MONMSG     MSGID(CPF0000)
+             ADDLIBLE   LIB(&L) POSITION(*FIRST)
+             CHGCURLIB  CURLIB(&L)  /* so DDL will create correctly */
+ 
+/*-------------------------------------------------------------------*/
+/* delete / recreate all ILE components of library                   */
+/*-------------------------------------------------------------------*/
+             DLTMOD     MODULE(&L/JCRCMDSSRV)
+             MONMSG     MSGID(CPF0000)
+             DLTSRVPGM  SRVPGM(&L/JCRCMDSSRV)
+             MONMSG     MSGID(CPF0000)
+             DLTBNDDIR  BNDDIR(&L/JCRCMDSDIR)
+             MONMSG     MSGID(CPF0000)
+ 
+             CRTRPGMOD  MODULE(&L/JCRCMDSSRV) SRCFILE(&L/&F) +
+                          DBGVIEW(*SOURCE) STGMDL(*TERASPACE)
+ 
+             CRTSRVPGM  SRVPGM(&L/JCRCMDSSRV) SRCFILE(&L/&F) +
+                          SRCMBR(JCRCMDSBND) TEXT('JCRCMDS service +
+                          program') OPTION(*DUPPROC) +
+                          STGMDL(*TERASPACE) ARGOPT(*NO) IPA(*NO)
+ 
+             DLTMOD     MODULE(&L/JCRCMDSSRV)
+             CRTBNDDIR  BNDDIR(&L/JCRCMDSDIR) TEXT('utility binding +
+                          directory')
+             ADDBNDDIRE BNDDIR(&L/JCRCMDSDIR) OBJ((&L/JCRCMDSSRV +
+                          *SRVPGM *DEFER)) POSITION(*FIRST)
+             DLTF       FILE(&L/JCRBNDFB)
+             MONMSG     MSGID(CPF0000)
+             DSPBNDDIR  BNDDIR(&L/JCRCMDSDIR) OUTPUT(*OUTFILE) +
+                          OUTFILE(&L/JCRBNDFB)
+ 
+/*- make sure everything is compiled in proper sequence --------*/
+             CHGVAR     VAR(&FLAG) VALUE('FILES')
+             CALLSUBR   SUBR(srSpinMbr)
+ 
+             CHGVAR     VAR(&FLAG) VALUE('PROGRAMS')
+             CALLSUBR   SUBR(srSpinMbr)
+ 
+             CALLSUBR   SUBR(SRCRTCMDS)
+             SNDPGMMSG  MSG('JCRCMDS installation in ' *CAT &L *TCAT +
+                          ' - completed')
+ 
+/*-------------------------------------------------------------------*/
+/* spin though member list-----------------------------------------*/
+             SUBR       SUBR(srSpinMbr)
+             RTVMBRD    FILE(&L/&F) MBR(*FIRSTMBR *SAME) RTNMBR(&N) +
+                          SRCTYPE(&MBRTYPE) TEXT(&MBRTEXT)
+ 
+ LOOP:       CALLSUBR   SUBR(SRPROCESS)
+ 
+             RTVMBRD    FILE(&L/&F) MBR(&N *NEXT) RTNMBR(&N) +
+                          SRCTYPE(&MBRTYPE) TEXT(&MBRTEXT)
+             MONMSG     MSGID(CPF3049 CPF3019) EXEC(GOTO CMDLBL(DONE))
+ 
+             GOTO       CMDLBL(LOOP)
+ 
+ DONE:       ENDSUBR
+ 
+/*-------------------------------------------------------------------*/
+             SUBR       SUBR(SRPROCESS)
+ 
+             SELECT
+             WHEN       COND(&MBRTYPE = 'CMD')  /* skip */
+ 
+             WHEN       COND(&FLAG *EQ 'FILES') THEN(DO)
+ 
+              SELECT
+                WHEN       COND(&MBRTYPE = 'PNLGRP') THEN(DO)
+                  DLTPNLGRP  PNLGRP(&L/&N)
+                  MONMSG     MSGID(CPF0000)
+                  CRTPNLGRP  PNLGRP(&L/&N) SRCFILE(&L/&F) SRCMBR(&N)
+                ENDDO
+ 
+             WHEN       COND(&MBRTYPE = 'DDL' *OR &MBRTYPE = 'DSPF' +
+                          *OR &MBRTYPE = 'PRTF' *OR &MBRTYPE = +
+                          'PF') THEN(DO)
+                  DLTF       FILE(&L/&N)
+                  MONMSG     MSGID(CPF0000)
+ 
+                 SELECT
+                    WHEN       COND(&MBRTYPE = 'DDL') THEN(RUNSQLSTM +
+                               SRCFILE(&L/&F) SRCMBR(&N) COMMIT(*NONE))
+ 
+                    WHEN       COND(&MBRTYPE = 'PF') THEN(CRTPF +
+                               FILE(&L/&N) SRCFILE(&L/&F) SIZE(*NOMAX))
+ 
+                    WHEN       COND(&MBRTYPE = 'DSPF') THEN(CRTDSPF +
+                               FILE(&L/&N) SRCFILE(&L/&F) SRCMBR(&N) +
+                               RSTDSP(*YES) DFRWRT(*NO))
+ 
+                    WHEN       COND(&MBRTYPE = 'PRTF') THEN(DO)
+                      IF         COND(%SST(&MBRTEXT 43 3) = '198') +
+                                 THEN(CRTPRTF FILE(&L/&N) +
+                                 SRCFILE(&L/&F) SRCMBR(&N) +
+                                 PAGESIZE(66 198) LPI(6) CPI(15))
+                      ELSE       CMD(CRTPRTF FILE(&L/&N) SRCFILE(&L/&F) +
+                                 SRCMBR(&N) PAGESIZE(66 132) LPI(6) +
+                                 CPI(10))
+                      ENDDO
+                 ENDSELECT
+                ENDDO
+              ENDSELECT
+             ENDDO
+ 
+             WHEN       COND(&FLAG *EQ 'PROGRAMS') THEN(DO)
+             IF         COND(&N *NE 'JCRCOMPOST' *AND &N *NE +
+                          'JCRCMDSSRV' *AND &N *NE 'JCRCMDSCPY') +
+                          THEN(DO)
+                DLTPGM     PGM(&L/&N)
+                MONMSG     MSGID(CPF0000)
+ 
+                SELECT
+                  WHEN       COND(&MBRTYPE = 'CLLE') THEN(DO)
+ 
+                  /* compile menu CLs after commands are created */
+                    IF  COND(&N *NE 'JCRSUNDRYC' *AND &N *NE +
+                              'JCRXMLC') THEN(DO)
+             CRTBNDCL   PGM(&L/&N) SRCFILE(&L/&F) SRCMBR(&N) +
+                          DBGVIEW(*SOURCE)
+                   ENDDO
+                 ENDDO
+ 
+             WHEN       COND(&MBRTYPE = 'RPGLE') THEN(CRTBNDRPG +
+                          PGM(&L/&N) SRCFILE(&L/&F) SRCMBR(&N) +
+                          DBGVIEW(*SOURCE))
+ 
+/*------------------------------------------------------------------------*/
+/* Executing QCMDEXC allows JCRCOMPOST to compile even if this system     */
+/* does not have the SQL compiler installed. Delete JCRDUMP command if so */
+/*------------------------------------------------------------------------*/
+             WHEN       COND(&MBRTYPE = 'SQLRPGLE') THEN(DO)
+                 CHGVAR     VAR(&STRING) VALUE('CRTSQLRPGI OBJ(' *CAT +
+                          &L *TCAT '/' *CAT &N *TCAT ') SRCFILE(' +
+                          *CAT &L *TCAT '/' *CAT &F *TCAT ') +
+                          SRCMBR(' *CAT &N *TCAT ') COMMIT(*NONE) +
+                          DBGVIEW(*SOURCE)')
+                  CALL       PGM(QCMDEXC) PARM(&STRING 200)
+                  MONMSG     MSGID(CPF0000) EXEC(DO)
+                     DLTCMD     CMD(&L/JCRDUMP)
+                     MONMSG     MSGID(CPF0000)
+                     ENDDO
+                ENDDO
+ 
+                ENDSELECT
+               ENDDO
+             ENDDO
+             ENDSELECT
+             ENDSUBR
+ 
+/*-------------------------------------------------------------------*/
+             SUBR       SUBR(SRCRTCMDS)
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('Create +
+                          Commands - in progress') TOPGMQ(*EXT) +
+                          MSGTYPE(*STATUS)
+ 
+             CRTCMD     CMD(&L/JCRANZD) PGM(*LIBL/JCRANZDR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALOBJV) +
+                          HLPPNLGRP(*LIBL/JCRANZDH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRANZO) PGM(*LIBL/JCRANZOR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRANZOV) +
+                          HLPPNLGRP(*LIBL/JCRANZOH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRANZP) PGM(*LIBL/JCRANZPC) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRANZPV) +
+                          HLPPNLGRP(*LIBL/JCRANZPH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRBND) PGM(*LIBL/JCRBNDR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRBNDV) +
+                          HLPPNLGRP(*LIBL/JCRBNDH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRCALL) PGM(*LIBL/JCRCALLR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRCALLV) +
+                          HLPPNLGRP(*LIBL/JCRCALLH) HLPID(*CMD) +
+                          PMTOVRPGM(*LIBL/JCRCALLO)
+ 
+             CRTCMD     CMD(&L/JCRDQD) PGM(*LIBL/JCRDQDR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALOBJV) +
+                          HLPPNLGRP(*LIBL/JCRDQDH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRDQE) PGM(*LIBL/JCRDQER) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALOBJV) +
+                          HLPPNLGRP(*LIBL/JCRDQEH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRMIKE) PGM(*LIBL/JCRMIKER) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALOBJV) +
+                          HLPPNLGRP(*LIBL/JCRMIKEH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRDTAARA) PGM(*LIBL/JCRDTAARAR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALLIBV) +
+                          HLPPNLGRP(*LIBL/JCRDTAARAH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRDUMP) PGM(*LIBL/JCRDUMPR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALOBJV) +
+                          HLPPNLGRP(*LIBL/JCRDUMPH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRDUPKEY) PGM(*LIBL/JCRDUPKEYR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALMBRV) +
+                          HLPPNLGRP(*LIBL/JCRDUPKEYH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRFD) PGM(*LIBL/JCRFDR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALMBRV) +
+                          HLPPNLGRP(*LIBL/JCRFDH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRDBR) PGM(*LIBL/JCRFDR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALMBRV) +
+                          HLPPNLGRP(*LIBL/JCRDBRH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRFFD) PGM(*LIBL/JCRFFDR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRFFDV) +
+                          HLPPNLGRP(*LIBL/JCRFFDH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRDDL) PGM(*LIBL/JCRDDLR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRDDLV) +
+                          HLPPNLGRP(*LIBL/JCRDDLH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRJOBD) PGM(*LIBL/JCRJOBDR) +
+                          SRCFILE(&L/&F) HLPPNLGRP(*LIBL/JCRJOBDH) +
+                          HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRFSET) PGM(*LIBL/JCRFSETS) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRFSETV) +
+                          HLPPNLGRP(*LIBL/JCRFSETH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRGAMES) PGM(*LIBL/JCRGAMESC) +
+                          SRCFILE(&L/&F) HLPPNLGRP(*LIBL/JCRGAMESH) +
+                          HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRPRGEN) PGM(*LIBL/JCRPRGENR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRPRGENV) +
+                          HLPPNLGRP(*LIBL/JCRPRGENH) HLPID(*CMD) +
+                          PMTOVRPGM(*LIBL/JCRPRGENO)
+ 
+             CRTCMD     CMD(&L/JCRHFD) PGM(*LIBL/JCRHFDR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRHFDV) +
+                          HLPPNLGRP(*LIBL/JCRHFDH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRIFSCPY) PGM(*LIBL/JCRIFSCPYR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRIFSCPYV) +
+                          HLPPNLGRP(*LIBL/JCRIFSCPYH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRIFSMBR) PGM(*LIBL/JCRIFSMBRR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRIFSMBRV) +
+                          HLPPNLGRP(*LIBL/JCRIFSMBRH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRIFSSAV) PGM(*LIBL/JCRIFSSAVR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRIFSSAVV) +
+                          HLPPNLGRP(*LIBL/JCRIFSSAVH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRIND) PGM(*LIBL/JCRINDR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRINDV) +
+                          HLPPNLGRP(*LIBL/JCRINDH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRJOBS) PGM(*LIBL/JCRJOBSR) +
+                          SRCFILE(&L/&F) HLPPNLGRP(*LIBL/JCRJOBSH) +
+                          HLPID(*CMD)
+ 
+             /* keep jcrjob name for command */
+             CRTPRXCMD  CMD(&L/JCRJOB) TGTCMD(&L/JCRJOBS)
+ 
+             CRTCMD     CMD(&L/JCRLKEY) PGM(*LIBL/JCRLKEYR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALMBRV) +
+                          HLPPNLGRP(*LIBL/JCRLKEYH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRLOG) PGM(*LIBL/JCRLOGR) +
+                          SRCFILE(&L/&F) HLPPNLGRP(*LIBL/JCRLOGH) +
+                          HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRLSRC) PGM(*LIBL/JCRLSRCR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRLSRCV) +
+                          HLPPNLGRP(*LIBL/JCRLSRCH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRMRBIG) PGM(*LIBL/JCRMRBIGR) +
+                          SRCFILE(&L/&F) HLPPNLGRP(*LIBL/JCRMRBIGH) +
+                          HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRNETFF) PGM(*LIBL/JCRNETFFR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRNETFFV) +
+                          HLPPNLGRP(*LIBL/JCRNETFFH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRNETFM) PGM(*LIBL/JCRNETFMR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRNETFMV) +
+                          HLPPNLGRP(*LIBL/JCRNETFMH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRNETQ) PGM(*LIBL/JCRNETQR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALOBJV) +
+                          HLPPNLGRP(*LIBL/JCRNETQH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRNOTPOP) PGM(*LIBL/JCRNOTPOPR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRNOTPOPV) +
+                          HLPPNLGRP(*LIBL/JCRNOTPOPH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRNUMB) PGM(*LIBL/JCRNUMBR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRNUMBV) +
+                          HLPPNLGRP(*LIBL/JCRNUMBH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCROBJD) PGM(*LIBL/JCROBJDR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALLIBV) +
+                          HLPPNLGRP(*LIBL/JCROBJDH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCROLCK) PGM(*LIBL/JCROLCKR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALOBJV) +
+                          HLPPNLGRP(*LIBL/JCROLCKH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRPARTI) PGM(*LIBL/JCRPARTIR) +
+                          SRCFILE(&L/&F) HLPPNLGRP(*LIBL/JCRPARTIH) +
+                          HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRPATTR) PGM(*LIBL/JCRPATTRR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRPATTRV) +
+                          HLPPNLGRP(*LIBL/JCRPATTRH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRPRTF) PGM(*LIBL/JCRPRTFR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRPRTFV) +
+                          HLPPNLGRP(*LIBL/JCRPRTFH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRSDENT) PGM(*LIBL/JCRSDENTR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALMBRV) +
+                          HLPPNLGRP(*LIBL/JCRSDENTH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRRECRT) PGM(*LIBL/JCRRECRTR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALOBJV) +
+                          HLPPNLGRP(*LIBL/JCRRECRTH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRRFIL) PGM(*LIBL/JCRRFILR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRRFILV) +
+                          HLPPNLGRP(*LIBL/JCRRFILH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRRFLD) PGM(*LIBL/JCRRFLDR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRRFLDV) +
+                          HLPPNLGRP(*LIBL/JCRRFLDH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRRTVRPG) PGM(*LIBL/JCRRTVRPGC) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRRTVRPGV) +
+                          HLPPNLGRP(*LIBL/JCRRTVRPGH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRSMLT) PGM(*LIBL/JCRSMLTRS) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRSMLTV) +
+                          HLPPNLGRP(*LIBL/JCRSMLTH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRSPLF) PGM(*LIBL/JCRSPLFR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRSPLFV) +
+                          HLPPNLGRP(*LIBL/JCRSPLFH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRSSQL) PGM(*LIBL/JCRSSQLC) +
+                          SRCFILE(&L/&F) HLPPNLGRP(*LIBL/JCRSSQLH) +
+                          HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRSCDE) PGM(*LIBL/JCRSCDER) +
+                          SRCFILE(&L/&F) HLPPNLGRP(*LIBL/JCRSCDEH) +
+                          HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRSUNDRY) PGM(*LIBL/JCRSUNDRYC) +
+                          SRCFILE(&L/&F) +
+                          HLPPNLGRP(*LIBL/JCRSUNDRYH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRUFIND) PGM(*LIBL/JCRUFINDR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRUFINDV) +
+                          HLPPNLGRP(*LIBL/JCRUFINDH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRUSPACE) PGM(*LIBL/JCRUSPACER) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRUSPACEV) +
+                          HLPPNLGRP(*LIBL/JCRUSPACEH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRUSERS) PGM(*LIBL/JCRUSERSR) +
+                          SRCFILE(&L/&F) HLPPNLGRP(*LIBL/JCRUSERSH) +
+                          HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRUSRAUT) PGM(*LIBL/JCRUSRAUTR) +
+                          SRCFILE(&L/&F) +
+                          HLPPNLGRP(*LIBL/JCRUSRAUTH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCR4MAX) PGM(*LIBL/JCR4MAXC) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCR4MAXV) +
+                          HLPPNLGRP(*LIBL/JCR4MAXH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRPROTO) PGM(*LIBL/JCRPROTOR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRPROTOV) +
+                          HLPPNLGRP(*LIBL/JCRPROTOH) HLPID(*CMD)
+ 
+             /* old fixed column convertor was requested to stay */
+             CRTCMD     CMD(&L/JCR4PROTO) PGM(*LIBL/JCR4PROTOR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRPROTOV) +
+                          HLPPNLGRP(*LIBL/JCR4PROTOH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRFREESS) PGM(*LIBL/JCRFREESSR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRRFILV) +
+                          HLPPNLGRP(*LIBL/JCRFREESSH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCR5FREE) PGM(*LIBL/JCR5FREER) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCR5FREEV) +
+                          HLPPNLGRP(*LIBL/JCR5FREEH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/XMLGEN) PGM(*LIBL/XMLGENR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/XMLGENV) +
+                          HLPPNLGRP(*LIBL/XMLGENH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/XMLGENCMD) PGM(*LIBL/XMLGENCMD) +
+                          SRCFILE(&L/&F)
+ 
+             CRTCMD     CMD(&L/XMLGENINC) PGM(*LIBL/XMLGENINC) +
+                          SRCFILE(&L/&F)
+ 
+             CRTCMD     CMD(&L/XMLGENMBR) PGM(*LIBL/XMLGENMBR) +
+                          SRCFILE(&L/&F)
+ 
+             CRTCMD     CMD(&L/XMLPREVIEW) PGM(*LIBL/XMLPREVIEC) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALMBRV) +
+                          HLPPNLGRP(*LIBL/XMLPREVIEH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/XMLSRCFIL) PGM(*LIBL/XMLSRCFILC) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/XMLSRCFILV) +
+                          HLPPNLGRP(*LIBL/XMLSRCFILH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/XMLSCRIPT) PGM(*LIBL/XMLSCRIPTR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRVALMBRV) +
+                          HLPPNLGRP(*LIBL/XMLSCRIPTH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRXML) PGM(*LIBL/JCRXMLC) +
+                          SRCFILE(&L/&F) VLDCKR(*NONE) +
+                          HLPPNLGRP(*LIBL/JCRXMLH) HLPID(*CMD)
+ 
+             CRTCMD     CMD(&L/JCRROUGH) PGM(*LIBL/JCRROUGHR) +
+                          SRCFILE(&L/&F) VLDCKR(*LIBL/JCRROUGHV) +
+                          HLPPNLGRP(*LIBL/JCRROUGHH) HLPID(*CMD)
+ 
+             /* compile menu CLs after commands are created */
+             CRTBNDCL   PGM(&L/JCRSUNDRYC) SRCFILE(&L/&F) +
+                          SRCMBR(JCRSUNDRYC) DBGVIEW(*ALL)
+ 
+             CRTBNDCL   PGM(&L/JCRXMLC) SRCFILE(&L/&F) +
+                          SRCMBR(JCRXMLC) DBGVIEW(*ALL)
+             ENDSUBR
+             ENDPGM

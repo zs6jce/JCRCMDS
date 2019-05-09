@@ -1,0 +1,83 @@
+      *----------------------------------------------------------------
+      * JCRSMLTP - Scan mult source file/mbrs - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 198)  CPI(15)
+     A                                      INDARA
+     A          R PRTHEAD1                  SKIPB(1) SPACEA(1)
+     A                                     2'JCRSMLT'
+     A                                    22'Scan Multiple Files / Multiple Str-
+     A                                      ings(JCRSMLT)'
+     A            SCDOW          9A  O   110
+     A                                   120DATE EDTCDE(Y)
+     A                                   130TIME
+     A                                   140'Page'
+     A                                    +1PAGNBR EDTCDE(4) SPACEA(1)
+      *---
+     A                                    71'List'
+     A                                    84'Scan' SPACEA(1)
+      *---
+     A                                    20'Library'
+     A                                    32'File'
+     A                                    44'Member'
+     A                                    56'Type'
+     A                                    71'Occurrence'
+     A                                    84'Comments'
+      *----------------------------------------------------------------
+     A          R PRTHEAD2                  SPACEA(1)
+     A N10                                 2'Scan Source List:'
+     A            HSRCLIB       10A  O    20
+     A            HSRCFIL       10A  O    32
+     A            HSRCMBR       10A  O    44
+     A            HSRCMBRTYP    10A       56
+     A N10        PLISTLVL       6A       71
+     A N10        PSCANCMNT      5A       84
+      *----------------------------------------------------------------
+     A          R PRTHEAD3                  SPACEA(1)
+     A N10                                 2'Search Strings:'
+     A            SCNSTR        25A  O    20
+     A N10                                49'String Set:'
+     A N10        SETTYPE        7A       61
+     A N10        SETVERBAGE    50A       73
+      *----------------------------------------------------------------
+     A          R PRTHEAD4                  SPACEA(1)
+     A                                     1'Library'
+     A                                    12'File'
+     A                                    23'Member'
+     A                                    34'Type'
+     A  27                                45'Seqno'
+     A  27                                54'Source Data'
+     A  27                               135'Chg Date'
+     A                                   144'Text'
+     A                                      SPACEA(1)
+     A*---
+      *---
+     A                                     1'----------'
+     A                                    12'----------'
+     A                                    23'----------'
+     A                                    34'----------'
+     A                                    45'-------'
+     A                                    54'-----------------------------------
+     A                                      ------------------------------------
+     A                                      -----------'
+     A                                   135'--------'
+     A                                   144'-----------------------------------
+     A                                      -------'
+      *----------------------------------------------------------------
+     A          R PRTDETAIL                 SPACEA(1)
+     A            SRCLIB        10A  O     1
+     A            SRCFIL        10A  O    12
+     A            RTVMBR        10A  O    23
+     A            MBRTYPE       10        34
+     A  27        SRCSEQ         6  2O    45
+     A                                      EDTCDE(4)
+     A  27        SRCDTA80      80A  O    54
+     A  20        SRCCHGDAT      6  0    135
+     A                                      EDTCDE(Y)
+     A            SRCTXT41      41A      144
+      *----------------------------------------------------------------
+     A          R PRTSPACEA1                SPACEA(1)
+     A                                     1'  '
+      *----------------------------------------------------------------
+     A          R PRTENDOR                  SPACEB(1)
+     A                                     2'* End Of Report'

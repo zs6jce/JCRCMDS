@@ -1,0 +1,14 @@
+:PNLGRP.:HELP NAME='JCRDTAARA'.List Dtaara *DEC Values (JCRDTAARA)
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Prints listing of all type(*DEC) Data Areas in selected library.
+Current data area value is shown along with how many integer values are left before data
+area 'rolls over'.
+:P.Included is Last used date, Creation Date and Number of days used.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRDTAARA/DTAARA'.Data Area - Help :XH3.Data Area(s) (DTAARA)
+:P.Name/*All/Generic* and library of Data Areas to be evaluated.:EHELP.
+ 
+:HELP NAME='JCRDTAARA/OUTPUT'.Output - Help :XH3.Output (OUTPUT)
+:P.*PRINT or * Display the list.:EHELP.:EPNLGRP.

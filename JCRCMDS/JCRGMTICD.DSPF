@@ -1,0 +1,157 @@
+      *----------------------------------------------------------------
+      * JCRGMTICD - Tic-Tac-Toe - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      CA03 CA05 CA12
+     A          R SCREEN
+     A            AWELCOME       1A  P
+     A            ASTART         1A  P
+     A            ANOTES         1A  P
+     A            PROCATR11      1A  P
+     A            PROCATR12      1A  P
+     A            PROCATR13      1A  P
+     A            PROCATR21      1A  P
+     A            PROCATR22      1A  P
+     A            PROCATR23      1A  P
+     A            PROCATR31      1A  P
+     A            PROCATR32      1A  P
+     A            PROCATR33      1A  P
+     A            ATR11          1A  P
+     A            ATR12          1A  P
+     A            ATR13          1A  P
+     A            ATR21          1A  P
+     A            ATR22          1A  P
+     A            ATR23          1A  P
+     A            ATR31          1A  P
+     A            ATR32          1A  P
+     A            ATR33          1A  P
+     A                                  1  3'JCRGMTIC' COLOR(BLU)
+     A                                  1 13'TIC TAC TOE' COLOR(BLU)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A            GRID11ROW1     9A  O  2 13DSPATR(&ATR11)
+     A                                  2 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID12ROW1     9A  O  2 29DSPATR(&ATR12)
+     A                                  2 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID13ROW1     9A  O  2 45DSPATR(&ATR13)
+     A            GRID11ROW2     9A  O  3 13DSPATR(&ATR11)
+     A                                  3 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID12ROW2     9A  O  3 29DSPATR(&ATR12)
+     A                                  3 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID13ROW2     9A  O  3 45DSPATR(&ATR13)
+     A                                  3 57'Welcome to TIC TAC TOE!'
+     A                                      DSPATR(&AWELCOME)
+     A            GRID11ROW3     9A  O  4 13DSPATR(&ATR11)
+     A                                  4 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID12ROW3     9A  O  4 29DSPATR(&ATR12)
+     A                                  4 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID13ROW3     9A  O  4 45DSPATR(&ATR13)
+     A            GRID11ROW4     9A  O  5 13DSPATR(&ATR11)
+     A                                  5 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID12ROW4     9A  O  5 29DSPATR(&ATR12)
+     A                                  5 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID13ROW4     9A  O  5 45DSPATR(&ATR13)
+     A                                  5 57'PRESS ENTER TO BEGIN'
+     A                                      DSPATR(&AWELCOME)
+     A            GRID11ROW5     9A  O  6 13DSPATR(&ATR11)
+     A                                  6 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID12ROW5     9A  O  6 29DSPATR(&ATR12)
+     A                                  6 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID13ROW5     9A  O  6 45DSPATR(&ATR13)
+     A                                  6 57'You can either start'
+     A                                      DSPATR(&ASTART)
+     A            R1C1           1A  B  7 17DSPATR(&PROCATR11)
+     A                                      COMP(EQ 'X') CHECK(ER)
+     A                                  7 25' ' COLOR(BLU) DSPATR(RI)
+     A            R1C2           1A  B  7 33DSPATR(&PROCATR12)
+     A                                      COMP(EQ 'X') CHECK(ER)
+     A                                  7 41' ' COLOR(BLU) DSPATR(RI)
+     A            R1C3           1A  B  7 49DSPATR(&PROCATR13)
+     A                                      COMP(EQ 'X')
+     A                                      CHECK(ER)
+     A                                  7 57'the game with an X, '
+     A                                      DSPATR(&ASTART)
+     A                                  8 13'-----------------------------------
+     A                                      -------' COLOR(BLU)
+     A                                  8 57'or press Enter to let'
+     A                                      DSPATR(&ASTART)
+     A                                  9 25' ' COLOR(BLU) DSPATR(RI)
+     A                                  9 41' ' COLOR(BLU) DSPATR(RI)
+     A                                  9 57'O go first.' DSPATR(&ASTART)
+     A            GRID21ROW1     9A  O 10 13DSPATR(&ATR21)
+     A                                 10 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID22ROW1     9A  O 10 29DSPATR(&ATR22)
+     A                                 10 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID23ROW1     9A  O 10 45DSPATR(&ATR23)
+     A            GRID21ROW2     9A  O 11 13DSPATR(&ATR21)
+     A                                 11 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID22ROW2     9A  O 11 29DSPATR(&ATR22)
+     A                                 11 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID23ROW2     9A  O 11 45DSPATR(&ATR23)
+     A                                 11 57'You can win if you' DSPATR(&ANOTES)
+     A            GRID21ROW3     9A  O 12 13DSPATR(&ATR21)
+     A                                 12 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID22ROW3     9A  O 12 29DSPATR(&ATR22)
+     A                                 12 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID23ROW3     9A  O 12 45DSPATR(&ATR23)
+     A                                 12 57'start with center' DSPATR(&ANOTES)
+     A            GRID21ROW4     9A  O 13 13DSPATR(&ATR21)
+     A                                 13 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID22ROW4     9A  O 13 29DSPATR(&ATR22)
+     A                                 13 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID23ROW4     9A  O 13 45DSPATR(&ATR23)
+     A                                 13 57'X and O does not' DSPATR(&ANOTES)
+     A            GRID21ROW5     9A  O 14 13DSPATR(&ATR21)
+     A                                 14 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID22ROW5     9A  O 14 29DSPATR(&ATR22)
+     A                                 14 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID23ROW5     9A  O 14 45DSPATR(&ATR23)
+     A                                 14 57'start in a corner.' DSPATR(&ANOTES)
+     A            R2C1           1A  B 15 17DSPATR(&PROCATR21)
+     A                                      COMP(EQ 'X') CHECK(ER)
+     A                                 15 25' ' COLOR(BLU) DSPATR(RI)
+     A            R2C2           1A  B 15 33DSPATR(&PROCATR22)
+     A                                      COMP(EQ 'X') CHECK(ER)
+     A                                 15 41' ' COLOR(BLU) DSPATR(RI)
+     A            R2C3           1A  B 15 49DSPATR(&PROCATR23)
+     A                                      COMP(EQ 'X') CHECK(ER)
+     A                                 16 13'-----------------------------------
+     A                                      -------' COLOR(BLU)
+     A                                 17 25' ' COLOR(BLU) DSPATR(RI)
+     A                                 17 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID31ROW1     9A  O 18 13DSPATR(&ATR31)
+     A                                 18 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID32ROW1     9A  O 18 29DSPATR(&ATR32)
+     A                                 18 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID33ROW1     9A  O 18 45DSPATR(&ATR33)
+     A            GRID31ROW2     9A  O 19 13DSPATR(&ATR31)
+     A                                 19 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID32ROW2     9A  O 19 29DSPATR(&ATR32)
+     A                                 19 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID33ROW2     9A  O 19 45DSPATR(&ATR33)
+     A            GRID31ROW3     9A  O 20 13DSPATR(&ATR31)
+     A                                 20 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID32ROW3     9A  O 20 29DSPATR(&ATR32)
+     A                                 20 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID33ROW3     9A  O 20 45DSPATR(&ATR33)
+     A            GRID31ROW4     9A  O 21 13DSPATR(&ATR31)
+     A                                 21 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID32ROW4     9A  O 21 29DSPATR(&ATR32)
+     A                                 21 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID33ROW4     9A  O 21 45DSPATR(&ATR33)
+     A            GRID31ROW5     9A  O 22 13DSPATR(&ATR31)
+     A                                 22 25' ' COLOR(BLU) DSPATR(RI)
+     A            GRID32ROW5     9A  O 22 29DSPATR(&ATR32)
+     A                                 22 41' ' COLOR(BLU) DSPATR(RI)
+     A            GRID33ROW5     9A  O 22 45DSPATR(&ATR33)
+     A            R3C1           1A  B 23 17DSPATR(&PROCATR31)
+     A                                      COMP(EQ 'X')  CHECK(ER)
+     A                                 23 25' ' COLOR(BLU) DSPATR(RI)
+     A            R3C2           1A  B 23 33DSPATR(&PROCATR32)
+     A                                      COMP(EQ 'X') CHECK(ER)
+     A                                 23 41' ' COLOR(BLU) DSPATR(RI)
+     A            R3C3           1A  B 23 49DSPATR(&PROCATR33)
+     A                                      COMP(EQ 'X') CHECK(ER)
+     A                                 24  2'F3=Exit' COLOR(BLU)
+     A                                 24 57'F5=New Game' COLOR(BLU)

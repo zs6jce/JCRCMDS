@@ -1,0 +1,24 @@
+:PNLGRP.:HELP NAME='JCRRTVRPG'.Retrieve RPGLE Source (JCRRTVRPG) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Retrieves the source member for RPGLE object compiled with DBGVIEW
+*LIST or *ALL.
+:P.One weird circumstance: If retrieving fixed column program (not free) and program has F
+specs, utility will not retrieve first C spec and may have to delete last line in
+the generated code.
+:P.Second thing: This program uses IBM generated dump file. IBM has been known to change
+format of dumps on different release levels. This version works for programs compiled
+since v5r1 to v7r2.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRRTVRPG/RPGOBJECT'.Object compiled *LIST or *ALL - Help
+:XH3.Object compiled *LIST or *ALL (RPGOBJECT)
+:P.RPGLE program object to retrieve source.:EHELP.
+ 
+:HELP NAME='JCRRTVRPG/SRCMBR'.RPGLE member to generate - Help
+:XH3.RPGLE member to generate (SRCMBR)
+:P.RPGLE member name that will generated when source is retrieved. If same name
+as existing member, existing member is overlaid.:EHELP.
+ 
+:HELP NAME='JCRRTVRPG/SRCFILE'.Source file - Help :XH3.Source file (SRCFILE)
+:P.Name of source file will contains RPGLE member.:EHELP.:EPNLGRP.

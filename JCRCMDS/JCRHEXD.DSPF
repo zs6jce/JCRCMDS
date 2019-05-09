@@ -1,0 +1,21 @@
+      *----------------------------------------------------------------
+      * JCRHEXD - Hex to Decimal to Hex - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      PRINT CA03 CA12
+     A          R SCREEN
+     A                                  1  3'JCRHEX' COLOR(BLU)
+     A                                  1 25'Hex To Decimal To Hex Convertor'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  2 72SYSNAME COLOR(BLU)
+     A            SDEC           5Y 0B  4  5EDTCDE(4)
+     A                                  4 12'num'
+     A            SHEX           5A  B  7  5CHECK(RZ)
+     A                                  7 12'hex'
+     A            MESSAGE       30A  O  9  5DSPATR(HI)
+     A                                 13  3'Enter number or hex value'
+     A                                 23  5'F3=Exit'
+     A                                      COLOR(BLU)

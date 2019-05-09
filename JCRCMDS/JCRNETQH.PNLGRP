@@ -1,0 +1,14 @@
+:PNLGRP.:HELP NAME='JCRNETQ'.Send Network Outq (JCRNETQ) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.This JCR sends network file all spooled files in an outq to selected userid.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRNETQ/OUTQ'.Outq - Help :XH3.Outq (OUTQ)
+:P.Specify name of outq where spooled files are located.:EHELP.
+ 
+:HELP NAME='JCRNETQ/TOUSRID'.To User Id - Help :XH3.User id (TOUSRID)
+:P.User name to receive spooled files.:EHELP.
+ 
+:HELP NAME='JCRNETQ/SYSTEM'.Address - Help :XH3.Address (SYSTEMD)
+:P.Remote system name.:EHELP.:EPNLGRP.

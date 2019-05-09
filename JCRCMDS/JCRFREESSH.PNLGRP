@@ -1,0 +1,21 @@
+:PNLGRP.:HELP NAME='JCRFREESS'.Free/Fixed Side-by-Side View (JCRFREESS) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Shows original RPGLE fixed column calc specs on left side of screen
+and what code would look like in free format on right.
+:P.Opcodes with ????????? mean this is not valid in free and must be re-written.
+It is surprising to view the number of deprecated opcdes IBM has dropped.
+:P.Code clean up is recommended so no ?????????? are showing before making
+converting to free.
+:P.Summary page is produced at bottom of each report showing each opcode that could not be
+converted and number of times used in the code.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRFREESS/SRCMBR'.RPG member name - Help :XH3.RPG member name (SRCMBR)
+:P.Member whose side-by-side list is to be generated.:EHELP.
+ 
+:HELP NAME='JCRFREESS/SRCFILE'.Source file - Help :XH3.Source file (SRCFILE)
+:P.Source file containing source program.:EHELP.
+ 
+:HELP NAME='JCRFREESS/OUTPUT'.Output - Help :XH3.Output (OUTPUT)
+:P.*PRINT or * Display the listing.:EHELP.:EPNLGRP.

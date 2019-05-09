@@ -1,0 +1,22 @@
+      *----------------------------------------------------------------
+      * JCRUSREMLR - User profile retrieve email address list - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 132)
+     A          R PRTHEAD                   SKIPB(1) SPACEA(1)
+     A                                     2'JCRUSREMLR'
+     A                                    20'User Profile Email Address'
+     A            SCDOW          9A  O    72
+     A                                    82DATE EDTCDE(Y)
+     A                                    92TIME
+     A                                   104'Page'
+     A                                    +1PAGNBR EDTCDE(4) SPACEA(1)
+      *---
+     A                                     2'User Profile'
+     A                                    15'Text'
+     A                                    48'Email Address' SPACEA(1)
+      *----------------------------------------------------------------
+     A          R PRTDETAIL                 SPACEA(1)
+     A            PRTUSER       10A  O     2
+     A            PRTTXT        30A  O    15
+     A            PRTEMAIL      85A  O    48

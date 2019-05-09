@@ -1,0 +1,52 @@
+      *----------------------------------------------------------------
+      * JCRSPLFD2 - List spool files with Options-duplicate splf - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      INDARA PRINT CA03 CA12
+     A          R SCREEN
+     A                                  1  2'JCRSPLFR2' COLOR(BLU)
+     A                                  1 23'Duplicate Spooled File with Change-
+     A                                      s' DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  2 72SYSNAME COLOR(BLU)
+     A                                  3 27'Device or' DSPATR(HI)
+     A                                  3 52'Total' DSPATR(HI)
+     A                                  4  3'File' DSPATR(HI)
+     A                                  4 15'User' DSPATR(HI)
+     A                                  4 27'Queue' DSPATR(HI)
+     A                                  4 39'User Data' DSPATR(HI)
+     A                                  4 52'Pages' DSPATR(HI)
+     A                                  4 59'Copy' DSPATR(HI)
+     A            SCSPLNAM      10A  O  5  3
+     A            SCUSRID       10A  O  5 15
+     A            SCOUTQ        10A  B  5 27
+     A            SCUSRDTA      10A  B  5 39
+     A            SCPAGNBR       5Y 0O  5 52EDTCDE(4)
+     A            SCNUMCOPYS     3Y 0B  5 60EDTCDE(4)
+     A                                  8  3'Page Rotation:' DSPATR(HI)
+     A            SCPAGEROT      3Y 0B  8 18EDTCDE(N)
+     A                                  8 25'-1=*Auto fit to paper'
+     A                                  9 25'-2=*Devd device default'
+     A                                 10 25'-3=*Cor rotate to potrait'
+     A                                 11 26'0=No Rotation'
+     A                                 12 25'90, 180, 270 = degrees clockwise r-
+     A                                      otation'
+     A                                 14 10'Duplex:' DSPATR(HI)
+     A            SCDUPLEX       1A  B 14 18
+     A                                 14 24'Hold:' DSPATR(HI)
+     A            SCHOLD         1A  B 14 30
+     A                                 14 34'Save:' DSPATR(HI)
+     A            SCSAVE         1A  B 14 40
+     A                                 14 43'(Y or N)'
+     A                                 16  2'Lines per Inch:' DSPATR(HI)
+     A            SCLPI          3Y 0B 16 18EDTCDE(4)
+     A                                 16 24'Characters per inch:' DSPATR(HI)
+     A            SCCPI          3Y 0B 16 45EDTCDE(4)
+     A N10                             18  3'Front Overlay:'
+     A N10        SCFOVERLAY    21A  O 18 18
+     A N11                             19  3'Back Overlay:'
+     A N11        SCBOVERLAY    21A  O 19 18
+     A                                 23  2'F3=Exit' COLOR(BLU)
+     A                                 23 69'F12=Cancel' COLOR(BLU)

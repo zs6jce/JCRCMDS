@@ -1,0 +1,56 @@
+      *----------------------------------------------------------------
+      * JCRFREESSP - Free/fixed side-by-side source view - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 198) CPI(15)
+     A          R PRTHEAD                   SKIPB(1) SPACEA(1)
+     A                                     2'JCRFREESS'
+     A                                    23'Free/Fixed Side-by-Side View'
+     A            SCDOW          9A  O   100
+     A                                   110DATE EDTCDE(Y) SPACEA(1)
+      *---
+     A                                     2'Mbr:'
+     A            SCOBJHEAD    105A  O     7SPACEA(2)
+      *---
+     A                                     1'Seqno'
+     A                                    10'Factor 1'
+     A                                    25'Opcode'
+     A                                    36'Factor 2'
+     A                                    51'Result Field'
+     A                                    65'RI'
+     A                                    75'Free Format Validation'
+     A                                      SPACEA(1)
+      *---
+     A                                     8'-----------------------------------
+     A                                      ------------------------------'
+     A                                    75'-----------------------------------
+     A                                      ------------------------------------
+     A                                      ------------------------------------
+     A                                      --------'
+      *----------------------------------------------------------------
+     A          R PRTCSPEC                  SPACEA(1)
+     A            SEQNO          6  2O     1EDTCDE(4)
+     A            F1            14A  O    10
+     A            OP            10A  O    25
+     A            F2            14A  O    36
+     A            RF            14A  O    51
+     A            RSI            6A  O    66
+     A                                    73'|'
+     A            LINEOFCODE   112A  O    75
+      *----------------------------------------------------------------
+     A          R PRTSUMHEAD                SKIPB(1) SPACEA(2)
+     A                                     2'JCRFREESS'
+     A                                    16'Summary of OPCODES that will requi-
+     A                                      re manual conversion'
+     A            SCDOW          9A  O   100
+     A                                   110DATE EDTCDE(Y) SPACEA(1)
+      *---
+     A                                     2'Mbr:'
+     A            SCOBJHEAD    105A  O     7SPACEA(2)
+      *---
+     A                                     3'Opcode'
+     A                                    11'Number times used'
+      *----------------------------------------------------------------
+     A          R PRTSUMDET                 SPACEA(1)
+     A            SUMOPCOD      10A  O     3
+     A            SUMCOUNT       5  0O    14EDTCDE(4)

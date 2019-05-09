@@ -1,0 +1,33 @@
+      *----------------------------------------------------------------
+      * JCRSDENTP - Show Source Indentation - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 132)
+     A          R PRTHEAD                   SKIPB(1) SPACEA(1)
+     A                                     2'JCRSDENT'
+     A                                    20'Show Source Indentation'
+     A            SCDOW          9A  O    72
+     A                                    82DATE EDTCDE(Y) SPACEA(1)
+     A                                     2'Mbr:'
+     A            SCOBJHEAD    105A        7SPACEA(1)
+ 
+     A                                     2'Seqno'
+     A                                     9'Source Code' SPACEA(1)
+     A                                     2'------'
+     A                                     9'-----------------------------------
+     A                                      ------------------------------------
+     A                                      ----'
+     A                                   124'--------'
+      *----------------------------------------------------------------
+     A          R PRTCLSPEC                 SPACEA(1)
+     A            SEQNO          6S 2O     1EDTCDE(4)
+     A            LINEOFCODE   114A  O    10
+      *----------------------------------------------------------------
+     A          R PRTXSPEC                  SPACEA(1)
+     A            SEQNO          6S 2O     1EDTCDE(4)
+     A            SRCALL       100A  O     9
+      *----------------------------------------------------------------
+     A          R PRTCSPEC                  SPACEA(1)
+     A            SEQNO          6S 2O     1EDTCDE(4)
+     A            PART1SRC      25A  O     9
+     A            LINEOFCODE   114A  O    34

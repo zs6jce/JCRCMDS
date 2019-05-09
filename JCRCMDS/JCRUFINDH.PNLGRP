@@ -1,0 +1,40 @@
+:PNLGRP.:HELP NAME='JCRUFIND'.Find String In User Space (JCRUFIND) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Searches for string(s) in selected user spaces in selected library.
+A subfile of user space names with selected string is displayed.
+:NT.This utility is great for searching through
+ASC Sequel views to find where files are used.:ENT.
+:P.Performance problem was 16Meg user spaces that did not contain requested string. This
+program was spinning through all 16 million bytes. Arbitrarily, say a string of
+1000 X'00' is end of data in user space. If selected user spaces have longer strings
+of nulls, change value OneThousand00 to a higher value.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRUFIND/USERSPACE'.User Space - Help :XH3.User Space (USERSPACE)
+:P.Name/*All/Generic* and library of user spaces to be scanned.:EHELP.
+ 
+:HELP NAME='JCRUFIND/STRING1'.Scan string 1 - Help :XH3.Scan string 1 (STRING1)
+:P.String to search for in specified user spaces.:EHELP.
+ 
+:HELP NAME='JCRUFIND/RELATION'.Relationship: (Optional) - Help
+:XH3.Relationship: (Optional) (RELATION)
+:P.If String2 is entered, this keyword specifies relationship between String1 and String2.
+:PARML.:PT.:PK def.*AND:EPK.
+:PD.Both String1 and String2 have to be present in user space
+:PT.*OR :PD.Either String1 or String2 can be present in user space.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRUFIND/STRING2'.Scan string 2 - Help :XH3.Scan string 2: (Optional) (STRING2)
+:P.Second string to search for in specified user spaces.:EHELP.
+ 
+:HELP NAME='JCRUFIND/OUTPUT'.Output - Help :XH3.Output (OUTPUT)
+:P.Output to Display or Data File.
+:PARML.:PT.:PK def.*:EPK.:PD.Show subfile of user spaces with selected string(s).
+:PT.*OUTFILE :PD.Output is redirected to selected data file. (see OUTFILE help).:EPARML.:EHELP.
+ 
+:HELP NAME='JCRUFIND/OUTFILE'.OutFile - Help :XH3.File (OUTFILE)
+:P.File and library to receive command output.
+:P.JCRUFINDF cannot be specified as outfile to receive output.:EHELP.
+ 
+:HELP NAME='JCRUFIND/OUTMBR'.OutMbr - Help :XH3.OutMbr (OUTMBR)
+:P.File member to receive command output.:EHELP.:EPNLGRP.

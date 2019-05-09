@@ -1,0 +1,16 @@
+:PNLGRP.:HELP NAME='XMLSRCFIL'.All mbrs to single XML mbr (XMLSRCFIL) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Adds all members from selected source file into single well-formed
+XML mbr with all information required to recreate source members on another system.
+:P.There is maximum of 999,999 records (around 10Meg) that can be written to single
+source member.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='XMLSRCFIL/INSRCFIL'.Input Source file name - Help
+:XH3.Input Source file name (INSRCFIL)
+:P.Source file whose members are to loaded.:EHELP.
+ 
+:HELP NAME='XMLSRCFIL/OUTSRCFIL'.Source file for XML out member - Help
+:XH3.Source file for XML out member (OUTSRCFIL)
+:P.Source file where XML member is to be generated.:EHELP.:EPNLGRP.

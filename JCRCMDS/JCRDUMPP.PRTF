@@ -1,0 +1,33 @@
+      *----------------------------------------------------------------
+      * JCRDUMPP - Dump count by program - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 132)
+     A          R PRTHEAD
+     A                                     2'JCRDUMP'
+     A                                      SKIPB(01)
+     A                                    30'Dump count by program'
+     A            SCDOW          9        77
+     A                                    88DATE EDTCDE(Y)
+     A                                   108'Page'
+     A            PAGE1          4  0    114EDTCDE(4)
+     A                                      SPACEA(2)
+     A                                     5'Dump Date'
+     A                                    23'Program Name Library'
+     A                                    49'Number of Dumps'
+     A                                    69'Program Status Message'
+     A                                      SPACEA(1)
+      *----------------------------------------------------------------
+     A          R PRTL1
+     A            SSDATE          L        5DATFMT(*ISO)
+     A            SPGMNAM       10        23
+     A            SPGMLIB       10        36
+     A            L1CNT         10  0     52EDTCDE(2)
+     A            SMSGD         60        69
+     A                                      SPACEA(1)
+      *----------------------------------------------------------------
+     A          R PRTLR
+     A                                     1'TOTAL DUMPS'
+     A                                      SPACEB(2)
+     A            LRCNT         10  0     52EDTCDE(2)
+     A                                      SPACEA(2)

@@ -1,0 +1,60 @@
+      *----------------------------------------------------------------
+      * JCRUSRAUTP - List user profile class/special authorities - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 132)
+     A          R PRTHEAD                   SKIPB(1) SPACEA(1)
+     A                                     2'JCRUSRAUT'
+     A                                    20'User Profiles with select Class/Au-
+     A                                      thorities'
+     A            SCDOW          9A  O    72
+     A                                    82DATE EDTCDE(Y)
+     A                                    92TIME
+     A                                   104'Page'
+     A                                    +1PAGNBR EDTCDE(4) SPACEA(1)
+      *---
+     A                                     3'Class:'
+     A            PCLASS         7A       10SPACEA(1)
+      *---
+     A                                     3'Authorities:'
+     A            PAUTH1         9A       16
+     A            PAUTH2         9A       26
+     A            PAUTH3         9A       36
+     A            PAUTH4         9A       46
+     A            PAUTH5         9A       56
+     A            PAUTH6         9A       66
+     A            PAUTH7         9A       76
+     A            PAUTH8         9A       86
+     A            PAUTH9         9A       96SPACEA(1)
+      *---
+     A                                     3'Status:'
+     A            P_STATUS       9A       11
+     A                                    29'Special Authorities' SPACEA(1)
+      *---
+     A                                     2'User Profile'
+     A                                    16'User'
+     A                                    21'Class'
+     A                                    28'ALLOBJ'
+     A                                    35'SECADM'
+     A                                    42'JOBCTL'
+     A                                    49'SPLCTL'
+     A                                    56'SAVSYS'
+     A                                    63'SERVICE'
+     A                                    71'AUDIT'
+     A                                    77'IOSYSCFG'
+     A                                    87'LAST USED'
+     A                                    99'TEXT'
+      *----------------------------------------------------------------
+     A          R PRTDETAIL                 SPACEA(1)
+     A            USRPRF        10A  O     2
+     A            PDCLASS        7A  O    16
+     A            PALLOBJ        1A  O    30
+     A            PSECADM        1A  O    37
+     A            PJOBCTL        1A  O    44
+     A            PSPLCTL        1A  O    51
+     A            PSAVSYS        1A  O    58
+     A            PSERVICE       1A  O    65
+     A            PAUDIT         1A  O    73
+     A            PIOSYSCH       1A  O    80
+     A            LASTUSED      10A  O    87
+     A            TEXT33        33A  O    99

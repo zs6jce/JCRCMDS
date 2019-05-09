@@ -1,0 +1,19 @@
+      *----------------------------------------------------------------
+      * JCRFDP - File descriptions driver - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 132)
+     A          R PRTHEAD                   SKIPB(1) SPACEA(2)
+     A            SCTITLE       36A  O    23
+     A            SCDOW          9A  O    62
+     A                                    72DATE EDTCDE(Y)
+     A                                      SPACEA(1)
+ 
+     A                                     2'File:'
+     A            SCOBJHEAD     63A  O     8
+     A                                      SPACEA(1)
+     A            SCHEADOPT     65A  O     2
+     A                                      SPACEA(2)
+      *----------------------------------------------------------------
+     A          R PRTLINE                   SPACEA(1)
+     A            SBFROW       125A        2

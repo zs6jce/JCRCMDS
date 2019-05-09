@@ -1,0 +1,9 @@
+:PNLGRP.:HELP NAME='JCRRECRT'.Recreate Command (JCRRECRT) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Easy re-compile a command.  The original creation parameters
+are retrieved and loaded into the CRTCMD (Create Command) prompt for you.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRRECRT/CMD'.CMD - Help :XH3.CMD (CMD)
+:P.Name and library of command to be selected.:EHELP.:EPNLGRP.

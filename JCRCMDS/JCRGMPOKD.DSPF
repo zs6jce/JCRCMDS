@@ -1,0 +1,456 @@
+      *----------------------------------------------------------------
+      * JCRGMPOKD - Video Poker - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      INDARA CA03 CA12
+     A          R SCREEN
+     A            BORDER1A       1A  P
+     A            BORDER2A       1A  P
+     A            BORDER3A       1A  P
+     A            BORDER4A       1A  P
+     A            BORDER5A       1A  P
+     A            TOPBOT1A       1A  P
+     A            TOPBOT2A       1A  P
+     A            TOPBOT3A       1A  P
+     A            TOPBOT4A       1A  P
+     A            TOPBOT5A       1A  P
+     A            CARDID1A       1A  P
+     A            CARDID2A       1A  P
+     A            CARDID3A       1A  P
+     A            CARDID4A       1A  P
+     A            CARDID5A       1A  P
+     A            C111A          1A  P
+     A            C112A          1A  P
+     A            C113A          1A  P
+     A            C114A          1A  P
+     A            C124A          1A  P
+     A            C134A          1A  P
+     A            C144A          1A  P
+     A            C214A          1A  P
+     A            C224A          1A  P
+     A            C234A          1A  P
+     A            C244A          1A  P
+     A            C314A          1A  P
+     A            C324A          1A  P
+     A            C334A          1A  P
+     A            C344A          1A  P
+     A            C414A          1A  P
+     A            C424A          1A  P
+     A            C434A          1A  P
+     A            C444A          1A  P
+     A            C514A          1A  P
+     A            C524A          1A  P
+     A            C534A          1A  P
+     A            C544A          1A  P
+     A            C151A          1A  P
+     A            C152A          1A  P
+     A            C153A          1A  P
+     A            C154A          1A  P
+     A            C251A          1A  P
+     A            C252A          1A  P
+     A            C253A          1A  P
+     A            C254A          1A  P
+     A            C351A          1A  P
+     A            C352A          1A  P
+     A            C353A          1A  P
+     A            C354A          1A  P
+     A            C451A          1A  P
+     A            C452A          1A  P
+     A            C453A          1A  P
+     A            C454A          1A  P
+     A            C551A          1A  P
+     A            C552A          1A  P
+     A            C553A          1A  P
+     A            C554A          1A  P
+     A            C121A          1A  P
+     A            C122A          1A  P
+     A            C123A          1A  P
+     A            C131A          1A  P
+     A            C132A          1A  P
+     A            C133A          1A  P
+     A            C141A          1A  P
+     A            C142A          1A  P
+     A            C143A          1A  P
+     A            C211A          1A  P
+     A            C212A          1A  P
+     A            C213A          1A  P
+     A            C221A          1A  P
+     A            C222A          1A  P
+     A            C223A          1A  P
+     A            C231A          1A  P
+     A            C232A          1A  P
+     A            C233A          1A  P
+     A            C241A          1A  P
+     A            C242A          1A  P
+     A            C243A          1A  P
+     A            C311A          1A  P
+     A            C312A          1A  P
+     A            C313A          1A  P
+     A            C321A          1A  P
+     A            C322A          1A  P
+     A            C323A          1A  P
+     A            C331A          1A  P
+     A            C332A          1A  P
+     A            C333A          1A  P
+     A            C341A          1A  P
+     A            C342A          1A  P
+     A            C343A          1A  P
+     A            C411A          1A  P
+     A            C412A          1A  P
+     A            C413A          1A  P
+     A            C421A          1A  P
+     A            C422A          1A  P
+     A            C423A          1A  P
+     A            C431A          1A  P
+     A            C432A          1A  P
+     A            C433A          1A  P
+     A            C441A          1A  P
+     A            C442A          1A  P
+     A            C443A          1A  P
+     A            C511A          1A  P
+     A            C512A          1A  P
+     A            C513A          1A  P
+     A            C521A          1A  P
+     A            C522A          1A  P
+     A            C523A          1A  P
+     A            C531A          1A  P
+     A            C532A          1A  P
+     A            C533A          1A  P
+     A            C541A          1A  P
+     A            C542A          1A  P
+     A            C543A          1A  P
+     A            C161A          1A  P
+     A            C162A          1A  P
+     A            C163A          1A  P
+     A            C164A          1A  P
+     A            C261A          1A  P
+     A            C262A          1A  P
+     A            C263A          1A  P
+     A            C264A          1A  P
+     A            C361A          1A  P
+     A            C362A          1A  P
+     A            C363A          1A  P
+     A            C364A          1A  P
+     A            C461A          1A  P
+     A            C462A          1A  P
+     A            C463A          1A  P
+     A            C464A          1A  P
+     A            C561A          1A  P
+     A            C562A          1A  P
+     A            C563A          1A  P
+     A            C564A          1A  P
+     A            C171A          1A  P
+     A            C172A          1A  P
+     A            C173A          1A  P
+     A            C174A          1A  P
+     A            C271A          1A  P
+     A            C272A          1A  P
+     A            C273A          1A  P
+     A            C274A          1A  P
+     A            C371A          1A  P
+     A            C372A          1A  P
+     A            C373A          1A  P
+     A            C374A          1A  P
+     A            C471A          1A  P
+     A            C472A          1A  P
+     A            C473A          1A  P
+     A            C474A          1A  P
+     A            C571A          1A  P
+     A            C572A          1A  P
+     A            C573A          1A  P
+     A            C574A          1A  P
+     A                                  1  3'JCRGMPOK' COLOR(BLU)
+     A                                  1 14'DRAW POKER!' COLOR(BLU)
+     A                                  1 27'(Jacks or Better)' COLOR(BLU)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A            HANDVALUE     30A  O  3  3
+     A            BORDERTOP1    13A  O  4  4DSPATR(&TOPBOT1A)
+     A            BORDERTOP2    13A  O  4 19DSPATR(&TOPBOT2A)
+     A            BORDERTOP3    13A  O  4 34DSPATR(&TOPBOT3A)
+     A            BORDERTOP4    13A  O  4 49DSPATR(&TOPBOT4A)
+     A            BORDERTOP5    13A  O  4 64DSPATR(&TOPBOT5A)
+     A            SIDE11L        1A  O  5  4DSPATR(&BORDER1A)
+     A            CVALT1         2A  O  5  6DSPATR(&CARDID1A)
+     A            SIDE11R        1A  O  5 16DSPATR(&BORDER1A)
+     A            SIDE21L        1A  O  5 19DSPATR(&BORDER2A)
+     A            CVALT2         2A  O  5 21DSPATR(&CARDID2A)
+     A            SIDE21R        1A  O  5 31DSPATR(&BORDER2A)
+     A            SIDE31L        1A  O  5 34DSPATR(&BORDER3A)
+     A            CVALT3         2A  O  5 36DSPATR(&CARDID3A)
+     A            SIDE31R        1A  O  5 46DSPATR(&BORDER3A)
+     A            SIDE41L        1A  O  5 49DSPATR(&BORDER4A)
+     A            CVALT4         2A  O  5 51DSPATR(&CARDID4A)
+     A            SIDE41R        1A  O  5 61DSPATR(&BORDER4A)
+     A            SIDE51L        1A  O  5 64DSPATR(&BORDER5A)
+     A            CVALT5         2A  O  5 66DSPATR(&CARDID5A)
+     A            SIDE51R        1A  O  5 76DSPATR(&BORDER5A)
+     A            SIDE12L        1A  O  6  4DSPATR(&BORDER1A)
+     A            SIDE12R        1A  O  6 16DSPATR(&BORDER1A)
+     A            SIDE22L        1A  O  6 19DSPATR(&BORDER2A)
+     A            SIDE22R        1A  O  6 31DSPATR(&BORDER2A)
+     A            SIDE32L        1A  O  6 34DSPATR(&BORDER3A)
+     A            SIDE32R        1A  O  6 46DSPATR(&BORDER3A)
+     A            SIDE42L        1A  O  6 49DSPATR(&BORDER4A)
+     A            SIDE42R        1A  O  6 61DSPATR(&BORDER4A)
+     A            SIDE52L        1A  O  6 64DSPATR(&BORDER5A)
+     A            SIDE52R        1A  O  6 76DSPATR(&BORDER5A)
+     A            SIDE13L        1A  O  7  4DSPATR(&BORDER1A)
+     A            C111           1A  O  7  7DSPATR(&C111A)
+     A            C112           1A  O  7  9DSPATR(&C112A)
+     A            C113           1A  O  7 11DSPATR(&C113A)
+     A            C114           1A  O  7 13DSPATR(&C114A)
+     A            SIDE13R        1A  O  7 16DSPATR(&BORDER1A)
+     A            SIDE23L        1A  O  7 19DSPATR(&BORDER2A)
+     A            C211           1A  O  7 22DSPATR(&C211A)
+     A            C212           1A  O  7 24DSPATR(&C212A)
+     A            C213           1A  O  7 26DSPATR(&C213A)
+     A            C214           1A  O  7 28DSPATR(&C214A)
+     A            SIDE23R        1A  O  7 31DSPATR(&BORDER2A)
+     A            SIDE33L        1A  O  7 34DSPATR(&BORDER3A)
+     A            C311           1A  O  7 37DSPATR(&C311A)
+     A            C312           1A  O  7 39DSPATR(&C312A)
+     A            C313           1A  O  7 41DSPATR(&C313A)
+     A            C314           1A  O  7 43DSPATR(&C314A)
+     A            SIDE33R        1A  O  7 46DSPATR(&BORDER3A)
+     A            SIDE43L        1A  O  7 49DSPATR(&BORDER4A)
+     A            C411           1A  O  7 52DSPATR(&C411A)
+     A            C412           1A  O  7 54DSPATR(&C412A)
+     A            C413           1A  O  7 56DSPATR(&C413A)
+     A            C414           1A  O  7 58DSPATR(&C414A)
+     A            SIDE43R        1A  O  7 61DSPATR(&BORDER4A)
+     A            SIDE53L        1A  O  7 64DSPATR(&BORDER5A)
+     A            C511           1A  O  7 67DSPATR(&C511A)
+     A            C512           1A  O  7 69DSPATR(&C512A)
+     A            C513           1A  O  7 71DSPATR(&C513A)
+     A            C514           1A  O  7 73DSPATR(&C514A)
+     A            SIDE53R        1A  O  7 76DSPATR(&BORDER5A)
+     A            SIDE14L        1A  O  8  4DSPATR(&BORDER1A)
+     A            C121           1A  O  8  7DSPATR(&C121A)
+     A            C122           1A  O  8  9DSPATR(&C122A)
+     A            C123           1A  O  8 11DSPATR(&C123A)
+     A            C124           1A  O  8 13DSPATR(&C124A)
+     A            SIDE14R        1A  O  8 16DSPATR(&BORDER1A)
+     A            SIDE24L        1A  O  8 19DSPATR(&BORDER2A)
+     A            C221           1A  O  8 22DSPATR(&C221A)
+     A            C222           1A  O  8 24DSPATR(&C222A)
+     A            C223           1A  O  8 26DSPATR(&C223A)
+     A            C224           1A  O  8 28DSPATR(&C224A)
+     A            SIDE24R        1A  O  8 31DSPATR(&BORDER2A)
+     A            SIDE34L        1A  O  8 34DSPATR(&BORDER3A)
+     A            C321           1A  O  8 37DSPATR(&C321A)
+     A            C322           1A  O  8 39DSPATR(&C322A)
+     A            C323           1A  O  8 41DSPATR(&C323A)
+     A            C324           1A  O  8 43DSPATR(&C324A)
+     A            SIDE34R        1A  O  8 46DSPATR(&BORDER3A)
+     A            SIDE44L        1A  O  8 49DSPATR(&BORDER4A)
+     A            C421           1A  O  8 52DSPATR(&C421A)
+     A            C422           1A  O  8 54DSPATR(&C422A)
+     A            C423           1A  O  8 56DSPATR(&C423A)
+     A            C424           1A  O  8 58DSPATR(&C424A)
+     A            SIDE44R        1A  O  8 61DSPATR(&BORDER4A)
+     A            SIDE54L        1A  O  8 64DSPATR(&BORDER5A)
+     A            C521           1A  O  8 67DSPATR(&C521A)
+     A            C522           1A  O  8 69DSPATR(&C522A)
+     A            C523           1A  O  8 71DSPATR(&C523A)
+     A            C524           1A  O  8 73DSPATR(&C524A)
+     A            SIDE54R        1A  O  8 76DSPATR(&BORDER5A)
+     A            SIDE15L        1A  O  9  4DSPATR(&BORDER1A)
+     A            C131           1A  O  9  7DSPATR(&C131A)
+     A            C132           1A  O  9  9DSPATR(&C132A)
+     A            C133           1A  O  9 11DSPATR(&C133A)
+     A            C134           1A  O  9 13DSPATR(&C134A)
+     A            SIDE15R        1A  O  9 16DSPATR(&BORDER1A)
+     A            SIDE25L        1A  O  9 19DSPATR(&BORDER2A)
+     A            C231           1A  O  9 22DSPATR(&C231A)
+     A            C232           1A  O  9 24DSPATR(&C232A)
+     A            C233           1A  O  9 26DSPATR(&C233A)
+     A            C234           1A  O  9 28DSPATR(&C234A)
+     A            SIDE25R        1A  O  9 31DSPATR(&BORDER2A)
+     A            SIDE35L        1A  O  9 34DSPATR(&BORDER3A)
+     A            C331           1A  O  9 37DSPATR(&C331A)
+     A            C332           1A  O  9 39DSPATR(&C332A)
+     A            C333           1A  O  9 41DSPATR(&C333A)
+     A            C334           1A  O  9 43DSPATR(&C334A)
+     A            SIDE35R        1A  O  9 46DSPATR(&BORDER3A)
+     A            SIDE45L        1A  O  9 49DSPATR(&BORDER4A)
+     A            C431           1A  O  9 52DSPATR(&C431A)
+     A            C432           1A  O  9 54DSPATR(&C432A)
+     A            C433           1A  O  9 56DSPATR(&C433A)
+     A            C434           1A  O  9 58DSPATR(&C434A)
+     A            SIDE45R        1A  O  9 61DSPATR(&BORDER4A)
+     A            SIDE55L        1A  O  9 64DSPATR(&BORDER5A)
+     A            C531           1A  O  9 67DSPATR(&C531A)
+     A            C532           1A  O  9 69DSPATR(&C532A)
+     A            C533           1A  O  9 71DSPATR(&C533A)
+     A            C534           1A  O  9 73DSPATR(&C534A)
+     A            SIDE55R        1A  O  9 76DSPATR(&BORDER5A)
+     A            SIDE16L        1A  O 10  4DSPATR(&BORDER1A)
+     A            C141           1A  O 10  7DSPATR(&C141A)
+     A            C142           1A  O 10  9DSPATR(&C142A)
+     A            C143           1A  O 10 11DSPATR(&C143A)
+     A            C144           1A  O 10 13DSPATR(&C144A)
+     A            SIDE16R        1A  O 10 16DSPATR(&BORDER1A)
+     A            SIDE26L        1A  O 10 19DSPATR(&BORDER2A)
+     A            C241           1A  O 10 22DSPATR(&C241A)
+     A            C242           1A  O 10 24DSPATR(&C242A)
+     A            C243           1A  O 10 26DSPATR(&C243A)
+     A            C244           1A  O 10 28DSPATR(&C244A)
+     A            SIDE26R        1A  O 10 31DSPATR(&BORDER2A)
+     A            SIDE36L        1A  O 10 34DSPATR(&BORDER3A)
+     A            C341           1A  O 10 37DSPATR(&C341A)
+     A            C342           1A  O 10 39DSPATR(&C342A)
+     A            C343           1A  O 10 41DSPATR(&C343A)
+     A            C344           1A  O 10 43DSPATR(&C344A)
+     A            SIDE36R        1A  O 10 46DSPATR(&BORDER3A)
+     A            SIDE46L        1A  O 10 49DSPATR(&BORDER4A)
+     A            C441           1A  O 10 52DSPATR(&C441A)
+     A            C442           1A  O 10 54DSPATR(&C442A)
+     A            C443           1A  O 10 56DSPATR(&C443A)
+     A            C444           1A  O 10 58DSPATR(&C444A)
+     A            SIDE46R        1A  O 10 61DSPATR(&BORDER4A)
+     A            SIDE56L        1A  O 10 64DSPATR(&BORDER5A)
+     A            C541           1A  O 10 67DSPATR(&C541A)
+     A            C542           1A  O 10 69DSPATR(&C542A)
+     A            C543           1A  O 10 71DSPATR(&C543A)
+     A            C544           1A  O 10 73DSPATR(&C544A)
+     A            SIDE56R        1A  O 10 76DSPATR(&BORDER5A)
+     A            SIDE17L        1A  O 11  4DSPATR(&BORDER1A)
+     A            C151           1A  O 11  7DSPATR(&C151A)
+     A            C152           1A  O 11  9DSPATR(&C152A)
+     A            C153           1A  O 11 11DSPATR(&C153A)
+     A            C154           1A  O 11 13DSPATR(&C154A)
+     A            SIDE17R        1A  O 11 16DSPATR(&BORDER1A)
+     A            SIDE27L        1A  O 11 19DSPATR(&BORDER2A)
+     A            C251           1A  O 11 22DSPATR(&C251A)
+     A            C252           1A  O 11 24DSPATR(&C252A)
+     A            C253           1A  O 11 26DSPATR(&C253A)
+     A            C254           1A  O 11 28DSPATR(&C254A)
+     A            SIDE27R        1A  O 11 31DSPATR(&BORDER2A)
+     A            SIDE37L        1A  O 11 34DSPATR(&BORDER3A)
+     A            C351           1A  O 11 37DSPATR(&C351A)
+     A            C352           1A  O 11 39DSPATR(&C352A)
+     A            C353           1A  O 11 41DSPATR(&C353A)
+     A            C354           1A  O 11 43DSPATR(&C354A)
+     A            SIDE37R        1A  O 11 46DSPATR(&BORDER3A)
+     A            SIDE47L        1A  O 11 49DSPATR(&BORDER4A)
+     A            C451           1A  O 11 52DSPATR(&C451A)
+     A            C452           1A  O 11 54DSPATR(&C452A)
+     A            C453           1A  O 11 56DSPATR(&C453A)
+     A            C454           1A  O 11 58DSPATR(&C454A)
+     A            SIDE47R        1A  O 11 61DSPATR(&BORDER4A)
+     A            SIDE57L        1A  O 11 64DSPATR(&BORDER5A)
+     A            C551           1A  O 11 67DSPATR(&C551A)
+     A            C552           1A  O 11 69DSPATR(&C552A)
+     A            C553           1A  O 11 71DSPATR(&C553A)
+     A            C554           1A  O 11 73DSPATR(&C554A)
+     A            SIDE57R        1A  O 11 76DSPATR(&BORDER5A)
+     A            SIDE18L        1A  O 12  4DSPATR(&BORDER1A)
+     A            C161           1A  O 12  7DSPATR(&C161A)
+     A            C162           1A  O 12  9DSPATR(&C162A)
+     A            C163           1A  O 12 11DSPATR(&C163A)
+     A            C164           1A  O 12 13DSPATR(&C164A)
+     A            SIDE18R        1A  O 12 16DSPATR(&BORDER1A)
+     A            SIDE28L        1A  O 12 19DSPATR(&BORDER2A)
+     A            C261           1A  O 12 22DSPATR(&C261A)
+     A            C262           1A  O 12 24DSPATR(&C262A)
+     A            C263           1A  O 12 26DSPATR(&C263A)
+     A            C264           1A  O 12 28DSPATR(&C264A)
+     A            SIDE28R        1A  O 12 31DSPATR(&BORDER2A)
+     A            SIDE38L        1A  O 12 34DSPATR(&BORDER3A)
+     A            C361           1A  O 12 37DSPATR(&C361A)
+     A            C362           1A  O 12 39DSPATR(&C362A)
+     A            C363           1A  O 12 41DSPATR(&C363A)
+     A            C364           1A  O 12 43DSPATR(&C364A)
+     A            SIDE38R        1A  O 12 46DSPATR(&BORDER3A)
+     A            SIDE48L        1A  O 12 49DSPATR(&BORDER4A)
+     A            C461           1A  O 12 52DSPATR(&C461A)
+     A            C462           1A  O 12 54DSPATR(&C462A)
+     A            C463           1A  O 12 56DSPATR(&C463A)
+     A            C464           1A  O 12 58DSPATR(&C464A)
+     A            SIDE48R        1A  O 12 61DSPATR(&BORDER4A)
+     A            SIDE58L        1A  O 12 64DSPATR(&BORDER5A)
+     A            C561           1A  O 12 67DSPATR(&C561A)
+     A            C562           1A  O 12 69DSPATR(&C562A)
+     A            C563           1A  O 12 71DSPATR(&C563A)
+     A            C564           1A  O 12 73DSPATR(&C564A)
+     A            SIDE58R        1A  O 12 76DSPATR(&BORDER5A)
+     A            SIDE19L        1A  O 13  4DSPATR(&BORDER1A)
+     A            C171           1A  O 13  7DSPATR(&C171A)
+     A            C172           1A  O 13  9DSPATR(&C172A)
+     A            C173           1A  O 13 11DSPATR(&C173A)
+     A            C174           1A  O 13 13DSPATR(&C174A)
+     A            SIDE19R        1A  O 13 16DSPATR(&BORDER1A)
+     A            SIDE29L        1A  O 13 19DSPATR(&BORDER2A)
+     A            C271           1A  O 13 22DSPATR(&C271A)
+     A            C272           1A  O 13 24DSPATR(&C272A)
+     A            C273           1A  O 13 26DSPATR(&C273A)
+     A            C274           1A  O 13 28DSPATR(&C274A)
+     A            SIDE29R        1A  O 13 31DSPATR(&BORDER2A)
+     A            SIDE39L        1A  O 13 34DSPATR(&BORDER3A)
+     A            C371           1A  O 13 37DSPATR(&C371A)
+     A            C372           1A  O 13 39DSPATR(&C372A)
+     A            C373           1A  O 13 41DSPATR(&C373A)
+     A            C374           1A  O 13 43DSPATR(&C374A)
+     A            SIDE39R        1A  O 13 46DSPATR(&BORDER3A)
+     A            SIDE49L        1A  O 13 49DSPATR(&BORDER4A)
+     A            C471           1A  O 13 52DSPATR(&C471A)
+     A            C472           1A  O 13 54DSPATR(&C472A)
+     A            C473           1A  O 13 56DSPATR(&C473A)
+     A            C474           1A  O 13 58DSPATR(&C474A)
+     A            SIDE49R        1A  O 13 61DSPATR(&BORDER4A)
+     A            SIDE59L        1A  O 13 64DSPATR(&BORDER5A)
+     A            C571           1A  O 13 67DSPATR(&C571A)
+     A            C572           1A  O 13 69DSPATR(&C572A)
+     A            C573           1A  O 13 71DSPATR(&C573A)
+     A            C574           1A  O 13 73DSPATR(&C574A)
+     A            SIDE59R        1A  O 13 76DSPATR(&BORDER5A)
+     A            SIDE110L       1A  O 14  4DSPATR(&BORDER1A)
+     A            SIDE110R       1A  O 14 16DSPATR(&BORDER1A)
+     A            SIDE210L       1A  O 14 19DSPATR(&BORDER2A)
+     A            SIDE210R       1A  O 14 31DSPATR(&BORDER2A)
+     A            SIDE310L       1A  O 14 34DSPATR(&BORDER3A)
+     A            SIDE310R       1A  O 14 46DSPATR(&BORDER3A)
+     A            SIDE410L       1A  O 14 49DSPATR(&BORDER4A)
+     A            SIDE410R       1A  O 14 61DSPATR(&BORDER4A)
+     A            SIDE510L       1A  O 14 64DSPATR(&BORDER5A)
+     A            SIDE510R       1A  O 14 76DSPATR(&BORDER5A)
+     A            SIDE111L       1A  O 15  4DSPATR(&BORDER1A)
+     A            SIDE111R       1A  O 15 16DSPATR(&BORDER1A)
+     A            SIDE211L       1A  O 15 19DSPATR(&BORDER2A)
+     A            SIDE211R       1A  O 15 31DSPATR(&BORDER2A)
+     A            SIDE311L       1A  O 15 34DSPATR(&BORDER3A)
+     A            SIDE311R       1A  O 15 46DSPATR(&BORDER3A)
+     A            SIDE411L       1A  O 15 49DSPATR(&BORDER4A)
+     A            SIDE411R       1A  O 15 61DSPATR(&BORDER4A)
+     A            SIDE511L       1A  O 15 64DSPATR(&BORDER5A)
+     A            SIDE511R       1A  O 15 76DSPATR(&BORDER5A)
+     A            BORDERBOT1    13A  O 16  4DSPATR(&TOPBOT1A)
+     A            BORDERBOT2    13A  O 16 19DSPATR(&TOPBOT2A)
+     A            BORDERBOT3    13A  O 16 34DSPATR(&TOPBOT3A)
+     A            BORDERBOT4    13A  O 16 49DSPATR(&TOPBOT4A)
+     A            BORDERBOT5    13A  O 16 64DSPATR(&TOPBOT5A)
+     A  10        DISCARD1       1A  B 17 10COLOR(WHT)
+     A  10        DISCARD2       1A  B 17 25COLOR(WHT)
+     A  10        DISCARD3       1A  B 17 40COLOR(WHT)
+     A  10        DISCARD4       1A  B 17 55COLOR(WHT)
+     A  10        DISCARD5       1A  B 17 70COLOR(WHT)
+     A  10                             19  5'X' COLOR(WHT)
+     A  10                             19  7'the DISCARDS.  Press ENTER'
+     A                                      COLOR(BLU)
+     A N10                             19 49'Won' COLOR(BLU)
+     A                                 19 57'Credits' COLOR(BLU)
+     A            WONLOST        5Y 0O 20 47EDTCDE(M)
+     A            CREDITS        5Y 0O 20 58EDTCDE(L)
+     A N10                             21  5'Press ENTER to DEAL'
+     A                                      COLOR(BLU) DSPATR(RI)
+     A                                 22 48' ' DSPATR(RI) COLOR(YLW)
+     A                                 22 50'=Clubs'
+     A                                 22 59' ' DSPATR(RI) COLOR(WHT)
+     A                                 22 61'=Diamonds'
+     A                                 23 48' ' DSPATR(RI) COLOR(RED)
+     A                                 23 50'=Hearts'
+     A                                 23 59' ' DSPATR(RI) COLOR(BLU)
+     A                                 23 61'=Spades'
+     A                                 24  2'F3=Exit' COLOR(BLU)

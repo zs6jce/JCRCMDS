@@ -1,0 +1,21 @@
+:PNLGRP.:HELP NAME='JCRROUGH'.Generate PRTF DDS from SPLF (JCRROUGH) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Generates DDS print file from a CPYSPLF outfile.
+(JCRSPLF option 9).
+:NT.Be aware the output is text only (no field names) and is intended only as an aid
+to help position things in the new PRTF.:ENT.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRROUGH/INSERTINTO'.Insert DDS into SrcMbr - Help
+:XH3.Insert Prototype into SrcMbr (INSERTINTO)
+:P.Member name to be updated with the DDS source code.
+:P.If the source member does not exists, it is added to source file.:EHELP.
+ 
+:HELP NAME='JCRROUGH/INSERTSRCF'.Source file - Help :XH3.Source file (INSERTSRCF)
+:P.Source file containing DDS source member to be updated.:EHELP.
+ 
+:HELP NAME='JCRROUGH/CPYSPLFPF'.Cpysplf PF File name - Help
+:XH3.Cpysplf PF File name (CPYSPLFPF)
+:P.PF name the spooled file was copied to.:EHELP.
+:EPNLGRP.

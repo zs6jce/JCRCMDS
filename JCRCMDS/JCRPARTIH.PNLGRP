@@ -1,0 +1,8 @@
+:PNLGRP.:HELP NAME='JCRPARTI'.Retrieve Partition Info (JCRPARTI)
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Returns message with system name, serial number, partition number (very
+important for licensing this days), OS version, User, and IP address.
+:P.Necessity when working on multiple systems/multiple partitions to help keep track of
+current system/partition.:EHELP.:EPNLGRP.

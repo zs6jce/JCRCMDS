@@ -1,0 +1,9 @@
+:PNLGRP.:HELP NAME='JCRDQE'.Data Queue Entries Display (JCRDQE) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Executes API to view data queue entries without
+disturbing entries on the queue.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRDQE/DTAQ'.Data Queue - Help :XH3.Data Queue (DTAQ)
+:P.Name and library of dataq to be viewed.:EHELP.:EPNLGRP.

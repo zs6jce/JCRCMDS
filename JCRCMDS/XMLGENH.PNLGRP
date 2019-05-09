@@ -1,0 +1,34 @@
+:PNLGRP.:HELP NAME='XMLGEN'.Generate XML download mbrs (XMLGEN) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Generates source file member containing validated, well-formed XML with all
+information required to recreate source members/objects on installing system.
+:P.The driver is 'script' member that describes the source members
+and object types to associate together with this particular application build.
+:P.Three commands are used to build information in the CLLE script file.
+:LINES.
+XMLGENINC  specify to generate text for install pgm
+XMLGENMBR  define attributes of source members and objects
+XMLGENCMD  define commands to be executed at runtime.
+:ELINES.
+:P.The XMLGENINC command must appear first in script source. XMLGENMBR and XMLGENCMD can
+be mixed in any sequence after that and may be used any number of times.
+:P.note: if your package includes DDL members, add this line before any DDL creates.
+:P.XMLGENCMD  XCMD(CHGCURLIB CURLIB(&TOLIB))
+:P.Also include a DROP TABLE statement in your DDL.:EHELP.
+.*--------------------------------------------------------------------
+ 
+:HELP NAME='XMLGEN/XMLSCRIPT'.Script member name - Help :XH3.Script member name (XMLSCRIPT)
+:P.Member name of script mbr containing source and
+object information for this app.:EHELP.
+ 
+:HELP NAME='XMLGEN/SCRIPTSRCF'.Script source file - Help :XH3.Script source file (SCRIPTSRCF)
+:P.Source file where script for this app is stored.
+:PARML.:PT.:PK def.QXMLGENS:EPK.:PD.The default source file, QXMLGENS is used.
+:PT.source-file-name :PD.Enter source file name for script member.:EPARML.:EHELP.
+ 
+:HELP NAME='XMLGEN/SRCTOFILE'.Put Source file - Help :XH3.Put Source file (SRCTOFILE)
+:P.Source file where XML member is created.
+:PARML.:PT.:PK def.QXML:EPK.:PD.The default source file, QXML is used.
+:PT.source-file-name :PD.Enter source file name for XML member.:EPARML.:EHELP.:EPNLGRP.

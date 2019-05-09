@@ -1,0 +1,19 @@
+:PNLGRP.:HELP NAME='JCRLKEY'.Find Desired Access Path (JCRLKEY) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Finds logical files or access paths with selected fields as
+primary/any key. The command prompts for the name of the file
+(logical or physical) then shows the key field names and what ordinal key position they
+are available in the logical files.
+Select to include/exclude files with select/omits from the search.
+:P.Select an X by the field name to list logicals with that key field in any position.
+If key is needed in a certain position or sequence of keys,
+select 1 beside first field, then 2 beside next field, up to 5 key fields. :EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRLKEY/FILE'.File - Help :XH3.File (FILE)
+:P.Name and library of file to be selected.:EHELP.
+ 
+:HELP NAME='JCRLKEY/INCLUDESO'.Include logicals with S/O - Help
+:XH3.Include logicals with S/O (INCLUDESO)
+:P.Include or not include key fields from logicals with Select/Omit statements.:EHELP.:EPNLGRP.

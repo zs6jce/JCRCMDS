@@ -1,0 +1,15 @@
+:PNLGRP.:HELP NAME='XMLSCRIPT'.XML Script Member Viewer (XMLSCRIPT) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Provides easy review of CL script members defined for XMLGEN
+command. It processes the script member and loads xmlgenmbr command values into single
+subfile record. Xmlgencmd records are parsed into as many subfile records as required.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='XMLSCRIPT/XMLSCRIPT'.Script member name - Help :XH3.Script member name (XMLSCRIPT)
+:P.Member name of script member containing source and object information for this app.:EHELP.
+ 
+:HELP NAME='XMLSCRIPT/SCRIPTSRCF'.Script source file - Help :XH3.Script source file (SCRIPTSRCF)
+:P.Source file where script for this app is stored.
+:PARML.:PT.:PK def.QXMLGENS:EPK.:PD.The default source file, QXMLGENS is used.
+:PT.source-file-name :PD.Enter source file name for script member.:EPARML.:EHELP.:EPNLGRP.

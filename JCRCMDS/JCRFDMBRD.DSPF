@@ -1,0 +1,68 @@
+      *----------------------------------------------------------------
+      * JCRFDMBRD - File descriptions member list - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(27 132 *DS4)
+     A                                      PRINT INDARA
+     A                                      CA03 CA05 CA12 CA13 CA14
+     A                                      MOUBTN(*ULP CA13)
+     A                                      MOUBTN(*URP CA14)
+     A          R SBFDTA1                   SFL
+     A            AOPTIONSFL     1A  P
+     A            SBFOPTION      1Y 0B  5  2EDTCDE(4)
+     A                                      DSPATR(&AOPTIONSFL)
+     A            SCMBR         10A  O  5  4
+     A            SCMBRTYPE     10A  O  5 16
+     A            SCCHGDATE     10A  O  5 27
+     A            SCCHGTIME      8A  O  5 38
+     A            SCRECS         9Y 0O  5 47EDTCDE(3)
+     A            SCRECDLT       9Y 0O  5 57EDTCDE(3)
+     A            SCSIZE         9Y 0O  5 67EDTCDE(3)
+     A            SCTEXT        50A  O  5 78
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1)
+     A                                      SFLPAG(20) SFLSIZ(200)
+     A                                      OVERLAY BLINK
+     A                                      RTNCSRLOC(&CURRCD &CURFLD)
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A            SFLRCDNBR      4S 0H      SFLRCDNBR(CURSOR)
+     A            CURRCD        10A  H
+     A            CURFLD        10A  H
+     A            AOPTIONS       1A  P
+     A                                  1  2'JCRFDMBRD' COLOR(BLU)
+     A                                  1 29'Display Member List' DSPATR(HI)
+     A            SCDOW          9A  O  1108COLOR(BLU)
+     A                                  1118DATE EDTCDE(Y) COLOR(BLU)
+     A                                  2  2'File:' DSPATR(HI)
+     A            SCOBJHEAD     63A  O  2  8
+     A                                  2108SYSNAME COLOR(BLU)
+     A            SCHEADOPT    100A  O  3  2DSPATR(&AOPTIONS)
+     A                                  4  2'Opt' DSPATR(HI)
+     A                                  4  7'Member' DSPATR(HI)
+     A                                  4 16'Type' DSPATR(HI)
+     A                                  4 27'Last Change' DSPATR(HI)
+     A                                  4 50'Records'  DSPATR(HI)
+     A                                  4 60'Deleted' DSPATR(HI)
+     A                                  4 69'Size(K)' DSPATR(HI)
+     A                                  4 78'Text' DSPATR(HI)
+      *----------------------------------------------------------------
+     A          R SFOOTER1                  OVERLAY
+     A                                 26  2'F3=Exit' COLOR(BLU)
+     A                                 26 11'F5=Refresh' COLOR(BLU)
+     A                                 26 24'F13=Sort Ascend'
+     A                                      COLOR(BLU)
+     A            SORTDESCEN    19   O 26 45COLOR(BLU)
+     A                                 26 69'F12=Cancel'
+     A                                      COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(27)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

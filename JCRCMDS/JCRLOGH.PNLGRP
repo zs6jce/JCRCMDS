@@ -1,0 +1,7 @@
+:PNLGRP.:HELP NAME='JCRLOG'.Previously Executed Commands (JCRLOG) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Retrieves all commands executed from command line. (Never
+press F9 Again!). A distinct subfile list is presented to execute or prompt each command.
+:EHELP.:EPNLGRP.

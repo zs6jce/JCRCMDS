@@ -1,0 +1,62 @@
+      *----------------------------------------------------------------
+      * JCRFDD - File description driver - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(27 132 *DS4)
+     A                                      INDARA PRINT
+     A                                      CA02 CA03 CA05 CA06 CA07 CA08
+     A                                      CA12 CA13 CA14 CA15
+     A          R SBFDTA1                   SFL
+     A            SBFSELATR      1A  P
+     A            SBFROWATR      1A  P
+     A            SBFFILEHID    10A  H
+     A            SBFLIBHID     10A  H
+     A            SBFSELECT      1  0B  4  2EDTCDE(4) DSPATR(&SBFSELATR)
+     A            SBFROW       125A  O  4  4DSPATR(&SBFROWATR)
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1) OVERLAY
+     A                                      SFLPAG(21) SFLSIZ(357)
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A            SFLRCDNBR      4S 0H      SFLRCDNBR(CURSOR)
+     A            SFILENAME     10A  H
+     A            SLIBNAME      10A  H
+     A            SCPROGID      10A  O  1  2COLOR(BLU)
+     A            SCTITLE       36A  O  1 23DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  2  2'File:' DSPATR(HI)
+     A            SCOBJHEAD     63A  O  2  8
+     A                                  2 72SYSNAME COLOR(BLU)
+     A            SCHEADOPT     65A  O  3  2COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R SFOOTER1                  OVERLAY
+     A            AKEYSELEC      1A  P
+     A                                 26  2'F3=Exit' COLOR(BLU)
+     A            SCKEYSELEC   100A  O 26 11DSPATR(&AKEYSELEC)
+      *----------------------------------------------------------------
+     A          R WINDTA3                   SFL
+     A            SBFROWATR3     1A  P
+     A            SBFROW3       70A  O  2  3DSPATR(&SBFROWATR3)
+      *
+     A          R WINCTL3                   SFLCTL(WINDTA3)
+     A                                      OVERLAY
+     A  51                                  SFLDSP
+     A  52                                  SFLDSPCTL
+     A N51                                  SFLCLR
+     A N54                                  SFLEND(*MORE)
+     A  *DS4                                SFLPAG(6) SFLSIZ(18)
+     A  *DS4                                WINDOW(*DFT 11 75 *NOMSGLIN)
+     A          R WINFOOT3                  WINDOW(WINCTL3) OVERLAY
+     A                                  9  2'F12=Cancel' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(27)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

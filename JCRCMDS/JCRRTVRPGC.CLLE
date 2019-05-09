@@ -1,0 +1,51 @@
+/*--------------------------------------------------------------------------*/
+/* JCRRTVRPGC - Retrieve RPGLE source from compiled object - CMDPGM         */
+/* Create PF in qtemp                                                       */
+/*  Dump system object to print file.                                       */
+/*   Copy spooled file into previously created PF                           */
+/*    Call RPG program to extract and display entries                       */
+/* This version works for programs compiled since v5r1. (see help)          */
+/*   Craig Rutledge  < www.jcrcmds.com >                                    */
+/*--------------------------------------------------------------------------*/
+             PGM        PARM(&OBJQUAL &SMBR &SFILEQUAL)
+             DCL        VAR(&OBJQUAL) TYPE(*CHAR) LEN(20)
+             DCL        VAR(&SMBR) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&OBJ) TYPE(*CHAR) STG(*DEFINED) LEN(10) +
+                          DEFVAR(&OBJQUAL 1)
+             DCL        VAR(&OLIB) TYPE(*CHAR) STG(*DEFINED) LEN(10) +
+                          DEFVAR(&OBJQUAL 11)
+             DCL        VAR(&SFILEQUAL) TYPE(*CHAR) LEN(20)
+             DCL        VAR(&SFIL) TYPE(*CHAR) STG(*DEFINED) LEN(10) +
+                          DEFVAR(&SFILEQUAL 1)
+             DCL        VAR(&SLIB) TYPE(*CHAR) STG(*DEFINED) LEN(10) +
+                          DEFVAR(&SFILEQUAL 11)
+ 
+             CLRLIB     LIB(QTEMP)
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('Dump +
+                          system object - in progress') +
+                          TOPGMQ(*EXT) MSGTYPE(*STATUS)
+ 
+             OVRPRTF    FILE(QPSRVDMP) PRTTXT(*BLANK) HOLD(*YES) +
+                          USRDFNOPT(*NONE) USRDFNDTA(*NONE)
+             CRTPF   FILE(QTEMP/JCRRTVRPG) RCDLEN(132) IGCDTA(*NO) +
+                          TEXT('JCRRTVRPG dump object data') SIZE(*NOMAX)
+             MONMSG     MSGID(CPF0000)
+             CLRPFM     FILE(QTEMP/JCRRTVRPG)
+ 
+             DMPOBJ     OBJ(&OLIB/&OBJ) OBJTYPE(*PGM)
+             CPYSPLF    FILE(QPSRVDMP) TOFILE(QTEMP/JCRRTVRPG) +
+                          SPLNBR(*LAST) MBROPT(*REPLACE)
+ 
+             OVRDBF     FILE(JCRRTVRPG) TOFILE(QTEMP/JCRRTVRPG) +
+                          OVRSCOPE(*JOB)
+             OVRDBF     FILE(RPGSRC) TOFILE(&SLIB/&SFIL) MBR(&SMBR) +
+                          OVRSCOPE(*JOB)
+             CALL       PGM(JCRRTVRPGR)
+             DLTOVR     FILE(JCRRTVRPG) LVL(*JOB)
+             DLTOVR     FILE(RPGSRC) LVL(*JOB)
+             DLTSPLF    FILE(QPSRVDMP) SPLNBR(*LAST)
+ 
+             SNDPGMMSG  MSG('Source retrieval for ' *CAT &SMBR +
+                          *TCAT ' in ' *CAT &SLIB *TCAT '/' *CAT +
+                          &SFIL *TCAT ' - completed')
+             ENDPGM

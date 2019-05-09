@@ -1,0 +1,15 @@
+:PNLGRP.:HELP NAME='JCRANZD'.DSPF Field Layout (JCRANZD) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Report layout with field names printed under the data positions.
+:P.Wrap-around fields (longer than line in DSPF) are truncated to
+fit on one line.
+:P.Numeric fields longer than 14 are edited with Z edit code due to restrictions of Float
+numbers.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRANZD/DSPF'.DSPF Object Name - Help :XH3.DSPF Object Name (DSPF)
+:P.Display file and library to be analyzed.:EHELP.
+ 
+:HELP NAME='JCRANZD/OUTPUT'.Output - Help :XH3.Output (OUTPUT)
+:P.*PRINT or * Display the layout.:EHELP.:EPNLGRP.

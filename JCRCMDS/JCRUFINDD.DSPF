@@ -1,0 +1,57 @@
+      *----------------------------------------------------------------
+      * JCRUFINDD - Find string in user spaces - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      INDARA PRINT
+     A                                      CA03 CA05 CA12 CA13 CA14
+     A          R SBFDTA1                   SFL
+     A            SBFNAME       10A  O  7  4
+     A            SBFSTRING     61A  O  7 16
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1) OVERLAY
+     A                                      SFLPAG(15) SFLSIZ(105)
+     A                                      SFLCSRRRN(&CSRRRN)
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A            SFLRCDNBR      4S 0H      SFLRCDNBR(CURSOR)
+     A            CSRRRN         5S 0H
+     A            ASCVAL1        1A  P
+     A            ASCRELAT       1A  P
+     A            ASCNAME        1A  P
+     A            ASCLIB         1A  P
+     A                                  1  2'JCRUFIND' COLOR(BLU)
+     A                                  1 23'Find String in User Space'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  2 31'AND/OR'
+     A                                  2 72SYSNAME COLOR(BLU)
+     A                                  3  5'Scan for:' DSPATR(HI)
+     A            SCVAL1        15A  B  3 15DSPATR(&ASCVAL1)
+     A            SCRELATION     3A  B  3 32DSPATR(&ASCRELAT)
+     A            SCVAL2        15A  B  3 37
+     A                                  4  5'Space Names:' DSPATR(HI)
+     A            SCNAME        10A  B  4 18DSPATR(&ASCNAME)
+     A                                  4 32'Library:' DSPATR(HI)
+     A            SCLIB         10A  B  4 41DSPATR(&ASCLIB)
+     A                                  6  4'SpaceName' DSPATR(HI)
+     A                                  6 16'String' DSPATR(HI)
+      *----------------------------------------------------------------
+     A          R SFOOTER1                  OVERLAY BLINK
+     A                                 23  2'F3=Exit' COLOR(BLU)
+     A                                 23 16'Click SpaceName to view entire use-
+     A                                      r space.'
+     A                                      COLOR(BLU)
+     A                                 23 69'F12=Cancel' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(24)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

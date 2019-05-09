@@ -1,0 +1,65 @@
+/*--------------------------------------------------------------------------*/
+/* XMLPREVIEC- Preview uploaded XML install members                         */
+/*   Craig Rutledge  < www.jcrcmds.com >                                    */
+/*--------------------------------------------------------------------------*/
+             PGM        PARM(&MBR &SFILEQUAL &USEFILE)
+             DCL        VAR(&MBR) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&SFILEQUAL) TYPE(*CHAR) LEN(20)
+             DCL        VAR(&SFIL) TYPE(*CHAR) STG(*DEFINED) LEN(10) +
+                          DEFVAR(&SFILEQUAL 1)
+             DCL        VAR(&SLIB) TYPE(*CHAR) STG(*DEFINED) LEN(10) +
+                          DEFVAR(&SFILEQUAL 11)
+             DCL        VAR(&USEFILE) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&XMLINSTAL) TYPE(*CHAR) LEN(1)
+ 
+             IF         COND(&SLIB = '*LIBL') THEN(DO)
+             RTVOBJD    OBJ(&SFIL) OBJTYPE(*FILE)  RTNLIB(&SLIB)
+             MONMSG     MSGID(CPF0000)
+             ENDDO
+             OVRDBF     FILE(XMLINPUT) TOFILE(&SLIB/&SFIL) +
+                          MBR(&MBR) OVRSCOPE(*JOB)
+             CALL       PGM(XMLPREVIER) PARM(&MBR &SFIL +
+                          &SLIB &USEFILE &XMLINSTAL)
+  /*-----------------------------------------------------------------------*/
+  /* if user has selected to run install.                                  */
+  /* Create source file in qtemp                                           */
+  /* Call RPG program to read and extract installer code                   */
+  /* compile and run installer code                                        */
+  /*-----------------------------------------------------------------------*/
+             IF         COND(&XMLINSTAL = 'Y') THEN(DO)
+             CRTSRCPF   FILE(QTEMP/XMLEXTRACT) RCDLEN(112)
+             MONMSG     MSGID(CPF0000)
+             ADDPFM     FILE(QTEMP/XMLEXTRACT) MBR(XMLEXTRACT)
+             MONMSG     MSGID(CPF0000) EXEC(CLRPFM +
+                          FILE(QTEMP/XMLEXTRACT) MBR(XMLEXTRACT))
+ 
+             OVRDBF     FILE(XMLEXTRACT) TOFILE(QTEMP/XMLEXTRACT) +
+                          MBR(XMLEXTRACT) OVRSCOPE(*JOB)
+ 
+             CALL       PGM(XMLPREVINR) /* LOAD INSTALLER CODE */
+             CRTBNDRPG  PGM(QTEMP/XMLEXTRACT) +
+                          SRCFILE(QTEMP/XMLEXTRACT) +
+                          DBGVIEW(*SOURCE) OUTPUT(*NONE) +
+                          TGTRLS(*CURRENT)
+ 
+             DLTOVR     FILE(XMLEXTRACT) LVL(*JOB)
+  /*-----------------------------------------------------------------------*/
+  /* Many users do not use IBM default source file names, instead they     */
+  /* prefer to have all different source member type in one file.          */
+  /*                                                                       */
+  /* if user has selected to use *DEFAULTS source files for output,        */
+  /*   (*DEFAULTS means to use source files in the upload                  */
+  /*  then call installer program passing only first 3 parms.              */
+  /*                                                                       */
+  /* If user has selected single target source file, then call installer   */
+  /* program passing all 4 parms.                                          */
+  /*-----------------------------------------------------------------------*/
+             SELECT
+             WHEN       COND(&USEFILE *EQ '*DEFAULTS') THEN(CALL +
+                          PGM(QTEMP/XMLEXTRACT) PARM(&MBR +
+                          &SFIL &SLIB))
+             OTHERWISE  CMD(CALL PGM(QTEMP/XMLEXTRACT) PARM(&MBR +
+                          &SFIL &SLIB &USEFILE))
+             ENDSELECT
+             ENDDO
+             ENDPGM

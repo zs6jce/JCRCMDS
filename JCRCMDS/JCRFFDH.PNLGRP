@@ -1,0 +1,43 @@
+:PNLGRP.:HELP NAME='JCRFFD'.File Field Descriptions (JCRFFD) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Lists field information from data file.
+Sort on any column and toggle between field names and alias names.
+Included are options to select record format to view.
+:P.If information is put into *SRC, RPGLE source code to initialize each file field
+is generated in member. :NT.Max record length, Max number of keys and Max number of
+fields are displayed if selecting record format from multi-record format file.:ENT.
+:P.The command has special extension that show what file would look like if numeric fields
+where unpacked.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRFFD/FILE'.File - Help :XH3.File (FILE)
+:P.Name and library of file.:EHELP.
+ 
+:HELP NAME='JCRFFD/RCDFMT'.Record Format - Help :XH3.Record Format (RCDFMT)
+:P.Select specific record format for multi-record format files.:EHELP.
+ 
+:HELP NAME='JCRFFD/UNPACK'.Show unpacked format - Help
+:XH3.Show unpacked format (UNPACK)
+:P.Output shows actual field start and end positions
+or adjusted position if packed fields were defined as zoned.
+:P.This option was added to show field positions as seen
+by Unix or ASCII machine. All fields are unpacked and converted to ASCII before
+transmission.
+:PARML.:PT.:PK def.*NO:EPK.:PD.Data fields to be displayed as defined
+in data file.
+:PT.*YES :PD.Starting and ending position of data fields are adjusted
+to show as if data fields were unpacked.:EPARML.:EHELP.
+ 
+.*--------------------------------------------------------------------
+:HELP NAME='JCRFFD/OUTPUT'.Output - Help :XH3.OutPut (OUTPUT)
+:P.Print, display, outfile, source file output the field data
+:PARML.:PT.:PK def.*PRINT:EPK.:PD.Results to be printed.
+:PT.* :PD.Results to be displayed on-screen.
+:PT.:PK def.*OUTFILE:EPK. :PD.Results are placed in data file.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRFFD/OUTFILE'.OutFile - Help :XH3.File (OUTFILE)
+:P.File and library to receive command output.:EHELP.
+ 
+:HELP NAME='JCRFFD/OUTMBR'.OutMbr - Help :XH3.OutMbr (OUTMBR)
+:P.File member to receive command output.:EHELP.:EPNLGRP.

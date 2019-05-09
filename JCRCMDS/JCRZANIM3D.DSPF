@@ -1,0 +1,33 @@
+      *----------------------------------------------------------------
+      * JCRZANIM3D - Animation- raise a USA flag - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      CA03 CA12
+     A          R SCREEN                    FRCDTA
+     A                                      WINDOW(&WLIN &WPOS 13 65 *NOMSGLIN)
+     A                                      WDWBORDER((*COLOR BLU) (*DSPATR ND))
+     A            WLIN           2S 0P
+     A            WPOS           2S 0P
+     A                                  1  9' * * * * * * * * * * '
+     A                                      DSPATR(HI RI CS BL)
+     A            STRIPE01      34A     1 31DSPATR(RI BL)
+     A                                  2  9' * * * * * * * * * * '
+     A                                      DSPATR(HI RI CS BL)
+     A            STRIPE02      34A     2 31DSPATR(HI RI)
+     A                                  3  9' * * * * * * * * * * '
+     A                                      DSPATR(HI RI CS BL)
+     A            STRIPE03      34A     3 31DSPATR(RI BL)
+     A                                  4  9' * * * * * * * * * * '
+     A                                      DSPATR(HI RI CS BL)
+     A            STRIPE04      34A     4 31DSPATR(HI RI)
+     A                                  5  9' * * * * * * * * * * '
+     A                                      DSPATR(HI RI CS BL)
+     A            STRIPE05      34A     5 31DSPATR(RI BL)
+     A            STRIPE06      56A     6  9DSPATR(HI RI)
+     A            STRIPE07      56A     7  9DSPATR(RI BL)
+     A            STRIPE08      56A     8  9DSPATR(HI RI)
+     A            STRIPE09      56A     9  9DSPATR(RI BL)
+     A            STRIPE10      56A    10  9DSPATR(HI RI)
+     A            STRIPE11      56A    11  9DSPATR(RI BL)
+     A            STRIPE12      56A    12  9DSPATR(HI RI)
+     A            STRIPE13      56A    13  9DSPATR(RI BL)

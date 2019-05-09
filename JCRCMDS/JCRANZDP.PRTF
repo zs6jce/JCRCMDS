@@ -1,0 +1,13 @@
+      *----------------------------------------------------------------
+      * JCRANZDP - DSPF screen layout with field names - PRTF
+      *  note: print file is used by ospec and prtf layout reports
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 198)
+     A          R PRTHEAD                   SKIPB(1) SPACEA(2)
+     A            SCOBJHEAD    105A        2
+     A            SCDOW          9A  O   110
+     A                                   120DATE EDTCDE(Y)
+      *----------------------------------------------------------------
+     A          R PRTLINE                   SPACEA(1)
+     A            LAYOUT       198A        1

@@ -1,0 +1,12 @@
+:PNLGRP.:HELP NAME='JCRDUPKEY'.Duplicate Keyed Logicals List (JCRDUPKEY) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Lists file data base relations with same leading keys and
+select/omit statements.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRDUPKEY/FILE'.File - Help :XH3.File (FILE)
+:P.Name and library of file to be viewed.:EHELP.
+ 
+:HELP NAME='JCRDUPKEY/OUTPUT'.Output - Help :XH3.Output (OUTPUT)
+:P.*PRINT or * Display the list.:EHELP.:EPNLGRP.

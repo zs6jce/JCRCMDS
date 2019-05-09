@@ -1,0 +1,51 @@
+/*--------------------------------------------------------------------------*/
+/* JCRSSQLC - Scan strsql sessions for sql statements - CMDPGM              */
+/* Create PF in qtemp                                                       */
+/*  Dump the system object to print.                                        */
+/*   Copy spooled file into previously created PF                           */
+/*    Call RPG program to extract and display the entries                   */
+/*                                                                          */
+/* Must be authorized to use the DMPSYSOBJ command.                         */
+/*   Craig Rutledge  < www.jcrcmds.com >                                    */
+/*--------------------------------------------------------------------------*/
+             PGM        PARM(&USER)
+             DCL        VAR(&USER) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&OBJECT) TYPE(*CHAR) LEN(17)
+ 
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('Dump +
+                          system object SQL session statements - in +
+                          progress') TOPGMQ(*EXT) MSGTYPE(*STATUS)
+ 
+             IF         COND(&USER *EQ '*CURRENT') THEN(RTVJOBA +
+                          USER(&USER))
+ 
+             OVRPRTF    FILE(QPSRVDMP) PRTTXT(*BLANK) +
+                          MAXRCDS(*NOMAX) HOLD(*YES) +
+                          USRDFNOPT(*NONE) USRDFNDTA(*NONE)
+ 
+             CRTPF   FILE(QTEMP/JCRSSQL) RCDLEN(264) IGCDTA(*YES) +
+                          TEXT('JCRSSQL dump object data') SIZE(*NOMAX)
+             MONMSG     MSGID(CPF0000)
+             CLRPFM     FILE(QTEMP/JCRSSQL)
+ 
+/*--------------------------------------------------------------------------*/
+/*  DMPSYSOBJ  OBJ(ISQLSTxxxxxxxxx*) CONTEXT(QRECOVERY) +                   */
+/*                        TYPE(19) SUBTYPE(EE)                              */
+/*--------------------------------------------------------------------------*/
+             CHGVAR     VAR(&OBJECT) VALUE('ISQLST' *TCAT &USER *TCAT '*')
+ 
+             DMPSYSOBJ  OBJ(&OBJECT) CONTEXT(QRECOVERY) TYPE(19) SUBTYPE(EE)
+             MONMSG     MSGID(CPF3502) EXEC(DO)
+             SNDPGMMSG  MSG('No system object for user ' *CAT &USER +
+                          *TCAT ' found.')
+             RETURN
+             ENDDO
+             CPYSPLF    FILE(QPSRVDMP) TOFILE(QTEMP/JCRSSQL) +
+                          SPLNBR(*LAST) MBROPT(*REPLACE)
+/*--------------------------------------------------------------------------*/
+             CALL       PGM(JCRSSQLR)
+             DLTSPLF    FILE(QPSRVDMP) SPLNBR(*LAST)
+             MONMSG     MSGID(CPF3309)   /* deleted already */
+ 
+             DLTOVR     FILE(QPSRVDMP)
+             ENDPGM

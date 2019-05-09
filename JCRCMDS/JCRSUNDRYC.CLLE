@@ -1,0 +1,234 @@
+/*--------------------------------------------------------------------------*/
+/* JCRSUNDRYC - Sundry programs selection menu  - CMDPGM                    */
+/* Several of these options generate spooled files so it was nice           */
+/* to use the CL data structure capabilities to call 'get last spooled      */
+/* file information' API.                                                   */
+/*   Craig Rutledge  < www.jcrcmds.com >                                    */
+/*--------------------------------------------------------------------------*/
+             PGM
+             DCLF       FILE(JCRSUNDRYD)
+             DCL        VAR(&PGM) TYPE(*CHAR) STG(*AUTO) LEN(10)
+ 
+/* Define parms for call to QSPRILSP API -----------------------------------*/
+             DCL        VAR(&LENRCVR) TYPE(*INT) LEN(4) VALUE(70)
+             DCL        VAR(&FORMAT) TYPE(*CHAR) LEN(8) VALUE('SPRL0100')
+ 
+/* Define Qsprilsp list entry data structure -------------------------------*/
+             DCL        VAR(&QSPRILSPDS) TYPE(*CHAR) STG(*AUTO) LEN(70)
+             DCL        VAR(&SPLFNAME) TYPE(*CHAR) STG(*DEFINED) +
+                          LEN(10) DEFVAR(&QSPRILSPDS 9)
+ 
+/* Error return code parameter for APIs-------------------------------------*/
+             DCL        VAR(&APIERRDS) TYPE(*CHAR) LEN(256)
+             DCL        VAR(&APROVIDED) TYPE(*INT) STG(*DEFINED) LEN(4) DEFVAR(&APIERRDS)
+             DCL        VAR(&AAVAIL) TYPE(*INT) STG(*DEFINED) LEN(4) DEFVAR(&APIERRDS 5)
+             DCL        VAR(&AMSGID) TYPE(*CHAR) STG(*DEFINED) LEN(7) DEFVAR(&APIERRDS 9)
+             DCL        VAR(&AMSGDTA) TYPE(*CHAR) STG(*DEFINED) LEN(112) DEFVAR(&APIERRDS 17)
+             MONMSG     MSGID(CPF0000)
+ 
+             CHGVAR     VAR(&PROGID) VALUE('JCRSUNDRYC')
+             RMVMSG     CLEAR(*ALL)
+             CHGVAR     VAR(&V01) VALUE(' 1) Subsystem memory pools list')
+             CHGVAR     VAR(&C01) VALUE('jcrsbsdr')
+ 
+             CHGVAR     VAR(&V02) VALUE(' 2) Print BIG characters example')
+             CHGVAR     VAR(&C02) VALUE('jcrmrbig')
+ 
+             CHGVAR     VAR(&V03) VALUE(' 3) Hex/Biton characters display')
+             CHGVAR     VAR(&C03) VALUE('jcrhexchr')
+ 
+             CHGVAR     VAR(&V04) VALUE(' 4) Hex to Decimal to Hex converter')
+             CHGVAR     VAR(&C04) VALUE('jcrhexr')
+ 
+             CHGVAR     VAR(&V05) VALUE(' 5) License Locks')
+             CHGVAR     VAR(&C05) VALUE('jcrlicuse')
+ 
+             CHGVAR     VAR(&V06) VALUE(' 6) Search Job Schedule Entries')
+             CHGVAR     VAR(&C06) VALUE('jcrscde')
+ 
+             CHGVAR     VAR(&V07) VALUE(' 7) Search Jobd for Lib or Outq or Jobq')
+             CHGVAR     VAR(&C07) VALUE('jcrjobd')
+ 
+             CHGVAR     VAR(&V08) VALUE(' 8) What system name am I on?')
+             CHGVAR     VAR(&C08) VALUE('jcrparti')
+ 
+             CHGVAR     VAR(&V09) VALUE(' 9) Usrprf class/ special authorities list')
+             CHGVAR     VAR(&C09) VALUE('jcrusraut')
+ 
+             CHGVAR     VAR(&V10) VALUE(' ')
+             CHGVAR     VAR(&C10) VALUE(' ')
+ 
+             CHGVAR     VAR(&V11) VALUE(' ')
+             CHGVAR     VAR(&C11) VALUE(' ')
+ 
+             CHGVAR     VAR(&V12) VALUE(' ')
+             CHGVAR     VAR(&C12) VALUE(' ')
+ 
+             CHGVAR     VAR(&V13) VALUE('13) Usrprf retrieve email address list')
+             CHGVAR     VAR(&C13) VALUE('jcrusremlr')
+ 
+             CHGVAR     VAR(&V14) VALUE('14) Search +
+                          name/text/jobd/outq for Usrprfs')
+             CHGVAR     VAR(&C14) VALUE('jcrusers')
+ 
+             CHGVAR     VAR(&V15) VALUE('15) Binary Clock')
+             CHGVAR     VAR(&C15) VALUE('jcrzanim0')
+ 
+             CHGVAR     VAR(&V16) VALUE('16) Raise the flag')
+             CHGVAR     VAR(&C16) VALUE('jcrzanim3')
+ 
+             CHGVAR     VAR(&V17) VALUE('17) I am with stupid classic')
+             CHGVAR     VAR(&C17) VALUE('jcrzanim4')
+ 
+             CHGVAR     VAR(&V18) VALUE('18) To Boldly Go')
+             CHGVAR     VAR(&C18) VALUE('jcrzanim5')
+ 
+             CHGVAR     VAR(&V19) VALUE('19) Racquetball Server Rotation')
+             CHGVAR     VAR(&C19) VALUE('jcrzanim6')
+ 
+ 
+             SNDF       RCDFMT(SCREEN)
+ 
+             DOUNTIL    COND(1 *EQ 2)
+             SNDF       RCDFMT(MSGCTL)
+             SNDRCVF    RCDFMT(SCREEN) WAIT(*YES)
+             RMVMSG     CLEAR(*ALL)
+ 
+             SELECT
+             WHEN       COND((&IN03) *OR (&IN12)) THEN(DO)
+             LEAVE
+             ENDDO
+ 
+             WHEN       COND(&IN06) THEN(WRKSPLF)
+ 
+             WHEN       COND(&IN10) THEN(CALL PGM(QUSCMDLN))
+ 
+             WHEN       COND(&SCOPTION = '1') THEN(DO)
+             CALL       PGM(JCRSBSDR)
+             CHGVAR     VAR(&PGM) VALUE('JCRSBSDR')
+             CALLSUBR   SUBR(SRLASTSPLF)
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '2') THEN(DO)
+             ?JCRMRBIG
+             MONMSG     MSGID(CPF6801) EXEC(DO)
+             ITERATE
+             ENDDO
+             CHGVAR     VAR(&PGM) VALUE('JCRMRBIG')
+             CALLSUBR   SUBR(SRLASTSPLF)
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '3') THEN(DO)
+             CALL       PGM(JCRHEXCHR)
+             SNDPGMMSG  MSG('JCRHEXCHR hex characters completed') TOPGMQ(*SAME)
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '4') THEN(DO)
+             CALL       PGM(JCRHEXR)
+             SNDPGMMSG  MSG('JCRHEXR hex conversion completed') TOPGMQ(*SAME)
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '5') THEN(DO)
+             CALL       PGM(JCRLICUSE)
+             SNDPGMMSG  MSG('JCRLICUSE List license locks completed') TOPGMQ(*SAME)
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '6') THEN(DO)
+             ?JCRSCDE
+             MONMSG     MSGID(CPF6801) EXEC(DO)
+             RMVMSG     CLEAR(*ALL)
+             SNDPGMMSG  MSG('JCRSCDE Search Job Schedule Entries +
+                          canceled') TOPGMQ(*SAME)
+             ITERATE
+             ENDDO
+             ENDDO
+ 
+             /*-------------------------------------------------*/
+             WHEN       COND(&SCOPTION = '7') THEN(DO)
+             ?JCRJOBD
+             MONMSG     MSGID(CPF6801) EXEC(DO)
+             RMVMSG     CLEAR(*ALL)
+             SNDPGMMSG  MSG('JCRJOBD Search Jobd using selected +
+                          Library canceled') TOPGMQ(*SAME)
+             ITERATE
+             ENDDO
+             CHGVAR     VAR(&PGM) VALUE('JCRJOBD')
+             CALLSUBR   SUBR(SRLASTSPLF)
+             ENDDO
+ 
+             /*-------------------------------------------------*/
+             WHEN       COND(&SCOPTION = '8') THEN(DO)
+             JCRPARTI
+             SNDPGMMSG  MSG('JCRPARTI Retrieve Partition Info +
+                          completed') TOPGMQ(*SAME)
+             ITERATE
+             ENDDO
+ 
+             /*-------------------------------------------------*/
+             WHEN       COND(&SCOPTION = '9') THEN(DO)
+             ?JCRUSRAUT
+             MONMSG     MSGID(CPF6801) EXEC(DO)
+             RMVMSG     CLEAR(*ALL)
+             SNDPGMMSG  MSG('JCRUSRAUT List profile +
+                          class/authorities canceled') TOPGMQ(*SAME)
+             ITERATE
+             ENDDO
+             CHGVAR     VAR(&PGM) VALUE('JCRUSRAUT')
+             CALLSUBR   SUBR(SRLASTSPLF)
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '13') THEN(DO)
+             CALL       PGM(JCRUSREMLR)
+             CHGVAR     VAR(&PGM) VALUE('JCRUSREMLR')
+             CALLSUBR   SUBR(SRLASTSPLF)
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '14') THEN(DO)
+             JCRUSERS
+             MONMSG     MSGID(CPF6801) EXEC(DO)
+             SNDPGMMSG  MSG('JCRUSERS Search Usrprfs +
+                          canceled') TOPGMQ(*SAME)
+             ITERATE
+             ENDDO
+             ENDDO
+ 
+             /*-------------------------------------------------*/
+             WHEN       COND(&SCOPTION = '15') THEN(DO)
+             CALL       PGM(JCRZANIM0)
+             SNDPGMMSG  MSG('JCRZANIM0 Binary clock completed') TOPGMQ(*SAME)
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '16') THEN(DO)
+             CALL       PGM(JCRZANIM3)
+             SNDPGMMSG  MSG('JCRZANIM3 raise the flag completed') TOPGMQ(*SAME)
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '17') THEN(DO)
+             CALL       PGM(JCRZANIM4)
+             SNDPGMMSG  MSG('JCRZANIM4 I am with stupid completed') TOPGMQ(*SAME)
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '18') THEN(DO)
+             CALL       PGM(JCRZANIM5)
+             SNDPGMMSG  MSG('JCRZANIM5 To Boldly Go completed') TOPGMQ(*SAME)
+             ENDDO
+ 
+             WHEN       COND(&SCOPTION = '19') THEN(DO)
+             CALL       PGM(JCRZANIM6)
+             SNDPGMMSG  MSG('JCRZANIM6 Racquetball Server completed') TOPGMQ(*SAME)
+             ENDDO
+ 
+             OTHERWISE  CMD(SNDPGMMSG MSG('Please select valid option') TOPGMQ(*SAME))
+             ENDSELECT
+             CHGVAR     VAR(&SCOPTION) VALUE('  ')
+             ENDDO
+ 
+/*--------------------------------------------------------------------------*/
+/* return name of last spooled file generated                               */
+/*--------------------------------------------------------------------------*/
+             SUBR       SUBR(SRLASTSPLF)
+             CALL       PGM(QSPRILSP) PARM(&QSPRILSPDS &LENRCVR &FORMAT &APIERRDS)
+             SNDPGMMSG  MSG(&PGM *TCAT ' spooled file ' *CAT +
+                          &SPLFNAME *TCAT ' generated.') TOPGMQ(*SAME)
+             ENDSUBR
+             ENDPGM

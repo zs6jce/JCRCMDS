@@ -1,0 +1,14 @@
+/*--------------------------------------------------------------------------*/
+/* JCRNOTPOPC- List fields not populated                                    */
+/* REQUIRED TO BREAK IMPLICIT CALL BINDINGS                                 */
+/* When one RPG program calls another, the system generates a               */
+/* dynamic binding to that object.  That feature works against this         */
+/* application as a new RPG program obj is generated for each               */
+/* file selected.  This is only an issue if user scans 2 or more            */
+/* files in the same interactive session.  If there is a CL program         */
+/* between the two rpg programs, no binding will take place.                */
+/*   Craig Rutledge  < www.jcrcmds.com >                                    */
+/*--------------------------------------------------------------------------*/
+             PGM
+             CALL       PGM(QTEMP/JCRNOTR)
+             ENDPGM

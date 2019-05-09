@@ -1,0 +1,28 @@
+:PNLGRP.:HELP NAME='JCRSSQL'.Scan Interactive SQL sessions (JCRSSQL) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Searches through interactive SQL sessions for selected criteria!
+:P.This utility is extremely useful to cut/paste from the subfile into a STRSQL session,
+or just to see how something was done. Choosing option X (eXecute) will attempt to run the
+SQL. All UPDATE, DELETE, INSERT sqls can be run directly from this utility. See program JCRSSQLE
+for sql cli interface.
+ 
+:P.To process SELECT statements, download Martin Rowe's EXCSQL utility from
+www.dbg400.net .
+:NT.Must have authority to execute the DMPSYSOBJ command.:ENT.:EHELP.
+ 
+.*--------------------------------------------------------------------
+:HELP NAME='JCRSSQL/USERID'.
+User ID - Help
+:XH3.User ID (USERID)
+:P.Specifies user ID whose interactive SQL sessions are retrieved.
+:PARML.
+:PT.:PK def.*CURRENT:EPK.
+:PD.Retrieve interactive SQL sessions for user ID signed on to this session.
+:PT.user-name
+:PD.This is cool if having *ALLOBJ authority.  Pull up other user ID
+interactive SQL sessions.
+:EPARML.
+:EHELP.
+:EPNLGRP.

@@ -1,0 +1,61 @@
+      *----------------------------------------------------------------
+      * JCRFFDP - File Field Descriptions - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 132)
+     A                                      INDARA
+     A          R PRTHEAD1                  SKIPB(1) SPACEA(1)
+     A                                     2'JCRFFD'
+     A                                    19'File Field Descriptions'
+     A  09                                45'**** UNPACKED FORMAT ****'
+     A            SCDOW          9A  O    72
+     A                                    82DATE EDTCDE(Y)
+     A                                    92TIME
+     A                                   104'Page'
+     A                                    +1PAGNBR EDTCDE(4) SPACEA(2)
+      *---
+     A                                     2'Format:'
+     A            SCRCDFMT      10A  O    10
+     A                                    22'File:'
+     A            SCOBJHEAD     63A  O    28SPACEA(1)
+      *----------------------------------------------------------------
+     A          R PRTKEYS                   SPACEA(1)
+     A                                     2'Keys  :'
+     A            KEYLIST       70A  O    10
+      *----------------------------------------------------------------
+     A          R PRTHEAD2                  SPACEA(2)
+     A                                     3'File Type'
+     A                                    20'Record Length'
+     A                                    43'Number of Keys'
+     A                                    62'Number of Fields' SPACEA(1)
+      *---
+     A            FILETYPE4      4A  O     5
+     A  09                                20'*UNPACK CALC'
+     A N09        RECORDLEN      5  0O    24EDTCDE(4)
+     A            NUMBOFKEYS     4S 0O    47EDTCDE(4)
+     A            FIELDCOUNT     4  0O    67EDTCDE(4)
+      *----------------------------------------------------------------
+     A          R PRTSELOMT                 SPACEA(1)
+     A            PRINTSO        4A  O     5
+     A            SOTYPE         7A  O    12
+     A            SOFLD         10A  O    20
+     A            SOCOMP         2A  O    31
+     A            SOVALU        32A  O    34
+      *----------------------------------------------------------------
+     A          R PRTHEAD3                  SPACEB(1) SPACEA(1)
+     A                                     3'Text'
+     A                                    50'Key'
+     A            FLDORALIAS     9A       55
+     A                                    68'Data Type'
+     A                                    91'Location'
+      *----------------------------------------------------------------
+     A          R PRTDETAIL                 SPACEA(1)
+     A            FLDTEXT45     45A  O     3
+     A            SBKEY          3A       50
+     A            SBFIELD       10A  O    55
+     A            SBDATATYPE    16A       68
+     A            SBFROMPOS      5S 0O    88EDTCDE(4)
+     A            SBTOPOS        5S 0O    94EDTCDE(4)
+      *----------------------------------------------------------------
+     A          R PRTPAGEBRK                SKIPB(2)
+     A                                     1'  '

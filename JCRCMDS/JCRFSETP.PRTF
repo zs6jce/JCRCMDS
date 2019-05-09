@@ -1,0 +1,51 @@
+      *----------------------------------------------------------------
+      * JCRFSETP - Scan File Set Where Used - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 198) CPI(15)
+     A                                      INDARA
+     A          R PRTHEAD                   SKIPB(1) SPACEA(1)
+     A                                     2'JCRFSET'
+     A                                    20'Scan File Set Where Used'
+     A            SCDOW          9A  O    82
+     A                                    92DATE EDTCDE(Y)
+     A                                   109'Page'
+     A                                    +1PAGNBR EDTCDE(4) SPACEA(1)
+      *---
+     A                                     1'File Set:'
+     A            SCOBJHEAD     63A  O    11SPACEA(2)
+     A                                    20'Library'
+     A                                    32'File'
+     A                                    44'Member'
+     A                                    56'Type'
+      *-----------------------------------------------------
+     A          R PRTHEAD2                  SPACEA(1)
+     A N10                                 1'Scan Source List:'
+     A            HSRCLIB       10A  O    20
+     A            HSRCFIL       10A  O    32
+     A            HSRCMBR       10A  O    44
+     A            HSRCMBRTYP    10A       56
+ 
+      *-----------------------------------------------------
+     A          R PRTHEAD4                  SPACEA(1)
+     A                                     1'Library'
+     A                                    12'File'
+     A                                    26'Member'
+     A                                    40'Text'
+     A                                    80'Source Data' SPACEA(1)
+      *---
+     A                                     1'----------'
+     A                                    12'----------'
+     A                                    26'----------'
+     A                                    38'-----------------------------------
+     A                                      ------'
+     A                                    80'-----------------------------------
+     A                                      ------------------------------------
+     A                                      -----------'
+      *----------------------------------------------------------------
+     A          R PRTDETAIL                 SPACEA(1)
+     A            SRCLIB        10A  O     1
+     A            SRCFIL        10A  O    12
+     A            LISTMBR       10A  O    26
+     A            SRCTXT        40A       38
+     A            SRCDTA80      80A  O    80

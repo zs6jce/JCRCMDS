@@ -1,0 +1,93 @@
+      *----------------------------------------------------------------
+      * JCRJOBDD - Search JOBD for Library or Outq or Jobq - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(27 132 *DS4)
+     A                                      INDARA
+     A                                      CA03
+     A                                      CA05
+     A                                      CA06
+     A                                      CA08
+     A                                      CA12
+     A                                      PRINT
+      *----------------------------------------------
+     A          R SBFDTA1                   SFL
+     A            SFOPT          1A  B  6  2
+     A            SFLIB         10A  O  6  5
+     A            SFOUTQ        10A  O  6 16
+     A            SFOUTQLIB     10A  O  6 27
+     A            SFJOBQ        10A  O  6 38
+     A            SFJOBQLIB     10A  O  6 49
+     A            SFJOBD        10A  O  6 61DSPATR(HI)
+     A            SFJOBDLIB     10A  O  6 72
+     A            SFTEXT        38A  O  6 83
+     A            SFLASTUSED    10A  O  6122
+      *----------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1)
+     A                                      SFLSIZ(1900)
+     A                                      SFLPAG(0019)
+     A                                      CHANGE(12)
+     A                                      OVERLAY
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N31                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A                                  1  2'JCRJOBD '
+     A                                      COLOR(BLU)
+     A                                  1 23'Search JOBD for Library/Outq/Jobq'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE
+     A                                      EDTWRD('0  /  /  ')
+     A                                      COLOR(BLU)
+     A                                  2 16'(leading space = contains) '
+     A                                      COLOR(BLU)
+     A                                  2 72SYSNAME
+     A                                      COLOR(BLU)
+     A                                  3  2'5=DspJobd  '
+     A                                      COLOR(BLU)
+     A            SCLIB         10A  B  4  5CHANGE(12)
+     A            SCOUTQ        10A  B  4 16
+     A            SCJOBQ        10A  B  4 38
+     A                                  5  2'Op'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5  5'Library   '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5 16'Outq                 '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5 38'Jobq                 '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5 61'Jodb                 '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5 83'Text                              -
+     A                                          '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5122'Last Used '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+      *----------------------------------------------
+     A          R SFOOTER1
+     A                                      OVERLAY
+     A                                 26  2'F3=Exit'
+     A                                      COLOR(BLU)
+     A                                 26 16'F5=Refresh'
+     A                                      COLOR(BLU)
+     A                                 26 34'F6=Print'
+     A                                      COLOR(BLU)
+     A                                 26 54'F8=Wrksplf'
+     A                                      COLOR(BLU)
+      *----------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(27)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

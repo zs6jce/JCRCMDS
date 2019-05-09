@@ -1,0 +1,33 @@
+      *----------------------------------------------------------------
+      * JCRRFLDP - Fields in RPG source - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 132)
+     A          R PRTHEAD
+     A                                      SKIPB(1)
+     A                                      SPACEA(1)
+     A                                     2'JCRRFLD'
+     A                                    20'Field Attributes in RPG Source'
+     A            SCDOW          9A  O    72
+     A                                    82DATE EDTCDE(Y)
+     A                                    92TIME
+     A                                   104'Page'
+     A                                   109PAGNBR
+     A                                      EDTCDE(4)
+     A                                      SPACEA(1)
+      *---
+     A                                     2'Source Member:'
+     A            SCOBJHEAD     64A       17
+     A                                      SPACEA(2)
+      *---
+     A                                     3'Text'
+     A                                    30'Field'
+     A                                    58'Data Type'
+     A                                    76'File'
+      *----------------------------------------------------------------
+     A          R PRTDETAIL
+     A                                      SPACEA(1)
+     A            JFLDTXT       24A        3
+     A            JFLDNAM       27A       30
+     A            JDTATYP       16A       58
+     A            JFLDSRC       10A       76

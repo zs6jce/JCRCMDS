@@ -1,0 +1,10 @@
+:PNLGRP.:HELP NAME='JCRDQD'.Data Queue Description Display (JCRDQD) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Displays data queue Text, Data Length, Sequence, and Key Length.
+:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRDQD/DTAQ'.Data Queue - Help :XH3.Data Queue (DTAQ)
+:P.Specify name and library of data queue whose description is to be displayed.
+:EHELP.:EPNLGRP.

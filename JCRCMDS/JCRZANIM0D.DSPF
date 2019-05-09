@@ -1,0 +1,129 @@
+      *----------------------------------------------------------------
+      * JCRZANIM0D - Animation- Binary Clock - DSPF
+      *****   MUST COMPILE RSTDSP *YES AND DEFER WRITE = *NO *****
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      CA03 CA12
+     A          R CLOCKD
+     A                                      INVITE
+     A            ATR11          1A  P
+     A            ATR12          1A  P
+     A            ATR13          1A  P
+     A            ATR21          1A  P
+     A            ATR22          1A  P
+     A            ATR23          1A  P
+     A            ATR31          1A  P
+     A            ATR32          1A  P
+     A            ATR33          1A  P
+     A            ATR14          1A  P
+     A            ATR15          1A  P
+     A            ATR16          1A  P
+     A            ATR24          1A  P
+     A            ATR25          1A  P
+     A            ATR26          1A  P
+     A            ATR34          1A  P
+     A            ATR35          1A  P
+     A            ATR36          1A  P
+     A                                  1  3'JCRZANIM0' COLOR(BLU)
+     A                                  1 25'Binary Clock' DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  3  3'Hour' COLOR(BLU)
+     A            GRID11ROW1     9A  O  4  3DSPATR(&ATR11)
+     A            GRID12ROW1     9A  O  4 15DSPATR(&ATR12)
+     A            GRID13ROW1     9A  O  4 27DSPATR(&ATR13)
+     A            GRID14ROW1     9A  O  4 39DSPATR(&ATR14)
+     A            GRID15ROW1     9A  O  4 51DSPATR(&ATR15)
+     A            GRID16ROW1     9A  O  4 63DSPATR(&ATR16)
+     A            GRID11ROW2     9A  O  5  3DSPATR(&ATR11)
+     A            GRID12ROW2     9A  O  5 15DSPATR(&ATR12)
+     A            GRID13ROW2     9A  O  5 27DSPATR(&ATR13)
+     A            GRID14ROW2     9A  O  5 39DSPATR(&ATR14)
+     A            GRID15ROW2     9A  O  5 51DSPATR(&ATR15)
+     A            GRID16ROW2     9A  O  5 63DSPATR(&ATR16)
+     A            GRID11ROW3     9A  O  6  3DSPATR(&ATR11)
+     A            GRID12ROW3     9A  O  6 15DSPATR(&ATR12)
+     A            GRID13ROW3     9A  O  6 27DSPATR(&ATR13)
+     A            GRID14ROW3     9A  O  6 39DSPATR(&ATR14)
+     A            GRID15ROW3     9A  O  6 51DSPATR(&ATR15)
+     A            GRID16ROW3     9A  O  6 63DSPATR(&ATR16)
+     A            EHOUR          2  0O  6 76DSPATR(HI)
+     A            GRID11ROW4     9A  O  7  3DSPATR(&ATR11)
+     A            GRID12ROW4     9A  O  7 15DSPATR(&ATR12)
+     A            GRID13ROW4     9A  O  7 27DSPATR(&ATR13)
+     A            GRID14ROW4     9A  O  7 39DSPATR(&ATR14)
+     A            GRID15ROW4     9A  O  7 51DSPATR(&ATR15)
+     A            GRID16ROW4     9A  O  7 63DSPATR(&ATR16)
+     A            GRID11ROW5     9A  O  8  3DSPATR(&ATR11)
+     A            GRID12ROW5     9A  O  8 15DSPATR(&ATR12)
+     A            GRID13ROW5     9A  O  8 27DSPATR(&ATR13)
+     A            GRID14ROW5     9A  O  8 39DSPATR(&ATR14)
+     A            GRID15ROW5     9A  O  8 51DSPATR(&ATR15)
+     A            GRID16ROW5     9A  O  8 63DSPATR(&ATR16)
+     A                                 10  3'Minute' COLOR(BLU)
+     A            GRID21ROW1     9A  O 11  3DSPATR(&ATR21)
+     A            GRID22ROW1     9A  O 11 15DSPATR(&ATR22)
+     A            GRID23ROW1     9A  O 11 27DSPATR(&ATR23)
+     A            GRID24ROW1     9A  O 11 39DSPATR(&ATR24)
+     A            GRID25ROW1     9A  O 11 51DSPATR(&ATR25)
+     A            GRID26ROW1     9A  O 11 63DSPATR(&ATR26)
+     A            GRID21ROW2     9A  O 12  3DSPATR(&ATR21)
+     A            GRID22ROW2     9A  O 12 15DSPATR(&ATR22)
+     A            GRID23ROW2     9A  O 12 27DSPATR(&ATR23)
+     A            GRID24ROW2     9A  O 12 39DSPATR(&ATR24)
+     A            GRID25ROW2     9A  O 12 51DSPATR(&ATR25)
+     A            GRID26ROW2     9A  O 12 63DSPATR(&ATR26)
+     A            GRID21ROW3     9A  O 13  3DSPATR(&ATR21)
+     A            GRID22ROW3     9A  O 13 15DSPATR(&ATR22)
+     A            GRID23ROW3     9A  O 13 27DSPATR(&ATR23)
+     A            GRID24ROW3     9A  O 13 39DSPATR(&ATR24)
+     A            GRID25ROW3     9A  O 13 51DSPATR(&ATR25)
+     A            GRID26ROW3     9A  O 13 63DSPATR(&ATR26)
+     A            EMINUTE        2  0O 13 76DSPATR(HI)
+     A            GRID21ROW4     9A  O 14  3DSPATR(&ATR21)
+     A            GRID22ROW4     9A  O 14 15DSPATR(&ATR22)
+     A            GRID23ROW4     9A  O 14 27DSPATR(&ATR23)
+     A            GRID24ROW4     9A  O 14 39DSPATR(&ATR24)
+     A            GRID25ROW4     9A  O 14 51DSPATR(&ATR25)
+     A            GRID26ROW4     9A  O 14 63DSPATR(&ATR26)
+     A            GRID21ROW5     9A  O 15  3DSPATR(&ATR21)
+     A            GRID22ROW5     9A  O 15 15DSPATR(&ATR22)
+     A            GRID23ROW5     9A  O 15 27DSPATR(&ATR23)
+     A            GRID24ROW5     9A  O 15 39DSPATR(&ATR24)
+     A            GRID25ROW5     9A  O 15 51DSPATR(&ATR25)
+     A            GRID26ROW5     9A  O 15 63DSPATR(&ATR26)
+     A                                 17  3'Second' COLOR(BLU)
+     A            GRID31ROW1     9A  O 18  3DSPATR(&ATR31)
+     A            GRID32ROW1     9A  O 18 15DSPATR(&ATR32)
+     A            GRID33ROW1     9A  O 18 27DSPATR(&ATR33)
+     A            GRID34ROW1     9A  O 18 39DSPATR(&ATR34)
+     A            GRID35ROW1     9A  O 18 51DSPATR(&ATR35)
+     A            GRID36ROW1     9A  O 18 63DSPATR(&ATR36)
+     A            GRID31ROW2     9A  O 19  3DSPATR(&ATR31)
+     A            GRID32ROW2     9A  O 19 15DSPATR(&ATR32)
+     A            GRID33ROW2     9A  O 19 27DSPATR(&ATR33)
+     A            GRID34ROW2     9A  O 19 39DSPATR(&ATR34)
+     A            GRID35ROW2     9A  O 19 51DSPATR(&ATR35)
+     A            GRID36ROW2     9A  O 19 63DSPATR(&ATR36)
+     A            GRID31ROW3     9A  O 20  3DSPATR(&ATR31)
+     A            GRID32ROW3     9A  O 20 15DSPATR(&ATR32)
+     A            GRID33ROW3     9A  O 20 27DSPATR(&ATR33)
+     A            GRID34ROW3     9A  O 20 39DSPATR(&ATR34)
+     A            GRID35ROW3     9A  O 20 51DSPATR(&ATR35)
+     A            GRID36ROW3     9A  O 20 63DSPATR(&ATR36)
+     A            ESECOND        2  0O 20 76DSPATR(HI)
+     A            GRID31ROW4     9A  O 21  3DSPATR(&ATR31)
+     A            GRID32ROW4     9A  O 21 15DSPATR(&ATR32)
+     A            GRID33ROW4     9A  O 21 27DSPATR(&ATR33)
+     A            GRID34ROW4     9A  O 21 39DSPATR(&ATR34)
+     A            GRID35ROW4     9A  O 21 51DSPATR(&ATR35)
+     A            GRID36ROW4     9A  O 21 63DSPATR(&ATR36)
+     A            GRID31ROW5     9A  O 22  3DSPATR(&ATR31)
+     A            GRID32ROW5     9A  O 22 15DSPATR(&ATR32)
+     A            GRID33ROW5     9A  O 22 27DSPATR(&ATR33)
+     A            GRID34ROW5     9A  O 22 39DSPATR(&ATR34)
+     A            GRID35ROW5     9A  O 22 51DSPATR(&ATR35)
+     A            GRID36ROW5     9A  O 22 63DSPATR(&ATR36)
+     A                                 24  2'F3=Exit' COLOR(BLU)
+     A                                 24 69'F12=Cancel' COLOR(BLU)

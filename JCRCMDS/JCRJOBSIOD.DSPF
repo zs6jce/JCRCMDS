@@ -1,0 +1,89 @@
+      *----------------------------------------------------------------
+      * JCRJOBSIOD - Work with selected jobs - I/O display - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(27 132 *DS4)
+     A                                      INDARA
+     A                                      CA03
+     A                                      CA05
+     A                                      CA07
+     A                                      CA08
+     A                                      CA09
+     A                                      CA12
+ 
+     A          R SBFDTA1                   SFL
+     A            SBOPTION       1Y 0B  5  2EDTCDE(4)
+     A            SBFILE        10A  O  5  4
+     A            SBLIB         10A  O  5 15
+     A            SBMBRDEV      10A  O  5 26
+     A            SBRCDFMT      10A  O  5 37
+     A            SBFILETYPE     4A  O  5 48
+     A            SBTOTALIO      9Y 0O  5 53EDTCDE(4)
+     A            SBOPENOPT      3A  O  5 64
+     A            SBRRN          9Y 0O  5 68EDTCDE(4)
+     A            SBTEXT        50A  O  5 80
+     A*----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1)
+     A                                      SFLSIZ(0100)
+     A                                      SFLPAG(0020)
+     A                                      OVERLAY
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A            SFLRCDNBR      4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'JCRJOBSIOR'
+     A                                      COLOR(BLU)
+     A                                  1 23'Job File I/O'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                      COLOR(BLU)
+     A                                  2  2'Job Name:'
+     A                                      COLOR(BLU)
+     A            PJOBNAM       10A  O  2 12
+     A                                  2 25'User:'
+     A                                      COLOR(BLU)
+     A            PJOBUSR       10A  O  2 31
+     A                                  2 45'Number:'
+     A                                      COLOR(BLU)
+     A            PJOBNBR        6A  O  2 53
+     A                                  2 72SYSNAME
+     A                                      COLOR(BLU)
+     A            SCHEADOPT     65A  O  3  2COLOR(BLU)
+     A                                  4  4'File'
+     A                                      DSPATR(HI)
+     A                                  4 15'Library'
+     A                                      DSPATR(HI)
+     A                                  4 26'Mbr/Device'
+     A                                      DSPATR(HI)
+     A                                  4 37'RcdFmt'
+     A                                      DSPATR(HI)
+     A                                  4 48'Type'
+     A                                      DSPATR(HI)
+     A                                  4 59'I/O'
+     A                                      DSPATR(HI)
+     A                                  4 64'Opt'
+     A                                      DSPATR(HI)
+     A                                  4 70'Record#'
+     A                                      DSPATR(HI)
+     A                                  4 80'Text'
+     A                                      DSPATR(HI)
+      *----------------------------------------------------------------
+     A          R SFOOTER1                  OVERLAY
+     A                                 26  2'F3=Exit' COLOR(BLU)
+     A                                 26 14'F5=Refresh' COLOR(BLU)
+     A                                 26 26'F7=I/O seq' COLOR(BLU)
+     A                                 26 39'F8=File Seq' COLOR(BLU)
+     A            FOOTF09       15     26 53COLOR(BLU)
+     A                                 26 69'F12=Cancel' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(24)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

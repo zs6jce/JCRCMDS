@@ -1,0 +1,21 @@
+:PNLGRP.:HELP NAME='JCRANZP'.PRTF Field Layout Print (JCRANZP) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Report layout with field names printed under the field positions from
+PRTF source.
+:NT.You must have all print file referenced files in
+library list to execute command.:ENT.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRANZP/PRTF'.PRTF source member name - Help :XH3.PRTF source member name (PRTF)
+:P.PRTF whose field list is to be printed.:EHELP.
+ 
+:HELP NAME='JCRANZP/SRCFILE'.Source file - Help :XH3.Source file (SRCFILE)
+:P.Source file containing source PRTF member.:EHELP.
+ 
+:HELP NAME='JCRANZP/SHOWNAMES'.Show rcdfmts and field names - Help
+:XH3.Show rcdfmts and field names (SHOWNAMES)
+:P.Show record format names and field names on generated report.:EHELP.
+ 
+:HELP NAME='JCRANZP/OUTPUT'.Output - Help :XH3.Output (OUTPUT)
+:P.*PRINT or * Display the print file layout.:EHELP.:EPNLGRP.

@@ -1,0 +1,31 @@
+      *----------------------------------------------------------------
+      * JCRDUPKEYP - Duplicate Keyed Logicals List - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 132)
+     A          R PRTHEAD                   SKIPB(1) SPACEA(1)
+     A                                     2'JCRDUPKEY'
+     A                                    20'Duplicate Keyed Logicals List'
+     A            SCDOW          9A  O    82
+     A                                    92DATE EDTCDE(Y)
+     A                                   104'Page'
+     A                                    +1PAGNBR EDTCDE(4) SPACEA(1)
+      *---
+     A                                     2'File:'
+     A            SCOBJHEAD     75A        8SPACEA(2)
+      *---
+     A                                     1'File'
+     A                                    13'Library'
+     A                                    25'Keys'
+      *----------------------------------------------------------------
+     A          R PRTLINE                   SPACEA(1)
+     A            PRTFILE       10A  O     1
+     A            PRTLIB        10A  O    13
+     A            PRTKEYS      104A       25
+      *----------------------------------------------------------------
+     A          R PRTDIVIDER                SPACEA(1)
+     A                                     1'---------'
+     A                                    13'----------'
+     A                                    25'-----------------------------------
+     A                                      ------------------------------------
+     A                                      -----------------------------------'

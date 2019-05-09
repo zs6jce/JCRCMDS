@@ -1,0 +1,10 @@
+:PNLGRP.:HELP NAME='JCROLCK'.Jobs With Object Locks (JCROLCK) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Great for releasing object locks in a hurry.
+SNDBRKMSG and ENDJOB *IMMED to jobs with locks on an object. Call to API
+retrieves job names with a lock. Select options to perform on that job.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCROLCK/OBJ'.Object name - Help :XH3.Object name (OBJ)
+:P.Object and library to be selected.:EHELP.:EPNLGRP.

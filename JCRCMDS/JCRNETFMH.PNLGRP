@@ -1,0 +1,21 @@
+:PNLGRP.:IMPORT PNLGRP='QHNFCMD' NAME='SNDNETF/TOUSRID'.
+:HELP NAME='JCRNETFM'.Send Network File Members (JCRNETFM) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Send either *First, *All, Generic* or up to 10 named members of
+a selected file. Filter member selections by member type. Select up to 5
+send-to users.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRNETFM/FILE'.File name - Help :XH3.File name (FILE)
+:P.File whose members to be sent. File can be a physical file or
+save file. Logical and device files are not allowed. Overrides to specified file are ignored.
+:XH3.Library (LIBRARY)
+:P.Library containing file to be sent.:EHELP.
+ 
+:HELP NAME='JCRNETFM/TOUSRID'.User id - Help
+:IMHELP NAME='SNDNETF/TOUSRID'.:EHELP.
+ 
+:HELP NAME='JCRNETFM/MBRS'.Member names - Help :XH3.Member names (MBRS)
+:P.Members to be sent. Select *FIRST, *ALL, or any generic*
+name. Filter by specific member types.:EHELP.:EPNLGRP.

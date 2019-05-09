@@ -1,0 +1,30 @@
+      *----------------------------------------------------------------
+      * JCRHEXCHRD - Hex/Biton patterns to produce characters - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      PRINT CA03 CA12
+     A          R SBFDTA1                   SFL
+     A            SCBINVAL       1A  O  3  2DSPATR(HI)
+     A            SCHEXCODE      2A  O  3  5COLOR(PNK)
+     A            SCBITON        8A  O  3  8COLOR(PNK)
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1) BLINK
+     A  *DS3                                SFLLIN(2)
+     A  *DS4                                SFLLIN(2)
+     A                                      SFLPAG(95) SFLSIZ(285)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N34                                  SFLEND(*MORE)
+     A                                  1  2'JCRHEXCHR' COLOR(BLU)
+     A                                  1 20'Hex/Bit Values To Produce Characte-
+     A                                      rs' DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  2  1'Chr' DSPATR(UL)
+     A                                  2  5'Hex' DSPATR(UL)
+     A                                  2  9'Biton   ' DSPATR(UL)
+     A                                  2 72SYSNAME COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R SFOOTER1                  OVERLAY
+     A                                 24  2'F3=Exit' COLOR(BLU)

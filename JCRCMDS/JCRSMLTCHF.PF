@@ -1,0 +1,22 @@
+      *----------------------------------------------------------------
+      * JCRSMLTCHF - Preselect File Lists / Choice Prompt Data - PF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *
+      *  Enter the CHOICEKEY in the File Name prompt to search
+      *  unrestricted number of source files.
+      *  The choice program in the command definition reads this file to
+      *  present a list of predefined choices.
+      *
+      *  CHOICE KEY MUST HAVE * AS FIRST CHARACTER!!
+      *----------------------------------------------------------------
+     A          R JCRSMLTCHR                TEXT('Source Lists')
+     A            CHOICEKEY     10A         COLHDG('File Name Prompt*')
+     A            CHOICETXT     20A         COLHDG('Choice Text')
+     A            CHOICELIB     10A         COLHDG('Source Lib')
+     A            CHOICEFIL     10A         COLHDG('Source File')
+     A            CHOICEMBR     10A         COLHDG('Source Mbr')
+     A            CHOICETYP     10A         COLHDG('Mbr Type')
+ 
+     A          K CHOICEKEY
+     A          K CHOICELIB
+     A          K CHOICEFIL

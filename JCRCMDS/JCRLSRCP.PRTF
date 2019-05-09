@@ -1,0 +1,44 @@
+      *----------------------------------------------------------------
+      * JCRLSRCP - List program source/module information - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 132)
+     A          R PRTHEAD                   SKIPB(1) SPACEA(1)
+     A                                     2'JCRLSRC'
+     A                                    20'List Pgm/Mod/Srvpgm Source Informa-
+     A                                      tion'
+     A            SCDOW          9A  O    90
+     A                                   100DATE EDTCDE(Y)
+     A                                   110TIME
+     A                                   120'Page'
+     A                                    +1PAGNBR EDTCDE(4) SPACEA(1)
+      *---
+     A                                     2'Library:'
+     A            HEADLIB       10A       11
+     A                                    24'Program Select:'
+     A            HEADPGM       10A       41
+     A                                    81'Days' SPACEA(1)
+      *---
+     A                                     2'Program'
+     A                                    14'SourceLib'
+     A                                    26'SourceFile'
+     A                                    38'Mbr/Module'
+     A                                    50'MbrAttr'
+     A                                    60'Created'
+     A                                    71'LastUsed'
+     A                                    81'Used'
+     A                                    87'Text'
+      *----------------------------------------------------------------
+     A          R PRTDETAIL                 SPACEA(1)
+     A            LPGM          10A        2
+     A            LSRCLIB       10A       14
+     A            LSRCFIL       10A       26
+     A            LSRCMBR       10A       38
+     A            LSRCATTR       8A       50
+     A            LCREATEDT     10A       59
+     A            LLASTUSED     10A       70
+     A            LDAYSUSED      4  0     81EDTCDE(4)
+     A            LOBJTEXT      41A       87
+      *----------------------------------------------------------------
+     A          R PRTMESSAGE                SPACEB(2)
+     A            VMESSAGE     100A        3

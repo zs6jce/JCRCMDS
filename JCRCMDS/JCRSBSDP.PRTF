@@ -1,0 +1,27 @@
+      *----------------------------------------------------------------
+      * JCRSBSDP - List subsystem pools and routing ids - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 132)
+     A          R PRTHEAD
+     A                                     1'JCRSBSDR'
+     A                                      SKIPB( 1)
+     A                                    20'List Subsystem Pool ID:'
+     A            SYSTEMNAME     8        44
+     A            SCDOW          9        67
+     A                                    78DATE
+     A                                      EDTCDE(Y)
+     A                                    93'Page'
+     A            PAGE1          4  0     98
+     A                                      SPACEA(1)
+     A                                   132'.'
+     A                                      SPACEA(1)
+     A                                     1'Subsystem'
+     A                                    24'Routing Entry PoolID'
+     A                                    54'Pools'
+     A                                      SPACEA(1)
+     A          R PRTDETAIL
+     A            A21           21         1
+     A            PRTROUTING    30        23
+     A            PRTPOOLS      75        54
+     A                                      SPACEA(1)

@@ -1,0 +1,189 @@
+      *----------------------------------------------------------------
+      * JCRUSERS - Search User Profiles - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(27 132 *DS4)
+     A                                      CA03
+     A                                      CA05
+     A                                      CA08
+     A                                      CA09
+     A                                      CA12
+     A                                      PRINT
+      *----------------------------------------------
+     A          R SBFDTA1                   SFL
+     A            SFINITLIB     10   H
+     A            SFOPT          1A  B  6  2
+     A            SFUSRPRF      10A  O  6  5
+     A            SFTEXT        39A  O  6 16
+     A            SFSTATUS      10A  O  6 56
+     A            SFINITPGM     10   O  6 67
+     A            SFJOBD        10   O  6 78
+     A            SFJOBDLIB     10   O  6 89
+     A            SFOUTQ        10   O  6100
+     A            SFOUTQLIB     10   O  6111
+     A            SFLASTUSED    10A  O  6122
+      *----------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1)
+     A                                      SFLSIZ(1900)
+     A                                      SFLPAG(0019)
+     A                                      CHANGE(12)
+     A                                      OVERLAY
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N31                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A                                  1  2'JCRUSERS'
+     A                                      COLOR(BLU)
+     A                                  1 23'Search User Profiles'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE
+     A                                      EDTWRD('0  /  /  ')
+     A                                      COLOR(BLU)
+     A                                  2  5'PosTo'
+     A                                      COLOR(BLU)
+     A                                  2 16'(leading space = contains) '
+     A                                      COLOR(BLU)
+     A                                  2 72SYSNAME
+     A                                      COLOR(BLU)
+     A                                  3  2'2=ChgUsrPrf'
+     A                                      COLOR(BLU)
+     A                                  3 15'5=DspUsrPrf'
+     A                                      COLOR(BLU)
+     A                                  3 29'6=Email Address'
+     A                                      COLOR(BLU)
+     A                                  3 47'9=WrkUsrPrf'
+     A                                      COLOR(BLU)
+     A            SCUSER        10A  B  4  2CHANGE(12)
+     A            SCTEXT        40A  B  4 16
+     A            SCINIT        10A  B  4 67
+     A            SCJOBD        10A  B  4 78
+     A            SCOUTQ        10A  B  4100
+     A                                  5  2'Op'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5  5'User Id   '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5 16'Text                              -
+     A                                           '
+     A                                      COLOR(WHT)
+     A                                      DSPATR(UL)
+     A                                  5 56'Status    '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5 67'Init Pgm  '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5 78'Jodb                 '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5100'Outq                 '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5123'Last Used '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+      *----------------------------------------------
+     A          R SFOOTER1
+     A                                      OVERLAY
+     A                                 26  2'F3=Exit'
+     A                                      COLOR(BLU)
+     A                                 26 16'F5=Refresh'
+     A                                      COLOR(BLU)
+     A                                 26 33'F6=Print'
+     A                                      COLOR(BLU)
+     A                                 26 48'F8=Wrksplf'
+     A                                      COLOR(BLU)
+     A                                 26 65'F9=Outfile'
+     A                                      COLOR(BLU)
+ 
+     A*----------------------------------------------------------------
+     A          R EMAILWIN
+     A                                      CA06
+     A                                      OVERLAY
+     A                                      WINDOW(3 10 7 110 *NOMSGLIN)
+     A                                      WDWTITLE((*TEXT 'Email Address') (*-
+     A                                      COLOR WHT) (*DSPATR HI))
+     A            WCUSRPRF      10A  O  2  2
+     A            WCTEXT        39A  O  2 14
+     A            WCADDRESS    100A  O  4  2DSPATR(HI)
+     A                                  6  2'Enter=Proceed'
+     A                                      COLOR(BLU)
+     A            WCF6MSG       37A  O  6 21COLOR(BLU)
+     A*----------------------------------------------
+     A          R ADDDIRE
+     A                                      BLINK
+     A                                  1  2'JCRUSERS'
+     A                                      COLOR(BLU)
+     A            WDTITLE       29A  O  1 22DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE
+     A                                      EDTWRD('0  /  /  ')
+     A                                      COLOR(BLU)
+     A                                  2 72SYSNAME
+     A                                      COLOR(BLU)
+     A                                  3  4'User Profile:'
+     A            WCUSRPRF      10A  O  3 18
+     A            WCTEXT        39A  O  3 29
+     A                                  6  4'User Identifier:'
+     A            WDUSRID        8A  B  6 22
+     A  01                                  DSPATR(PC)
+     A                                  6 34'Descriptive Text shown in WRKDIRE -
+     A                                      list.'
+     A                                      COLOR(BLU)
+     A                                  8  4'Address:'
+     A            WDADDRESS      8A  B  8 22
+     A  02                                  DSPATR(PC)
+     A                                  8 34'Descriptive Text. Location perhaps-
+     A                                      .'
+     A                                      COLOR(BLU)
+     A                                 11  4'Email Address:'
+     A            WDBEFORE      24A  B 11 22
+     A  03                                  DSPATR(PC)
+     A                                 11 47'@'
+     A                                      DSPATR(HI)
+     A            WDAFTER       50A  B 11 49
+     A  04                                  DSPATR(PC)
+     A            WDERRMSG      75A  O 17 10DSPATR(HI)
+      *---------------------------------------------------------------------
+     A          R OUTFILEWIN
+     A                                      BLINK
+     A                                      WINDOW(3 10 12 90 *NOMSGLIN)
+     A                                      WDWTITLE((*TEXT 'Outfile') (*COLOR -
+     A                                      WHT) (*DSPATR HI))
+     A                                      OVERLAY
+     A                                      CSRLOC(CSRROW     CSRCOL)
+     A            CSRROW         3S 0H
+     A            CSRCOL         3S 0H
+     A            PTS01          1A  P
+     A            PTS02          1A  P
+     A            PTS03          1A  P
+     A                                  2  3'Outfile  . . . . . . . . . . . .'
+     A            OUTFILE       10A  B  2 37
+     A                                      DSPATR(&PTS01)
+     A                                  2 52'Name'
+     A                                  3  5'Library  . . . . . . . . . . .'
+     A            OUTLIB        10A  B  3 39
+     A                                      DSPATR(&PTS02)
+     A                                  3 52'Name, *LIBL, *CURLIB'
+     A                                  4  3'Output member options:          '
+     A                                  5  5'Member to receive output . . .'
+     A            EXTOMBR       10A  B  5 37
+     A                                  5 52'Name, *FIRST'
+     A                                  6  5'Replace or add records . . . .'
+     A            OUTMBROPT     10A  B  6 37
+     A                                      DSPATR(&PTS03)
+     A                                  6 52'*REPLACE, *ADD'
+     A                                  8  4'Press Enter to Proceed'
+     A                                      COLOR(BLU)
+     A            ERRMSG        75A  O 10  4DSPATR(HI)
+      *----------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(27)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

@@ -1,0 +1,441 @@
+      *----------------------------------------------------------------
+      * JCRGMYATD - Yahtzee - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3  27 132 *DS4)
+     A                                      INDARA CA03 CA05 CA12
+     A          R SCREEN                    OVERLAY
+     A            C111A          1A  P
+     A            C112A          1A  P
+     A            C113A          1A  P
+     A            C114A          1A  P
+     A            C121A          1A  P
+     A            C122A          1A  P
+     A            C123A          1A  P
+     A            C124A          1A  P
+     A            C131A          1A  P
+     A            C132A          1A  P
+     A            C133A          1A  P
+     A            C134A          1A  P
+     A            C141A          1A  P
+     A            C142A          1A  P
+     A            C143A          1A  P
+     A            C144A          1A  P
+     A            C151A          1A  P
+     A            C152A          1A  P
+     A            C153A          1A  P
+     A            C154A          1A  P
+     A            C161A          1A  P
+     A            C162A          1A  P
+     A            C163A          1A  P
+     A            C164A          1A  P
+     A            C171A          1A  P
+     A            C172A          1A  P
+     A            C173A          1A  P
+     A            C174A          1A  P
+     A            C211A          1A  P
+     A            C212A          1A  P
+     A            C213A          1A  P
+     A            C214A          1A  P
+     A            C221A          1A  P
+     A            C222A          1A  P
+     A            C223A          1A  P
+     A            C224A          1A  P
+     A            C231A          1A  P
+     A            C232A          1A  P
+     A            C233A          1A  P
+     A            C234A          1A  P
+     A            C241A          1A  P
+     A            C242A          1A  P
+     A            C243A          1A  P
+     A            C244A          1A  P
+     A            C251A          1A  P
+     A            C252A          1A  P
+     A            C253A          1A  P
+     A            C254A          1A  P
+     A            C261A          1A  P
+     A            C262A          1A  P
+     A            C263A          1A  P
+     A            C264A          1A  P
+     A            C271A          1A  P
+     A            C272A          1A  P
+     A            C273A          1A  P
+     A            C274A          1A  P
+     A            C311A          1A  P
+     A            C312A          1A  P
+     A            C313A          1A  P
+     A            C314A          1A  P
+     A            C321A          1A  P
+     A            C322A          1A  P
+     A            C323A          1A  P
+     A            C324A          1A  P
+     A            C331A          1A  P
+     A            C332A          1A  P
+     A            C333A          1A  P
+     A            C334A          1A  P
+     A            C341A          1A  P
+     A            C342A          1A  P
+     A            C343A          1A  P
+     A            C344A          1A  P
+     A            C351A          1A  P
+     A            C352A          1A  P
+     A            C353A          1A  P
+     A            C354A          1A  P
+     A            C361A          1A  P
+     A            C362A          1A  P
+     A            C363A          1A  P
+     A            C364A          1A  P
+     A            C371A          1A  P
+     A            C372A          1A  P
+     A            C373A          1A  P
+     A            C374A          1A  P
+     A            BORDER1A       1A  P
+     A            BORDER2A       1A  P
+     A            BORDER3A       1A  P
+     A            BORDER4A       1A  P
+     A            BORDER5A       1A  P
+     A            S0111A         1A  P
+     A            S0112A         1A  P
+     A            S0113A         1A  P
+     A            S0121A         1A  P
+     A            S0122A         1A  P
+     A            S0123A         1A  P
+     A            S0131A         1A  P
+     A            S0132A         1A  P
+     A            S0133A         1A  P
+     A            S0211A         1A  P
+     A            S0212A         1A  P
+     A            S0213A         1A  P
+     A            S0221A         1A  P
+     A            S0222A         1A  P
+     A            S0223A         1A  P
+     A            S0231A         1A  P
+     A            S0232A         1A  P
+     A            S0233A         1A  P
+     A            S0311A         1A  P
+     A            S0312A         1A  P
+     A            S0313A         1A  P
+     A            S0321A         1A  P
+     A            S0322A         1A  P
+     A            S0323A         1A  P
+     A            S0331A         1A  P
+     A            S0332A         1A  P
+     A            S0333A         1A  P
+     A            S0411A         1A  P
+     A            S0412A         1A  P
+     A            S0413A         1A  P
+     A            S0421A         1A  P
+     A            S0422A         1A  P
+     A            S0423A         1A  P
+     A            S0431A         1A  P
+     A            S0432A         1A  P
+     A            S0433A         1A  P
+     A            S0511A         1A  P
+     A            S0512A         1A  P
+     A            S0513A         1A  P
+     A            S0521A         1A  P
+     A            S0522A         1A  P
+     A            S0523A         1A  P
+     A            S0531A         1A  P
+     A            S0532A         1A  P
+     A            S0533A         1A  P
+     A            A6SA           1A  P
+     A            A6SB           1A  P
+     A            A6SC           1A  P
+     A            A5SA           1A  P
+     A            A5SB           1A  P
+     A            A5SC           1A  P
+     A            A4SA           1A  P
+     A            A4SB           1A  P
+     A            A4SC           1A  P
+     A            A3SA           1A  P
+     A            A3SB           1A  P
+     A            A3SC           1A  P
+     A            A2SA           1A  P
+     A            A2SB           1A  P
+     A            A2SC           1A  P
+     A            A1SA           1A  P
+     A            A1SB           1A  P
+     A            A1SC           1A  P
+     A            A3OFA          1A  P
+     A            A3OFB          1A  P
+     A            A3OFC          1A  P
+     A            A3OFD          1A  P
+     A            A4OFA          1A  P
+     A            A4OFB          1A  P
+     A            A4OFC          1A  P
+     A            A4OFD          1A  P
+     A            AFULLA         1A  P
+     A            AFULLB         1A  P
+     A            AFULLC         1A  P
+     A            AFULLD         1A  P
+     A            A4ROWA         1A  P
+     A            A4ROWB         1A  P
+     A            A4ROWC         1A  P
+     A            A4ROWD         1A  P
+     A            A5ROWA         1A  P
+     A            A5ROWB         1A  P
+     A            A5ROWC         1A  P
+     A            A5ROWD         1A  P
+     A            AYAHA          1A  P
+     A            AYAHB          1A  P
+     A            AYAHC          1A  P
+     A            AYAHD          1A  P
+     A            ACHANCEA       1A  P
+     A            ACHANCEB       1A  P
+     A            ACHANCEC       1A  P
+     A            ACHANCED       1A  P
+     A                                  1  3'JCRGMYAT' COLOR(BLU)
+     A                                  1 14'YAHTZEE' COLOR(BLU)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  2  3'_________' DSPATR(&BORDER1A)
+     A                                  2 14'_________' DSPATR(&BORDER2A)
+     A                                  2 25'_________' DSPATR(&BORDER3A)
+     A                                  2 36'_________' DSPATR(&BORDER4A)
+     A                                  2 47'_________' DSPATR(&BORDER5A)
+     A                                  3  3'|' DSPATR(&BORDER1A)
+     A                                  3 11'|' DSPATR(&BORDER1A)
+     A                                  3 14'|' DSPATR(&BORDER2A)
+     A                                  3 22'|' DSPATR(&BORDER2A)
+     A                                  3 25'|' DSPATR(&BORDER3A)
+     A                                  3 33'|' DSPATR(&BORDER3A)
+     A                                  3 36'|' DSPATR(&BORDER4A)
+     A                                  3 44'|' DSPATR(&BORDER4A)
+     A                                  3 47'|' DSPATR(&BORDER5A)
+     A                                  3 55'|' DSPATR(&BORDER5A)
+     A                                  4  3'|' DSPATR(&BORDER1A)
+     A            S0111          1A  O  4  5DSPATR(&S0111A)
+     A            S0112          1A  O  4  7DSPATR(&S0112A)
+     A            S0113          1A  O  4  9DSPATR(&S0113A)
+     A                                  4 11'|' DSPATR(&BORDER1A)
+     A                                  4 14'|' DSPATR(&BORDER2A)
+     A            S0211          1A  O  4 16DSPATR(&S0211A)
+     A            S0212          1A  O  4 18DSPATR(&S0212A)
+     A            S0213          1A  O  4 20DSPATR(&S0213A)
+     A                                  4 22'|' DSPATR(&BORDER2A)
+     A                                  4 25'|' DSPATR(&BORDER3A)
+     A            S0311          1A  O  4 27DSPATR(&S0311A)
+     A            S0312          1A  O  4 29DSPATR(&S0312A)
+     A            S0313          1A  O  4 31DSPATR(&S0313A)
+     A                                  4 33'|' DSPATR(&BORDER3A)
+     A                                  4 36'|' DSPATR(&BORDER4A)
+     A            S0411          1A  O  4 38DSPATR(&S0411A)
+     A            S0412          1A  O  4 40DSPATR(&S0412A)
+     A            S0413          1A  O  4 42DSPATR(&S0413A)
+     A                                  4 44'|' DSPATR(&BORDER4A)
+     A                                  4 47'|' DSPATR(&BORDER5A)
+     A            S0511          1A  O  4 49DSPATR(&S0511A)
+     A            S0512          1A  O  4 51DSPATR(&S0512A)
+     A            S0513          1A  O  4 53DSPATR(&S0513A)
+     A                                  4 55'|' DSPATR(&BORDER5A)
+     A                                  5  3'|' DSPATR(&BORDER1A)
+     A            S0121          1A  O  5  5DSPATR(&S0121A)
+     A            S0122          1A  O  5  7DSPATR(&S0122A)
+     A            S0123          1A  O  5  9DSPATR(&S0123A)
+     A                                  5 11'|' DSPATR(&BORDER1A)
+     A                                  5 14'|' DSPATR(&BORDER2A)
+     A            S0221          1A  O  5 16DSPATR(&S0221A)
+     A            S0222          1A  O  5 18DSPATR(&S0222A)
+     A            S0223          1A  O  5 20DSPATR(&S0223A)
+     A                                  5 22'|' DSPATR(&BORDER2A)
+     A                                  5 25'|' DSPATR(&BORDER3A)
+     A            S0321          1A  O  5 27DSPATR(&S0321A)
+     A            S0322          1A  O  5 29DSPATR(&S0322A)
+     A            S0323          1A  O  5 31DSPATR(&S0323A)
+     A                                  5 33'|' DSPATR(&BORDER3A)
+     A                                  5 36'|' DSPATR(&BORDER4A)
+     A            S0421          1A  O  5 38DSPATR(&S0421A)
+     A            S0422          1A  O  5 40DSPATR(&S0422A)
+     A            S0423          1A  O  5 42DSPATR(&S0423A)
+     A                                  5 44'|' DSPATR(&BORDER4A)
+     A                                  5 47'|' DSPATR(&BORDER5A)
+     A            S0521          1A  O  5 49DSPATR(&S0521A)
+     A            S0522          1A  O  5 51DSPATR(&S0522A)
+     A            S0523          1A  O  5 53DSPATR(&S0523A)
+     A                                  5 55'|' DSPATR(&BORDER5A)
+     A                                  6  3'|' DSPATR(&BORDER1A)
+     A            S0131          1A  O  6  5DSPATR(&S0131A)
+     A            S0132          1A  O  6  7DSPATR(&S0132A)
+     A            S0133          1A  O  6  9DSPATR(&S0133A)
+     A                                  6 11'|' DSPATR(&BORDER1A)
+     A                                  6 14'|' DSPATR(&BORDER2A)
+     A            S0231          1A  O  6 16DSPATR(&S0231A)
+     A            S0232          1A  O  6 18DSPATR(&S0232A)
+     A            S0233          1A  O  6 20DSPATR(&S0233A)
+     A                                  6 22'|' DSPATR(&BORDER2A)
+     A                                  6 25'|' DSPATR(&BORDER3A)
+     A            S0331          1A  O  6 27DSPATR(&S0331A)
+     A            S0332          1A  O  6 29DSPATR(&S0332A)
+     A            S0333          1A  O  6 31DSPATR(&S0333A)
+     A                                  6 33'|' DSPATR(&BORDER3A)
+     A                                  6 36'|' DSPATR(&BORDER4A)
+     A            S0431          1A  O  6 38DSPATR(&S0431A)
+     A            S0432          1A  O  6 40DSPATR(&S0432A)
+     A            S0433          1A  O  6 42DSPATR(&S0433A)
+     A                                  6 44'|' DSPATR(&BORDER4A)
+     A                                  6 47'|' DSPATR(&BORDER5A)
+     A            S0531          1A  O  6 49DSPATR(&S0531A)
+     A            S0532          1A  O  6 51DSPATR(&S0532A)
+     A            S0533          1A  O  6 53DSPATR(&S0533A)
+     A                                  6 55'|' DSPATR(&BORDER5A)
+     A                                  7  3'|_______|' DSPATR(&BORDER1A)
+     A                                  7 14'|_______|' DSPATR(&BORDER2A)
+     A                                  7 25'|_______|' DSPATR(&BORDER3A)
+     A                                  7 36'|_______|' DSPATR(&BORDER4A)
+     A                                  7 47'|_______|' DSPATR(&BORDER5A)
+     A  10        DISCARD1       1A  B  8  6COLOR(WHT)
+     A  10        DISCARD2       1A  B  8 18COLOR(WHT)
+     A  10        DISCARD3       1A  B  8 29COLOR(WHT)
+     A  10        DISCARD4       1A  B  8 40COLOR(WHT)
+     A  10        DISCARD5       1A  B  8 51COLOR(WHT)
+     A                                 10  6'Upper Section' COLOR(BLU)
+     A                                 10 22'Lower Section' COLOR(BLU)
+     A            ROLLMSG       12A  O 10 47COLOR(BLU)
+     A            SEL1S          1A  I 11  6DSPATR(&A1SA)
+     A                                 11  8'Ones' DSPATR(&A1SB)
+     A            TOT1S          2Y 0O 11 15EDTCDE(3) DSPATR(&A1SC)
+     A            SEL3OFKIND     1A  I 11 22DSPATR(&A3OFA)
+     A                                 11 24'3 of Kind' DSPATR(&A3OFB)
+     A            TOT3OFKIND     2Y 0O 11 35EDTCDE(3) DSPATR(&A3OFC)
+     A                                 11 39'(Sum)' DSPATR(&A3OFD)
+     A            C111           1A  O 11 49DSPATR(&C111A)
+     A            C112           1A  O 11 51DSPATR(&C112A)
+     A            C113           1A  O 11 53DSPATR(&C113A)
+     A            C114           1A  O 11 55DSPATR(&C114A)
+     A            C211           1A  O 11 58DSPATR(&C211A)
+     A            C212           1A  O 11 60DSPATR(&C212A)
+     A            C213           1A  O 11 62DSPATR(&C213A)
+     A            C214           1A  O 11 64DSPATR(&C214A)
+     A            C311           1A  O 11 67DSPATR(&C311A)
+     A            C312           1A  O 11 69DSPATR(&C312A)
+     A            C313           1A  O 11 71DSPATR(&C313A)
+     A            C314           1A  O 11 73DSPATR(&C314A)
+     A            SEL2S          1A  I 12  6DSPATR(&A2SA)
+     A                                 12  8'Twos' DSPATR(&A2SB)
+     A            TOT2S          2Y 0O 12 15EDTCDE(3) DSPATR(&A2SC)
+     A            SEL4OFKIND     1A  I 12 22DSPATR(&A4OFA)
+     A                                 12 24'4 of Kind' DSPATR(&A4OFB)
+     A            TOT4OFKIND     2Y 0O 12 35EDTCDE(3) DSPATR(&A4OFC)
+     A                                 12 39'(Sum)' DSPATR(&A4OFD)
+     A            C121           1A  O 12 49DSPATR(&C121A)
+     A            C122           1A  O 12 51DSPATR(&C122A)
+     A            C123           1A  O 12 53DSPATR(&C123A)
+     A            C124           1A  O 12 55DSPATR(&C124A)
+     A            C221           1A  O 12 58DSPATR(&C221A)
+     A            C222           1A  O 12 60DSPATR(&C222A)
+     A            C223           1A  O 12 62DSPATR(&C223A)
+     A            C224           1A  O 12 64DSPATR(&C224A)
+     A            C321           1A  O 12 67DSPATR(&C321A)
+     A            C322           1A  O 12 69DSPATR(&C322A)
+     A            C323           1A  O 12 71DSPATR(&C323A)
+     A            C324           1A  O 12 73DSPATR(&C324A)
+     A            SEL3S          1A  I 13  6DSPATR(&A3SA)
+     A                                 13  8'Threes' DSPATR(&A3SB)
+     A            TOT3S          2Y 0O 13 15EDTCDE(3) DSPATR(&A3SC)
+     A            SELFULLHOU     1A  I 13 22DSPATR(&AFULLA)
+     A                                 13 24'Full House' DSPATR(&AFULLB)
+     A            TOTFULLHOU     2Y 0O 13 35EDTCDE(3) DSPATR(&AFULLC)
+     A                                 13 39'(25)' DSPATR(&AFULLD)
+     A            C131           1A  O 13 49DSPATR(&C131A)
+     A            C132           1A  O 13 51DSPATR(&C132A)
+     A            C133           1A  O 13 53DSPATR(&C133A)
+     A            C134           1A  O 13 55DSPATR(&C134A)
+     A            C231           1A  O 13 58DSPATR(&C231A)
+     A            C232           1A  O 13 60DSPATR(&C232A)
+     A            C233           1A  O 13 62DSPATR(&C233A)
+     A            C234           1A  O 13 64DSPATR(&C234A)
+     A            C331           1A  O 13 67DSPATR(&C331A)
+     A            C332           1A  O 13 69DSPATR(&C332A)
+     A            C333           1A  O 13 71DSPATR(&C333A)
+     A            C334           1A  O 13 73DSPATR(&C334A)
+     A            SEL4S          1A  I 14  6DSPATR(&A4SA)
+     A                                 14  8'Fours' DSPATR(&A4SB)
+     A            TOT4S          2Y 0O 14 15EDTCDE(3) DSPATR(&A4SC)
+     A            SEL4INROW      1A  I 14 22DSPATR(&A4ROWA)
+     A                                 14 24'4 in Row' DSPATR(&A4ROWB)
+     A            TOT4INROW      2Y 0O 14 35EDTCDE(3) DSPATR(&A4ROWC)
+     A                                 14 39'(30)' DSPATR(&A4ROWD)
+     A            C141           1A  O 14 49DSPATR(&C141A)
+     A            C142           1A  O 14 51DSPATR(&C142A)
+     A            C143           1A  O 14 53DSPATR(&C143A)
+     A            C144           1A  O 14 55DSPATR(&C144A)
+     A            C241           1A  O 14 58DSPATR(&C241A)
+     A            C242           1A  O 14 60DSPATR(&C242A)
+     A            C243           1A  O 14 62DSPATR(&C243A)
+     A            C244           1A  O 14 64DSPATR(&C244A)
+     A            C341           1A  O 14 67DSPATR(&C341A)
+     A            C342           1A  O 14 69DSPATR(&C342A)
+     A            C343           1A  O 14 71DSPATR(&C343A)
+     A            C344           1A  O 14 73DSPATR(&C344A)
+     A            SEL5S          1A  I 15  6DSPATR(&A5SA)
+     A                                 15  8'Fives' DSPATR(&A5SB)
+     A            TOT5S          2Y 0O 15 15EDTCDE(3) DSPATR(&A5SC)
+     A            SEL5INROW      1A  I 15 22DSPATR(&A5ROWA)
+     A                                 15 24'5 in Row' DSPATR(&A5ROWB)
+     A            TOT5INROW      2Y 0O 15 35EDTCDE(3) DSPATR(&A5ROWC)
+     A                                 15 39'(40)' DSPATR(&A5ROWD)
+     A            C151           1A  O 15 49DSPATR(&C151A)
+     A            C152           1A  O 15 51DSPATR(&C152A)
+     A            C153           1A  O 15 53DSPATR(&C153A)
+     A            C154           1A  O 15 55DSPATR(&C154A)
+     A            C251           1A  O 15 58DSPATR(&C251A)
+     A            C252           1A  O 15 60DSPATR(&C252A)
+     A            C253           1A  O 15 62DSPATR(&C253A)
+     A            C254           1A  O 15 64DSPATR(&C254A)
+     A            C351           1A  O 15 67DSPATR(&C351A)
+     A            C352           1A  O 15 69DSPATR(&C352A)
+     A            C353           1A  O 15 71DSPATR(&C353A)
+     A            C354           1A  O 15 73DSPATR(&C354A)
+     A            SEL6S          1A  I 16  6DSPATR(&A6SA)
+     A                                 16  8'Sixes' DSPATR(&A6SB)
+     A            TOT6S          2Y 0O 16 15 EDTCDE(3) DSPATR(&A6SC)
+     A            SELYAHTZEE     1A  I 16 22DSPATR(&AYAHA)
+     A                                 16 24'Yahtzee' DSPATR(&AYAHB)
+     A            TOTYAHTZEE     2Y 0O 16 35 EDTCDE(3) DSPATR(&AYAHC)
+     A                                 16 39'(50)' DSPATR(&AYAHD)
+     A            C161           1A  O 16 49DSPATR(&C161A)
+     A            C162           1A  O 16 51DSPATR(&C162A)
+     A            C163           1A  O 16 53DSPATR(&C163A)
+     A            C164           1A  O 16 55DSPATR(&C164A)
+     A            C261           1A  O 16 58DSPATR(&C261A)
+     A            C262           1A  O 16 60DSPATR(&C262A)
+     A            C263           1A  O 16 62DSPATR(&C263A)
+     A            C264           1A  O 16 64DSPATR(&C264A)
+     A            C361           1A  O 16 67DSPATR(&C361A)
+     A            C362           1A  O 16 69DSPATR(&C362A)
+     A            C363           1A  O 16 71DSPATR(&C363A)
+     A            C364           1A  O 16 73DSPATR(&C364A)
+     A            SELCHANCE      1A  I 17 22DSPATR(&ACHANCEA)
+     A                                 17 24'Chance' DSPATR(&ACHANCEB)
+     A            TOTCHANCE      2Y 0O 17 35EDTCDE(3) DSPATR(&ACHANCEC)
+     A                                 17 39'(Sum)' DSPATR(&ACHANCED)
+     A            C171           1A  O 17 49DSPATR(&C171A)
+     A            C172           1A  O 17 51DSPATR(&C172A)
+     A            C173           1A  O 17 53DSPATR(&C173A)
+     A            C174           1A  O 17 55DSPATR(&C174A)
+     A            C271           1A  O 17 58DSPATR(&C271A)
+     A            C272           1A  O 17 60DSPATR(&C272A)
+     A            C273           1A  O 17 62DSPATR(&C273A)
+     A            C274           1A  O 17 64DSPATR(&C274A)
+     A            C371           1A  O 17 67DSPATR(&C371A)
+     A            C372           1A  O 17 69DSPATR(&C372A)
+     A            C373           1A  O 17 71DSPATR(&C373A)
+     A            C374           1A  O 17 73DSPATR(&C374A)
+     A                                 18  5'UpperTot'
+     A            TOTUPPER       3Y 0O 18 14EDTCDE(3)
+     A                                 19  8'Bonus'
+     A            TOTBONUS       2Y 0O 19 15EDTCDE(3)
+     A                                 19 27'Total:'
+     A            TOTGRAND       3Y 0O 19 34EDTCDE(3)
+     A                                 23  2'F3=Exit' COLOR(BLU)
+     A                                 23 57'F5=New Game' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(24)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

@@ -1,0 +1,51 @@
+/*--------------------------------------------------------------------------*/
+/* XMLSRCFILC - Generate XML for all members in source file                 */
+/*   Craig Rutledge  < www.jcrcmds.com >                                    */
+/*--------------------------------------------------------------------------*/
+             PGM        PARM(&INQUAL &OUTQUAL)
+ 
+             DCL        VAR(&INQUAL) TYPE(*CHAR) LEN(20)
+             DCL        VAR(&OUTQUAL) TYPE(*CHAR) LEN(20)
+ 
+             DCL        VAR(&INFIL) TYPE(*CHAR) STG(*DEFINED) +
+                          LEN(10) DEFVAR(&INQUAL 1)
+             DCL        VAR(&INLIB) TYPE(*CHAR) STG(*DEFINED) +
+                          LEN(10) DEFVAR(&INQUAL 11)
+ 
+             DCL        VAR(&OUTFIL) TYPE(*CHAR) STG(*DEFINED) +
+                          LEN(10) DEFVAR(&OUTQUAL 1)
+             DCL        VAR(&OUTLIB) TYPE(*CHAR) STG(*DEFINED) +
+                          LEN(10) DEFVAR(&OUTQUAL 11)
+ 
+             DCL        VAR(&TEXT) TYPE(*CHAR) LEN(50)
+ 
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) +
+                          MSGDTA('eXtensible Markup Language +
+                          generation - in progress') TOPGMQ(*EXT) +
+                          MSGTYPE(*STATUS)
+ 
+/* Create/clear out member */
+             ADDPFM     FILE(&OUTLIB/&OUTFIL) MBR(&INFIL)
+             MONMSG     MSGID(CPF0000) EXEC(CLRPFM +
+                          FILE(&OUTLIB/&OUTFIL) MBR(&INFIL))
+             CHGVAR     VAR(&TEXT) VALUE('Source members for file ' +
+                          *CAT &INFIL *TCAT '.')
+             CHGPFM     FILE(&OUTLIB/&OUTFIL) MBR(&INFIL) +
+                          SRCTYPE(TXT) TEXT(&TEXT)
+ 
+/* Create script member in qtemp */
+             DLTF       FILE(QTEMP/XMLSRCFIL)
+             MONMSG     MSGID(CPF0000)
+             CRTSRCPF   FILE(QTEMP/XMLSRCFIL) MBR(&INFIL)
+ 
+/* Generate XML */
+             CALL       PGM(XMLSRCFILR) PARM(&INQUAL &OUTQUAL)
+ 
+             DLTOVR     FILE(*ALL)
+             MONMSG     MSGID(CPF0000)
+ 
+             RMVMSG     PGMQ(*PRV) CLEAR(*ALL)
+             SNDPGMMSG  MSG('Source XML for ' *CAT &INFIL *TCAT ' in +
+                          ' *CAT &OUTLIB *TCAT '/' *CAT &OUTFIL +
+                          *TCAT ' - completed.')
+             ENDPGM

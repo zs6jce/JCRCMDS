@@ -1,0 +1,123 @@
+      *----------------------------------------------------------------
+      * JCRIFSCPYD - Copy from IFS directory - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      INDARA CA03 CA12
+     A          R SBFDTA1                   SFL
+     A            HIDEXTEN      10A  H
+     A            HIDFILENAM    40A  H
+     A            SBFOPTION      1Y 0B  6  3EDTCDE(4)
+     A            DIRNAME       50A  O  6  7
+     A            OBJTYPE       11A  O  6 58
+     A            SBFACTION      8A  O  6 71
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1)
+     A  *DS3                                SFLSIZ(0048)
+     A  *DS4                                SFLSIZ(0048)
+     A  *DS3                                SFLPAG(0016)
+     A  *DS4                                SFLPAG(0016)
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A            SFLRCDNBR      4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'JCRIFSCPY'
+     A                                      COLOR(BLU)
+     A                                  1 23'Copy from IFS directory'
+     A                                      COLOR(WHT)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                      COLOR(BLU)
+     A                                  2  2'Path'
+     A                                      COLOR(BLU)
+     A            PATHHEAD      50A  O  2  7DSPATR(UL)
+     A                                  2 72SYSNAME
+     A                                      COLOR(BLU)
+     A                                  4  3'1=Copy To Stream File'
+     A                                      COLOR(BLU)
+     A                                  4 26'2=XMLPreview Install'
+     A                                      COLOR(BLU)
+     A                                  5  2'Opt'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5  7'IFS File Name                     -
+     A                                                      '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5 58'Type'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  5 71'Action'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+      *----------------------------------------------------------------
+     A          R SFOOTER1                  OVERLAY BLINK
+     A                                 23  2'F3=Exit' COLOR(BLU)
+     A                                 23 69'F12=Cancel' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R WINDOW1                   WINDOW(3 18 10 52 *NOMSGLIN)
+     A                                      WDWTITLE((*TEXT 'Copy to Stream Fil-
+     A                                      e') (*COLOR WHT) (*DSPATR HI))
+     A                                      OVERLAY
+     A                                  2  2'From Path' COLOR(PNK)
+     A            WCDIRNAME     50A  O  3  2DSPATR(UL)
+     A                                  5  2'To File' COLOR(PNK)
+     A                                  5 14'To Lib' COLOR(PNK)
+     A                                  5 26'To Mbr' COLOR(PNK)
+     A                                  5 38'To Mbr Type' COLOR(PNK)
+     A            WCTOFILE      10A  B  6  2DSPATR(HI)
+     A            WCTOLIB       10A  B  6 14DSPATR(HI)
+     A            WCTOMBR       10A  B  6 26DSPATR(HI)
+     A            WCMBRTYP      10A  B  6 38DSPATR(HI)
+     A            ERRMSG        48A  O  7  2DSPATR(HI)
+     A                                  8  2'Enter=Proceed' COLOR(BLU)
+     A                                  8 20'F12=Cancel Copy' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R WINDOW2                   OVERLAY
+     A                                      WINDOW(3 18 10 52 *NOMSGLIN)
+     A                                      WDWTITLE((*TEXT 'XMLINSTALL') (*COL-
+     A                                      OR WHT) (*DSPATR HI))
+     A                                  2  2'From Path' COLOR(BLU)
+     A            WCDIRNAME     50A  O  3  2DSPATR(UL)
+     A                                  5  2'Install Objects To Lib' COLOR(BLU)
+     A                                  5 34'Source files(s)' COLOR(BLU)
+     A            WCTOLIB       10A  B  6  2DSPATR(HI)
+     A            WCTOFILE2     10A  B  6 34COLOR(BLU)
+     A            ERRMSG        48A  O  7  2DSPATR(HI)
+     A                                  8  2'Enter=Proceed' COLOR(BLU)
+     A                                  8 20'F12=Cancel Install Prompt'
+     A                                      COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R ASSUME                    ASSUME
+     A                                  1  2' ' DSPATR(ND)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(24)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL) OVERLAY
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)
+      *-WINDOW1 ERRMSG SUBFILE-----------------------
+     A          R MSGSFLW1                  SFL SFLMSGRCD(09)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTLW1                  SFLCTL(MSGSFLW1)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A                                      WINDOW(WINDOW1)
+     A            PROGID                    SFLPGMQ(10)
+      *-WINDOW2 ERRMSG SUBFILE-----------------------
+     A          R MSGSFLW2                  SFL SFLMSGRCD(09)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTLW2                  SFLCTL(MSGSFLW2)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A                                      WINDOW(WINDOW2)
+     A            PROGID                    SFLPGMQ(10)

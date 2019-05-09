@@ -1,0 +1,91 @@
+      *----------------------------------------------------------------
+      * JCRUSPACED - User space data display - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(27 132 *DS4)
+     A                                      INDARA CA03 CA12
+     A          R SBFDTA1                   SFL
+     A            AOFFSET        1A  P
+     A            ARECDATA       1A  P
+     A            SBFOFFSET      9Y 0O  4  2EDTCDE(3) DSPATR(&AOFFSET)
+     A                                  4 12'|'
+     A            SBFRECDATA   100A  O  4 15DSPATR(&ARECDATA)
+     A                                  4117'|'
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1) OVERLAY
+     A                                      SFLPAG(21) SFLSIZ(22)
+     A                                      PAGEDOWN PAGEUP CA04 CA08 CF16
+     A                                      SFLCSRRRN(&CSRRRN)
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A            CSRRRN         5S 0H
+     A            SFLRCDNBR      4S 0H      SFLRCDNBR
+     A                                  1  3'JCRUSPACE' COLOR(BLU)
+     A                                  1 23'User Space Data Display'
+     A                                      DSPATR(HI)
+     A                                  1 51'Space:'
+     A            SCSPACE       10A  O  1 58
+     A                                  1 71'Library:'
+     A            SCLIB         10A  O  1 80
+     A            SCDOW          9A  O  1 96COLOR(BLU)
+     A                                  1106DATE EDTCDE(Y) COLOR(BLU)
+     A                                  1116SYSNAME COLOR(BLU)
+     A            SCPOSTO        9Y 0B  2  2EDTCDE(4) DSPATR(HI)
+     A                                  2 12'Position to'
+     A                                  2 26'-or-'
+     A                                  2 35'Search:'
+     A            SCSEARCH      40A  B  2 43DSPATR(HI)  CHECK(LC)
+     A                                  2 87'Size:'
+     A            SCSIZE         9Y 0O  2 93EDTCDE(1) DSPATR(UL)
+     A                                  3  2'Offset   ' DSPATR(HI UL)
+     A                                  3 15'*...+....1....+....2....+....3....-
+     A                                      +....4....+....5....+....6....+....-
+     A                                      7....+....8....+....9....+....0'
+     A                                      DSPATR(HI) COLOR(RED)
+      *----------------------------------------------------------------
+     A          R SFOOTER1                  OVERLAY
+     A                                 26  2'F3=Exit' COLOR(BLU)
+     A                                 26 12'F4=Subfile record detail where cur-
+     A                                      sor is placed.' COLOR(BLU)
+     A                                 26 63'F8=Toggle Hex/Char' COLOR(BLU)
+     A                                 26 84'F16=Search Again' COLOR(BLU)
+     A                                 26105'F12=Cancel' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R SBFDTA2                   SFL
+     A            SBFOFFSET2     9Y 0O  3  2EDTCDE(3)
+     A                                  3 12'|'
+     A            SBFRECCHAR     1A  O  3 15DSPATR(HI)
+      *----------------------------------------------------------------
+     A          R SBFCTL2                   SFLCTL(SBFDTA2) OVERLAY
+     A                                      SFLPAG(100) SFLSIZ(200)
+     A  41                                  SFLDSP
+     A  42                                  SFLDSPCTL
+     A N42                                  SFLCLR
+     A                                      SFLLIN(10)
+     A                                  1  3'JCRUSPACE' COLOR(BLU)
+     A                                  1 23'Show User Space Contents'
+     A                                      DSPATR(HI)
+     A                                  1 51'Space:'
+     A            SCSPACE       10A  O  1 58
+     A                                  1 71'Library:'
+     A            SCLIB         10A  O  1 80
+     A            SCDOW          9A  O  1 96COLOR(BLU)
+     A                                  1106DATE EDTCDE(Y) COLOR(BLU)
+     A                                  1116SYSNAME COLOR(BLU)
+     A                                  2  2'           ' DSPATR(UL)
+     A                                  2 15'Character'
+      *----------------------------------------------------------------
+     A          R SFOOTER2
+     A                                 27  2'F3=Exit' COLOR(BLU)
+     A                                 27 69'F12=Cancel' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(27)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

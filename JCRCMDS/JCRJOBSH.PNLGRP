@@ -1,0 +1,42 @@
+:PNLGRP.:HELP NAME='JCRJOBS'.Work With Selected Jobs (JCRJOBS) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Displays subfile with job names meeting the selection criteria.
+Select useful options to perform from the subfile.
+:P. Option 9 is slick file I/O monitor that will sort display by IO count or file name.
+Monitor also has F09=View PFs. This option is useful
+when analyzing where data is coming from in commercial software.
+This option sorts open files (PF and LF) down to subset of distinct physicals
+and executes a data base utility to see contents of each file.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRJOBS/JOB'.Job Name - Help :XH3.Job Name (JOB)
+:P.Specify name of job(s) to load.
+:PARML.:PT.:PK def.*ALL:EPK.:PD.Select all jobs, regardless of name.
+:PT.job-name :PD.Enter name of job to select.
+:PT.:PK def.*CURRENT:EPK.:PD.Select current user profile.
+:PT.:PK.*ALL:EPK.:PD.Select all users.
+:PT.user-name :PD.Enter user profile name.
+:PT.:PK.*ALL:EPK.:PD.Select all job numbers.
+:PT.job-number :PD.Enter selected job number.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRJOBS/STATUS'.Status of Jobs - Help :XH3.Status of Jobs (STATUS)
+:P.Status of jobs to select.
+:PARML.:PT.:PK def.*ACTIVE:EPK.:PD.Load only active jobs.
+:PT.:PK.*ALL:EPK.:PD.Load jobs, regardless of status.
+:PT.:PK.*JOBQ:EPK.:PD.Load jobs that are on jobq.
+:PT.:PK.*OUTQ:EPK.:PD.Load jobs with spooled files.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRJOBS/THREAD'.Thread State - Help :XH3.Thread State (THREAD)
+:P.Useful to find all jobs in MSGW (message wait) state.
+:PARML.:PT.:PK def.*ALL:EPK.:PD.Load All.
+:PT.:PK.MSGW:EPK.:PD.Load jobs in message wait state.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRJOBS/JOBQ'.Job Queue - Help :XH3.Job Queue (JOBQ)
+:P.Select job queue containing selected jobs.
+:PARML.:PT.:PK def.*ALL:EPK.:PD.Show all job queues.
+:PT.:PK.jobq-name:EPK.:PD.Show jobs in selected job queues.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRJOBS/CURRUSER'.Job Queue - Help :XH3.Job Queue (CURRUSER)
+:P.Select jobs for Current User.  (hint select User = *ALL'):EHELP.
+:EPNLGRP.

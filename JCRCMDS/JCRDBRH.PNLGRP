@@ -1,0 +1,9 @@
+:PNLGRP.:HELP NAME='JCRDBR'.Expanded Data Base Relations (JCRDBR) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Displays subfile of data base relations. Logical select/omit statements
+can be included or excluded.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRDBR/FILE'.File - Help :XH3.File (FILE)
+:P.File whose data base relations are to be retrieved.:EHELP.:EPNLGRP.

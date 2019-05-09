@@ -1,0 +1,8 @@
+      *----------------------------------------------------------------
+      * JCRMRBIGP Print big 12 row by 13 column characters - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 132)
+     A          R PRTDETAIL
+     A            PRINTLINE    130         2
+     A                                      SPACEA(1)

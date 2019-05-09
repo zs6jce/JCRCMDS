@@ -1,0 +1,134 @@
+      *----------------------------------------------------------------
+      * JCROBJDD - Expanded work with object descriptions - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(27 132 *DS4)
+     A                                      INDARA
+     A                                      PRINT
+     A                                      CA03
+     A                                      CA05
+     A                                      CA12
+     A                                      CA13
+     A                                      CA14
+     A                                      MOUBTN(*ULP CA13)
+     A                                      MOUBTN(*URP CA14)
+      *-------------------------------------------
+     A          R SBFDTA1                   SFL
+     A            HIDRISFL       1A  H
+     A            HIDNDSFL       1A  H
+     A            HIDSORTCRT     7A  H
+     A            HIDSORTLST     7A  H
+     A            AOPTIONSFL     1A  P
+     A            ARISFL         1A  P
+     A            ANDSFL         1A  P
+     A            SBFOPTION      1Y 0B  6  2EDTCDE(4)
+     A                                      DSPATR(&AOPTIONSFL)
+     A            OBJNAME       10A  O  6  6DSPATR(&ARISFL)
+     A            OBJTYPE       10A  O  6 18DSPATR(&ARISFL)
+     A            OBJATTR       10A  O  6 29DSPATR(&ARISFL)
+     A            OBJLIB        10A  O  6 41DSPATR(&ARISFL)
+     A            OBJTEXT       30A  O  6 52DSPATR(&ARISFL)
+     A            OBJSIZE        9Y 0O  6 84EDTCDE(4)
+     A                                      DSPATR(&ARISFL)
+     A            CREATEDATE     6Y 0O  6 94EDTCDE(Y)
+     A                                      DSPATR(&ARISFL)
+     A            LASTUSED       6Y 0O  6103EDTCDE(Y)
+     A                                      DSPATR(&ANDSFL)
+     A            DAYSUSED       4Y 0O  6112EDTCDE(3)
+     A                                      DSPATR(&ARISFL)
+     A            CREATEDBY     10A  O  6119DSPATR(&ARISFL)
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1)
+     A                                      SFLSIZ(0209)
+     A                                      SFLPAG(0019)
+     A                                      OVERLAY
+     A                                      RTNCSRLOC(&CURRCD &CURFLD)
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A            SFLRCDNBR      4S 0H      SFLRCDNBR(CURSOR)
+     A            CURRCD        10A  H
+     A            CURFLD        10A  H
+     A            AOPTIONS       1A  P
+     A            ANOTUSED       1A  P
+     A                                  1  2'JCROBJD'
+     A                                      COLOR(BLU)
+     A                                  1 23'Expanded Work With Objects'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                      COLOR(BLU)
+     A            HEADEROBJ     10A  B  2  2DSPATR(HI)
+     A                                  2 13'Obj'
+     A            HEADERLIB     10A  B  2 40DSPATR(HI)
+     A                                  2 51'Lib'
+     A                                  2 72SYSNAME
+     A                                      COLOR(BLU)
+     A                                  2 90'RI=No Last Used Date'
+     A                                      DSPATR(&ANOTUSED)
+     A                                      DSPATR(RI)
+     A                                  4  2'1=Wrkobj'
+     A                                      DSPATR(&AOPTIONS)
+     A                                      COLOR(BLU)
+     A                                  4 12'3=Dspobjlck'
+     A                                      DSPATR(&AOPTIONS)
+     A                                      COLOR(BLU)
+     A                                  4 25'5=Dspobjd'
+     A                                      DSPATR(&AOPTIONS)
+     A                                      COLOR(BLU)
+     A            DBUTILITY      8A  O  4 36DSPATR(&AOPTIONS)
+     A                                      COLOR(BLU)
+     A                                  4 46'8=*ALLUSR'
+     A                                      DSPATR(&AOPTIONS)
+     A                                      COLOR(BLU)
+     A                                  4 57'9=WRKMBR'
+     A                                      DSPATR(&AOPTIONS)
+     A                                      COLOR(BLU)
+     A                                  4 67'4=DELETE'
+     A                                      COLOR(RED)
+     A                                  4 77'7=CLRPFM'
+     A                                      COLOR(RED)
+     A                                  4105'Last'
+     A                                      DSPATR(HI)
+     A                                  4111'Times'
+     A                                      DSPATR(HI)
+     A                                  5  2'Opt'
+     A                                      DSPATR(HI)
+     A                                  5  6'Object'
+     A                                      DSPATR(HI)
+     A                                  5 18'Type'
+     A                                      DSPATR(HI)
+     A                                  5 29'Attr'
+     A                                      DSPATR(HI)
+     A                                  5 41'Lib'
+     A                                      DSPATR(HI)
+     A                                  5 52'Text'
+     A                                      DSPATR(HI)
+     A                                  5 86'Size(K)'
+     A                                      DSPATR(HI)
+     A                                  5 95'Created'
+     A                                      DSPATR(HI)
+     A                                  5105'Used'
+     A                                      DSPATR(HI)
+     A                                  5112'Used'
+     A                                      DSPATR(HI)
+     A                                  5119'Created By'
+     A                                      DSPATR(HI)
+      *----------------------------------------------------------------
+     A          R SFOOTER1                  OVERLAY BLINK
+     A                                 26  2'F3=Exit' COLOR(BLU)
+     A                                 26 11'F5=Refresh' COLOR(BLU)
+     A                                 26 24'F13=Sort Ascend' COLOR(BLU)
+     A                                 26 45'F14=Sort Descend' COLOR(BLU)
+     A                                 26 69'F12=Cancel' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(27)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

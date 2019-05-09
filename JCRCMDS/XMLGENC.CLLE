@@ -1,0 +1,58 @@
+/*--------------------------------------------------------------------------*/
+/* XMLGENC- Generate XML source member                                      */
+/*   Craig Rutledge  < www.jcrcmds.com >                                    */
+/*--------------------------------------------------------------------------*/
+             PGM        PARM(&SCRIPTMBR &SCRIPTSFL &XMLTOSFL)
+             DCL        VAR(&SCRIPTMBR) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&SCRIPTSFL) TYPE(*CHAR) LEN(20)
+             DCL        VAR(&SCRIPTSFIL) TYPE(*CHAR) STG(*DEFINED) +
+                          LEN(10) DEFVAR(&SCRIPTSFL 1)
+             DCL        VAR(&SCRIPTSLIB) TYPE(*CHAR) STG(*DEFINED) +
+                          LEN(10) DEFVAR(&SCRIPTSFL 11)
+             DCL        VAR(&XMLTOSFL) TYPE(*CHAR) LEN(20)
+             DCL        VAR(&XMLTOSFIL) TYPE(*CHAR) STG(*DEFINED) +
+                          LEN(10) DEFVAR(&XMLTOSFL 1)
+             DCL        VAR(&XMLTOSLIB) TYPE(*CHAR) STG(*DEFINED) +
+                          LEN(10) DEFVAR(&XMLTOSFL 11)
+             DCL        VAR(&TEXT) TYPE(*CHAR) LEN(50)
+ 
+             IF         COND(&SCRIPTSLIB = '*LIBL') THEN(DO)
+             RTVOBJD    OBJ(&SCRIPTSFIL) OBJTYPE(*FILE) +
+                          RTNLIB(&SCRIPTSLIB)
+             MONMSG     MSGID(CPF0000)
+             ENDDO
+ 
+             IF         COND(&XMLTOSLIB = '*LIBL') THEN(DO)
+             RTVOBJD    OBJ(&XMLTOSFIL) OBJTYPE(*FILE) +
+                          RTNLIB(&XMLTOSLIB)
+             MONMSG     MSGID(CPF0000)
+             ENDDO
+ 
+/* Create selected outfile and member (if requried)                  */
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('XML +
+                          code generation in progress') +
+                          TOPGMQ(*EXT) MSGTYPE(*STATUS)
+             ADDPFM     FILE(&XMLTOSLIB/&XMLTOSFIL) MBR(&SCRIPTMBR)
+             MONMSG     MSGID(CPF0000) EXEC(CLRPFM +
+                          FILE(&XMLTOSLIB/&XMLTOSFIL) MBR(&SCRIPTMBR))
+ 
+             CHGVAR     VAR(&TEXT) VALUE('XML data for group ' *CAT +
+                          &SCRIPTMBR *TCAT '.')
+             CHGPFM     FILE(&XMLTOSLIB/&XMLTOSFIL) MBR(&SCRIPTMBR) +
+                          SRCTYPE(XML) TEXT(&TEXT)
+ 
+/* Call program to generate XML source                               */
+             OVRDBF     FILE(SCRIPT) TOFILE(&SCRIPTSLIB/&SCRIPTSFIL) +
+                          MBR(&SCRIPTMBR) OVRSCOPE(*JOB)
+             OVRDBF     FILE(GENSRC) TOFILE(&XMLTOSLIB/&XMLTOSFIL) +
+                          MBR(&SCRIPTMBR) OVRSCOPE(*JOB)
+ 
+             CALL       PGM(XMLGENR) PARM(&SCRIPTMBR)
+ 
+             DLTOVR     FILE(SCRIPT) LVL(*JOB)
+             DLTOVR     FILE(GENSRC) LVL(*JOB)
+ 
+             SNDPGMMSG  MSG('XML generation for ' *CAT &SCRIPTMBR +
+                          *TCAT ' in ' *CAT &XMLTOSLIB *TCAT '/' +
+                          *CAT &XMLTOSFIL *TCAT ' - completed.')
+             ENDPGM

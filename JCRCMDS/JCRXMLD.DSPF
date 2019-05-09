@@ -1,0 +1,47 @@
+      *----------------------------------------------------------------
+      * JCRSUNDRYD - Sundry programs selection menu - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3                  -
+     A                                             27 132 *DS4)
+     A                                      PRINT
+     A                                      CA03(03)
+     A                                      CA06(06)
+     A                                      CA12(12)
+      *----------------------------------------------------------------
+     A          R SCREEN
+     A                                      OVERLAY
+     A                                  1  3'JCRXML'
+     A                                      COLOR(BLU)
+     A                                  1 27'XML programs selection menu'
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                      COLOR(BLU)
+     A                                  2 72SYSNAME
+     A                                      COLOR(BLU)
+     A                                  3  3'1) JCRIFSCPY - Copy/Install from I-
+     A                                      FS drive'
+     A                                  5  3'2) XMLSRCFIL - Generate XML for al-
+     A                                      l members in source file'
+     A                                  7  3'3) XMLGEN    - Generate XML source-
+     A                                       member from selected scripting mem-
+     A                                      ber'
+     A                                  8  3'4) XMLGENCMD - embed command in s-
+     A                                      cripting member'
+     A                                  9  3'5) XMLGENINC - Include yes/no xml-
+     A                                       installer program in scripting mem-
+     A                                      ber'
+     A                                 10  3'6) XMLGENMBR - Include selected m-
+     A                                      ember in scripting member'
+     A                                 12  2'7) XMLSCRIPT - review scripting m-
+     A                                      embers you have created'
+     A                                 14  2'8) XMLPREVIEW- preview uploaded X-
+     A                                      ML scripts before install (recommen-
+     A                                      ded)'
+     A            SCOPTION       2A  B 22  2
+     A                                 22  7'Option'
+     A                                 22 18'F3=Exit'
+     A                                      COLOR(BLU)
+     A                                 22 37'F6=Show Spooled Files'
+     A                                      COLOR(BLU)

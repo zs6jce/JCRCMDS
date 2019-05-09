@@ -1,0 +1,33 @@
+      *----------------------------------------------------------------
+      * JCRNOTPOPP - List fields not populated - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 132)
+     A          R PRTHEAD                   SKIPB(1)
+     A                                     2'JCRNOTPOP'
+     A                                    20'Fields Not Populated'
+     A            SCDOW          9A  O    72
+     A                                    82DATE EDTCDE(Y)
+     A                                    92TIME
+     A                                   104'Page'
+     A                                    +1PAGNBR EDTCDE(4)
+     A                                      SPACEA(2)
+      *---
+     A                                     3'File . :'
+     A            FILEACTUAL    10A  O    14
+     A            FILETEXT      42A  O    26
+     A                                    72'Member:'
+     A            FILEMBR       10        80SPACEA(1)
+      *---
+     A                                     3'Library:'
+     A            LIBACTUAL     10A  O    14SPACEA(2)
+      *---
+     A                                     3'Field Name'
+     A                                    16'DATA TYPE'
+     A                                    34'TEXT'
+     A                                      SPACEA(1)
+      *----------------------------------------------------------------
+     A          R PRTDETAIL                 SPACEA(1)
+     A            FLDNAME       10A  O     3
+     A            FLDTYPE       16A       16
+     A            FLDTEXT       42A  O    34

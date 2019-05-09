@@ -1,0 +1,19 @@
+:PNLGRP.:HELP NAME='JCRLSRC'.List Pgm/Mod/Srvpgm Source (JCRLSRC)
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Lists or generates outfile of source lib, file, member for selected
+program type in selected library.
+If program consists of modules, all modules associated with program are printed.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRLSRC/PGM'.Programs - Help :XH3.Programs (PGM)
+:P.Name/*All/Generic* and library of programs to be evaluated.:EHELP.
+ 
+:HELP NAME='JCRLSRC/OUTPUT'.Output - Help :XH3.OutPut (OUTPUT)
+:P.Print, outfile or * display the source results.:EHELP.
+ 
+:HELP NAME='JCRLSRC/OUTFILE'.OutFile - Help :XH3.File (OUTFILE)
+:P.File and library to receive command output.:EHELP.
+ 
+:HELP NAME='JCRLSRC/OUTMBR'.OutMbr - Help :XH3.OutMbr (OUTMBR)
+:P.File member to receive command output.:EHELP.:EPNLGRP.

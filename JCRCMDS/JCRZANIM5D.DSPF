@@ -1,0 +1,9 @@
+      *----------------------------------------------------------------
+      * JCRZANIM5D - scrolling text on random star field - DSPF
+      * *****   MUST COMPILE RSTDSP *YES AND DEFER WRITE = *NO *****
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3)
+     A          R DSPROW                    SLNO(*VAR) OVERLAY CLRL(*NO)
+     A            ATEXT         78      1  2
+     A  10                                  DSPATR(HI)

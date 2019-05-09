@@ -1,0 +1,23 @@
+:PNLGRP.:IMPORT PNLGRP='QHNFCMD' NAME='SNDNETF/TOUSRID'.
+:HELP NAME='JCRNETFF'.Send Multiple Network Files (JCRNETFF) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Sends up to ten save files or physical database files to other users on either
+the local system or on remote system through SNADS network.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRNETFF/FILES'.File names - Help :XH3.File names (FILES)
+:P.Files to be sent. Files sent can be physical file or save
+file; logical and device files are not allowed. Overrides to specified file are ignored.
+:IMHELP NAME='plus_sign'.:EHELP.
+ 
+:HELP NAME='JCRNETFF/LIBRARY'.Library - Help :XH3.Library (LIBRARY)
+:P.Library containing files to be sent.:EHELP.
+ 
+:HELP NAME='JCRNETFF/TOUSRID'.User id - Help
+:IMHELP NAME='SNDNETF/TOUSRID'.:EHELP.
+ 
+:HELP NAME='plus_sign'.
+:P.Enter multiple values for this parameter. If on entry display and need
+additional entry fields to enter these multiple values, type plus sign (+) in entry field
+beside phrase :HP2."+ for more":EHP2., and press Enter key.:EHELP.:EPNLGRP.

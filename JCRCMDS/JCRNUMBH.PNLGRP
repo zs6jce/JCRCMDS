@@ -1,0 +1,52 @@
+:PNLGRP.:HELP NAME='JCRNUMB'.Number Source - Reformat Free (JCRNUMB) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Updates RPGLE fixed column or free source code with structured programming
+operation numbering in left margin of the source. Options are provided for highlighting
+of comment lines and removal of /space and /eject lines.
+:P.Provides source reformatting for free code based on logic structures in the code.
+:NT.If prepping code for inclusion in XML documents, set Comment Highlight=*NO.
+This will remove hexadecimal values that are not valid in XML.:ENT.
+:P.The command removes source code type from fixed format comment lines. Makes it
+much easier to distinguish comments from executable lines.
+:P.After execution, view the source code and easily identify structured
+operation groups.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRNUMB/PGM'.RPG Program Name - Help :XH3.RPG program name (PGM)
+:P.Source member to be updated.:EHELP.
+ 
+:HELP NAME='JCRNUMB/SRCFILE'.Source file - Help :XH3.Source file (SRCFILE)
+:P.Source file containing source program.:EHELP.
+ 
+:HELP NAME='JCRNUMB/HIGH_LITE'.Highlight comment lines - Help
+:XH3.Highlight comment lines (HIGH_LITE)
+:P.Comments will have their screen attribute character set to highlight.
+:PARML.:PT.:PK def.*YES:EPK.:PD.Comment lines are to appear highlighted.
+:PT.*NO :PD.Comment lines are to appear as normal code.
+Use *NO if code will be loaded into XML document.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRNUMB/MATCHEND'.Match ENDxx statements - Help
+:XH3.Match ENDxx statements (MATCHEND)
+:P.END statements to be updated to correspond with their beginning control block statement.
+:PARML.:PT.:PK def.*YES:EPK.:PD.END statements to be updated.
+:PT.*NO :PD.END opcodes to be left in their current sorry state.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRNUMB/INDENTFREE'.Reformat RPG Free Indentation- Help
+:XH3.Reformat RPG Free Indentation (INDENTFREE)
+:P.Reformat free code based on logic structures. This value has no
+effect on fixed column code.
+:PARML.:PT.:PK def.*YES:EPK.:PD.Reformat free code based on logic structure.
+:PT.*NO :PD.Do not reformat.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRNUMB/INDENTAMT'.Spaces for indent level- Help
+:XH3.Spaces for indent level (INDENTAMT)
+:P.Number of blank spaces used for indention of free code. This parm has no
+effect on fix format code.
+:PARML.:PT.:PK def.3:EPK.:PD.Indent 3 spaces for each logic structure.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRNUMB/RMV_EJECTS'.Blank /eject and /space- Help
+:XH3.Blank /eject and /space (RMV_EJECTS)
+:P.Blank out /EJECT and /SPACE print listing directive lines.
+:PARML.:PT.:PK def.*YES:EPK.:PD.Blank out /eject and /space lines.
+:PT.*NO :PD.Do not blank.:EPARML.:EHELP.:EPNLGRP.

@@ -1,0 +1,59 @@
+/*--------------------------------------------------------------------------*/
+/* JCRANZPC - PRTF layout with field names print - CMDPGM                   */
+/* Target prtf is compiled to get expanded listing.                         */
+/*  Listing is copied to data file and read to generate report layout.      */
+/*   Craig Rutledge  < www.jcrcmds.com >                                    */
+/*--------------------------------------------------------------------------*/
+             PGM        PARM(&MBR &FILEQUAL &SHOWNAMES &OUTPUT)
+ 
+             DCL        VAR(&MBR) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&FILEQUAL) TYPE(*CHAR) LEN(20)
+             DCL        VAR(&FILE) TYPE(*CHAR) STG(*DEFINED) LEN(10) +
+                          DEFVAR(&FILEQUAL 1)
+             DCL        VAR(&LIB) TYPE(*CHAR) STG(*DEFINED) LEN(10) +
+                          DEFVAR(&FILEQUAL 11)
+             DCL        VAR(&SHOWNAMES) TYPE(*CHAR) LEN(4)
+             DCL        VAR(&TEXT) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&OUTPUT) TYPE(*CHAR) LEN(8)
+ 
+             RTVMBRD    FILE(&LIB/&FILE) MBR(&MBR) RTNLIB(&LIB) +
+                          TEXT(&TEXT)
+ 
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) +
+                          MSGDTA('Expanded source list generation +
+                          for ' *CAT &MBR *TCAT ' ' *CAT &LIB *TCAT +
+                          '/' *CAT &FILE *TCAT ' - in progress') +
+                          TOPGMQ(*EXT) MSGTYPE(*STATUS)
+             DLTF       FILE(QTEMP/&FILE)
+             MONMSG     MSGID(CPF0000)
+ 
+             OVRPRTF    FILE(&FILE) HOLD(*YES)
+             CRTPRTF    FILE(QTEMP/&FILE) SRCFILE(&LIB/&FILE) +
+                          SRCMBR(&MBR) PAGESIZE(66 198) CPI(15)
+ 
+             MONMSG     MSGID(CPF7302) EXEC(DO) /* NO COMPILE */
+             CRTPRTF    FILE(QTEMP/&FILE) SRCFILE(&LIB/&FILE) +
+                          SRCMBR(&MBR) DEVTYPE(*AFPDS) PAGESIZE(66 +
+                          198) CPI(15)
+ 
+             MONMSG     MSGID(CPF7302) EXEC(DO) /* NO COMPILE */
+             SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) MSGDTA('Compile +
+                          of original source code failed - Please +
+                          correct source errors') TOPGMQ(*EXT)
+             RETURN
+             ENDDO
+             ENDDO
+ 
+             /*-------------------------------------------------*/
+             CRTPF      FILE(QTEMP/DDSLIST) RCDLEN(132) SIZE(*NOMAX)
+             MONMSG     MSGID(CPF0000)
+ 
+             CPYSPLF    FILE(&FILE) TOFILE(QTEMP/DDSLIST) +
+                          SPLNBR(*LAST) MBROPT(*REPLACE)
+             DLTSPLF    FILE(&FILE) SPLNBR(*LAST)
+             DLTOVR     FILE(&FILE)
+ 
+             CALL       PGM(JCRANZPR) PARM(&MBR &FILE &LIB &TEXT +
+                          &SHOWNAMES &OUTPUT)
+             DLTF       FILE(QTEMP/&FILE)
+             ENDPGM

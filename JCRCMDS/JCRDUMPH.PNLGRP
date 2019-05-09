@@ -1,0 +1,22 @@
+:PNLGRP.:HELP NAME='JCRDUMP'.Dump Count by Program (JCRDUMP) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Lists RPG program dump spooled files and a count of how many times that program has dumped.
+:P.The command uses several spooled file APIs to efficiently "read" through outq and
+extract desired information from each spooled file.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRDUMP/DUMPDATE'.Date MMDDYYYY - Help
+:XH3.Date MMDDYYYY  (DUMPDATE)
+:P.Date to filter against job-start-date extracted from spooled file.
+:PARML.:PT.:PK def.*AVAIL:EPK.
+:PD.The default value, *AVAIL, selects data from all spooled files in the outq.
+:PT.:PK def.*CURRENT:EPK.
+:PD.Select data from spooled files whose job started on today's date.
+:PT.date :PD.Select data from spooled files whose job started on that date.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRDUMP/OUTQ'.Outq name - Help :XH3.Outq name (OUTQ)
+:P.Name and library of output queue that is to have its spooled files processed.:EHELP.
+ 
+:HELP NAME='JCRDUMP/OUTPUT'.Output - Help :XH3.OutPut (OUTPUT)
+:P.Print results or load into subfile.:EHELP.:EPNLGRP.

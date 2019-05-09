@@ -1,0 +1,117 @@
+      *----------------------------------------------------------------
+      * JCRSCDED - Search/Copy Job Schedule Entries - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(27 132 *DS4)
+     A                                      CA03
+     A                                      CA05
+     A                                      CA06
+     A                                      CA11
+     A                                      CA12
+     A                                      CF13
+     A                                      INDARA
+     A                                      PRINT
+      *----------------------------------------------------------------
+      * save command parms if user selects to copy
+     A          R SBFDTA1                   SFL
+     A            SENTRYNBR     10A  H
+     A            SCMD         512A  H
+     A            SFRQ          10A  H
+     A            SSCDDATE      10A  H
+     A            SSCDDAY       70A  H
+     A            SSCDTIME       8A  H
+     A            SOMITDATE    200A  H
+     A            SRCYACN       10A  H
+     A            SJOBD         21A  H
+     A            SJOBQ         21A  H
+     A            SMSGQ         21A  H
+     A            STEXT         50A  H
+      *---------------------------------------------
+     A            AOPTIONS1      1A  P
+     A            SBFOPTION      1A  B  6  2DSPATR(&AOPTIONS1)
+     A            SBJOB         10A  O  6  5
+     A            SBSTAT         3A  O  6 16
+     A            SBSDATE       10A  O  6 20
+     A            SBSTIME        8A  O  6 31
+     A            SBFREQ        10A  O  6 40
+     A            SBUSER        10A  O  6 51
+     A            SBCMD         68A  O  6 63
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1)
+     A                                      SFLSIZ(0361)
+     A                                      SFLPAG(0019)
+     A                                      CHANGE(23)
+     A                                      OVERLAY
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A            SFLRCDNBR      4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  3'JCRSCDE'
+     A                                      COLOR(BLU)
+     A                                  1 19'Search Job Schedule Entries with C-
+     A                                      opy option'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A            SCDOW          9A  O  1110COLOR(BLU)
+     A                                  1120DATE
+     A                                      EDTCDE(Y)
+     A                                      COLOR(BLU)
+     A                                  2 16'HLD SCD SAV'
+     A                                      COLOR(BLU)
+     A                                  2 51'*DISABLED'
+     A                                      COLOR(BLU)
+     A                                  2 63'Search values'
+     A                                      COLOR(BLU)
+     A                                  2110SYSNAME
+     A                                      COLOR(BLU)
+     A                                  3  2'C=Copy Prompt'
+     A                                      COLOR(BLU)
+     A                                  3 18'5=Work with Job Schedule Entry'
+     A                                      COLOR(BLU)
+     A                                  3 51'*NOT FOUND'
+     A                                      COLOR(BLU)
+     A                                  3 63'(leading space = contains)'
+     A            SCJOB         10A  B  4  5CHANGE(12)
+     A            SCSTAT         3A  B  4 16
+     A                                  4 20'Schedule'
+     A                                      DSPATR(HI)
+     A            SCUSER        10A  B  4 51
+     A            SCCMD         68A  B  4 63
+     A                                  5  1'Opt'
+     A                                      DSPATR(HI)
+     A                                  5  5'Job'
+     A                                      DSPATR(HI)
+     A                                  5 15'Stat'
+     A                                      DSPATR(HI)
+     A                                  5 20'Date'
+     A                                      DSPATR(HI)
+     A                                  5 31'Time'
+     A                                      DSPATR(HI)
+     A                                  5 40'Frequency'
+     A                                      DSPATR(HI)
+     A                                  5 51'User'
+     A                                      DSPATR(HI)
+     A                                  5 63'Command'
+     A                                      DSPATR(HI)
+      *----------------------------------------------------------------
+     A          R SFOOTER1
+     A                                      OVERLAY
+     A                                      BLINK
+     A                                 26  2'F3=Exit'
+     A                                      COLOR(BLU)
+     A                                 26 20'F5=Refresh'
+     A                                      COLOR(BLU)
+     A                                 26 40'F6=Dspjoblog'
+     A                                      COLOR(BLU)
+     A                                 26 69'F12=Cancel'
+     A                                      COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(27)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

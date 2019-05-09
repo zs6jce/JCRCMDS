@@ -1,0 +1,23 @@
+:PNLGRP.:HELP NAME='JCRIFSMBR'.Copy Member to IFS Path (JCRIFSMBR) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Copies source member to selected directory on IFS drive.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRIFSMBR/MBR'.Member Name - Help :XH3.Member Name (MBR)
+:P.Member to be copied to IFS directory:EHELP.
+ 
+:HELP NAME='JCRIFSMBR/FILE'.File Name - Help :XH3.File Name (FILE)
+:P.Source file containing member.:EHELP.
+ 
+:HELP NAME='JCRIFSMBR/LIBRARY'.Library Name - Help :XH3.Library Name (LIBRARY)
+:P.Library name containing source file.:EHELP.
+ 
+:HELP NAME='JCRIFSMBR/ATTRIBUTE'.Member Attribute - Help :XH3.Attribute (ATTRIBUTE)
+:P.Member type (CLLE, RPGLE, etc..):EHELP.
+ 
+:HELP NAME='JCRIFSMBR/DIRECTORY'.IFS Directory Path - Help :XH3.Directory (PATH)
+:P.Copy to IFS directory name.:EHELP.
+ 
+:HELP NAME='JCRIFSMBR/ZIPFILE'.Create Zip File - Help :XH3.Zip File (ZIPFILE)
+:P.Create .zip file of downloaded member.:EHELP.:EPNLGRP.

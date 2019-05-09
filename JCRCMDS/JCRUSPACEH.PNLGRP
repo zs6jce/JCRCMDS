@@ -1,0 +1,11 @@
+:PNLGRP.:HELP NAME='JCRUSPACE'.User Space Data Display (JCRUSPACE) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.View contents of selected user space. Values below hex 40
+are not shown. Position To any offset or search by character string is provided. Pressing
+Enter starts search from beginning of space, pressing F16 continues search from present point.
+:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRUSPACE/USERSPACE'.User Space - Help :XH3.User Space (USERSPACE)
+:P.Name and library of User Space to be selected.:EHELP.:EPNLGRP.

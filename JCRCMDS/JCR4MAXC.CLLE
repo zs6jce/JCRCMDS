@@ -1,0 +1,70 @@
+/*--------------------------------------------------------------------------*/
+/* JCR4MAXC - Rpg4 source to full rpg4 syntax - CMDPGM                      */
+/* Ovrdbf points to selected RPG source code member                         */
+/*  Call RPG programs to update selected source members                     */
+/*   Craig Rutledge  < www.jcrcmds.com >                                    */
+/*--------------------------------------------------------------------------*/
+             PGM        PARM(&MBR &FILEQUAL &STYLE)
+             DCL        VAR(&MBR) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&FILEQUAL) TYPE(*CHAR) LEN(20)
+ 
+             DCL        VAR(&FILE) TYPE(*CHAR) STG(*DEFINED) LEN(10) +
+                          DEFVAR(&FILEQUAL 1)
+ 
+             DCL        VAR(&LIB) TYPE(*CHAR) STG(*DEFINED) LEN(10) +
+                          DEFVAR(&FILEQUAL 11)
+ 
+             DCL        VAR(&DOCOPY) TYPE(*LGL)
+             DCL        VAR(&STYLE) TYPE(*CHAR) LEN(6)
+             DCL        VAR(&SEVERITY) TYPE(*CHAR) LEN(2)
+             DCL        VAR(&INDENTLVL) TYPE(*DEC) LEN(1 0) VALUE(3)
+ 
+             IF         COND(&LIB = '*LIBL') THEN(RTVMBRD +
+                          FILE(&LIB/&FILE) MBR(&MBR) RTNLIB(&LIB))
+/* generate D specs */
+             CRTSRCPF   FILE(QTEMP/JCR4MAX) RCDLEN(112) MBR(*FILE)
+             MONMSG     MSGID(CPF0000) EXEC(CLRPFM +
+                          FILE(QTEMP/JCR4MAX) MBR(JCR4MAX))
+ 
+             OVRDBF     FILE(NEWSRC) TOFILE(QTEMP/JCR4MAX) +
+                          MBR(JCR4MAX) OVRSCOPE(*JOB)
+             OVRDBF     FILE(MODIFYSRC) TOFILE(&LIB/&FILE) MBR(&MBR) +
+                          OVRSCOPE(*JOB)
+ 
+             CALL       PGM(JCR4MAXR4) PARM(&DOCOPY)
+             DLTOVR     FILE(NEWSRC) LVL(*JOB)
+ 
+             IF         COND(&DOCOPY) THEN(CPYSRCF +
+                          FROMFILE(QTEMP/JCR4MAX) +
+                          TOFILE(&LIB/&FILE) FROMMBR(JCR4MAX) +
+                          TOMBR(&MBR) SRCOPT(*SEQNBR))
+ 
+/* logic structure numbering */
+             CALL       PGM(JCRNUMBR) PARM(&MBR &FILEQUAL '*NO ' +
+                          '*YES' '*NO ' &INDENTLVL '*YES' 'JCR4MAX')
+ 
+/* and or modification */
+             OVRDBF     FILE(LOOKAHEADR) TOFILE(&LIB/&FILE) +
+                          MBR(&MBR) OVRSCOPE(*JOB)
+             CALL       PGM(JCR4MAXR1)
+             DLTOVR     FILE(LOOKAHEADR) LVL(*JOB)
+ 
+/* eval modification */
+             CALL       PGM(JCR4MAXR2) PARM(&MBR &FILE &LIB &SEVERITY)
+             IF         COND(&SEVERITY *GT '20') THEN(DO)
+             SNDPGMMSG  MSGID(CPD0006) MSGF(QCPFMSG) MSGDTA('0000 +
+                          *ERROR*  Diagnostic severity ' *CAT +
+                          &SEVERITY *TCAT '. Please check listing +
+                          for errors.') MSGTYPE(*DIAG)
+             SNDPGMMSG  MSGID(CPF0002) MSGF(QCPFMSG) MSGTYPE(*ESCAPE)
+             ENDDO
+ 
+/* lower case adjustments */
+             IF         COND(&STYLE *EQ '*LOWER') THEN(CALL +
+                          PGM(JCR4MAXR3))
+ 
+             DLTOVR     FILE(MODIFYSRC) LVL(*JOB)
+             SNDPGMMSG  MSG('RPG4 modification for ' *CAT &MBR *TCAT +
+                          ' in ' *CAT &LIB *TCAT '/' *CAT &FILE +
+                          *TCAT ' - completed')
+             ENDPGM

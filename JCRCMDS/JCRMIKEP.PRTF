@@ -1,0 +1,16 @@
+      *----------------------------------------------------------------
+      * JCRMIKEP - show programs procedure location / source  - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 198)
+     A          R PRTHEAD                   SKIPB(1) SPACEA(2)
+     A            SCOBJHEAD    105A        2
+     A            SCDOW          9A  O   110
+     A                                   120DATE EDTCDE(Y)
+      *----------------------------------------------------------------
+     A          R PRTLINE                   SPACEA(1)
+     A            JCRPROC       74A        1
+     A            LSRCFIL       10A       50
+     A            LSRCLIB       10A       61
+     A            JCRSRVPGM     10A       +1
+     A            JCRSRVPGML    10A       +1

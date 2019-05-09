@@ -1,0 +1,40 @@
+:PNLGRP.:HELP NAME='JCRPRGEN'.Generate Call Prototype (JCRPRGEN) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Generates DCL-PR prototype definitions either into the selected
+source member or adds a new source member if member name does not exist.
+:P. Then enter the name of the program object to call and the name of the source
+member to call it from.
+:P.After execution, call prototype code will be at bottom of the source. Will need to
+move source to proper place in the source member.
+:P.Conditions::UL COMPACT.
+:LI.Called program source code must be available for compile into QTEMP.:EUL.
+:P.The command uses a prompt override program (pop) to retrieve where source location that
+compiled program.
+:NT.Be aware that if field is only defined in DSPF the attributes could possibly be
+returned as signed when it really is packed.:ENT.
+:NT.Must prompt JCRPRGEN command for POP to work properly.:ENT.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRPRGEN/INSERTINTO'.Insert Prototype into SrcMbr - Help
+:XH3.Insert Prototype into SrcMbr (INSERTINTO)
+:P.Member name to be updated or created with prototype source code.:EHELP.
+ 
+:HELP NAME='JCRPRGEN/INSERTSRCF'.Source file - Help :XH3.Source file (INSERTSRCF)
+:P.Source file containing RPG source member.:EHELP.
+ 
+:HELP NAME='JCRPRGEN/TOCALLPGM'.Create Prototype to call Obj - Help
+:XH3.Create Prototype to call Obj (TOCALLPGM)
+:P.Program and library to be call prototyped.:EHELP.
+ 
+:HELP NAME='JCRPRGEN/SRCFIL'.Source file - Help :XH3.Source file (SRCFIL)
+:P.Source file containing source.:EHELP.
+ 
+:HELP NAME='JCRPRGEN/SRCLIB'.Source Library - Help :XH3.Source library (SRCLIB)
+:P.Library where source file is located.:EHELP.
+ 
+:HELP NAME='JCRPRGEN/SRCMBR'.Source Member - Help :XH3.Source Member (SRCMBR)
+:P.Source member.:EHELP.
+ 
+:HELP NAME='JCRPRGEN/PGMATR'.Program attribute - Help :XH3.Program Attribute (PGMATR)
+:P.Type of program object.:EHELP.:EPNLGRP.

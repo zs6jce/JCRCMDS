@@ -1,0 +1,161 @@
+      *----------------------------------------------------------------
+      * JCRFFDD -  File Field Descriptions - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(27 132 *DS4)
+     A                                      INDARA
+     A                                      PRINT
+     A                                      CA03
+     A                                      CA12
+     A          R SBFDTA1                   SFL
+     A            FLDTEXT50     50A  H
+     A            FLDALIAS      10A  H
+     A            SBLENGTH       5S 0H
+     A            SBTXT         35A  O  7  2
+     A            SBKEY          3A  O  7 38
+     A            SBFIELD       10A  O  7 42
+     A            SBDATATYPE    16A  O  7 55
+     A            SBFROMPOS      5Y 0O  7 72EDTCDE(4)
+     A            SBTOPOS        5Y 0O  7 78EDTCDE(4)
+     A            SBCCSID        5A  O  7 86DSPATR(HI)
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1)
+     A                                      SFLSIZ(0306)
+     A                                      SFLPAG(0018)
+     A                                      OVERLAY
+     A                                      CA04
+     A                                      CA06
+     A                                      CA07
+     A                                      CA08
+     A                                      CA09
+     A                                      CA10
+     A                                      CA11
+     A                                      CA15
+     A                                      CA16
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A                                  1  2'JCRFFD'
+     A                                      COLOR(BLU)
+     A            MSGUNPACK      9A  O  1 11
+     A                                  1 23'File Field Description'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                      COLOR(BLU)
+     A                                  2  2'File:'
+     A                                      COLOR(WHT)
+     A            SCOBJHEAD     63A  O  2  8
+     A                                  2 72SYSNAME
+     A                                      COLOR(BLU)
+     A                                  3  2'Keys:'
+     A                                      COLOR(WHT)
+     A            KEYLIST       70A  O  3  8
+     A                                  4  2'RcdFmt:'
+     A                                      COLOR(WHT)
+     A            SCRCDFMT      10A  O  4 10
+     A            MULTIFMTS     25A  O  4 21COLOR(BLU)
+     A                                  4 52'RecLen:'
+     A                                      COLOR(WHT)
+     A            RECORDLEN      5Y 0O  4 60EDTCDE(4)
+     A                                  4 67'Fields:'
+     A                                      COLOR(WHT)
+     A            FIELDCOUNT     4Y 0O  4 75EDTCDE(4)
+     A                                  4 86'Job CCSID:'
+     A            SCJOBCCSID     5A  O  4 97
+     A                                  5  2'Search:'
+     A                                      COLOR(BLU)
+     A            SEARCHTXT     26A  B  5 10
+     A            SEARCHFLD     10A  B  5 42DSPATR(PC)
+     A            SEARCHLEN      5Y 0B  5 55EDTCDE(4)
+     A                                  5 61'Search Length'
+     A                                      COLOR(BLU)
+     A                                  6  2'Text                              '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  6 38'Key'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A            FLDORALIAS     9A  O  6 42DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  6 55'Data Type       '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A                                  6 74'Position'
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+     A            CCSIDHEAD     20A  O  6 86DSPATR(HI)
+      *----------------------------------------------------------------
+     A          R SFOOTER1
+     A                                      OVERLAY
+     A            AF4KEY         1A  P
+     A            AF7KEY         1A  P
+     A            AF8KEY         1A  P
+     A                                 26  2'F3=Exit'
+     A                                      COLOR(BLU)
+     A                                 26 10'F6=Print'
+     A                                      COLOR(BLU)
+     A                                 26 19'F9=By Field'
+     A                                      COLOR(BLU)
+     A                                 26 31'F10=By Pos'
+     A                                      COLOR(BLU)
+     A                                 26 42'F11=Show'
+     A                                      COLOR(BLU)
+     A            F11SHOW        6A  O 26 51COLOR(BLU)
+     A            DBUTILITY     10A  O 26 58COLOR(BLU)
+     A                                 26 69'F16=Not Populated'
+     A                                      COLOR(BLU)
+     A                                 26 87'F4=Rcdfmts'
+     A                                      DSPATR(&AF4KEY)
+     A                                 26 98'F7=Select/Omit'
+     A                                      DSPATR(&AF7KEY)
+     A                                 26113'F8=Toggle ALIAS'
+     A                                      DSPATR(&AF8KEY)
+      *----------------------------------------------------------------
+     A          R ASSUME                    ASSUME
+     A                                  1  2' ' DSPATR(ND)
+      *----------------------------------------------------------------
+     A          R WINDTA3                   SFL
+     A            SELECT3        1A  B  2  2
+     A            SBFRCDFMT     10A  O  2  4
+      *----------------------------------------------------------------
+     A          R WINCTL3                   SFLCTL(WINDTA3) OVERLAY
+     A                                      SFLPAG(5) SFLSIZ(15)
+     A                                      WINDOW(4 24 8 15 *NOMSGLIN)
+     A  51                                  SFLDSP
+     A  52                                  SFLDSPCTL
+     A N51                                  SFLCLR
+     A N54                                  SFLEND(*MORE)
+     A                                      WDWTITLE((*TEXT 'Select Rcdfmt') +
+     A                                       (*COLOR WHT) (*DSPATR HI))
+     A                                  1  2'X = Select' COLOR(BLU)
+     A          R WINFOOT3                  WINDOW(WINCTL3) OVERLAY
+     A                                  8  2'F12=Cancel' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R WINDTA4                   SFL
+     A            SOTYPE         7A  O  2  3
+     A            SOFLD         10A  O  2 11
+     A            SOCOMP         2A  O  2 22
+     A            SOVALU        32A  O  2 25
+     A          R WINCTL4                   SFLCTL(WINDTA4) OVERLAY
+     A  61                                  SFLDSP
+     A  62                                  SFLDSPCTL
+     A N61                                  SFLCLR
+     A N64                                  SFLEND(*MORE)
+     A                                      SFLPAG(9) SFLSIZ(18)
+     A                                      WINDOW(5 2 12 61 *NOMSGLIN)
+     A                                      WDWTITLE((*TEXT 'Select / Omit Stat-
+     A                                      ements') (*COLOR WHT) (*DSPATR HI))
+     A          R WINFOOT4                  WINDOW(WINCTL4) OVERLAY
+     A                                 12 50'F12=Cancel' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(27)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

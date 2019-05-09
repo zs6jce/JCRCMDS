@@ -1,0 +1,34 @@
+:PNLGRP.:HELP NAME='JCRCALL'.Command Prompt Entry Parms (JCRCALL) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Prompts a temp command created from entry field names and
+attributes required by called program.
+:P.The generated command designates called program as the command processing program, so
+parm values can be entered and the program executed.
+:P.The generated command source is available in QTEMP/CMDSRC member JCRCALLX.
+:P.Conditions::UL COMPACT.
+:LI.Called program source code must be available for compile.:EUL.
+ 
+:P.A prompt override program retrieves source code location
+used to compile calledd program.
+Read compile listing,
+building a command in QTEMP with prompts matching the entry parameters then
+specifies called program as command processing program.
+:P.The generated command is executed, prompting key input parameters in command format.
+:NT.Prompt the JCRCALL command for POP to work properly.:ENT.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRCALL/PGM'.Program to call - Help :XH3.Program to call (PGM)
+:P.Program and library to be called.:EHELP.
+ 
+:HELP NAME='JCRCALL/SRCFIL'.Source file - Help :XH3.Source file (SRCFIL)
+:P.Source file containing source.:EHELP.
+ 
+:HELP NAME='JCRCALL/SRCLIB'.Source Library - Help :XH3.Source library (SRCLIB)
+:P.Library where source file is located.:EHELP.
+ 
+:HELP NAME='JCRCALL/SRCMBR'.Source Member - Help :XH3.Source Member (SRCMBR)
+:P.Source member.:EHELP.
+ 
+:HELP NAME='JCRCALL/PGMATR'.Program attribute - Help :XH3.Program Attribute (PGMATR)
+:P.Type of program object.:EHELP.:EPNLGRP.

@@ -1,0 +1,89 @@
+:PNLGRP.:HELP NAME='JCRSMLT'.Scan Multiple Files / Strings (JCRSMLT) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Searches one to ten character strings in selected members of
+selected source files. Scan for trailing blanks by enclosing scan string in
+quotes.  For example.  'ABC   ' would scan for ABC followed by three blank spaces.
+:NT.To define many scan files to select with single keyword, add records to
+JCRSMLTCHF.  These records drive the choice text when F4 prompt the File Name.
+ Great way to pre-select groups of often scanned source files.
+ CHOICEKEY MUST START WITH * .:ENT.
+:P.Define selection strings as sets. See help on IFCONTAINS keyword.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRSMLT/SCANSTRING'.Search Strings - Help :XH3.Search Strings (SCANSTRING)
+:P.String or list of strings (up to ten) to search for in specified source
+members. 'XX '  will search for XX and a space or blank character.
+:NT.If scanning for '11', enter '''11''' on scan line.:ENT.:EHELP.
+ 
+:HELP NAME='JCRSMLT/CASENSITVE'.Case Sensitive Search - Help
+:XH3.Case Sensitive Search: (CASENSITIVE)
+:P.Allows case differences to be ignored or included in search.
+:PARML.:PT.:PK def.*NO:EPK.:PD.Upper or lower case is not considered in search.
+:PT.*YES :PD.Search is case sensitive.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRSMLT/IFCONTAINS'.If member contains string - Help
+:XH3.If member contains string: (IFCONTAINS)
+:P.Controls member selection depending on how search strings are evaluated.
+:PARML.:PT.:PK def.*ANY:EPK.:PD.The member is listed if ANY of the search strings
+are found in source member.  Think of it as an OR relation for
+selected multiple search strings.  Member must contain string1 OR
+string2 OR etc.....  This is fastest performing option.
+:PT.*ALL :PD.Member is listed only if ALL search strings are found.
+Each search string must be found in the member. Think of it as an AND relation
+if selected multiple search strings.  Member must contain string1 AND
+string2 AND etc...
+:PT.*NONE :PD.Member is listed if NONE of search strings are found.
+:PT.*NOTALL :PD.The member is listed if it contains one or more
+search strings and does NOT contain one or more search strings.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRSMLT/SRCFILE'.Source File(s) - Help :XH3.Source File(s) (SRCFILE)
+:P.Name and library of source physical file or list of files (up to nine) that
+the command will search.
+:NT.Associate unlimited numbers of files with single keyword in file JCRSMLTCHF.
+Choice Keyword must begin with character * :ENT.:EHELP.
+ 
+:HELP NAME='JCRSMLT/LISTLEVEL'.List occurrences in each mbr - Help
+:XH3.List occurrences in each mbr (LISTLEVEL)
+:P.Controls level of detail of output.
+:PARML.:PT.:PK def.*FIRST:EPK. :PD.Only first occurrence of the found string is listed.
+Useful for getting list of programs that contain one of the search strings.
+:PT.*ALL :PD.Every occurrence of search string in source member is listed.
+There will be same number of programs as with the *FIRST option, but same program
+might be listed multiple times depending on how many times search string
+is found in the source.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRSMLT/SCANCMNT'.Scan Comment Lines - Help :XH3.Scan Comment Lines (SCANCMNT)
+:P.Scan comment lines during search.
+:PARML.:PT.:PK def.*NO:EPK.:PD.The default is do not include source comment lines in scan.
+:PT.*YES :PD.Include source comment lines in search.
+:PT.*ONLY :PD.Only search source comment lines.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRSMLT/FROMPOS'.Start Search FROM position - Help
+:XH3.Start Search FROM position (FROMPOS)
+:P.Position in source code to begin scanning.
+:PARML.:PT.:PK def.1:EPK.
+:PD.The default is to start scanning from first position in source.
+:PT.number :PD.Select position to begin scan.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRSMLT/TOPOS'.End Search TO position - Help :XH3.End Search TO position (TOPOS)
+:P.Position in source code to stop scanning.
+:PARML.:PT.:PK def.100:EPK.:PD.The default is to scan to position 100 in source.
+:PT.number :PD.Select position to end scan.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRSMLT/OUTPUT'.Output - Help :XH3.Output (OUTPUT)
+:P.Output to print file or data file.
+:PARML.:PT.:PK def.*PRINT:EPK.:PD.Generate report listing in batch.
+:PT.*OUTFILE :PD.Output is redirected to selected data file. (see OUTFILE help).
+:PT.* :PD.Report listing is shown interactively.  Could tie up interactive
+session for long periods of time if scanning large number of members.:EPARML.:EHELP.
+ 
+:HELP NAME='JCRSMLT/OUTFILE'.OutFile - Help :XH3.File (OUTFILE)
+:P.File and library to receive command output.:EHELP.
+ 
+:HELP NAME='JCRSMLT/OUTMBR'.Output - Help :XH3.Output (OUTMBR)
+:P.File member to receive command output.  note: outfile is SQL DDL and
+does not allow multiple members.:EHELP.
+ 
+:HELP NAME='JCRSMLT/OUTQ'.Outq name - Help :XH3.Outq name (OUTQ)
+:P.Name and library of output queue to place the spooled file.:EHELP.:EPNLGRP.

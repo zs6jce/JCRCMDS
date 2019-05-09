@@ -1,0 +1,30 @@
+/*--------------------------------------------------------------------------*/
+/* JCRGAMESC - Games selection menu - CMDPGM                                */
+/*   Craig Rutledge  < www.jcrcmds.com >                                    */
+/*--------------------------------------------------------------------------*/
+             PGM
+             DCLF       FILE(JCRGAMESD)
+             MONMSG     MSGID(CPF0000)
+             CHGVAR     VAR(&SCLIN) VALUE(02)
+             CHGVAR     VAR(&SCPOS) VALUE(04)
+ 
+             DOUNTIL    COND('0')
+             SNDRCVF    RCDFMT(SCREEN)
+ 
+             SELECT
+             WHEN       COND((&IN03) *OR (&IN12)) THEN(DO)
+             RETURN
+             SNDRCVF    RCDFMT(ASSUME)
+             ENDDO
+             WHEN       COND(&SCOPTION = '1') THEN(CALL PGM(JCRGMBLJ))
+             WHEN       COND(&SCOPTION = '2') THEN(CALL PGM(JCRGMBTL))
+             WHEN       COND(&SCOPTION = '3') THEN(CALL PGM(JCRGMCRB))
+             WHEN       COND(&SCOPTION = '4') THEN(CALL PGM(JCRGMPOK))
+             WHEN       COND(&SCOPTION = '5') THEN(CALL PGM(JCRGMPYR))
+             WHEN       COND(&SCOPTION = '6') THEN(CALL PGM(JCRGMTIC))
+             WHEN       COND(&SCOPTION = '7') THEN(CALL PGM(JCRGMYAT))
+             WHEN       COND(&SCOPTION = '8') THEN(CALL PGM(JCRGMMINE))
+             OTHERWISE
+             ENDSELECT
+             ENDDO
+             ENDPGM

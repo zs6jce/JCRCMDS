@@ -1,0 +1,32 @@
+      *----------------------------------------------------------------
+      * JCRJOBDP - Search JOBD for Library or Outq or Jobq - PRTF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+      *---                                  PAGESIZE(66 132)
+     A          R PRTHEAD                   SKIPB(1) SPACEA(1)
+     A                                     2'JCRJOBD'
+     A                                    20'Search JOBD for Library or Outq'
+     A            SCDOW          9A  O    72
+     A                                    82DATE EDTCDE(Y)
+     A                                    92TIME
+     A                                   104'Page'
+     A                                    +1PAGNBR EDTCDE(4) SPACEA(2)
+      *---
+     A                                     5'Library   '
+     A                                    16'Outq'
+     A                                    38'Jobq'
+     A                                    61'Jodb'
+     A                                    83'Text'
+     A                                   122'Last Used '
+     A                                      SPACEA(1)
+      *----------------------------------------------------------------
+     A          R PRTDETAIL                 SPACEA(1)
+     A            SFLIB         10A        5
+     A            SFOUTQ        10A       16
+     A            SFOUTQLIB     10A       27
+     A            SFJOBQ        10A       38
+     A            SFJOBQLIB     10A       49
+     A            SFJOBD        10A       61
+     A            SFJOBDLIB     10A       72
+     A            SFTEXT        38A       83
+     A            SFLASTUSED    10A      122

@@ -1,0 +1,82 @@
+      *----------------------------------------------------------------
+      * JCRLKEYD - Find desired access path - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(27 132 *DS4)
+     A                                      INDARA
+     A                                      PRINT
+     A                                      CA03
+     A                                      CF07
+     A                                      CA12
+     A          R SBFDTA1                   SFL
+     A            SCPOS1A        1A  P
+     A            SCPOS2A        1A  P
+     A            SCPOS3A        1A  P
+     A            SCPOS4A        1A  P
+     A            SCPOS5A        1A  P
+     A            SCPOS6A        1A  P
+     A            SCPOS7A        1A  P
+     A            SCPOS8A        1A  P
+     A            SCPOS9A        1A  P
+     A            SCSELECT       1A  B  5  5
+     A            SCKEYNAM      10A  O  5  7
+     A            SCPOS1         1A  O  5 18DSPATR(&SCPOS1A)
+     A            SCPOS2         1A  O  5 20DSPATR(&SCPOS2A)
+     A            SCPOS3         1A  O  5 22DSPATR(&SCPOS3A)
+     A            SCPOS4         1A  O  5 24DSPATR(&SCPOS4A)
+     A            SCPOS5         1A  O  5 26DSPATR(&SCPOS5A)
+     A            SCPOS6         1A  O  5 28DSPATR(&SCPOS6A)
+     A            SCPOS7         1A  O  5 30DSPATR(&SCPOS7A)
+     A            SCPOS8         1A  O  5 32DSPATR(&SCPOS8A)
+     A            SCPOS9         1A  O  5 34DSPATR(&SCPOS9A)
+     A            SCKEYTXT      38A  O  5 39
+     A            SCDATATYPE    16A  O  5 78
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1)
+     A                                      SFLSIZ(0063)
+     A                                      SFLPAG(0021)
+     A                                      OVERLAY
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A            SFLRCDNBR      4S 0H      SFLRCDNBR
+     A                                  1  3'JCRLKEY'
+     A                                      COLOR(BLU)
+     A                                  1 24'Find Desired Access Path'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1108COLOR(BLU)
+     A                                  1118DATE
+     A                                      EDTCDE(Y)
+     A                                      COLOR(BLU)
+     A                                  2  5'File:'
+     A                                      COLOR(WHT)
+     A            SCOBJHEAD     63A  O  2 11
+     A                                  2108SYSNAME
+     A                                      COLOR(BLU)
+     A                                  3  5'X select key in any position or 1,-
+     A                                      2,3,4,5,6,7,8,9 to select key field-
+     A                                       position(s).'
+     A                                      COLOR(BLU)
+     A                                  4  5' '
+     A                                      DSPATR(UL)
+     A                                      DSPATR(HI)
+     A                                  4  7'Key Field '
+     A                                      DSPATR(UL)
+     A                                      DSPATR(HI)
+     A                                  4 18'Key Position     '
+     A                                      DSPATR(UL)
+     A                                      DSPATR(HI)
+     A                                  4 39'Text                              -
+     A                                         '
+     A                                      DSPATR(UL)
+     A                                      DSPATR(HI)
+     A                                  4 78'Data Type       '
+     A                                      DSPATR(HI)
+     A                                      DSPATR(UL)
+      *----------------------------------------------------------------
+     A          R SFOOTER1
+     A            AFOOTERMSG     1A  P
+     A                                 27  2'F3=Exit' COLOR(BLU)
+     A            FOOTERMSG     41   O 27 15DSPATR(&AFOOTERMSG)
+     A                                 27 69'F12=Cancel' COLOR(BLU)

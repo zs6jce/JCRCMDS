@@ -1,0 +1,28 @@
+      *----------------------------------------------------------------
+      * JCRGAMESD- JCR games selection menu - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      PRINT CA03(03) CA12(12)
+     A          R SCREEN                    OVERLAY
+     A  *DS3                                WINDOW(&SCLIN &SCPOS 13 31)
+     A  *DS4                                WINDOW(&SCLIN &SCPOS 14 31)
+     A            SCLIN          2S 0P
+     A            SCPOS          2S 0P
+     A                                  1  2'JCRGAMES' COLOR(BLU)
+     A                                  1 24DATE EDTCDE(Y) COLOR(BLU)
+     A                                  2 24SYSNAME COLOR(BLU)
+     A                                  3  2'1. Black Jack 21'
+     A                                  4  2'2. Battle Ship'
+     A                                  5  2'3. Cribbage'
+     A                                  6  2'4. Draw Poker'
+     A                                  7  2'5. Pyramid Solitaire'
+     A                                  8  2'6. Tic/Tac/Toe'
+     A                                  9  2'7. Yahtzee'
+     A                                 10  2'8. Erdos Tibor MineSweeper'
+     A            SCOPTION       1A  B 12  2
+     A                                 12  5'Option'
+     A                                 12 25'F3=Exit' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R ASSUME                    ASSUME
+     A                                  1  2' ' DSPATR(ND)

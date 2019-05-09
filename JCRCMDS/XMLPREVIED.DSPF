@@ -1,0 +1,45 @@
+      *----------------------------------------------------------------
+      * XMLPREVIED - Preview uploaded XML install members - DSPF
+      *   Craig Rutledge  < www.jcrcmds.com >
+      *----------------------------------------------------------------
+     A                                      DSPSIZ(24 80 *DS3 27 132 *DS4)
+     A                                      INDARA PRINT CA03 CA10 CA12
+     A          R SBFDTA1                     SFL
+     A            XDATA         77A  O  5  2
+      *----------------------------------------------------------------
+     A          R SBFCTL1                   SFLCTL(SBFDTA1) OVERLAY
+     A                                      SFLPAG(17) SFLSIZ(51)
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A N32                                  SFLCLR
+     A N34                                  SFLEND(*MORE)
+     A                                  1  2'XMLPREVIEW' COLOR(BLU)
+     A                                  1 23'Preview XML Upload before Install'
+     A                                      DSPATR(HI)
+     A            SCDOW          9A  O  1 62COLOR(BLU)
+     A                                  1 72DATE EDTCDE(Y) COLOR(BLU)
+     A                                  2  2'Mbr:'
+     A            SCOBJHEAD     35A  O  2  7
+     A                                  2 72SYSNAME COLOR(BLU)
+     A                                  4  2'Seq' DSPATR(UL) COLOR(BLU)
+     A                                  4  6'Cmd' DSPATR(UL) COLOR(BLU)
+     A                                  4 10'MbrName' DSPATR(UL) COLOR(BLU)
+     A                                  4 21'MbrAttr' DSPATR(UL) COLOR(BLU)
+     A                                  4 32'TargetSrc' DSPATR(UL) COLOR(BLU)
+     A                                  4 44'Text                              '
+     A                                      DSPATR(UL) COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R SFOOTER1                  OVERLAY
+     A            AINSTALL       1A  P
+     A                                 23  2'F3=Exit No Install' COLOR(BLU)
+     A                                 23 30'F10=Run Install' DSPATR(&AINSTALL)
+     A                                 23 58'F12=Cancel No Install' COLOR(BLU)
+      *----------------------------------------------------------------
+     A          R MSGSFL                    SFL SFLMSGRCD(24)
+     A            MSGSFLKEY                 SFLMSGKEY
+     A            PROGID                    SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLDSP SFLDSPCTL SFLINZ
+     A N14                                  SFLEND
+     A                                      SFLPAG(1) SFLSIZ(2)
+     A            PROGID                    SFLPGMQ(10)

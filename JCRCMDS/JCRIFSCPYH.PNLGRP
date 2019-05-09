@@ -1,0 +1,9 @@
+:PNLGRP.:HELP NAME='JCRIFSCPY'.Copy from IFS directory (JCRIFSCPY) - Help
+.*--------------------------------------------------------------------
+.*   Craig Rutledge  < www.jcrcmds.com >
+.*--------------------------------------------------------------------
+:P.Lists directory entries in selected IFS directory name. Select cpyfrmstmf or
+select xmlpreview as an easy utility install method.:EHELP.
+.*--------------------------------------------------------------------
+:HELP NAME='JCRIFSCPY/PATHNAME'.IFS Path Name - Help :XH3.IFS Path Name (PATHNAME)
+:P.IFS path name to directory entries.:EHELP.:EPNLGRP.
